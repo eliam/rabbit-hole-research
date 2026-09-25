@@ -1,0 +1,826 @@
+ <!DOCTYPE html>
+<html lang="nl-BE">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1"/>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta http-equiv="cache-control" content="no-cache,no-store"/>
+        <meta http-equiv="pragma" content="no-cache"/>
+        <meta http-equiv="expires" content="-1"/>
+        <meta name='mswebdialog-title' content='Connecting to UZ Leuven'/>
+
+        <title>Aanmelden</title>
+        
+        
+        <link rel="stylesheet" type="text/css" href="/adfs/portal/css/style.css?id=0A5EDE59679EAE8DEB21E4E396B4294447C19FA43EA16C0A88C8EF9483771E34" /><style>.illustrationClass {background-image:url(/adfs/portal/illustration/illustration.jpg?id=AD04BA3B7EBFC5E49E914D9C3AB74AE5F0830C9F8289514FB7ABD2BEFC89FE17);}</style>
+
+    </head>
+    <body dir="ltr" class="body">
+    <div id="noScript" style="position:static; width:100%; height:100%; z-index:100">
+        <h1>JavaScript is vereist</h1>
+        <p>JavaScript is vereist. Deze webbrowser ondersteunt JavaScript niet of  JavaScript is niet ingeschakeld in deze webbrowser.</p>
+        <p>Raadpleeg de Help van uw webbrowser om erachter te komen of uw webbrowser JavaScript ondersteunt of hoe u JavaScript inschakelt.</p>
+    </div>
+    <script type="text/javascript" language="JavaScript">
+         document.getElementById("noScript").style.display = "none";
+    </script>
+    <div id="fullPage">
+        <div id="brandingWrapper" class="float">
+            <div id="branding"></div>
+        </div>
+        <div id="contentWrapper" class="float">
+            <div id="content">
+                <div id="header">
+                    <img class='logoImage' id='companyLogo' src='/adfs/portal/logo/logo.png?id=3FC995B89CE81FFBC1EA130FF787CEDBCAC3BDB6216A4D9543AC1D67481E83DB' alt='UZ Leuven'/>
+                </div>
+                <main>
+                    <div id="workArea">
+                         <div id="idpSignonArea"> 
+
+    <div id="IsAuthenticated" class="hidden">False</div>
+    <form id="idpForm" method="post" action="/adfs/ls/idpinitiatedsignon.aspx?client-request-id=2af619d1-e356-4922-68f9-0040000000d8">
+        
+        <div id="idp_SignInThisSiteStatusLabel" class="groupMargin">
+            <span>U bent niet aangemeld. </span>
+        </div>
+
+        <div class="sectionMargin">
+            <div id="idp_ThisRpPanel" class="fieldMargin">
+	            <input id="idp_ThisRpRadioButton" type="radio" name="SignInIdpSite" value="SignInIdpSite" checked="checked" onclick="onClickThisRPButton()"/>
+                <label for="idp_ThisRpRadioButton">Meld u aan bij deze site.</label>
+            </div>
+            <div id="idp_OtherRpPanel" class="fieldMargin">
+	            <input id="idp_OtherRpRadioButton" type="radio" name="SignInOtherSite" value="SignInOtherSite" onclick="onClickOtherRPButton()" />
+                <label for="idp_OtherRpRadioButton">Meld u aan bij een van de volgende sites:</label>
+                <label id="idp_RelyingPartyDropDownListLabel" for="idp_RelyingPartyDropDownList" class="hidden">Siteselecties</label>
+                <select name="RelyingParty" id="idp_RelyingPartyDropDownList" class="select block indent fullWidthIndent topFieldMargin" disabled="disabled">
+                    <option value="286ed6da-5fd3-eb11-8b67-005056ab5b19">Agfa E-learning portal</option><option value="d27a546d-9508-eb11-8b62-005056ab5b19">ALMA-webshop</option><option value="86275750-4c02-eb11-8b62-005056ab5b19">ALMA-webshop TEST</option><option value="7efb699c-d566-e611-80e2-005056bbfc0f">Amazon Web Services</option><option value="a7c4af90-0f2a-ee11-8b7c-005056ab5b19">Armis</option><option value="070f5ef6-f6e4-ed11-8b7a-005056ab5b19">Atlassian Cloud</option><option value="94670f12-d489-ee11-8b7e-005056ab5b19">Atlassian statuspage</option><option value="6c7183d2-bf0e-ef11-8b84-005056ab5b19">Awingu</option><option value="e02c1288-5c9d-ed11-8b76-005056ab5b19">azdiest.ultimo.net</option><option value="dc896d9c-4756-eb11-8b63-005056ab5b19">benchmarking.mir.uzleuven.be</option><option value="c7c48393-aaa5-f011-a37e-005056abaa78">benque</option><option value="b5eabaac-2c8f-f011-a37d-005056abaa78">Cisco Intersight EMEA</option><option value="cba39bfd-85a2-e611-80e3-005056bbfc0f">Cisco Meraki Dashboard</option><option value="98e7de64-6384-ee11-8b7e-005056ab5b19">Cisco-Umbrella</option><option value="9a23b166-05c9-ef11-8b8b-005056ab5b19">ckf.clinspark.com</option><option value="49029bd3-04c9-ef11-8b8b-005056ab5b19">ckftest.clinspark.com</option><option value="d07115aa-cb9b-ed11-8b76-005056ab5b19">Cloudflare</option><option value="0b4efebe-8e92-ee11-8b7e-005056ab5b19">Doccle Connective</option><option value="9929acdb-bc5a-e911-80f5-005056bbfc0f">extranet.uzleuven.be</option><option value="d62c27da-f476-ee11-8b7e-005056ab5b19">Extranet-forti-test</option><option value="68569e68-1ae9-ed11-8b7a-005056ab5b19">gbiomed.kuleuven.be Halo3</option><option value="83b88d25-4e34-ef11-8b85-005056ab5b19">GCP Cumulus Workforce Federation</option><option value="5be11b70-3ea2-e911-8b5e-005056ab5b19">GitLab-nexuzhealth</option><option value="b531a6d0-f0fe-ed11-8b7b-005056ab5b19">gitlab-UZL</option><option value="18720b48-affa-eb11-8b69-005056ab5b19">InsightVM</option><option value="e0524cc5-4bb0-e811-80ed-005056bbfc0f">ipam</option><option value="87663d8b-05aa-e811-80ed-005056bbfc0f">isor</option><option value="9ceb8935-1089-e911-8b5e-005056ab5b19">jenkins.gcp.uzleuven.be</option><option value="b467f17a-373c-ee11-8b7c-005056ab5b19">Juniper Mist login</option><option value="67da25cf-e87f-eb11-8b63-005056ab5b19">keycloak.mir.uzleuven.be</option><option value="e8001351-3cf3-ee11-8b83-005056ab5b19">KU Leuven Gbiomed Plone PROD</option><option value="ddf4da48-58f3-ee11-8b83-005056ab5b19">KU Leuven Gbiomed Plone Quality</option><option value="d586c772-12bb-e811-80ee-005056bbfc0f">leerplatform.azdiest.be</option><option value="b4720670-12cc-e511-80df-005056bbfc0f">liquidfiles.uzleuven.be</option><option value="c3186fc2-9b39-e811-80ea-005056bbfc0f">liquidfilestest.uzleuven.be</option><option value="9ae492a8-4a2b-ec11-8b6a-005056ab5b19">Notula</option><option value="e78bdd8e-8320-ee11-8b7b-005056ab5b19">Patch Manager Plus PROD</option><option value="41dcb529-4ee0-ed11-8b79-005056ab5b19">Patch Manager Plus TEST</option><option value="8e4ff010-e6d5-ec11-8b72-005056ab5b19">patientsafety</option><option value="7e71b959-ae54-ef11-8b86-005056ab5b19">patientsafety-test</option><option value="9d0dd0f0-eec7-ed11-8b77-005056ab5b19">Persoverzicht KUL</option><option value="22106b22-300c-f111-a382-005056abaa78">playjenkins.uz.kuleuven.ac.be</option><option value="5f2e34d4-e416-f111-a383-005056abaa78">playjenkinsgcp.uz.kuleuven.ac.be</option><option value="4793c61d-49a3-eb11-8b65-005056ab5b19">SentinelOne</option><option value="958ba233-3a92-f011-a37d-005056abaa78">Silverfort</option><option value="ee35ad7c-fefa-ed11-8b7a-005056ab5b19">surveymonkey.com</option><option value="444d8bfb-8d30-eb11-8b62-005056ab5b19">Taleo Learn</option><option value="ee8b3ee7-8c30-eb11-8b62-005056ab5b19">Taleo Learn TEST</option><option value="36e279da-d001-e811-80e9-005056bbfc0f">Taleo Recruit</option><option value="d81eb607-d101-e811-80e9-005056bbfc0f">Taleo Recruit Careersection</option><option value="11bdf780-53c9-e711-80e8-005056bbfc0f">Taleo Recruit Careersection TEST</option><option value="188cd8b5-52c9-e711-80e8-005056bbfc0f">Taleo Recruit TEST</option><option value="ca2c3472-8af3-eb11-8b69-005056ab5b19">upckuleuven.ultimo.net</option><option value="5bcd4290-f4eb-e811-80ef-005056bbfc0f">uzleuven.enterprise.slack.com</option><option value="173f1973-e7df-eb11-8b68-d89fcdec4ae7">uzl-firmatokens</option><option value="2d57d30d-f68a-eb11-8b64-005056ab5b19">Wallarm</option>
+                </select>
+            </div>
+
+            <div id="idp_SignInPanel" class="submitMargin">
+                <input type="submit" name="SignInSubmit" value="Aanmelden" id="idp_SignInButton" class="submit" />
+            </div>
+                        
+            <div id="idp_SignInToOtherRpPanel" class="submitMargin">
+                <input type="submit" name="SignInGo" value="Aanmelden" id="idp_GoButton" class="submit" />
+            </div>
+
+        </div>
+        
+        <div id="idp_SignOutPanel">
+            
+            <div id ="idp_SignOutPanelRadioButtons">
+                <div class="fieldMargin">
+                    <input id="idp_SingleSignOutRadioButton" type="radio" name="SingleSignOut" value="SingleSignOut" checked="checked" onclick="onClickSingleSignOutRadioButton()"/>
+                    <label for="idp_SingleSignOutRadioButton">Meld u af bij alle sites die u hebt bezocht.</label>
+                </div>
+                <div class="fieldMargin">
+                    <input id="idp_LocalSignOutRadioButton" type="radio" name="LocalSignOut" value="LocalSignOut" onclick="onClickLocalSignOutRadioButton()"/>
+                    <label for="idp_LocalSignOutRadioButton">Meld u af bij deze site.</label>
+                </div>
+            </div>
+
+            <div class="submitMargin">
+                <input type="submit" name="SignOut" value="Afmelden" id="idp_SignOutButton" class="submit" /> 
+            </div>
+        </div>           
+    </form>
+ 
+<script type="text/javascript">
+//<![CDATA[
+        controlDisplayOfPanelBasedOnRelyingPartyCount();
+        if (document.getElementById("IsAuthenticated").innerHTML == "True") {
+            document.getElementById("idp_ThisRpPanel").style.display = "none";
+            document.getElementById("idp_SignInPanel").style.display = "none";
+            
+            if (document.getElementById("idp_OtherRpPanel").style.display != "none") {
+                document.getElementById("idp_OtherRpRadioButton").checked = true;
+                document.getElementById("idp_ThisRpRadioButton").checked = false;
+                document.getElementById("idp_RelyingPartyDropDownList").disabled = false;
+            } else {
+                document.getElementById("idp_OtherRpRadioButton").checked = false;
+                document.getElementById("idp_RelyingPartyDropDownList").disabled = true;
+                document.getElementById("idp_SignInToOtherRpPanel").style.display = "none";
+            }
+        }
+        else {
+            document.getElementById("idp_SignInToOtherRpPanel").style.display = "none";
+            document.getElementById("idp_SignOutPanel").style.display = "none";
+            document.getElementById("idp_OtherRpRadioButton").checked = false;
+        }
+    
+    function onClickOtherRPButton() {
+        document.getElementById("idp_ThisRpRadioButton").checked = false;
+        document.getElementById("idp_RelyingPartyDropDownList").disabled = false;
+    }
+
+    function onClickSingleSignOutRadioButton() {
+        document.getElementById("idp_LocalSignOutRadioButton").checked = false;
+    }
+    
+    function onClickLocalSignOutRadioButton() {
+        document.getElementById("idp_SingleSignOutRadioButton").checked = false;
+    }
+    
+    function onClickThisRPButton() {
+        document.getElementById("idp_OtherRpRadioButton").checked = false;
+        document.getElementById("idp_RelyingPartyDropDownList").disabled = true;
+    }
+
+    function controlDisplayOfPanelBasedOnRelyingPartyCount() {
+        if (document.getElementById("idp_RelyingPartyDropDownList").options.length > 0) {
+            document.getElementById("idp_OtherRpPanel").style.display = "";
+            document.getElementById("idp_SignOutPanelRadioButtons").style.display = "";
+        } else {
+            document.getElementById("idp_OtherRpPanel").style.display = "none";
+            document.getElementById("idp_ThisRpPanel").style.display = "none";
+            document.getElementById("idp_SignOutPanelRadioButtons").style.display = "none";
+        }
+    }
+    //]]>
+</script>
+</div>
+
+                    </div>
+                </main>
+                <div id="footerPlaceholder"></div>
+            </div>
+            <footer id="footer">
+                <div id="footerLinks" class="floatReverse">
+                    <div><span id="copyright">&#169; 2018 Microsoft</span><a id="home" class="pageLink footerLink " href="https://intranet.uz.kuleuven.ac.be/">Intranet</a><a id="helpDesk" class="pageLink footerLink" href="http://intranet/ITHelp">Helpdesk</a></div>
+                </div>
+            </footer>
+        </div>     
+    </div>
+    <script type='text/javascript'>
+//<![CDATA[
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+
+// This file contains several workarounds on inconsistent browser behaviors that administrators may customize.
+"use strict";
+
+// iPhone email friendly keyboard does not include "\" key, use regular keyboard instead.
+// Note change input type does not work on all versions of all browsers.
+if (navigator.userAgent.match(/iPhone/i) != null) {
+    var emails = document.querySelectorAll("input[type='email']");
+    if (emails) {
+        for (var i = 0; i < emails.length; i++) {
+            emails[i].type = 'text';
+        }
+    }
+}
+
+// In the CSS file we set the ms-viewport to be consistent with the device dimensions, 
+// which is necessary for correct functionality of immersive IE. 
+// However, for Windows 8 phone we need to reset the ms-viewport's dimension to its original
+// values (auto), otherwise the viewport dimensions will be wrong for Windows 8 phone.
+// Windows 8 phone has agent string 'IEMobile 10.0'
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+        document.createTextNode(
+            "@-ms-viewport{width:auto!important}"
+        )
+    );
+    msViewportStyle.appendChild(
+        document.createTextNode(
+            "@-ms-viewport{height:auto!important}"
+        )
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+}
+
+// If the innerWidth is defined, use it as the viewport width.
+if (window.innerWidth && window.outerWidth && window.innerWidth !== window.outerWidth) {
+    var viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute('content', 'width=' + window.innerWidth + ', initial-scale=1.0, user-scalable=1');
+}
+
+// Gets the current style of a specific property for a specific element.
+function getStyle(element, styleProp) {
+    var propStyle = null;
+
+    if (element && element.currentStyle) {
+        propStyle = element.currentStyle[styleProp];
+    }
+    else if (element && window.getComputedStyle) {
+        propStyle = document.defaultView.getComputedStyle(element, null).getPropertyValue(styleProp);
+    }
+
+    return propStyle;
+}
+
+// The script below is used for downloading the illustration image 
+// only when the branding is displaying. This script work together
+// with the code in PageBase.cs that sets the html inline style
+// containing the class 'illustrationClass' with the background image.
+var computeLoadIllustration = function () {
+    var branding = document.getElementById("branding");
+    var brandingDisplay = getStyle(branding, "display");
+    var brandingWrapperDisplay = getStyle(document.getElementById("brandingWrapper"), "display");
+
+    if (brandingDisplay && brandingDisplay !== "none" &&
+        brandingWrapperDisplay && brandingWrapperDisplay !== "none") {
+        var newClass = "illustrationClass";
+
+        if (branding.classList && branding.classList.add) {
+            branding.classList.add(newClass);
+        } else if (branding.className !== undefined) {
+            branding.className += " " + newClass;
+        }
+        if (window.removeEventListener) {
+            window.removeEventListener('load', computeLoadIllustration, false);
+            window.removeEventListener('resize', computeLoadIllustration, false);
+        }
+        else if (window.detachEvent) {
+            window.detachEvent('onload', computeLoadIllustration);
+            window.detachEvent('onresize', computeLoadIllustration);
+        }
+    }
+};
+
+if (window.addEventListener) {
+    window.addEventListener('resize', computeLoadIllustration, false);
+    window.addEventListener('load', computeLoadIllustration, false);
+}
+else if (window.attachEvent) {
+    window.attachEvent('onresize', computeLoadIllustration);
+    window.attachEvent('onload', computeLoadIllustration);
+}
+
+// Function to change illustration image. Usage example below.
+function SetIllustrationImage(imageUri) {
+    var illustrationImageClass = '.illustrationClass {background-image:url(' + imageUri + ');}';
+
+    var css = document.createElement('style');
+    css.type = 'text/css';
+
+    if (css.styleSheet) css.styleSheet.cssText = illustrationImageClass;
+    else css.appendChild(document.createTextNode(illustrationImageClass));
+
+    document.getElementsByTagName("head")[0].appendChild(css);
+}
+
+var singleSubmitLockDurationMs = 8000;
+var singleSubmitLockKey = "adfs-single-submit-until";
+var pageSubmitLocked = false;
+var submitUiUpdateDelayMs = 100;
+
+function getSingleSubmitLockExpiration() {
+    try {
+        if (!window.sessionStorage) {
+            return 0;
+        }
+
+        var expiresAt = parseInt(window.sessionStorage.getItem(singleSubmitLockKey), 10);
+        return isNaN(expiresAt) ? 0 : expiresAt;
+    }
+    catch (error) {
+        return 0;
+    }
+}
+
+function setSingleSubmitLockExpiration(expiresAt) {
+    try {
+        if (!window.sessionStorage) {
+            return;
+        }
+
+        window.sessionStorage.setItem(singleSubmitLockKey, expiresAt.toString());
+    }
+    catch (error) {
+    }
+}
+
+function clearSingleSubmitLockExpiration() {
+    try {
+        if (!window.sessionStorage) {
+            return;
+        }
+
+        window.sessionStorage.removeItem(singleSubmitLockKey);
+    }
+    catch (error) {
+    }
+}
+
+function isSingleSubmitLocked() {
+    if (pageSubmitLocked) {
+        return true;
+    }
+
+    var expiresAt = getSingleSubmitLockExpiration();
+    if (expiresAt <= 0) {
+        return false;
+    }
+
+    if (expiresAt <= new Date().getTime()) {
+        clearSingleSubmitLockExpiration();
+        return false;
+    }
+
+    return true;
+}
+
+function pageRequiresSingleSubmitLock() {
+    return document.getElementById("passwordInput") !== null ||
+        document.querySelector("input[type='password']") !== null;
+}
+
+function isDutchPage() {
+    var title = document.title ? document.title.toLowerCase() : "";
+    if (title.indexOf("aanmelden") >= 0) {
+        return true;
+    }
+
+    if (title.indexOf("sign in") >= 0) {
+        return false;
+    }
+
+    var bodyText = document.body && document.body.textContent ? document.body.textContent.toLowerCase() : "";
+    return bodyText.indexOf("aanmelden") >= 0 || bodyText.indexOf("wachtwoord") >= 0;
+}
+
+function getSubmittingButtonLabel() {
+    if (!isPrimaryLoginPage()) {
+        return null;
+    }
+
+    return isDutchPage() ? "Aan het aanmelden..." : "Signing in...";
+}
+
+function getDefaultSubmitButtonLabel() {
+    return isDutchPage() ? "Aanmelden" : "Sign in";
+}
+
+function pushUniqueElement(elements, element) {
+    if (!element) {
+        return;
+    }
+
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i] === element) {
+            return;
+        }
+    }
+
+    elements.push(element);
+}
+
+function getSubmitControls(root) {
+    var scope = root || document;
+    var selectors = [
+        "input[type='submit']",
+        "input[type='button'][id*='submit']",
+        "input[type='button'][name*='submit']",
+        "button[type='submit']",
+        "button:not([type])",
+        "#submitButton",
+        "#nextButton",
+        "#continueButton",
+        ".submit",
+        ".submitButton"
+    ];
+    var elements = [];
+
+    for (var i = 0; i < selectors.length; i++) {
+        var matches = scope.querySelectorAll(selectors[i]);
+        for (var j = 0; j < matches.length; j++) {
+            pushUniqueElement(elements, matches[j]);
+        }
+    }
+
+    return elements;
+}
+
+function setSubmitControlBusyState(submitControl, isBusy) {
+    if (!submitControl) {
+        return;
+    }
+
+    if (isBusy) {
+        if (submitControl.getAttribute("data-original-submit-label") === null) {
+            var originalLabel = submitControl.tagName === "INPUT" ? submitControl.value : submitControl.textContent;
+            submitControl.setAttribute("data-original-submit-label", originalLabel || "");
+        }
+
+        if (submitControl.getAttribute("data-original-submit-style") === null) {
+            var originalStyle = submitControl.getAttribute("style");
+            submitControl.setAttribute("data-original-submit-style", originalStyle === null ? "" : originalStyle);
+        }
+
+        var busyLabel = getSubmittingButtonLabel();
+        if (busyLabel !== null) {
+            if (submitControl.tagName === "INPUT") {
+                submitControl.value = busyLabel;
+            }
+            else {
+                submitControl.textContent = busyLabel;
+            }
+
+            submitControl.setAttribute("aria-label", busyLabel);
+        }
+
+        submitControl.style.backgroundColor = "#a6a6a6";
+        submitControl.style.borderColor = "#a6a6a6";
+        submitControl.style.color = "#ffffff";
+        submitControl.style.cursor = "not-allowed";
+        submitControl.style.opacity = "0.85";
+
+        submitControl.disabled = true;
+        return;
+    }
+
+    var savedLabel = submitControl.getAttribute("data-original-submit-label");
+    if (savedLabel !== null) {
+        if (submitControl.tagName === "INPUT") {
+            submitControl.value = savedLabel;
+        }
+        else {
+            submitControl.textContent = savedLabel;
+        }
+
+        submitControl.removeAttribute("data-original-submit-label");
+    }
+
+    var savedStyle = submitControl.getAttribute("data-original-submit-style");
+    if (savedStyle !== null) {
+        if (savedStyle) {
+            submitControl.setAttribute("style", savedStyle);
+        }
+        else {
+            submitControl.removeAttribute("style");
+        }
+
+        submitControl.removeAttribute("data-original-submit-style");
+    }
+
+    submitControl.removeAttribute("aria-label");
+
+    submitControl.disabled = false;
+}
+
+function setSubmitControlsBusyState(root, isBusy) {
+    var submitControls = getSubmitControls(root);
+    for (var i = 0; i < submitControls.length; i++) {
+        setSubmitControlBusyState(submitControls[i], isBusy);
+    }
+}
+
+function resetPrimaryLoginSubmitControls(root) {
+    if (!isPrimaryLoginPage()) {
+        return;
+    }
+
+    var submitControls = getSubmitControls(root);
+    var defaultLabel = getDefaultSubmitButtonLabel();
+    for (var i = 0; i < submitControls.length; i++) {
+        var submitControl = submitControls[i];
+        if (submitControl.tagName === "INPUT") {
+            submitControl.value = defaultLabel;
+        }
+        else {
+            submitControl.textContent = defaultLabel;
+        }
+
+        submitControl.removeAttribute("data-original-submit-label");
+        submitControl.removeAttribute("data-original-submit-style");
+        submitControl.removeAttribute("aria-label");
+        submitControl.removeAttribute("style");
+        submitControl.disabled = false;
+    }
+}
+
+/*function setSubmitControlsWidth(root) {
+    var submitControls = getSubmitControls(root);
+    for (var i = 0; i < submitControls.length; i++) {
+        submitControls[i].style.width = "200px";
+    }
+}*/
+
+function lockPageInteractions(delayUiUpdate) {
+    pageSubmitLocked = true;
+    setSingleSubmitLockExpiration(new Date().getTime() + singleSubmitLockDurationMs);
+
+    if (delayUiUpdate) {
+        window.setTimeout(function () {
+            setSubmitControlsBusyState(document, true);
+        }, 0);
+        return;
+    }
+
+    setSubmitControlsBusyState(document, true);
+}
+
+function releasePageInteractionLock() {
+    pageSubmitLocked = false;
+    clearSingleSubmitLockExpiration();
+    setSubmitControlsBusyState(document, false);
+
+    if (isPrimaryLoginPage()) {
+        resetPrimaryLoginSubmitControls(document);
+    }
+}
+
+function cancelEvent(event) {
+    event = event || window.event;
+
+    if (event && event.preventDefault) {
+        event.preventDefault();
+    }
+    if (event && event.stopPropagation) {
+        event.stopPropagation();
+    }
+    if (event) {
+        event.returnValue = false;
+        event.cancelBubble = true;
+    }
+
+    return false;
+}
+
+function shouldBlockEventWhileSubmitting(event) {
+    if (!pageRequiresSingleSubmitLock()) {
+        return false;
+    }
+
+    if (!isSingleSubmitLocked()) {
+        return false;
+    }
+
+    if (!event) {
+        return true;
+    }
+
+    if (event.type === "keydown" || event.type === "keypress" || event.type === "keyup") {
+        return event.key === "Enter" || event.keyCode === 13 || event.which === 13;
+    }
+
+    return event.type === "click" || event.type === "submit";
+}
+
+function isPrimaryLoginPage() {
+    var hasUserNameInput = document.getElementById("userNameInput") !== null;
+    var hasUserNameInputHolder = document.getElementById("userNameInputHolder") !== null;
+    var hasPasswordInput = document.getElementById("passwordInput") !== null;
+    var hasLoginForm = document.forms["loginForm"] !== undefined;
+    var hasLoginFormPaginated = document.forms["loginFormPaginated"] !== undefined;
+    var hasLoginManager = typeof LoginManager != 'undefined';
+
+    var isPrimary = hasUserNameInput ||
+        hasUserNameInputHolder ||
+        hasPasswordInput ||
+        hasLoginForm ||
+        hasLoginFormPaginated ||
+        hasLoginManager;
+
+    /*if (window.console && window.console.log) {
+        window.console.log("[adfs-submit-lock] isPrimaryLoginPage", {
+            isPrimary: isPrimary,
+            href: window.location.href,
+            title: document.title,
+            hasUserNameInput: hasUserNameInput,
+            hasUserNameInputHolder: hasUserNameInputHolder,
+            hasPasswordInput: hasPasswordInput,
+            hasLoginForm: hasLoginForm,
+            hasLoginFormPaginated: hasLoginFormPaginated,
+            hasLoginManager: hasLoginManager
+        });
+    }*/
+
+    return isPrimary;
+}
+
+function attachPageInteractionLock() {
+    var blockIfLocked = function (event) {
+        if (!shouldBlockEventWhileSubmitting(event)) {
+            return true;
+        }
+
+        return cancelEvent(event);
+    };
+
+    if (document.addEventListener) {
+        document.addEventListener("keydown", blockIfLocked, true);
+        document.addEventListener("keypress", blockIfLocked, true);
+        document.addEventListener("keyup", blockIfLocked, true);
+        document.addEventListener("click", blockIfLocked, true);
+        document.addEventListener("submit", blockIfLocked, true);
+    }
+    else if (document.attachEvent) {
+        document.attachEvent("onkeydown", blockIfLocked);
+        document.attachEvent("onkeypress", blockIfLocked);
+        document.attachEvent("onkeyup", blockIfLocked);
+        document.attachEvent("onclick", blockIfLocked);
+        document.attachEvent("onsubmit", blockIfLocked);
+    }
+
+    if (!pageRequiresSingleSubmitLock()) {
+        releasePageInteractionLock();
+        return;
+    }
+
+    if (isSingleSubmitLocked()) {
+        if (isPrimaryLoginPage()) {
+            releasePageInteractionLock();
+            return;
+        }
+
+        window.setTimeout(releasePageInteractionLock, singleSubmitLockDurationMs);
+        setSubmitControlsBusyState(document, true);
+    }
+}
+
+function getFormIdentifier(form, fallbackIdentifier) {
+    if (fallbackIdentifier) {
+        return fallbackIdentifier;
+    }
+
+    if (!form) {
+        return "<missing-form>";
+    }
+
+    return form.name || form.id || form.action || "<unnamed-form>";
+}
+
+function beginSingleSubmitForForm(form, formIdentifier) {
+    var resolvedFormIdentifier = getFormIdentifier(form, formIdentifier);
+    if (!pageRequiresSingleSubmitLock()) {
+        return true;
+    }
+
+    if (isSingleSubmitLocked()) {
+        return false;
+    }
+
+    if (!form) {
+        return true;
+    }
+
+    if (form.getAttribute("data-submit-in-progress") === "true") {
+        return false;
+    }
+
+    form.setAttribute("data-submit-in-progress", "true");
+    lockPageInteractions(true);
+
+    return true;
+}
+
+function beginSingleSubmit(formName) {
+    return beginSingleSubmitForForm(document.forms[formName], formName);
+}
+
+function attachSingleSubmitLockToForm(form, formIdentifier) {
+    var resolvedFormIdentifier = getFormIdentifier(form, formIdentifier);
+
+    if (!form || form.getAttribute("data-single-submit-lock-bound") === "true") {
+        return;
+    }
+
+    var onSubmit = function (event) {
+        if (beginSingleSubmitForForm(form, resolvedFormIdentifier)) {
+            return true;
+        }
+
+        event = event || window.event;
+        if (event && event.preventDefault) {
+            event.preventDefault();
+        }
+        if (event) {
+            event.returnValue = false;
+        }
+        return false;
+    };
+
+    form.setAttribute("data-single-submit-lock-bound", "true");
+
+    if (form.addEventListener) {
+        form.addEventListener("submit", onSubmit, false);
+    }
+    else if (form.attachEvent) {
+        form.attachEvent("onsubmit", onSubmit);
+    }
+}
+
+function attachSingleSubmitLock(formName) {
+    attachSingleSubmitLockToForm(document.forms[formName], formName);
+}
+
+function submitFormAfterUiUpdate(formName) {
+    var form = document.forms[formName];
+    if (!form) {
+        return;
+    }
+
+    window.setTimeout(function () {
+        form.submit();
+    }, submitUiUpdateDelayMs);
+}
+
+function attachSingleSubmitLocksToAllForms() {
+    for (var i = 0; i < document.forms.length; i++) {
+        var form = document.forms[i];
+        if (form) {
+            var formIdentifier = form.name || form.id || ("form-index-" + i);
+            attachSingleSubmitLockToForm(form, formIdentifier);
+        }
+    }
+}
+
+// Example to change illustration image on HRD page after adding the image to active theme:
+// PSH> Set-AdfsWebTheme -TargetName <activeTheme> -AdditionalFileResource @{uri='/adfs/portal/images/hrd.jpg';path='.\hrd.jpg'}
+//
+//if (typeof HRD != 'undefined') {
+//    SetIllustrationImage('/adfs/portal/images/hrd.jpg');
+//}
+
+var contosoDomain = "uzleuven";
+var userNameInput = document.getElementById("userNameInput");
+if (userNameInput) {
+    var placeholder = userNameInput.getAttribute("placeholder");
+    if (placeholder == 'someone@example.com' || placeholder == 'iemand@example.com'){userNameInput.placeholder = "E-mail adres";}
+}
+
+attachPageInteractionLock();
+attachSingleSubmitLocksToAllForms();
+attachSingleSubmitLock('loginForm');
+attachSingleSubmitLock('loginFormPaginated');
+
+
+if (typeof LoginManager != 'undefined'){  
+     
+    LoginManager.submitLoginRequest = function () {
+    var u = new InputUtil();  
+    var e = new LoginErrors();  
+    var userName = document.getElementById(Login.userNameInputHolder);  
+    var password = document.getElementById(Login.passwordInput);  
+    if (userName.value && !userName.value.match('[@\\\\]'))   
+    {  
+        var userNameValue = contosoDomain + '\\' + userName.value;  
+        document.forms['loginForm'].UserName.value = userNameValue;  
+    }  
+
+    if (!userName.value) {  
+       u.setError(userName, e.userNameFormatError);  
+       return false;  
+    }  
+
+    if (!password.value)   
+    {  
+        u.setError(password, e.passwordEmpty);  
+        return false;  
+    }  
+
+    if (!beginSingleSubmit('loginForm')) {
+        return false;
+    }
+
+    submitFormAfterUiUpdate('loginForm');  
+    return false;  
+};  
+}
+
+if (typeof PaginationManager != 'undefined') {
+    PaginationManager.validateAndNext = function () {
+        var u = new InputUtil();
+        var e = new LoginErrors();
+
+        var userName = document.getElementById(Login.userNameInput);
+
+        if (!userName.value) {
+            u.setError(userName, e.userNameFormatError);
+            return false;
+        }
+
+        if(!userName.value.match('[@\\\\]')) {
+            var userNameValue = contosoDomain + '\\' + userName.value;  
+            document.forms['loginFormPaginated'].UserName.value = userNameValue;
+        }
+
+        _self.updatePagesWithUsername(userName.value);
+        u.clearError();
+
+        if (_self.options.currentPageIndex + 1 >= _self.options.pages.length) {
+            // POST back to ADFS since there are no more pages to go to 
+            if (!beginSingleSubmit('loginFormPaginated')) {
+                return false;
+            }
+
+            submitFormAfterUiUpdate('loginFormPaginated');
+            return false;
+        } else {
+            _self.displayNextPage();
+        }
+
+        return true;
+    }
+}
+//]]>
+</script>
+
+
+    </body>
+</html> 
+

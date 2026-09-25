@@ -1,0 +1,889 @@
+{
+ "IN-SCOPE(wildcard T3)": [
+  {
+   "host": "4uz11.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "autodiscover.uzleuven.be",
+   "ips": [
+    "193.58.149.101"
+   ]
+  },
+  {
+   "host": "awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "azd.meldinginbreukunierecht.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "azdsaga-awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "beeldbank-bo.uzleuven.be",
+   "ips": [
+    "195.225.101.70"
+   ]
+  },
+  {
+   "host": "beeldbank.uzleuven.be",
+   "ips": [
+    "195.225.101.70"
+   ]
+  },
+  {
+   "host": "boekentoy.uzleuven.be",
+   "ips": [
+    "199.36.158.100"
+   ]
+  },
+  {
+   "host": "capaciteitsopvolging.mijnbeleidsinformatie.uzleuven.be",
+   "ips": [
+    "34.149.5.85"
+   ]
+  },
+  {
+   "host": "cgg.meldinginbreukunierecht.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "cll.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "crl.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "crrd-launcher.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.13.22"
+   ]
+  },
+  {
+   "host": "dermatology-genai-dgu-assistant.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.13.11"
+   ]
+  },
+  {
+   "host": "devgf5.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.12.62"
+   ]
+  },
+  {
+   "host": "docuraid-2-dev.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.12.202"
+   ]
+  },
+  {
+   "host": "docuraid-admin-dev.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.12.203"
+   ]
+  },
+  {
+   "host": "docuraid-backend-dev.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.12.203"
+   ]
+  },
+  {
+   "host": "docuraid-frontend-dev.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.12.203"
+   ]
+  },
+  {
+   "host": "doptools-dev.gcp.uzleuven.be",
+   "ips": [
+    "35.190.74.231"
+   ]
+  },
+  {
+   "host": "ecrf.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "eduroam-radius.uzleuven.be",
+   "ips": [
+    "134.58.179.32"
+   ]
+  },
+  {
+   "host": "events.uzleuven.be",
+   "ips": [
+    "52.51.215.23"
+   ]
+  },
+  {
+   "host": "extranet-2.uzleuven.be",
+   "ips": [
+    "193.58.149.114"
+   ]
+  },
+  {
+   "host": "extranet-asa.uzleuven.be",
+   "ips": [
+    "134.58.179.246"
+   ]
+  },
+  {
+   "host": "extranet-awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "extranet-test.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "extranet.uzleuven.be",
+   "ips": [
+    "193.58.149.120"
+   ]
+  },
+  {
+   "host": "extranetmail.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "fas-awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "firma-awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "gbs.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "genai-metaboleziekten-dossier-sum.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.13.15"
+   ]
+  },
+  {
+   "host": "genai-patientendossier-summarization.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.13.20"
+   ]
+  },
+  {
+   "host": "hello-world-dev.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.12.208"
+   ]
+  },
+  {
+   "host": "histaruz.uzleuven.be",
+   "ips": [
+    "13.224.95.49",
+    "13.224.95.76",
+    "13.224.95.83",
+    "13.224.95.88"
+   ]
+  },
+  {
+   "host": "horizon-awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "iap-mijnbeleidsinformatie-dev.gcp.uzleuven.be",
+   "ips": [
+    "34.49.244.50"
+   ]
+  },
+  {
+   "host": "iap-mijnbeleidsinformatie.gcp.uzleuven.be",
+   "ips": [
+    "34.49.124.0"
+   ]
+  },
+  {
+   "host": "jaarverslag.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "jenkins.gcp.uzleuven.be",
+   "ips": [
+    "35.241.26.129"
+   ]
+  },
+  {
+   "host": "jobstudenten.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "kinderziekenhuis.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "laboboeken.uzleuven.be",
+   "ips": [
+    "199.36.158.100"
+   ]
+  },
+  {
+   "host": "langfuse-dev.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.12.203"
+   ]
+  },
+  {
+   "host": "liquidfiles.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "liquidfilestest.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "mail.uzleuven.be",
+   "ips": [
+    "193.58.149.101"
+   ]
+  },
+  {
+   "host": "meal-awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "media-acc.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "meldinginbreukunierecht.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "migrmail.uzleuven.be",
+   "ips": [
+    "193.58.149.101"
+   ]
+  },
+  {
+   "host": "mijnbeleidsinformatie-shiny-prd.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "mijnbeleidsinformatie.uzleuven.be",
+   "ips": [
+    "34.149.5.85"
+   ]
+  },
+  {
+   "host": "mijnplanning.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "mistwebhook-dev.gcp.uzleuven.be",
+   "ips": [
+    "34.36.197.35"
+   ]
+  },
+  {
+   "host": "mistwebhook.gcp.uzleuven.be",
+   "ips": [
+    "34.128.185.14"
+   ]
+  },
+  {
+   "host": "msc.meldinginbreukunierecht.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "mx1.uzleuven.be",
+   "ips": [
+    "134.58.179.9"
+   ]
+  },
+  {
+   "host": "mx2.uzleuven.be",
+   "ips": [
+    "134.58.179.11"
+   ]
+  },
+  {
+   "host": "passtrixnood.gcp.uzleuven.be",
+   "ips": [
+    "34.98.95.191"
+   ]
+  },
+  {
+   "host": "pcrstudioruzb.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "pediatrie-genai-assistant.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.13.13"
+   ]
+  },
+  {
+   "host": "pers.uzleuven.be",
+   "ips": [
+    "104.20.23.134",
+    "172.66.150.192"
+   ]
+  },
+  {
+   "host": "prdcrunner22-awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "prddsplunkhf.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "qr.uzleuven.be",
+   "ips": [
+    "54.220.51.86",
+    "63.32.250.2"
+   ]
+  },
+  {
+   "host": "random.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "rcrts.uzleuven.be",
+   "ips": [
+    "193.58.149.101"
+   ]
+  },
+  {
+   "host": "remote.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "ruzb.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "sectra-extern.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "shinyproxy-dev.gcp.uzleuven.be",
+   "ips": [
+    "34.111.29.103"
+   ]
+  },
+  {
+   "host": "shinyproxy-prd.gcp.uzleuven.be",
+   "ips": [
+    "34.54.58.10"
+   ]
+  },
+  {
+   "host": "splunkhf.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "standby.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "stats.uzleuven.be",
+   "ips": [
+    "135.125.88.117"
+   ]
+  },
+  {
+   "host": "status.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "sts.uzleuven.be",
+   "ips": [
+    "193.58.149.108"
+   ]
+  },
+  {
+   "host": "teamssbca.uzleuven.be",
+   "ips": [
+    "193.58.148.33"
+   ]
+  },
+  {
+   "host": "teamssbcp.uzleuven.be",
+   "ips": [
+    "193.58.148.34"
+   ]
+  },
+  {
+   "host": "testiapextern.gcp.uzleuven.be",
+   "ips": [
+    "35.210.182.136"
+   ]
+  },
+  {
+   "host": "teststs.uzleuven.be",
+   "ips": [
+    "193.58.149.107"
+   ]
+  },
+  {
+   "host": "testthomasingress.gcp.uzleuven.be",
+   "ips": [
+    "34.96.101.10"
+   ]
+  },
+  {
+   "host": "tiro-abdo.gcp.uzleuven.be",
+   "ips": [
+    "34.49.75.141"
+   ]
+  },
+  {
+   "host": "tiro-uro.gcp.uzleuven.be",
+   "ips": [
+    "35.244.190.90"
+   ]
+  },
+  {
+   "host": "traumatology-genai-dgu-assistant.int.gcp.uzleuven.be",
+   "ips": [
+    "10.158.13.12"
+   ]
+  },
+  {
+   "host": "upc.meldinginbreukunierecht.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "uzleuven.be",
+   "ips": [
+    "52.59.94.169"
+   ]
+  },
+  {
+   "host": "uzvanelders.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "vbhc-dev.gcp.uzleuven.be",
+   "ips": [
+    "34.160.184.30"
+   ]
+  },
+  {
+   "host": "vbhc-mgmt.mijnbeleidsinformatie.uzleuven.be",
+   "ips": [
+    "34.149.5.85"
+   ]
+  },
+  {
+   "host": "vbhc.mijnbeleidsinformatie.uzleuven.be",
+   "ips": [
+    "34.149.5.85"
+   ]
+  },
+  {
+   "host": "vdi.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "vending.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "vpp.mijnbeleidsinformatie.uzleuven.be",
+   "ips": [
+    "34.149.5.85"
+   ]
+  },
+  {
+   "host": "w1-kul.uzleuven.be",
+   "ips": [
+    "10.112.57.2"
+   ]
+  },
+  {
+   "host": "webapps.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "wieiswie-awingu.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "wiki.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "wings.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "wp5-truststroke.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "www.uzleuven.be",
+   "ips": [
+    "52.84.118.104",
+    "52.84.118.105",
+    "52.84.118.112",
+    "52.84.118.37"
+   ]
+  },
+  {
+   "host": "xdshubtestviewer2-extranet-test.uzleuven.be",
+   "ips": [
+    "134.58.179.249"
+   ]
+  },
+  {
+   "host": "xdshubtestviewer2-extranet.uzleuven.be",
+   "ips": [
+    "134.58.179.239"
+   ]
+  },
+  {
+   "host": "xdshubviewer-extranet-test.uzleuven.be",
+   "ips": [
+    "134.58.179.249"
+   ]
+  }
+ ],
+ "NO-BOUNTY": [
+  {
+   "host": "azd.meldinginbreukunierecht-dev.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "benchmarking.mir.uzleuven.be",
+   "ips": [
+    "34.255.32.152",
+    "52.51.61.53"
+   ]
+  },
+  {
+   "host": "capaciteitsopvolging.mijnbeleidsinformatie-dev.uzleuven.be",
+   "ips": [
+    "34.36.185.226"
+   ]
+  },
+  {
+   "host": "gcsproxy.mijnbeleidsinformatie-dev.uzleuven.be",
+   "ips": [
+    "34.36.185.226"
+   ]
+  },
+  {
+   "host": "grafana.mir.uzleuven.be",
+   "ips": [
+    "34.255.32.152",
+    "52.51.61.53"
+   ]
+  },
+  {
+   "host": "idp-mobile-play.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "idp-myuz-play.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "idp-proxy-auth0-test.uzleuven.be",
+   "ips": [
+    "104.18.34.171",
+    "172.64.153.85"
+   ]
+  },
+  {
+   "host": "idp-proxy-auth0.uzleuven.be",
+   "ips": [
+    "104.18.34.171",
+    "172.64.153.85"
+   ]
+  },
+  {
+   "host": "idp-proxy-test.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "jenkins.mir.uzleuven.be",
+   "ips": [
+    "34.255.32.152",
+    "52.51.61.53"
+   ]
+  },
+  {
+   "host": "keycloak.mir.uzleuven.be",
+   "ips": [
+    "34.255.32.152",
+    "52.51.61.53"
+   ]
+  },
+  {
+   "host": "meldinginbreukunierecht-dev.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "mijnacc.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "mijnbeleidsinformatie-dev.uzleuven.be",
+   "ips": [
+    "34.36.185.226"
+   ]
+  },
+  {
+   "host": "mijnbeleidsinformatie-shiny-dev.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "mijnbeleidsinformatie2-shiny-dev.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "mijnplanningtestdev.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "mirc.uzleuven.be",
+   "ips": [
+    "193.58.149.82"
+   ]
+  },
+  {
+   "host": "msc.meldinginbreukunierecht-dev.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "rdepot-repo.mir.uzleuven.be",
+   "ips": [
+    "172.30.30.137",
+    "172.30.33.173"
+   ]
+  },
+  {
+   "host": "rdepot.mir.uzleuven.be",
+   "ips": [
+    "34.255.32.152",
+    "52.51.61.53"
+   ]
+  },
+  {
+   "host": "shiny-dev.mir.uzleuven.be",
+   "ips": [
+    "34.255.32.152",
+    "52.51.61.53"
+   ]
+  },
+  {
+   "host": "shiny.mir.uzleuven.be",
+   "ips": [
+    "34.255.32.152",
+    "52.51.61.53"
+   ]
+  },
+  {
+   "host": "upc.meldinginbreukunierecht-dev.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  },
+  {
+   "host": "vbhc-mgmt.mijnbeleidsinformatie-dev.uzleuven.be",
+   "ips": [
+    "34.36.185.226"
+   ]
+  },
+  {
+   "host": "vbhc.mijnbeleidsinformatie-dev.uzleuven.be",
+   "ips": [
+    "34.36.185.226"
+   ]
+  },
+  {
+   "host": "vpp.mijnbeleidsinformatie-dev.uzleuven.be",
+   "ips": [
+    "34.36.185.226"
+   ]
+  }
+ ],
+ "OUT-OF-SCOPE": [
+  {
+   "host": "jobs.uzleuven.be",
+   "ips": [
+    "147.154.237.25"
+   ]
+  },
+  {
+   "host": "vacatures.uzleuven.be",
+   "ips": [
+    "104.18.4.60",
+    "104.18.5.60"
+   ]
+  }
+ ]
+}

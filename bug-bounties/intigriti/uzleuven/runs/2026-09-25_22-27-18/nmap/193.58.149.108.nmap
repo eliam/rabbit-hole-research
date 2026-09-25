@@ -1,0 +1,9 @@
+# Nmap 7.80 scan initiated Fri Sep 25 22:27:46 2026 as: nmap -sT -Pn -p 443 -oA runs/2026-09-25_22-27-18/nmap/193.58.149.108 -sV --open --version-light 193.58.149.108
+Nmap scan report for sts.uzleuven.be (193.58.149.108)
+Host is up (0.011s latency).
+
+PORT    STATE SERVICE VERSION
+443/tcp open  https?
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Sep 25 22:28:08 2026 -- 1 IP address (1 host up) scanned in 22.89 seconds

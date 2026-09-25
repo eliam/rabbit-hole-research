@@ -1,0 +1,17 @@
+=== 193.58.149.82 ===
+  80/tcp  open  http     nginx
+  443/tcp open  ssl/http nginx
+
+=== 193.58.149.98 ===
+  80/tcp open  http    nginx
+
+=== 193.58.149.101 ===
+  80/tcp  open  http     nginx
+  443/tcp open  ssl/http nginx
+
+=== 193.58.149.107 ===
+  443/tcp open  https?
+
+=== 193.58.149.108 ===
+  443/tcp open  https?
+

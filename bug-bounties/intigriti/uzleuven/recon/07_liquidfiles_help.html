@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Help | UZLeuven Liquidfiles</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="EzHiWhqj-gB87l6xsbBQlhP-YPGQWEAZM2k6KcC5ZVu0rpDCV6rbpM8ih4d7bOapqr4VHnNe_n-t7yOW7EXfbQ" />
+  <meta name="csp-nonce" content="VJp6bB68SH85jOtrG7j3NQ==" />
+  <link rel="stylesheet" href="/assets/application-978b960da9bb55e4c5f819a7123a62206864a0f3bf4c0a2b637db90e230fcd93.css" />
+  <script src="/i18n/nl-c81ddecaed2fb792dc7cc766306e58072814dc2dbfc16a23e673f50116c9f2b2.js" nonce="VJp6bB68SH85jOtrG7j3NQ=="></script>
+  
+  <script src="/assets/application-8d245195b3a6961e5973620a275ebefde570fd10afeecaf2b46a1d241eaaca9d.js" nonce="VJp6bB68SH85jOtrG7j3NQ=="></script>
+  
+  
+  
+<script nonce="VJp6bB68SH85jOtrG7j3NQ==">
+//<![CDATA[
+$(function() {
+  $('header .navbar-brand').html('<img src="/img/UZLeuven_zondersedes.jpg" style="height: 30px; width: 150px;">');
+});
+//]]>
+</script>
+
+</head>
+
+<body class="not_logged_in page_help page_help_show page_show set_time_zone locale_nl" id="page_help_show">
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top border-bottom">
+    <div class="container-fluid">
+      <span class="navbar-brand">UZLeuven Liquidfiles</span>
+      <ul class="nav navbar-nav">
+        <li id="menubar_support" class="nav-item"><a class="nav-link" id="support_link" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" title="If you need support accessing or using this system, please click this link and we&#39;ll be happy
+to assist you.
+" href="mailto:no-reply@uzleuven.be?subject=Please help me with https://liquidfiles.uzleuven.be/&amp;body=Please describe the issues you&#39;re having in as much detail as you can. Thank you."><i class="fas me-1 fa-question-circle fa-lg"></i>Support</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div id="bd" class="container-fluid pt-4">
+  <div class="alert alert-danger d-none" id="ie-warning">
+  <h4>Unsupported Browser</h4>
+  <p class="mb-0">Your browser is unsupported and things will probably not work as expected. Please use a more modern browser with this site.</p>
+</div>
+
+<script nonce="VJp6bB68SH85jOtrG7j3NQ==">
+//<![CDATA[
+
+if (window.navigator.userAgent.match(/MSIE|Trident|Edge\//i)) {
+  document.getElementById("ie-warning").classList.remove("d-none");
+}
+
+//]]>
+</script>
+  
+  
+  <div class="d-flex flex-lg-row-reverse">
+  <div>
+    <div class="table-of-contents sticky-top p-3 d-none d-lg-block">
+      <h6 class="text-muted">On This Page</h6>
+      <ul class="list-unstyled">
+        <li><h6><a class="link-dark" href="#sending_files">Sending Files</a></h6>
+          <ul>
+            <li><a class="link-dark" href="#permissions">Forwarding Permission</a></li>
+            <li><a class="link-dark" href="#browser_support">Browser Support</a></li>
+            <li><a class="link-dark" href="#email">The Recipients Email</a></li>
+            <li><a class="link-dark" href="#checksum">Checksum &mdash; File Integrity and Download
+              Verification</a></li>
+          </ul>
+        </li>
+        <li><h6><a class="link-dark" href="#filelink">FileLinks</a></h6></li>
+        <li><h6><a class="link-dark" href="#file_requests">Request Files &mdash; one time file
+          requests</a></h6></li>
+        <li><h6><a class="link-dark" href="#filedrop">Filedrop &mdash; a permanent URL to receive
+          files</a></h6></li>
+        <li><h6><a class="link-dark" href="#outlook">Outlook Plugin</a></h6></li>
+      </ul>
+    </div>
+  </div>
+  <main class="container ms-lg-5 mt-3">
+
+    <h1>User Guide <small>How to get the most out of LiquidFiles</small></h1>
+
+    <h2 id="sending_files">Sending Files <small>Using the standard compose window</small></h2>
+
+    <p>This is how the main compose window looks in LiquidFiles:</p>
+
+    <img class="img-fluid" src="/assets/help/compose_1-3ca07f6ab630d47f4a7aaa203735c9a58a631244298d13bd16de13723b6902a7.png" />
+
+    <p>When sending files, these are the steps and options available:</p>
+
+    <ol>
+      <li>Select recipients in the same way as a web based email system, please select To, CC and BCC email 
+        addresses to your recipients.</li>
+      <li>Type the Subject and Message to your recipients.</li>
+      <li>Add Files, you can add files up to the max size displayed in the limitations section 10).</li>
+      <li>If you have sent any files previously, you can send them again without uploading them again.</li>
+      <li>Pool files are files that an administrator can make available for groups of users that they send
+        repeatadly, like a large companywide presentation and similar.</li>
+      <li>Limitations &mdash; Message Size, Quota and File Extension Limitations.</li>
+      <li>Select Authentication requirement and Access Restriction for your recipients. See the
+        <a href="#permissions">Forwarding Permissions</a>
+        section for a complete description.</li>
+      <li>When the message expires. After this day, the attached files will be deleted.</li>
+      <li>If set, each recipient can only download each file this number of times. Without the requirement
+        to authenticate the download, each download by anyone is counted towards the limit.
+      </li>
+      <li>Send a copy to your own email address (for storage in your sent folder).</li>
+      <li>A Private Message is a message where the Message is not included in the email sent to the
+        recipients. When sending a Private Message:
+        <ul>
+          <li>The recipients will get a generic email telling them to click on the link to view the
+            message.</li>
+          <li>You will get a read receipt when the recipient has viewed the message as well as when any
+            attachments has been downloaded.</li>
+          <li>You can send a Private Message without any attachments.</li>
+          <li>It's not possible to send a Private Message with the permission that Anyone can download
+            &mdash; in order to send a Private Message, authentication is required.</li>
+        </ul>
+      </li>
+      <li>When you're ready, please hit Send. If uploads are taking a long time, you can check the
+        form-check to "send when uploads are done".</li>
+    </ol>
+
+    <h3 id="permissions">Forwarding Permissions</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Permission</th>
+          <th class="center">Authentication Required</th>
+          <th>Download Receipt</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Recipients Only</td>
+          <td class="center">Yes</td>
+          <td>When each recipient download each file.</td>
+          <td>Only the recipients you have specified in the
+            To, CC and BCC fields will be able to download the files. It won't be possible to forward
+            the email or message URL to anyone.
+          </td>
+        </tr>
+        <tr>
+          <td>Recipients + Locals</td>
+          <td class="center">Yes</td>
+          <td>When each recipient download each file.</td>
+          <td>In addition to the Specified Recipients,
+            any files sent may also be downloaded by any local users on the system by forwarding the email
+            or sending the message URL.</td>
+        </tr>
+        <tr>
+          <td>Recipients + Domains</td>
+          <td class="center">Yes</td>
+          <td>When each recipient download each file.</td>
+          <td>In addition to the Specified Recipients, any files sent may also be downloaded by any
+            receipient domain user. I.e. if you send to boss@company.com then secretary@company.com can
+            also access the message, but not sneaky@competitor.com.</td>
+        </tr>
+        <tr>
+          <td>Anyone (Secret&nbsp;Link)</td>
+          <td class="center">Yes</td>
+          <td>When each recipient download each file.</td>
+          <td>Anyone may download the files. Use this option to
+            post the Public Message URL in public forums, on web pages or anywhere where you want to make
+            the files available. When the user visits the Public URL, they will be asked to authenticate
+            by providing their email address and a confirmation.</td>
+        </tr>
+        <tr>
+          <td>Anyone (Secret&nbsp;Link)</td>
+          <td class="center">No</td>
+          <td>Once per file, when someone has downloaded the file.</td>
+          <td>Anyone may download the files. Use this option when you don't want your recipients to have
+            to authenticate to download the files. The downside is that since we don't authenticate the
+            recipients, we don't know who downloaded what.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="processing">Processing Uploaded Files</h3>
+    <p>When large files (100MB+) are uploaded, they are split into 100 MB blocks. All files are also
+      scanned for viruses. This can take some time on a busy system and the files are placed in a queue
+      for reassembly and AV scan. As per the notice beneath the files, you don't have to wait for this to
+      complete to send the message. In the unlikely event of an infected file, the file will be
+      automatically deleted before anyone can download the file.</p>
+    <div><img class="img-fluid" src="/assets/help/processing-ee85eb04ad010c5da032b328d112cd6ddd3c7cc8bcaaf93c42e34c71712e533b.png" /></div>
+
+    <h3 id="browser_support">Browser Support</h3>
+    <p>LiquidFiles pushes some boundaries of what’s possible with browsers.
+      Uploading files is only supported using modern HTML 5 compliant browsers. This effectively means
+      Microsoft Edge (not Legacy &lt;v80), Chrome, Firefox, Safari and derivatives. You can download using
+      pretty much any browser. Please note that Internet Explorer is unsupported.</p>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Browser</th>
+          <th class="center">Upload</th>
+          <th class="center">Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><abbr title="Microsoft Edge is supported. Micrsoft Edge Legacy &lt;v80 is not supported.">
+            Microsoft Edge</abbr></td>
+          <td class="center"><i class="fas fa-check-circle"></i></td>
+          <td class="center"><i class="fas fa-check-circle"></i></td>
+        </tr>
+        <tr>
+          <td><abbr title="Since Chrome is self updating, it is assumed that you're running the latest
+            version.">Chrome</abbr></td>
+          <td class="center"><i class="fas fa-check-circle"></i></td>
+          <td class="center"><i class="fas fa-check-circle"></i></td>
+        </tr>
+        <tr>
+          <td><abbr title="Since Firefox is self updating, it is assumed that you're running the latest
+            version.">Firefox</abbr></td>
+          <td class="center"><i class="fas fa-check-circle"></i></td>
+          <td class="center"><i class="fas fa-check-circle"></i></td>
+        </tr>
+        <tr>
+          <td>Safari</td>
+          <td class="center"><i class="fas fa-check-circle"></i></td>
+          <td class="center"><i class="fas fa-check-circle"></i></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="email">The Recipients Email</h2>
+    <p>When you have clicked Send, an email will be sent to your recipients. Depending on what system they
+      use to read the email it will look a little bit different, and something like this:</p>
+
+    <img class="img-fluid" src="/assets/help/email-7de5015074a8b865386d36dcaae8a4637d1da49d1ddda193e5085467909d65b0.png" />
+
+    <p>You will see:</p>
+    <ul>
+      <li>The email header with the To, From, Subject and so on at the top.</li>
+      <li>The message typed in the message field in the compose window.</li>
+      <li>The Files attached to the message header that begins the LiquidFiles added part.</li>
+      <li>Each file sent is then listed together with the filename, file size and
+        <a href="#checksum">checksum</a>.</li>
+      <li>Beneath the files is the link the recipient will have to click to download the message.</li>
+      <li>There is a notice if the email or download link can be forwarded to other users depending on the
+        <a href="#permissions">permission settings</a> when the message was sent.</li>
+      <li>There's an expiration notice alerting the user when they will have to download the files by.</li>
+      <li>And finally there's a Message ID which is a unique ID that can be used when searching for this
+        message in the LiquidFiles system.</li>
+    </ul>
+
+    <p>A couple of things to note:</p>
+    <ul>
+      <li>There's obviously no files attached directly in this email. All the files are stored on the
+        LiquidFiles system.</li>
+      <li>When the message expires, the attachments will be automatically deleted. It's not possible to
+        restore files after they have been deleted.</li>
+    </ul>
+
+    <h2 id="checksum">Checksum <small>or how to verify the integrity of the downloaded files</small></h2>
+    <p>A <a target="_blank" rel="noopener noreferrer external nofollow" href="http://en.wikipedia.org/wiki/Checksum">checksum</a>,
+      or <a target="_blank" rel="noopener noreferrer external nofollow" href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">hash</a> is a way
+      to verify the integrity of the downloaded files, to verify that the download was successful.</p>
+
+    <p>It works by applying a cryptographic calculation on a file of any size and it will output a short
+      checksum, or hash, that represents the message or file.</p>
+    <p>The trick with checksums or hashes is that every time they calculate the checksum for the same file,
+      they will produce the same checksum. And if the file changes only one single bit, the calculation
+      will produce a different checksum.</p>
+
+    <p>So when you receive a message from the LiquidFiles system, and it displays a checksum like: 
+      <pre class="border p-2 text-muted">36f037e00350864828a507420a50689eb473cb919df6b4b6205f3e09c913e0cb</pre>
+      You can use a
+      <a target="_blank" rel="noopener noreferrer external nofollow" href="https://duckduckgo.com/?q=checksum+calculator&amp;ia=web">Checksum Tool</a>
+      to calculate the checksum of the file you downloaded. LiquidFiles uses SHA-256 as its checksum function
+      (sometimes referred to as SHA2-256).</p>
+
+    <p>If the checksum is the same, the file you have downloaded is identical to the one sent from the
+      LiquidFiles system.</p>
+    <p>If the checksum is not the same, the file you downloaded is not the same as the one sent from the
+      LiquidFiles system.</p>
+
+    <p>So as an example, lets say that we received a message with the following attachment:</p>
+
+    <img class="img-fluid" src="/assets/help/checksum_1-c0caaad08cc5aafab60b9c973870f983b146f07f1ef0dd0175dc2841993eb3f6.png" />
+
+    <p>We do a websearch for  
+    <a target="_blank" rel="noopener noreferrer external nofollow" href="https://duckduckgo.com/?q=checksum+calculator&amp;ia=web">Checksum Tool</a>
+    to find a tool to calculate the checksum of the file we downloaded, selecting SHA2-256 as the checksum
+    function (or hash type).</p>
+
+    <img class="img-fluid" src="/assets/help/checksum_2-fb4efb309645ba3e1cb9ed1bad9e853c2863325c469347288d13588785f53ebf.png" />
+
+    <p>As you can see, the checksum in the message is the same as from the downloaded file. The file must be
+      identical to the one on the LiquidFiles system.</p>
+
+    <h2 id="file_requests">Request Files <small>an easy way to receive files with no prior registration
+      required</small></h2>
+
+    <p>File Requests provides an easy way for you to request files from someone. The system will make it
+      very easy so that there's no need to do any further explanation, or walk someone through the process
+      over the phone.</p>
+  
+    <p>You Request the Files by clicking on the
+      File Request button in the main menubar.</p>
+
+    <img class="img-fluid" src="/assets/help/file_request_1-76160401d03907a931063f53ead3f10b48bf87523d21fee69393ead22c9b49c6.png" />
+
+    <p>This will open up a page with a list of existing File Requests, if you sent any previously. You can
+      send a new File Request by clicking on the New File Request button.</p>
+
+    <img class="img-fluid" src="/assets/help/file_request_1b-de751e7770a43ba4d7d31aef5ba22968324646d06a095fb8b457b4082bafbb0d.png" />
+
+    <p>This will open up a new page that you can fill in like this:</p>
+
+    <img class="img-fluid" src="/assets/help/file_request_2-0ee54862abf9f21a3cade0a970978282be89b90ea25c2be9bfdd798bb70cf585.png" />
+
+    <p>When you click on the Request File button, an email will be delivered (to
+      <span class="font-monospace">meg@external.com</span> in our example) with a unique File Request link.
+      The email will look something like this:</p>
+
+    <img class="img-fluid" src="/assets/help/file_request_3-33c06760755093925b683045d4cd22d17d110abc937488bbee997f69b352986e.png" />
+
+    <p>And when the user clicks on the File Request, they will be taken to a page that will look
+      something like this:</p>
+
+    <img class="img-fluid" src="/assets/help/file_request_4-64a7cd6841b6139ed2278b0a6789966758a2f76f4405a2ef4343bc06e0c4de0b.png" />
+
+    <p>Where they can send the Requested Files back to the requester.</p>
+
+    <p>A couple of things to note:</p>
+    <ul>
+      <li>The Link is one time use only and will expire when the files have been delivered. If you need
+        something to be used more than once, please look at using the <a href="#filedrop">Filedrop</a>
+        instead.</li>
+      <li>The user that got the link doesn't need to register or do anything other than clicking on the
+        link in the email, and since they got the email with the link, we know that the email address is
+        valid.</li>
+    </ul>
+
+    <h2 id="filedrop">Filedrop <small>an easy way to receive files with no prior registration
+      required</small></h2>
+
+    <p>A Filedrop is a permanent URL that you can use to receive files. You can for instance:</p>
+    <ul>
+      <li>Add this link to your email signature.</li>
+      <li>Post in forums and other public places where you also would be comfortable to post your email
+        address.</li>
+      <li>Send to anyone in a private email for them to use when sending files to you repeatedly.</li>
+    </ul>
+
+    <p>You can get your Filedrop link by going to the Account Section. It will look something like this:</p>
+
+    <img class="img-fluid" src="/assets/help/filedrop_1-3f1442f10911eb6d41f41800efad5c9c69dcbac69b2960f9d7d31de59081b0f6.png" />
+
+    <img class="img-fluid" src="/assets/help/filedrop_2-139c3f00e07746d72874bcae6a508b7bd14219bbbf70ccb7cf51fe920e3190c7.png" />
+
+    <p>In the Filedrop tab, you will see two links, one random and one with your email address.</p>
+    <p>The random link is a link which can't be guessed so it is safer to post in places when you're not sure
+      if you want to share your email address. If the link ever falls in the wrong hands, you can always
+      go back to this page and click on the "Reset Filedrop URL" button. This will generate a new random
+      Filedrop URL for you. Please note that this will automatically expire your previous URL so anyone
+      who will try to use the previous URL will get a 404 page not found message.</p>
+    <p>The link with your email looks nicer and is easier to validate if someone has to type it in. But this
+      link will never expire (unless you change email address).</p>
+
+    <p>When someone visits your Filedrop URL (https://liquidfiles.company.com/filedrop/~VZ209z in this
+      example), they will see a page like this:</p>
+
+    <img class="img-fluid" src="/assets/help/filedrop_3-c72c6601e654e363f54de587420ce983b15c0ec0521697915342853a35be9609.png" />
+
+    <p>Anyone who visits this page will be able to send files to you by filling in all the fields, clicking
+      on the "Add Files" button and clicking "Send". Please note that there is no "To" field. Since this is
+      <strong>your Filedrop URL</strong>, all files sent here will always be delivered to you.</p>
+
+    <h2 id="filelink">Using FileLinks</h2>
+    <p>FileLinks are a way to easily share files without having to send them to a specific recipient.
+      You can access the FileLinks by clicking on FileLinks in the main header.</p>
+
+    <img class="img-fluid" src="/assets/help/filelink_1-a3d74b8cd445948593f422c863de5fa3102f8a48307b90f0492e6a854f359f38.png" />
+
+    <p>The New FileLink interface looks like this. In this case we have already selected (option 1 below) a
+      file (Presentation1.doc).</p>
+
+    <img class="img-fluid" src="/assets/help/filelink_2-2af1c0f8b4b0dd75f755b520a1e508d6f140bc863bdc56f92cd33b2b7959d4ea.png" />
+
+    <p>The options available include</p>
+    <ol>
+      <li>Select a file (in this screenshot that has already been done).</li>
+      <li>You can Remove the file and Select another.</li>
+      <li>Set for how long this FileLink is available for.</li>
+      <li>Set if you wish to receive Download confirmations when someone's downloaded this file.</li>
+      <li>If users are required to login to this system to access the FileLink.</li>
+      <li>You can set a password that needs to be entered in order to access this FileLink.</li>
+      <li>Or instead of uploading a new file, you can select any of the currently existing files to create
+        a FileLink with.</li>
+    </ol>
+
+    <p>When you have created a FileLink, or if you're viewing an existing FileLink, you will see a page like
+      this:</p>
+
+    <h4>The FileLink page</h4>
+    <p>When a user is visiting the FileLink, they will see the following page.</p>
+    <img class="img-fluid" src="/assets/help/filelink_3-5f77b84c34e0108f91d96a7d73f9253d435bdf0cf89c0f30eba26ab2b070ec5d.png" />
+    <ol>
+      <li>The file details including filename, file size and SHA-256 checksum.</li>
+      <li>The download button.</li>
+    </ol>
+
+
+    <p class="mt-4">When you will visit one of your own FileLink pages, will see the following page.</p>
+
+    <img class="img-fluid" src="/assets/help/filelink_4-f470667d6b9000eff0824e006d1c2d91497a85260e675e2ae608e9a0f5e51fed.png" />
+
+    <ol>
+      <li>The file details including filename, file size and SHA-256 checksum (same as any other user).</li>
+      <li>You can see/update the FileLink expiration date.</li>
+      <li>You can see/update the Download Receipt Status.</li>
+      <li>You can see/update the Require Authentication requirement.</li>
+      <li>Clicking the copy FileLink to clipboard button will copy the URL to the FileLink to the
+        clipboard.</li>
+      <li>You can see if a password has been set and update as needed.</li>
+      <li>The list of all downloads for this FileLink.</li>
+    </ol>
+
+    <div class="alert alert-info"><strong>Using the "Copy FileLink to Clipboard" function, you can now copy
+      the FileLink in a chat message, post on a forum, post in SharePoint or anywhere else where you want
+      to make this file available.</strong></div>
+
+    <p>Anyone who access this URL will see this file but only you will have the ability change settings.</p>
+
+    <h2 id="outlook">Using the Outlook Plugin</h2>
+
+    <p>If your administrator has installed and enabled the Outlook plugin, when you're composing a message
+      in Outlook, you will see an additional section, like this:</p>
+
+    <img class="img-fluid" src="/assets/help/outlook_1-17b8945ebf7ce76c557b6790ff868fbb48bf6fa547f6af76c906209696c43945.png" />
+
+    <p>These are the selectable options in the LiquidFiles Secure Attach Dropdown menu:</p>
+    <ol>
+      <li>Secure Attach &mdash; any file you would normally attach using the attach icon on Outlook can be
+        attached using this Secure Attach button instead. This will cause any file attached to the email to
+        be sent using LiquidFiles.</li>
+      <li>Attach Folder &mdash; you can also attach a folder at once and all files in this folder will be
+        attached to this email.</li>
+      <li>Secure Attach All &mdash; the Outlook plugin will automatically send large files through
+        LiquidFiles. If you have a combination of larger and smaller attachments, that means that some will
+        go through LiquidFiles and some direct. By Selecting Secure Attach All, all files, large and small,
+        will be sent through LiquidFiles.</li>
+      <li>File Request &mdash; use LiquidFiles to request a large and/or sensitive file from someone. The
+        receipient of the File Request will receive a link they can use and any files attached will be
+        delivered safely back to you.</li>
+      <li>Private Message &mdash; this will cause the body of the email to be sent securely through
+        LiquidFiles with or without any attachments. You will get confirmation when someone has opened
+        your email as well as downloaded any attachments.</li>
+      <li>Select Existing Files &mdash; this will list already uploaded files from previous messages that
+        you can send again without having to upload.</li>
+      <li>Options &mdash; configure the LiquidFiles Outlook plugin.</li>
+    </ol>
+
+    <p>When you have selected a file to attach and send through LiquidFiles, another pane will open up
+      like this:</p>
+
+    <img class="img-fluid" src="/assets/help/outlook_2-0b3e183570fe58df942aae68e3a2b1bbcb6d1ad6c481853d728fe1a8840ddc95.png" />
+
+    <p>Here you can see the files during upload, when they have completed uploading and any error messages
+      as well.</p>
+
+    <p>In the menubar of this pane are the buttons from the top ribbon duplicated with a couple of
+      additions:</p>
+
+    <ul>
+      <li>The <a href="#permissions">Permission Settings</a> same as you would see in the web interface.</li>
+      <li>The Message expiration date when this message and these files will expire.</li>
+      <li>The button to the far right in the menubar is another settings button.</li>
+      <li>In the bottom, just above the "To" field you will see the progress bars for the current file and
+        overall for all files.</li>
+    </ul>
+
+    <h3>Outlook Settings and configuration</h3>
+    <p>When you attach your first file to LiquidFiles, you will see the login window:</p>
+
+    <img class="img-fluid" src="/assets/help/outlook_4-903161059cb386fa34dbd388aaef877e6b566832ecd00eaf69574250c5e8e5af.png" />
+
+    <p>Followed by the login screen:</p>
+
+    <img class="img-fluid" src="/assets/help/outlook_5-08951736db91a4c2b06074000584e75c8ba0d2e357e94e59a4537fd6847c792c.png" />
+
+    <p>This has the LiquidFiles server address, if the plugin should connect with http, https or
+      automatically detect, and your username and password. The username and password is the same username
+      and password as you login to the LiquidFiles web interface.</p>
+
+    <div class="alert alert-info">
+      Please note that you only have to fill this in once and the LiquidFiles Outlook plugin will keep you
+      logged in even if you change your network password.
+    </div>
+
+    <p>The Settings Window looks like this:</p>
+
+    <img class="img-fluid" src="/assets/help/outlook_3-88f2703ef9944573e255dacca42f5b8b69add9b8241351a0daa5529d1eb818d8.png" />
+
+    <p>And has the following configurable settings, from the top:</p>
+
+    <ul>
+      <li>It displays the currently logged in user.</li>
+      <li>How many files you can attach at once and how long you want to see the window visible after
+        you've sent the files.</li>
+      <li>If you want the LiquidFiles Attachment information to be placed below the body your email or at
+        the top of it (please see <a href="#email">the recipient email</a> to see how the attachment
+        information looks).</li>
+      <li>Send the message using HTML or plain text, or do not send any message through LiquidFiles.</li>
+      <li>The settings to automatically send attachment above a certain size will attach files to
+        LiquidFiles regardless if you have clicked the "normal" attach or the secure attach button if the
+        file is above this size.</li>
+    </ul>
+
+  </main>
+</div>
+
+</div>
+
+<div id="ft">
+  
+</div>
+
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home | UZLeuven Liquidfiles</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="w76Dn9r3Htzx72eQRt_fbCFDZ1uzGSPejMkY3sgjVV5ZgddSBIcbR4iy4kN-27HyywrE0X1yX_JuDtgsIvw7UQ" />
+  <meta name="csp-nonce" content="6pj/XyOZbz1khPU48Mwo2g==" />
+  <link rel="stylesheet" href="/assets/application-978b960da9bb55e4c5f819a7123a62206864a0f3bf4c0a2b637db90e230fcd93.css" />
+  <script src="/i18n/en-0a17fc9943923ef3bcba542bf37800a7da434a42d8a8c29a48411dff863d4932.js" nonce="6pj/XyOZbz1khPU48Mwo2g=="></script>
+  
+  <script src="/assets/application-8d245195b3a6961e5973620a275ebefde570fd10afeecaf2b46a1d241eaaca9d.js" nonce="6pj/XyOZbz1khPU48Mwo2g=="></script>
+  
+  
+  
+<script nonce="6pj/XyOZbz1khPU48Mwo2g==">
+//<![CDATA[
+$(function() {
+  $('header .navbar-brand').html('<img src="/img/UZLeuven_zondersedes.jpg" style="height: 30px; width: 150px;">');
+});
+//]]>
+</script>
+
+</head>
+
+<body class="not_logged_in page_home page_home_show page_show set_time_zone locale_en" id="page_home_show">
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top border-bottom">
+    <div class="container-fluid">
+      <span class="navbar-brand">UZLeuven Liquidfiles</span>
+      <ul class="nav navbar-nav">
+        <li id="menubar_support" class="nav-item"><a class="nav-link" id="support_link" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" title="If you need support accessing or using this system, please click this link and we&#39;ll be happy
+to assist you.
+" href="mailto:no-reply@uzleuven.be?subject=Please help me with https://liquidfiles.uzleuven.be/&amp;body=Please describe the issues you&#39;re having in as much detail as you can. Thank you."><i class="fas me-1 fa-question-circle fa-lg"></i>Support</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div id="bd" class="container-fluid pt-4">
+  <div class="alert alert-danger d-none" id="ie-warning">
+  <h4>Unsupported Browser</h4>
+  <p class="mb-0">Your browser is unsupported and things will probably not work as expected. Please use a more modern browser with this site.</p>
+</div>
+
+<script nonce="6pj/XyOZbz1khPU48Mwo2g==">
+//<![CDATA[
+
+if (window.navigator.userAgent.match(/MSIE|Trident|Edge\//i)) {
+  document.getElementById("ie-warning").classList.remove("d-none");
+}
+
+//]]>
+</script>
+  
+  
+  <div class="row">
+  <div class="col-lg-8 offset-lg-2 my-5">
+
+    <div class="login_screen">
+      <div class="login_info card card-body bg-light">
+        <div class="row pt-2 mx-auto">
+          <img src="/assets/lf_logo_vertical-18cf3d87e16a7f60716fb0526df9abf6cf9bd3b5b32ca4708e1ce874c4ea6aaa.png" width="220" height="264" />
+        </div>
+      </div>
+
+      <div class="mt-2 card card-body bg-light mb-3">
+      <form role="form" action="/login" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="T4cRM9Mh9E9XUHb3BPdp1R9V3Rm9WFdCh9zjh9tErhhnzBiRcPHEsJ2lzOHlTvGy9oaOGPCKqgRoP4Tg4x-1iw" autocomplete="off" />
+        <div class="row mb-3 gx-2">
+          <div class="col-lg">
+            <label class="visually-hidden" for="user_email">Email</label>
+            <input type="text" class="form-control mb-lg-0 mb-3" id="user_email" name="user[email]"
+                   placeholder="Email" autocomplete="username" autofocus="true">
+          </div>
+          <div class="col-lg">
+            <label class="visually-hidden" for="user_password">Password</label>
+            <input type="password" class="form-control mb-lg-0 mb-3" id="user_password"
+                   name="user[password]" placeholder="Password"
+                   autocomplete="current-password">
+          </div>
+          <div class="col-lg-auto">
+            <button name="button" type="submit" class="btn btn-primary mx-lg-2" id="login-button-large"><i class="fas me-1 fa-sign-in-alt"></i>Login</button>
+          </div>
+        </div>
+
+        <div class="form-check ps-0 text-lg-center">
+          <input name="user[save_login]" type="hidden" value="0" autocomplete="off" /><input type="checkbox" value="1" name="user[save_login]" id="user_save_login" />
+          <label class="form-check-label ps-1" for="user_save_login">Remember me</label>
+        </div>
+</form>      </div>
+
+      <div class="text-lg-center">
+        <a class="btn btn-outline-secondary" id="password_reset_button" href="/password_reset/new"><i class="fas me-1 fa-key"></i>Password Reset</a>
+          <a class="btn btn-outline-secondary ms-2" id="sso_login_button" href="/saml"><i class="fas me-1 fa-sign-in-alt"></i>SSO Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div id="ft">
+  
+</div>
+
+

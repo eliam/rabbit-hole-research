@@ -1,0 +1,154 @@
+
+
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Language">
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="robots" content="none">
+<link rel="icon" href="/dana-na/auth/welcome.cgi?p=favIcon&signinId=url_default" type="image/png">
+<title>Remote access pagina van UZLeuven</title>  <script>
+    WriteCSS();
+    function close_snackbar(){
+       document.getElementsByClassName('brcd-snackbar')[0].style["display"]="none"; 
+    };
+  </script>
+  <noscript>  </noscript>
+
+<script>
+<!--
+if (window.top != self) {
+  top.location = location;
+}
+if(window.name == "newpincancel" || window.name == "nexttokencancel") {
+   window.close();
+}
+//--></script>
+<script nonce="">
+function hideJSWarn() {
+    if(window.top == self) {
+        document.getElementById('noJSWarn').style.display = "none";
+    }
+}
+
+
+</script>  <script>function deletepreauth() {
+    document.cookie = "DSPREAUTH="+ escape("")+ ";path=/dana-na/;expires=12-Nov-1996";
+}
+</script>  <link rel="stylesheet" href="/dana-na/css/bootstrap-3.4.1.min.css">
+  <link rel="stylesheet" href="/dana-na/css/bootstrap-select-1.13.18.min.css">
+  <link rel="stylesheet" href="/dana-na/css/signin.css">  <link rel="stylesheet" href="/dana-na/css/eup_signin.css">
+<style type="text/css" media="screen, print">
+   /* Graphik 500 (Medium) */
+  @font-face {
+    font-family: 'Graphik500';
+    src: url("/dana-na/imgs/graphik-medium-webfont.ttf") format("truetype"),
+      url("/dana-na/imgs/graphik-medium-webfont.woff") format("woff"),
+      url("/dana-na/imgs/graphik-medium-webfont.woff2") format("woff2"),
+      url("/dana-na/imgs/graphik-medium-webfont.svg") format("svg");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Graphik';
+    src:  url("/dana-na/imgs/Graphik-Regular.ttf") format("truetype"),
+        url("/dana-na/imgs/Graphik-Regular.woff2") format("woff2"),
+        url("/dana-na/imgs/Graphik-Regular.wordff") format("woff"),
+        url("/dana-na/imgs/Graphik-Regular.svg") format("svg");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+</style></head>
+<body onload="FinishLoad(1);hideJSWarn();">
+
+<div class="signin-container_eup" id="signin-container-eup">
+  <div class="signin-left-container_eup" id="signin-left-container_eup">
+      <div class="signin-left-logo-container_eup" id="signin-left-logo-container_eupp">
+          <img src="welcome.cgi?p=logo&signinId=url_default" alt="Pulse Logo"></img>
+      </div>
+      <div class="signin-left-header-container_eup" id="signin-left-header-container_eup">
+          <h1 class="signin-left-header-title_eup" id="signin-left-header-title_eup">Welkom op de</h1>
+          <h1 class="signin-left-header-title_eup" id="signin-left-header-title1_eup">Remote access pagina van UZLeuven</h1>
+      </div> 
+      <div class="signin-left-instructions-container_eup" id="signin-left-instructions-container_eup">Gelieve in te loggen om uw beveiligde verbinding op te zetten.<br><br> 
+<b><font color="red"></font></b>      </div>
+      <div class="signin-left-help_eup" id="signin-left-help_eup">      </div>
+
+  </div>
+  <div class="signin-right-container_eup" id="signin-right-container_eup">
+      <div class="signin-right-login-container_eup" id="signin-right-container_eup">
+            <div class="signin-right-header-container_eup" id="signin-right-container_eup">
+              <div class="signin-right-header-title_eup" id="signin-right-container_eup">Welcome</div>
+              <div class="signin-right-header-description_eup" id="signin-right-container_eup">Please enter the details to access your portal              </div>
+            </div>
+            <div class="signin-right-content_eup" id="signin-right-container_eup">
+              <form class="signin-right-form-container_eup" id="signin-left-container_eup" name="frmLogin" action="login.cgi" method="POST" autocomplete="off" onsubmit="return Login(1)">
+                <input id="tz_offset_5" type="hidden" name="tz_offset">
+                <input id="client_mac" type="hidden" name="clientMAC" value="">
+                                    <div class="signin-right-field-group_eup" id="signin-left-container_eup_username">
+                        <label class="signin-right-label_eup" id="signin-left-container_eup_label_username">Gebruikersnaam                        </label>
+                        <div class="signin-right-password_eup" id="signin-right_input_div_username">                                <input
+                                  id="username"
+                                  class="signin-right-input_eup"
+                                  type="text"
+                                  name="username"
+                                  aria-label="Gebruikersnaam"                                >                        </div>
+                    </div>                    <div class="signin-right-field-group_eup" id="signin-left-container_eup_password">
+                        <label class="signin-right-label_eup" id="signin-left-container_eup_label_password">Tokencode                        </label>
+                        <div class="signin-right-password_eup" id="signin-right_input_div_password">                                <input
+                                  id="password"
+                                  class="signin-right-input_eup signin-password-field_eup"
+                                  type="password"
+                                  name="password"
+                                  aria-label="Tokencode"                                >
+                              <div class="signin-right-eye-icon_eup" id="signin-right-eye-icon_eup"></div>                        </div>
+                    </div>
+                <div class="signin-right-field-group_eup" id="realm-input">                        <label id="realm-name" class="signin-right-label_eup" for="realm_17">Realm</label>
+                        <div class="signin-right-select-box_eup" id="signin-right-relam-select-box_eup">
+                            <select id="realm_17" class="signin-right-input_eup" size="1" name="realm">                                <option id="option_LoginPage_1" value="Soft Token (adfs)">Soft Token (adfs)</option>                                <option id="option_LoginPage_1" value="Eid - ItsMe">Eid - ItsMe</option>                            </select>
+                            <div class="signin-right-chevron-down-icon_eup" id="signin-right-chevron-down-icon_eup"></div>
+                        </div>                </div>                <button type="submit" class="sign-right-login-button_eup sign-right-login-button_eup--primary" id="btnSubmit_6" name="btnSubmit">Log in                </button>
+              </form>
+            </div>
+      </div>
+  </div>
+</div>
+
+<script nonce="" defer > 
+  // To Show the background Image / backgroundColor based on the condition
+  const getSignInLeftContainer = document.querySelector('.signin-left-container_eup')
+  const getHeaderTitle = document.getElementsByClassName('signin-left-header-title_eup')
+  if(!0) { 
+      getSignInLeftContainer.style.backgroundImage = 'none'
+      getSignInLeftContainer.style.backgroundColor = "\x23FFFFFF"
+      getHeaderTitle[0].style.color = '#303540'
+      getHeaderTitle[1].style.color = '#303540'
+  }
+  else{
+      getSignInLeftContainer.style.backgroundImage = "url('/dana-na/imgs/eup_bg.png')"
+      getSignInLeftContainer.style.backgroundColor = 'none'
+      getHeaderTitle[0].style.color = '#FFFFFF'
+      getHeaderTitle[1].style.color = '#FFFFFF'
+  }
+  // To handle the show / hide password 
+  const getEyeIcons = document.querySelectorAll('.signin-right-eye-icon_eup')
+  const getPasswordFields = document.querySelectorAll('.signin-password-field_eup')
+  
+  getEyeIcons.forEach((getEyeIcon, index) => {
+    getEyeIcon.addEventListener('click', () => {
+      let getPasswordField = getPasswordFields[index];
+      if(getPasswordField.value.length > 0){
+        if(getPasswordField.type === 'password'){
+          getPasswordField.type = 'text'
+        }
+        else{
+          getPasswordField.type = 'password'
+        }
+      }
+    })
+  })
+</script>
+
+</body></html>

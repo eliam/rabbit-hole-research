@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.80 scan initiated Fri Sep 25 22:27:46 2026 as: nmap -sT -Pn -p 80,443 -oA runs/2026-09-25_22-27-18/nmap/193.58.149.82 -sV -&#45;open -&#45;version-light 193.58.149.82 -->
+<nmaprun scanner="nmap" args="nmap -sT -Pn -p 80,443 -oA runs/2026-09-25_22-27-18/nmap/193.58.149.82 -sV -&#45;open -&#45;version-light 193.58.149.82" start="1790375266" startstr="Fri Sep 25 22:27:46 2026" version="7.80" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="2" services="80,443"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1790375271" endtime="1790375284"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="193.58.149.82" addrtype="ipv4"/>
+<hostnames>
+<hostname name="lbuzldmz01.uzleuven.be" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="nginx" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service></port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="nginx" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service></port>
+</ports>
+<times srtt="11555" rttvar="8687" to="100000"/>
+</host>
+<runstats><finished time="1790375284" timestr="Fri Sep 25 22:28:04 2026" elapsed="18.79" summary="Nmap done at Fri Sep 25 22:28:04 2026; 1 IP address (1 host up) scanned in 18.79 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

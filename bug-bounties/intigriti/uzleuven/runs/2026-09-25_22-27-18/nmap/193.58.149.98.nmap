@@ -1,0 +1,9 @@
+# Nmap 7.80 scan initiated Fri Sep 25 22:27:46 2026 as: nmap -sT -Pn -p 80 -oA runs/2026-09-25_22-27-18/nmap/193.58.149.98 -sV --open --version-light 193.58.149.98
+Nmap scan report for mail.playuzleuven.be (193.58.149.98)
+Host is up (0.011s latency).
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    nginx
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Sep 25 22:27:58 2026 -- 1 IP address (1 host up) scanned in 12.92 seconds

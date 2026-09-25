@@ -1,0 +1,92 @@
+4uz11.uzleuven.be	104.18.4.60	302	cloudflare	https://www.uzleuven.be/	302 Found
+autodiscover.uzleuven.be	193.58.149.101	302	nginx	https://autodiscover.uzleuven.be/owa/	
+awingu.uzleuven.be	104.18.4.60	200	cloudflare		
+azd.meldinginbreukunierecht.uzleuven.be	104.18.4.60	403	cloudflare		Just a moment...
+azdsaga-awingu.uzleuven.be	104.18.4.60	302	cloudflare	https://azdsaga-awingu.uzleuven.be/api/http/	302 Found
+beeldbank-bo.uzleuven.be	195.225.101.70	200	Picture Pack		Picture Pack
+beeldbank.uzleuven.be	195.225.101.70	200	Microsoft-IIS/10.0		
+boekentoy.uzleuven.be	199.36.158.100	200			Laboboeken
+capaciteitsopvolging.mijnbeleidsinformatie.uzleuven.be	34.149.5.85	302	Google Frontend	https://iap-mijnbeleidsinformatie.gcp.uzleuv	
+cgg.meldinginbreukunierecht.uzleuven.be	104.18.4.60	403	cloudflare		Just a moment...
+cll.uzleuven.be	104.18.4.60	403	cloudflare		Attention Required! | Cloudflare
+crl.uzleuven.be	104.18.4.60	200	cloudflare		UZLeuven CRL Page
+doptools-dev.gcp.uzleuven.be	35.190.74.231	302		https://www.uzleuven.be/	
+ecrf.uzleuven.be	104.18.4.60	403	cloudflare		Attention Required! | Cloudflare
+eduroam-radius.uzleuven.be	134.58.179.32	DOWN			Attention Required! | Cloudflare
+events.uzleuven.be	52.51.215.23	DOWN			Attention Required! | Cloudflare
+extranet-2.uzleuven.be	193.58.149.114	302	nginx	/dana-na/auth/url_pILuuvz3DlTY4iVo/welcome.c	
+extranet-asa.uzleuven.be	134.58.179.246	DOWN			
+extranet-awingu.uzleuven.be	104.18.4.60	200	cloudflare		
+extranet-test.uzleuven.be	104.18.4.60	DOWN			
+extranet.uzleuven.be	193.58.149.120	302		/dana-na/auth/url_pILuuvz3DlTY4iVo/welcome.c	
+extranetmail.uzleuven.be	193.58.149.82	302	nginx	https://extranet.uzleuven.be/dana-na/auth/sa	302 Found
+fas-awingu.uzleuven.be	104.18.4.60	200	cloudflare		
+firma-awingu.uzleuven.be	104.18.4.60	200	cloudflare		
+gbs.uzleuven.be	193.58.149.82	302	nginx	https://extranet.uzleuven.be/dana-na/auth/sa	302 Found
+histaruz.uzleuven.be	13.224.95.49	302	nginx	/login/	
+horizon-awingu.uzleuven.be	104.18.4.60	302	cloudflare	https://extranet-awingu.uzleuven.be/api/http	302 Found
+iap-mijnbeleidsinformatie-dev.gcp.uzleuven.be	34.49.244.50	200	Google Frontend		
+iap-mijnbeleidsinformatie.gcp.uzleuven.be	34.49.124.0	200	Google Frontend		
+jaarverslag.uzleuven.be	104.18.4.60	301	cloudflare	https://www.uzleuven.be/nl/jaarverslagen	301 Moved Permanently
+jenkins.gcp.uzleuven.be	35.241.26.129	302		https://accounts.google.com/o/oauth2/v2/auth	
+jobstudenten.uzleuven.be	104.18.4.60	301	cloudflare	https://uzleuven.taleo.net/careersection/uz_	301 Moved Permanently
+kinderziekenhuis.uzleuven.be	104.18.4.60	301	cloudflare	https://www.uzleuven.be/kinderziekenhuis	301 Moved Permanently
+laboboeken.uzleuven.be	199.36.158.100	200			Laboboeken
+liquidfiles.uzleuven.be	193.58.149.82	200	nginx		Home | UZLeuven Liquidfiles
+liquidfilestest.uzleuven.be	193.58.149.82	200	nginx		Home | LiquidfilesTest
+mail.uzleuven.be	193.58.149.101	502	nginx		502 Bad Gateway
+meal-awingu.uzleuven.be	104.18.4.60	302	cloudflare	https://extranet-awingu.uzleuven.be/api/http	302 Found
+media-acc.uzleuven.be	104.18.4.60	DOWN			302 Found
+meldinginbreukunierecht.uzleuven.be	104.18.4.60	403	cloudflare		Just a moment...
+migrmail.uzleuven.be	193.58.149.101	502	nginx		502 Bad Gateway
+mijnbeleidsinformatie-shiny-prd.uzleuven.be	104.18.4.60	302	cloudflare	https://mijnbeleidsinformatie-shiny-prd.uzle	
+mijnbeleidsinformatie.uzleuven.be	34.149.5.85	302	Google Frontend	https://iap-mijnbeleidsinformatie.gcp.uzleuv	
+mijnplanning.uzleuven.be	104.18.4.60	200	cloudflare		WorkForce
+mistwebhook-dev.gcp.uzleuven.be	34.36.197.35	403			403
+mistwebhook.gcp.uzleuven.be	34.128.185.14	403			403
+msc.meldinginbreukunierecht.uzleuven.be	104.18.4.60	403	cloudflare		Just a moment...
+mx1.uzleuven.be	134.58.179.9	DOWN			Just a moment...
+mx2.uzleuven.be	134.58.179.11	DOWN			Just a moment...
+passtrixnood.gcp.uzleuven.be	34.98.95.191	403			403
+pcrstudioruzb.uzleuven.be	193.58.149.82	302	nginx	https://extranet.uzleuven.be/dana-na/auth/sa	302 Found
+pers.uzleuven.be	104.20.23.134	200	cloudflare		UZ Leuven
+prdcrunner22-awingu.uzleuven.be	104.18.4.60	200	cloudflare		
+prddsplunkhf.uzleuven.be	104.18.4.60	DOWN			
+qr.uzleuven.be	54.220.51.86	302	nginx	https://support.qr-code-generator.com/hc/en-	
+random.uzleuven.be	104.18.4.60	403	cloudflare		Attention Required! | Cloudflare
+rcrts.uzleuven.be	193.58.149.101	502	nginx		502 Bad Gateway
+remote.uzleuven.be	104.18.4.60	302	cloudflare	https://extranet.uzleuven.be/dana-na/auth/sa	302 Found
+ruzb.uzleuven.be	193.58.149.82	302	nginx	https://extranet.uzleuven.be/dana-na/auth/sa	302 Found
+sectra-extern.uzleuven.be	104.18.4.60	403	cloudflare		Attention Required! | Cloudflare
+shinyproxy-dev.gcp.uzleuven.be	34.111.29.103	403			403
+shinyproxy-prd.gcp.uzleuven.be	34.54.58.10	403			403
+splunkhf.uzleuven.be	104.18.4.60	404	cloudflare		404 Not Found
+standby.uzleuven.be	193.58.149.82	302	nginx	https://extranet.uzleuven.be/dana-na/auth/sa	302 Found
+stats.uzleuven.be	135.125.88.117	DOWN			302 Found
+status.uzleuven.be	104.18.4.60	302	cloudflare	https://uzleuven1.statuspage.io/	302 Found
+sts.uzleuven.be	193.58.149.108	404	Microsoft-HTTPAPI/2.0		Not Found
+teamssbca.uzleuven.be	193.58.148.33	DOWN			Not Found
+teamssbcp.uzleuven.be	193.58.148.34	DOWN			Not Found
+testiapextern.gcp.uzleuven.be	35.210.182.136	404			404 Page not found
+teststs.uzleuven.be	193.58.149.107	404	Microsoft-HTTPAPI/2.0		Not Found
+testthomasingress.gcp.uzleuven.be	34.96.101.10	DOWN			Not Found
+tiro-abdo.gcp.uzleuven.be	34.49.75.141	302	Google Frontend	https://accounts.google.com/o/oauth2/v2/auth	
+tiro-uro.gcp.uzleuven.be	35.244.190.90	302	Google Frontend	https://accounts.google.com/o/oauth2/v2/auth	
+upc.meldinginbreukunierecht.uzleuven.be	104.18.4.60	403	cloudflare		Just a moment...
+uzleuven.be	52.59.94.169	302	Caddy	https://www.uzleuven.be/	
+uzvanelders.uzleuven.be	104.18.4.60	302	cloudflare	https://extranet.uzleuven.be/	302 Found
+vbhc-dev.gcp.uzleuven.be	34.160.184.30	404			
+vbhc-mgmt.mijnbeleidsinformatie.uzleuven.be	34.149.5.85	302	Google Frontend	https://iap-mijnbeleidsinformatie.gcp.uzleuv	
+vbhc.mijnbeleidsinformatie.uzleuven.be	34.149.5.85	302	Google Frontend	https://iap-mijnbeleidsinformatie.gcp.uzleuv	
+vdi.uzleuven.be	193.58.149.82	302	nginx	https://extranet.uzleuven.be/dana-na/auth/sa	302 Found
+vending.uzleuven.be	104.18.4.60	403	cloudflare		Attention Required! | Cloudflare
+vpp.mijnbeleidsinformatie.uzleuven.be	34.149.5.85	302	Google Frontend	https://iap-mijnbeleidsinformatie.gcp.uzleuv	
+webapps.uzleuven.be	193.58.149.82	403	nginx		403 Forbidden
+wieiswie-awingu.uzleuven.be	104.18.4.60	302	cloudflare	https://extranet-awingu.uzleuven.be/api/http	302 Found
+wiki.uzleuven.be	193.58.149.82	302	nginx	https://extranet.uzleuven.be/dana-na/auth/sa	302 Found
+wings.uzleuven.be	104.18.4.60	403	cloudflare		403 Forbidden
+wp5-truststroke.uzleuven.be	104.18.4.60	403	cloudflare		Attention Required! | Cloudflare
+www.uzleuven.be	52.84.118.104	301	CloudFront	/nl	
+xdshubtestviewer2-extranet-test.uzleuven.be	134.58.179.249	DOWN			
+xdshubtestviewer2-extranet.uzleuven.be	134.58.179.239	DOWN			
+xdshubviewer-extranet-test.uzleuven.be	134.58.179.249	DOWN			
