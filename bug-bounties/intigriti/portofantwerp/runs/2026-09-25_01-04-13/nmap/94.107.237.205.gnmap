@@ -1,0 +1,4 @@
+# Nmap 7.80 scan initiated Fri Sep 25 01:11:33 2026 as: nmap -sT -Pn -p 443 -oA runs/2026-09-25_01-04-13/nmap/94.107.237.205 -sV --open --version-light 94.107.237.205
+Host: 94.107.237.205 ()	Status: Up
+Host: 94.107.237.205 ()	Ports: 443/open/tcp//https?///
+# Nmap done at Fri Sep 25 01:52:31 2026 -- 1 IP address (1 host up) scanned in 2458.83 seconds

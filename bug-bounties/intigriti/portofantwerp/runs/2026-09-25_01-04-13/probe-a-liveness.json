@@ -1,0 +1,528 @@
+{
+ "probe_a": {
+  "login-test.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://my-test.portofantwerpbruges.com/profile/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "BIGipServeruRVN6LmYeB5ntdtPVYGY/Q"
+   ],
+   "title": "302 Found",
+   "len": 232
+  },
+  "api-accpt.portofantwerp.com": {
+   "status": "unreachable"
+  },
+  "api-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "200",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "",
+   "powered": "",
+   "ctype": "application/hal+json;charset=utf-8",
+   "setcookie": [
+    "BIGipServerBZMLJAM5oXntHsmEZGMgeg"
+   ],
+   "title": "",
+   "len": 68
+  },
+  "api.portofantwerp.com": {
+   "status": "unreachable"
+  },
+  "api.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "200",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "",
+   "powered": "",
+   "ctype": "application/hal+json;charset=utf-8",
+   "setcookie": [
+    "BIGipServerkScRVb/HNPB0Cq8I7YniOQ"
+   ],
+   "title": "",
+   "len": 68
+  },
+  "apps-accpt.portofantwerp.com": {
+   "status": "unreachable"
+  },
+  "apps-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://my-accpt.portofantwerpbruges.com/profile/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBaccpt"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 257
+  },
+  "apps.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://apps.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "BIGipServerNHu32q4PpDkCMQPei9qaMg"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "apps.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://my.portofantwerpbruges.com/profile/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBprod"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 251
+  },
+  "digitalspecs.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "200",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "",
+   "powered": "",
+   "ctype": "text/html",
+   "setcookie": [
+    "PoABLBprod"
+   ],
+   "title": "General Enterprise Architecture Principles | Technical Standards Guidelines and Specifications",
+   "len": 7406
+  },
+  "login-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://my-accpt.portofantwerpbruges.com/profile/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "BIGipServerXbZJavbmm+DEvQetH2TNmg"
+   ],
+   "title": "302 Found",
+   "len": 233
+  },
+  "maximo-accpt.portofantwerp.com": {
+   "status": "unreachable"
+  },
+  "maximo-accpt.portofantwerpbruges.com": {
+   "status": "unreachable"
+  },
+  "maximo.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "",
+   "location": "https://maximo.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "text/html; charset=UTF-8",
+   "setcookie": [],
+   "title": "302 Found",
+   "len": 136
+  },
+  "maximo.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "",
+   "location": "https://maximo.manage.mas.portofantwerpbruges.com/maximo",
+   "powered": "",
+   "ctype": "text/html; charset=UTF-8",
+   "setcookie": [],
+   "title": "302 Found",
+   "len": 136
+  },
+  "my-accpt.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://my-accpt.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "BIGipServer3vTGpy2x+c4fLpPFblZzQw"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "my-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "http://my-accpt.portofantwerpbruges.com/profile/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBaccpt"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 256
+  },
+  "my.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://my.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "BIGipServerNHu32q4PpDkCMQPei9qaMg"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "my.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "http://my.portofantwerpbruges.com/profile/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBprod"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 250
+  },
+  "notula-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "200",
+   "server": "nginx/1.27.1",
+   "cf_ray": "no",
+   "cf_cache": "",
+   "location": "",
+   "powered": "",
+   "ctype": "text/html",
+   "setcookie": [],
+   "title": "Green Valley Suite",
+   "len": 13384
+  },
+  "oprc.portofantwerpbruges.com": {
+   "status": "unreachable"
+  },
+  "register-accpt.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://register-accpt.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "BIGipServer3vTGpy2x+c4fLpPFblZzQw"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "register-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "http://register-accpt.portofantwerpbruges.com/account/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBaccpt"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 262
+  },
+  "servicedesk-accpt.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://servicedesk-accpt.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "BIGipServer3vTGpy2x+c4fLpPFblZzQw"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "servicedesk-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "/plugins/servlet/samlsso?redirectTo=%2F",
+   "powered": "",
+   "ctype": "text/html;charset=UTF-8",
+   "setcookie": [
+    "JSESSIONID"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "servicedesk.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "",
+   "location": "https://servicedesk.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "text/html; charset=UTF-8",
+   "setcookie": [],
+   "title": "302 Found",
+   "len": 136
+  },
+  "servicedesk.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "/plugins/servlet/samlsso?redirectTo=%2F",
+   "powered": "",
+   "ctype": "text/html;charset=UTF-8",
+   "setcookie": [
+    "JSESSIONID"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "share-accpt.portofantwerp.com": {
+   "status": "unreachable"
+  },
+  "share-accpt.portofantwerpbruges.com": {
+   "status": "unreachable"
+  },
+  "share.portofantwerp.com": {
+   "status": "unreachable"
+  },
+  "share.portofantwerpbruges.com": {
+   "status": "unreachable"
+  },
+  "webapps-accpt.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://webapps-accpt.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "BIGipServer3vTGpy2x+c4fLpPFblZzQw"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "webapps-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://my-accpt.portofantwerpbruges.com/profile/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBaccpt"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 257
+  },
+  "webapps-test.portofantwerpbruges.com/xui": {
+   "scheme": "https",
+   "status": "200",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "",
+   "powered": "",
+   "ctype": "text/html; charset=utf-8",
+   "setcookie": [
+    "am-auth-jwt"
+   ],
+   "title": "",
+   "len": 528
+  },
+  "webapps.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://webapps.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "BIGipServerNHu32q4PpDkCMQPei9qaMg"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "webapps.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://my.portofantwerpbruges.com/profile/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBprod"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 251
+  },
+  "wiki-accpt.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "https://wiki-accpt.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "BIGipServer3vTGpy2x+c4fLpPFblZzQw"
+   ],
+   "title": "",
+   "len": 0
+  },
+  "wiki-accpt.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "http://wiki-accpt.portofantwerpbruges.com/confluence/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBaccpt"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 261
+  },
+  "wiki.portofantwerp.com": {
+   "scheme": "https",
+   "status": "302",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "",
+   "location": "https://wiki.portofantwerpbruges.com/",
+   "powered": "",
+   "ctype": "text/html; charset=UTF-8",
+   "setcookie": [],
+   "title": "302 Found",
+   "len": 136
+  },
+  "wiki.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "301",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "http://wiki.portofantwerpbruges.com/confluence/",
+   "powered": "",
+   "ctype": "text/html; charset=iso-8859-1",
+   "setcookie": [
+    "PoABLBprod"
+   ],
+   "title": "301 Moved Permanently",
+   "len": 255
+  },
+  "www.portofantwerpbruges.com": {
+   "scheme": "https",
+   "status": "307",
+   "server": "cloudflare",
+   "cf_ray": "yes",
+   "cf_cache": "DYNAMIC",
+   "location": "/en",
+   "powered": "",
+   "ctype": "",
+   "setcookie": [
+    "NEXT_LOCALE"
+   ],
+   "title": "",
+   "len": 3
+  },
+  "erpx.unit4cloud.com/u4erx_pab_acp1": {
+   "scheme": "https",
+   "status": "200",
+   "server": "",
+   "cf_ray": "no",
+   "cf_cache": "",
+   "location": "",
+   "powered": "",
+   "ctype": "text/html",
+   "setcookie": [],
+   "title": "Unit4 ERP",
+   "len": 1757
+  },
+  "erpx.unit4cloud.com/u4erx_pab_prev": {
+   "scheme": "https",
+   "status": "200",
+   "server": "",
+   "cf_ray": "no",
+   "cf_cache": "",
+   "location": "",
+   "powered": "",
+   "ctype": "text/html",
+   "setcookie": [],
+   "title": "Unit4 ERP",
+   "len": 1757
+  },
+  "erpx.unit4cloud.com/u4erx_pab_prod": {
+   "scheme": "https",
+   "status": "200",
+   "server": "",
+   "cf_ray": "no",
+   "cf_cache": "",
+   "location": "",
+   "powered": "",
+   "ctype": "text/html",
+   "setcookie": [],
+   "title": "Unit4 ERP",
+   "len": 1757
+  }
+ }
+}

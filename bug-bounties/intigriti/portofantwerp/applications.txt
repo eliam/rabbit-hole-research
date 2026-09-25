@@ -1,0 +1,53 @@
+Choose the application you want to register for:
+
+
+APICS
+Advanced Port Information and Control System ,Vessel Traffic management application for shipping agents (announcement of vessels), barge operators (announcement of barges), terminal operators (berth planning) and declarants of dangerous goods. NOT CUSTOMS RELATED!
+
+BTS
+An obligated platform for the container barge and terminal operators to handle planning requests and to draw the terminal planning.
+
+Bulkchain
+Bulkchain supports digitization of the export process for breakbulk cargo.
+
+Certified Pick-up (CPu)
+CPu is the secured platform within the Antwerp Port Community for supporting the import process with the safe pick-up of a container at the terminal.
+
+Community Nautical Chain Planner
+EN - De Nautische ketenplanner is een toepassing die zoekt naar een overkoepelende en proactieve optimalisatie tussen de Scheldehavens en de ketenpartners van de planningen van scheepsreizen.
+
+Dangerous polluting goods
+Dangerous polluting goods
+
+e-Desk customs
+e-Desk customs is used for reporting export and transit cargo. With this application declarants can report MRN information to container and RORO terminals in the ports of Antwerp and Zeebruges. You also can trace your cargo through the reported statuses.
+
+ETA Terminal
+Get an overview of the estimated time of arrival (ETA) of seagoing vessels as well as cargo opening times at the maritime terminals in Antwerp and Bruges.
+
+eWastra
+eWastra brings all your digital transport documents together in one web and mobile application. You can create, among others, international e-CMRs, national consignment notes (BE, FR, ES), digital identification forms, Annex VII documents, and soon also Commercial Documents. Everything is handled in one familiar environment, fully compliant with applicable regulations. In addition to digital transport documents, we also offer integrations and a reporting module to work more simply and faster, without extra administration.
+
+FORWARD e-Contracts
+Through the FORWARD E-Contracts application, Forward Belgium offers its members the possibility to simplify the management of contracts with customers and suppliers.,Own contracts as well as the standard agreements of Forward Belgium can be digitally signed via the app.,In this way, you always retain an overview of which contracts were legally signed, by whom and when.,More information on https://www.forwardbelgium.be.,By registering, the user agrees to the following Terms & Conditions: <<T&C FORWARD Belgium>>, <<T&C Pionira>> en <<GDPR Pionira>>."
+
+Hakka platform
+Hakka is a digital platform where container transporters can exchange container rides and empties. Hakka also provides a transport management tool with a matching algorithm that calculates the most efficient routes and suggests the best possible rides. After the optimization is found, a Reload request to the ocean line carrier can also be requested on Hakka. The pricing for these Reload requests is based on the saved empty kilometres. By exchanging container rides, we achieve our four company goals: more profitable transporters, less empty runs, less traffic congestion and a cleaner environment.
+
+Inbound & Release Platform (IRP)
+The "Inbound Release Platform" will facilitate import customs processes through the implementation of PN/TS, REN, and release messages for various cargo types. It will also support terminals in setting up their Temporary Storage administration (RTO).
+
+Port Dues Portal
+Application for the registration of water consumptions, waste collections, declarations for berthing dues and for consulting your invoices.
+
+Rail Trans Port Manager
+Rail Trans Port Manager
+
+TerraBase
+TerraBase is the central platform for uploading and managing subsurface data. Data from measurements, drilling, sampling and other subsurface investigations can be uploaded into TerraBase.
+
+TOOL
+Pre-register and request access for work on bridge and lock complexes.,Request permission for works with nautical impact on vessels and infrastructure in the port.
+
+Traject Permit
+Apply for a permit to use port vehicles on public roads within the port area; as described in the Port Traffic Regulations.

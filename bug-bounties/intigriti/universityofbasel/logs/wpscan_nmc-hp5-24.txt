@@ -1,0 +1,153 @@
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+                  WordPress Security Scanner
+                         Version 4.0.1
+                    An Automattic endeavor
+                    https://automattic.com
+_______________________________________________________________
+
+[+] URL: http://nmc-hp5-24.nmc.unibas.ch:8080/ [131.152.238.78]
+[+] Started: Thu Sep 24 23:57:06 2026
+[+] Command Line: wpscan --url http://nmc-hp5-24.nmc.unibas.ch:8080/ --user-agent Intigriti-UniBas-VDP-eliam Mozilla/5.0 (compatible; BugBountyResearcher) --headers X-Intigriti-Username: eliam --throttle 250 --disable-tls-checks --force --enumerate vp,vt,cb,dbe --format cli-no-color -o logs/wpscan_nmc-hp5-24.txt
+[+] Hostname: LAPTOP-HMH5HJST
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entries:
+ |  - Server: Apache/2.4.68 (Debian)
+ |  - X-Powered-By: PHP/8.3.33
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] robots.txt found: http://nmc-hp5-24.nmc.unibas.ch:8080/robots.txt
+ | Interesting Entries:
+ |  - /wp-admin/
+ |  - /wp-admin/admin-ajax.php
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://nmc-hp5-24.nmc.unibas.ch:8080/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: http://nmc-hp5-24.nmc.unibas.ch:8080/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://nmc-hp5-24.nmc.unibas.ch:8080/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[i] The WordPress version could not be detected.
+
+[+] WordPress theme in use: twentyseventeen
+ | Location: http://nmc-hp5-24.nmc.unibas.ch:8080/wp-content/themes/twentyseventeen/
+ | Latest Version: 4.1 (up to date)
+ | Last Updated: 2026-08-18 11:00pm GMT (1 month ago, per WordPress.org)
+ | Active Installs: 300,000 (per WordPress.org)
+ | Readme: http://nmc-hp5-24.nmc.unibas.ch:8080/wp-content/themes/twentyseventeen/readme.txt
+ | Style URL: http://nmc-hp5-24.nmc.unibas.ch:8080/wp-content/themes/twentyseventeen/style.css?ver=20260520
+ | Style Name: Twenty Seventeen
+ | Style URI: https://wordpress.org/themes/twentyseventeen/
+ | Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a fo...
+ | Author: the WordPress team
+ | Author URI: https://wordpress.org/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ | Confirmed By: Css Style In 404 Page (Passive Detection)
+ |
+ | Version: 4.1 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://nmc-hp5-24.nmc.unibas.ch:8080/wp-content/themes/twentyseventeen/style.css?ver=20260520, Match: 'Version: 4.1'
+
+
+[+] akismet
+ | Location: http://nmc-hp5-24.nmc.unibas.ch:8080/wp-content/plugins/akismet/
+ | Latest Version: 5.7.2
+ | Last Updated: 2026-08-18 11:42pm GMT (1 month ago, per WordPress.org)
+ | Active Installs: 5,000,000 (per WordPress.org)
+ |
+ | Found By: Known Locations (Aggressive Detection)
+ |  - http://nmc-hp5-24.nmc.unibas.ch:8080/wp-content/plugins/akismet/, status: 403
+ |
+ | [!] 1 vulnerability identified:
+ |
+ | [!] Title: Akismet 2.5.0-3.1.4 - Unauthenticated Stored Cross-Site Scripting (XSS)
+ |     UUID: 1a2f3094-5970-4251-9ed0-ec595a0cd26c
+ |     Fixed in: 3.1.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/1a2f3094-5970-4251-9ed0-ec595a0cd26c
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-9357
+ |      - http://blog.akismet.com/2015/10/13/akismet-3-1-5-wordpress/
+ |      - https://blog.sucuri.net/2015/10/security-advisory-stored-xss-in-akismet-wordpress-plugin.html
+ |
+ | The version could not be determined.
+[+] WPScan DB API OK
+ | Plan: free
+ | Requests Done (during the scan): 4
+ | Requests Remaining: 0
+[+] Finished: Fri Sep 25 00:22:01 2026
+[+] Requests Done: 4935
+[+] Cached Requests: 11
+[+] Most response codes received: 404: 3775, 200: 1147, 403: 6, 302: 3, failed: 2
+[+] Data Sent: 1.416 MB
+[+] Data Received: 43.007 MB
+[+] Memory used: 364.215 MB
+[+] Elapsed time: 00:24:55
+
+Scan Aborted: SIGTERM
+Trace: /opt/wpscan/lib/wpscan/browser/options.rb:89:in 'Kernel#sleep'
+/opt/wpscan/lib/wpscan/browser/options.rb:89:in 'WPScan::Browser#trottle!'
+/opt/wpscan/lib/wpscan.rb:96:in 'block in <module:WPScan>'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/request/callbacks.rb:146:in 'block in Typhoeus::Request::Callbacks#execute_callbacks'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/request/callbacks.rb:145:in 'Array#each'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/request/callbacks.rb:145:in 'Typhoeus::Request::Callbacks#execute_callbacks'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/request/operations.rb:35:in 'Typhoeus::Request::Operations#finish'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/easy_factory.rb:170:in 'block in Typhoeus::EasyFactory#set_callback'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/easy/response_callbacks.rb:74:in 'block in Ethon::Easy::ResponseCallbacks#complete'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/easy/response_callbacks.rb:74:in 'Array#each'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/easy/response_callbacks.rb:74:in 'Ethon::Easy::ResponseCallbacks#complete'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:189:in 'Ethon::Multi::Operations#check'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:202:in 'Ethon::Multi::Operations#run'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:50:in 'Ethon::Multi::Operations#perform'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/hydra/runnable.rb:15:in 'Typhoeus::Hydra::Runnable#run'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/hydra/memoizable.rb:51:in 'Typhoeus::Hydra::Memoizable#run'
+/opt/wpscan/lib/wpscan/finders/finder/enumerator.rb:49:in 'WPScan::Finders::Finder::Enumerator#enumerate'
+/opt/wpscan/app/finders/plugins/known_locations.rb:30:in 'WPScan::Finders::Plugins::KnownLocations#aggressive'
+/opt/wpscan/lib/wpscan/finders/base_finders.rb:31:in 'WPScan::Finders::BaseFinders#run_finder'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:18:in 'block (2 levels) in WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:17:in 'Array#each'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:17:in 'block in WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:16:in 'Array#each'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:16:in 'WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/independent_finder.rb:24:in 'WPScan::Finders::IndependentFinder#find'
+/opt/wpscan/lib/wpscan/finders/independent_finder.rb:12:in 'WPScan::Finders::IndependentFinder::ClassMethods#find'
+/opt/wpscan/lib/wpscan/target.rb:169:in 'WPScan::Target#plugins'
+/opt/wpscan/app/controllers/enumeration/enum_methods.rb:185:in 'WPScan::Controller::Enumeration#enum_wp_items'
+/opt/wpscan/app/controllers/enumeration/enum_methods.rb:128:in 'WPScan::Controller::Enumeration#enum_plugins'
+/opt/wpscan/app/controllers/enumeration.rb:36:in 'WPScan::Controller::Enumeration#run'
+/opt/wpscan/lib/wpscan/controllers.rb:71:in 'Array#each'
+/opt/wpscan/lib/wpscan/controllers.rb:71:in 'block in WPScan::Controllers#run'
+/usr/lib/ruby/3.4.0/timeout.rb:168:in 'Timeout.timeout'
+/opt/wpscan/lib/wpscan/controllers.rb:66:in 'WPScan::Controllers#run'
+/opt/wpscan/lib/wpscan/scan.rb:58:in 'WPScan::Scan#run'
+/opt/wpscan/bin/wpscan:18:in 'block in <main>'
+/opt/wpscan/lib/wpscan/scan.rb:18:in 'WPScan::Scan#initialize'
+/opt/wpscan/bin/wpscan:6:in 'Class#new'
+/opt/wpscan/bin/wpscan:6:in '<main>'

@@ -1,0 +1,9 @@
+# Nmap 7.80 scan initiated Fri Sep 25 01:11:32 2026 as: nmap -sT -Pn -p 179 -oA runs/2026-09-25_01-04-13/nmap/188.118.8.121 -sV --open --version-light 188.118.8.121
+Nmap scan report for 188.118.8.121
+Host is up (0.20s latency).
+
+PORT    STATE SERVICE    VERSION
+179/tcp open  tcpwrapped
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Sep 25 01:52:28 2026 -- 1 IP address (1 host up) scanned in 2456.23 seconds

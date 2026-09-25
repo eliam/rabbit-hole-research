@@ -1,0 +1,24 @@
+=== 94.107.237.201 ===
+  179/tcp open  tcpwrapped
+
+=== 94.107.237.205 ===
+  443/tcp open  https?
+
+=== 94.107.237.228 ===
+  80/tcp open  http?
+
+=== 188.118.8.9 ===
+  443/tcp open  https?
+
+=== 188.118.8.10 ===
+  443/tcp open  ssl/http Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+
+=== 188.118.8.52 ===
+  80/tcp open  http?
+
+=== 188.118.8.118 ===
+  4500/tcp open  sae-urn?
+
+=== 188.118.8.121 ===
+  179/tcp open  tcpwrapped
+

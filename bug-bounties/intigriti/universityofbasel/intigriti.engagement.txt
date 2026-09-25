@@ -1,0 +1,148 @@
+https://app.intigriti.com/researcher/programs/universityofbasel/universityofbaselvdp/detail
+
+ Description
+
+Founded in 1460, the University of Basel is the oldest university in Switzerland. Once a center of European humanism, it is now a highly research-oriented, internationally accessible institution that emphasizes life sciences and medicine.
+
+Situated at the intersection of Switzerland, Germany, and France, the university is at the center of the science and innovation hub in the Basel region. As a comprehensive university, it brings together the full range of academic disciplines.
+
+Its seven faculties offer a wide range of bachelor’s, master’s, and doctoral programs that prepare students for demanding careers in a changing world. Today, the University of Basel has approximately 13,000 students from more than 100 countries, including around 3,000 doctoral candidates.
+
+As a modern research university, it devotes considerable resources to knowledge and technology transfer, actively supporting young academics and researchers. It also maintains strong partnerships and collaborative ties. The University of Basel has garnered international recognition for its exceptional academic achievements. It is ranked among the world’s top 150 universities and the top 15 in the German-speaking countries. 
+Bounties
+Give feedback
+
+ This is a responsible disclosure program without bounties. 
+Rules of engagement
+Give feedback
+@intigriti.me
+Not applicable
+User agent
+Intigriti-UniBas-VDP-{username} Mozilla/5.0 (compatible; BugBountyResearcher)
+Automated tooling
+max. 5 requests /sec
+Request header
+X-Intigriti-Username:{Username}
+By participating in this program, you agree to:
+
+    Respect the Community Code of Conduct
+    Respect the Intigriti Terms and Conditions
+    Respect the scope of the program
+    Not discuss or disclose vulnerability information without prior written consent (including PoC's on YouTube and Vimeo)
+
+Safe harbour for researchers is applied
+Show safe harbour
+View changes
+Assets
+Give feedback
+tier
+All
+type
+All
+Collapse all
+2
+Unibas on Premise
+
+Everything under *.unibas.ch that points to the IP range 131.152.0.0/16 is in scope (both conditions must be met), excluding the following ranges:
+
+    131.152.122.128/25
+    131.152.122.192/26
+    131.152.225.0/26
+
+131.152.0.0/16
+IP Range
+No bounty
+
+Exclusion (out of scope):
+
+    131.152.122.128/25
+    131.152.122.192/26
+    131.152.225.0/26
+
+*.unibas.ch
+Wildcard
+No bounty
+
+ONLY within 131.152.0.0/16
+In scope
+Give feedback
+
+Introduction
+
+We are launching this Vulnerability Disclosure Program to work with the security research community on identifying and responsibly addressing security issues in our central IT infrastructure. Please review the scope and rules of engagement carefully before testing.
+
+Useful infrastructure information
+
+Authentication across many in-scope services is handled via SWITCH edu-ID (login.eduid.ch), which is out of scope as a third-party identity provider.
+
+Assets
+
+Both conditions must be met for an asset to be in scope: the hostname is under *.unibas.ch and the resolved IP falls within the listed 131.152.0.0/16 range (after exclusions).
+Out of scope
+Give feedback
+Known Issues (Last updated: 09/07/2026)
+
+The following vulnerability classes are currently known and may already be under remediation. Reports identifying the same underlying issue across additional endpoints or parameters may be considered duplicates unless they demonstrate a distinct root cause, impact, or exploitation path.
+
+    Reflected XSS / HTML Injection affecting existing input parameters across multiple endpoints.
+    Reflected XSS identified in application pages where the underlying remediation is already being tracked.
+    HTML Injection findings where only the affected endpoint differs but the vulnerability and required fix remain the same.
+
+If you believe your finding represents a new vulnerability or bypass rather than another instance of an existing issue, please clearly explain the difference in your report.
+Domains
+
+ Any domain that is not within *.unibas.ch is out of scope.
+IP Ranges
+
+ Those IP Ranges are out of scope for this program
+
+    131.152.122.128/25
+    131.152.122.192/26
+    131.152.225.0/26
+
+Application
+
+    Wordpress usernames disclosure
+    Pre-Auth Account takeover/OAuth squatting
+    Self-XSS that can't be used to exploit other users
+    Verbose messages/files/directory listings without disclosing any sensitive information
+    CORS misconfiguration on non-sensitive endpoints
+    Missing cookie flags
+    Missing security headers
+    Cross-site Request Forgery with no or low impact
+    Presence of autocomplete attribute on web forms
+    Reverse tabnabbing
+    Bypassing rate-limits or the non-existence of rate-limits.
+    Best practices violations (password complexity, expiration, re-use, etc.)
+    Clickjacking without proven impact/unrealistic user interaction
+    CSV Injection
+    Sessions not being invalidated (logout, enabling 2FA, etc.)
+    Tokens leaked to third parties
+    Anything related to email spoofing, SPF, DMARC or DKIM
+    Content injection without being able to modify the HTML
+    Username/email enumeration
+    Email bombing
+    HTTP Request smuggling without any proven impact
+    Homograph attacks
+    XMLRPC enabled
+    Banner grabbing/Version disclosure
+    Not stripping metadata of files
+    Same-site scripting
+    Subdomain takeover without taking over the subdomain
+    Arbitrary file upload without proof of the existence of the uploaded file
+    Blind SSRF without proven business impact (pingbacks aren't sufficient)
+    Disclosed/misconfigured Google Maps API keys
+    Host header injection without proven business impact
+
+General
+
+    In case that a reported vulnerability was already known to the company from their own tests, it will be flagged as a duplicate
+    Theoretical security issues with no realistic exploit scenario(s) or attack surfaces, or issues that would require complex end user interactions to be exploited
+    Spam, social engineering and physical intrusion
+    DoS/DDoS attacks or brute force attacks
+    Vulnerabilities that only work on software that no longer receive security updates
+    Attacks requiring physical access to a victim's computer/device, man in the middle or compromised user accounts
+    Zero-day vulnerabilities reported within 14 days of the public release of a patch or mitigation.
+    Reports that state that software is out of date/vulnerable without a proof-of-concept
+
+

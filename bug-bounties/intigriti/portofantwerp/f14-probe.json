@@ -1,0 +1,475 @@
+[
+ {
+  "group": "baseline",
+  "label": "baseline f222c55a",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/EN",
+  "status": 200,
+  "len": 348777,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "baseline",
+  "label": "baseline 32405aa0",
+  "path": "/api/registernewusers/policy/32405aa0-e462-4c8e-86fb-8acbb4ae5d3c/EN",
+  "status": 200,
+  "len": 280019,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl) /Struct"
+ },
+ {
+  "group": "baseline",
+  "label": "baseline 51154421",
+  "path": "/api/registernewusers/policy/51154421-e7c4-4871-93b8-9156805183b8/EN",
+  "status": 200,
+  "len": 153516,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=EN",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/EN",
+  "status": 200,
+  "len": 348777,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=XX",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/XX",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=x",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/x",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=EN2",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/EN2",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=NL",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/NL",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=EN/pdf",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/EN/pdf",
+  "status": 404,
+  "len": 0,
+  "magic": "?",
+  "snippet": ""
+ },
+ {
+  "group": "language",
+  "label": "lang=../",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/../",
+  "status": 403,
+  "len": 246,
+  "magic": "HTML",
+  "snippet": "<html><head><title>Request Rejected</title></head><body>The requested "
+ },
+ {
+  "group": "language",
+  "label": "lang=../../../../../../etc/host",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/../../../../../../etc/hostname",
+  "status": 400,
+  "len": 155,
+  "magic": "HTML",
+  "snippet": "<html>\r <head><title>400 Bad Request</title></head>\r <body>\r <center><"
+ },
+ {
+  "group": "language",
+  "label": "lang=..%2f..%2f..%2f..%2fetc%2f",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/..%2f..%2f..%2f..%2fetc%2fhostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=....//....//etc%2fhostname",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/....//....//etc%2fhostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=%2e%2e%2f%2e%2e%2fetc%2fho",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/%2e%2e%2f%2e%2e%2fetc%2fhostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=EN/../../../../etc/hostnam",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/EN/../../../../etc/hostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=EN/..%2f..%2f..%2fetc%2fho",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/EN/..%2f..%2f..%2fetc%2fhostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=EN%00",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/EN%00",
+  "status": 400,
+  "len": 155,
+  "magic": "HTML",
+  "snippet": "<html>\r <head><title>400 Bad Request</title></head>\r <body>\r <center><"
+ },
+ {
+  "group": "language",
+  "label": "lang=AAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/",
+  "status": 404,
+  "len": 0,
+  "magic": "?",
+  "snippet": ""
+ },
+ {
+  "group": "guid",
+  "label": "guid=not-a-guid",
+  "path": "/api/registernewusers/policy/not-a-guid/EN",
+  "status": 500,
+  "len": 18382,
+  "magic": "JSON",
+  "snippet": "{\"message\":\"SC_INTERNAL_SERVER_ERROR\",\"stacktrace\":\"be.amaris.restclie"
+ },
+ {
+  "group": "guid",
+  "label": "guid=00000000-0000-0000-0000-00",
+  "path": "/api/registernewusers/policy/00000000-0000-0000-0000-000000000000/EN",
+  "status": 500,
+  "len": 18492,
+  "magic": "JSON",
+  "snippet": "{\"message\":\"SC_INTERNAL_SERVER_ERROR\",\"stacktrace\":\"be.amaris.restclie"
+ },
+ {
+  "group": "guid",
+  "label": "guid=../../../../etc/hostname",
+  "path": "/api/registernewusers/policy/../../../../etc/hostname/EN",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "guid",
+  "label": "guid=..%2f..%2f..%2fetc%2fhostn",
+  "path": "/api/registernewusers/policy/..%2f..%2f..%2fetc%2fhostname/EN",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "guid",
+  "label": "guid=%00",
+  "path": "/api/registernewusers/policy/%00/EN",
+  "status": 400,
+  "len": 155,
+  "magic": "HTML",
+  "snippet": "<html>\r <head><title>400 Bad Request</title></head>\r <body>\r <center><"
+ },
+ {
+  "group": "guid",
+  "label": "guid=f222c55a-e249-4873-8b81-d0",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/extra/EN",
+  "status": 404,
+  "len": 0,
+  "magic": "?",
+  "snippet": ""
+ },
+ {
+  "group": "headers",
+  "label": "good guid",
+  "path": "/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/EN",
+  "headers": {
+   "Date": "Fri, 25 Sep 2026 20:58:26 GMT",
+   "Content-Type": "application/pdf",
+   "Transfer-Encoding": "chunked",
+   "Connection": "close",
+   "content-disposition": "inline;filename=termsandconditions.pdf",
+   "x-envoy-upstream-service-time": "40",
+   "Via": "1.1 register-accpt.portofantwerpbruges.com",
+   "X-XSS-Protection": "1; mode=block",
+   "X-Content-Type-Options": "'nosniff'",
+   "Strict-Transport-Security": "max-age=16070400; includeSubdomains; preload",
+   "Server-Timing": "cfEdge;dur=24,cfOrigin;dur=66",
+   "cf-cache-status": "DYNAMIC",
+   "Server": "cloudflare",
+   "CF-RAY": "a40cf26dea74cd45-LHR"
+  }
+ },
+ {
+  "group": "baseline",
+  "label": "baseline 26f8a434",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/EN",
+  "status": 200,
+  "len": 348777,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=EN",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/EN",
+  "status": 200,
+  "len": 348777,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=XX",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/XX",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=x",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/x",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=EN2",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/EN2",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=NL",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/NL",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=EN/pdf",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/EN/pdf",
+  "status": 404,
+  "len": 0,
+  "magic": "?",
+  "snippet": ""
+ },
+ {
+  "group": "language",
+  "label": "lang=../",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/../",
+  "status": 403,
+  "len": 246,
+  "magic": "HTML",
+  "snippet": "<html><head><title>Request Rejected</title></head><body>The requested "
+ },
+ {
+  "group": "language",
+  "label": "lang=../../../../../../etc/host",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/../../../../../../etc/hostname",
+  "status": 400,
+  "len": 155,
+  "magic": "HTML",
+  "snippet": "<html>\r <head><title>400 Bad Request</title></head>\r <body>\r <center><"
+ },
+ {
+  "group": "language",
+  "label": "lang=..%2f..%2f..%2f..%2fetc%2f",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/..%2f..%2f..%2f..%2fetc%2fhostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=....//....//etc%2fhostname",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/....//....//etc%2fhostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=%2e%2e%2f%2e%2e%2fetc%2fho",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/%2e%2e%2f%2e%2e%2fetc%2fhostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=EN/../../../../etc/hostnam",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/EN/../../../../etc/hostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=EN/..%2f..%2f..%2fetc%2fho",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/EN/..%2f..%2f..%2fetc%2fhostname",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "language",
+  "label": "lang=EN%00",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/EN%00",
+  "status": 400,
+  "len": 155,
+  "magic": "HTML",
+  "snippet": "<html>\r <head><title>400 Bad Request</title></head>\r <body>\r <center><"
+ },
+ {
+  "group": "language",
+  "label": "lang=AAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "status": 200,
+  "len": 395060,
+  "magic": "PDF",
+  "snippet": "%PDF-1.7\r %\ufffd\ufffd\ufffd\ufffd\r 1 0 obj\r <</Type/Catalog/Pages 2 0 R/Lang(nl-BE) /Str"
+ },
+ {
+  "group": "language",
+  "label": "lang=",
+  "path": "/api/registernewusers/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/",
+  "status": 404,
+  "len": 0,
+  "magic": "?",
+  "snippet": ""
+ },
+ {
+  "group": "guid",
+  "label": "guid=not-a-guid",
+  "path": "/api/registernewusers/policy/not-a-guid/EN",
+  "status": 500,
+  "len": 18500,
+  "magic": "JSON",
+  "snippet": "{\"message\":\"SC_INTERNAL_SERVER_ERROR\",\"stacktrace\":\"be.amaris.restclie"
+ },
+ {
+  "group": "guid",
+  "label": "guid=00000000-0000-0000-0000-00",
+  "path": "/api/registernewusers/policy/00000000-0000-0000-0000-000000000000/EN",
+  "status": 500,
+  "len": 18389,
+  "magic": "JSON",
+  "snippet": "{\"message\":\"SC_INTERNAL_SERVER_ERROR\",\"stacktrace\":\"be.amaris.restclie"
+ },
+ {
+  "group": "guid",
+  "label": "guid=../../../../etc/hostname",
+  "path": "/api/registernewusers/policy/../../../../etc/hostname/EN",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "guid",
+  "label": "guid=..%2f..%2f..%2fetc%2fhostn",
+  "path": "/api/registernewusers/policy/..%2f..%2f..%2fetc%2fhostname/EN",
+  "status": 403,
+  "len": 4559,
+  "magic": "HTML",
+  "snippet": "<!DOCTYPE html> <!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\""
+ },
+ {
+  "group": "guid",
+  "label": "guid=%00",
+  "path": "/api/registernewusers/policy/%00/EN",
+  "status": 400,
+  "len": 155,
+  "magic": "HTML",
+  "snippet": "<html>\r <head><title>400 Bad Request</title></head>\r <body>\r <center><"
+ },
+ {
+  "group": "guid",
+  "label": "guid=f222c55a-e249-4873-8b81-d0",
+  "path": "/api/registernewusers/policy/f222c55a-e249-4873-8b81-d0e9397b65e6/extra/EN",
+  "status": 404,
+  "len": 0,
+  "magic": "?",
+  "snippet": ""
+ },
+ {
+  "group": "headers",
+  "label": "good guid",
+  "path": "/policy/26f8a434-3556-4e72-ad8a-37f386efafa3/EN",
+  "headers": {
+   "Date": "Fri, 25 Sep 2026 20:58:33 GMT",
+   "Content-Type": "application/pdf",
+   "Transfer-Encoding": "chunked",
+   "Connection": "close",
+   "content-disposition": "inline;filename=termsandconditions.pdf",
+   "Via": "1.1 register-test.portofantwerpbruges.com",
+   "X-XSS-Protection": "1; mode=block",
+   "X-Content-Type-Options": "'nosniff'",
+   "Strict-Transport-Security": "max-age=16070400; includeSubdomains; preload",
+   "Server-Timing": "cfEdge;dur=10,cfOrigin;dur=126",
+   "cf-cache-status": "DYNAMIC",
+   "Server": "cloudflare",
+   "CF-RAY": "a40cf297fb4ab608-LHR"
+  }
+ }
+]

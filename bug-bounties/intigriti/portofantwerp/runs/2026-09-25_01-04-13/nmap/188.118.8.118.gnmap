@@ -1,0 +1,4 @@
+# Nmap 7.80 scan initiated Fri Sep 25 01:11:33 2026 as: nmap -sT -Pn -p 4500 -oA runs/2026-09-25_01-04-13/nmap/188.118.8.118 -sV --open --version-light 188.118.8.118
+Host: 188.118.8.118 ()	Status: Up
+Host: 188.118.8.118 ()	Ports: 4500/open/tcp//sae-urn?///
+# Nmap done at Fri Sep 25 01:52:30 2026 -- 1 IP address (1 host up) scanned in 2457.70 seconds

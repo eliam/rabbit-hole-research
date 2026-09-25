@@ -1,0 +1,255 @@
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+                  WordPress Security Scanner
+                         Version 4.0.1
+                    An Automattic endeavor
+                    https://automattic.com
+_______________________________________________________________
+
+[+] URL: https://dbe-events.dbe.unibas.ch/ [131.152.226.103]
+[+] Started: Thu Sep 24 11:35:40 2026
+[+] Command Line: wpscan --url https://dbe-events.dbe.unibas.ch/ --user-agent Intigriti-UniBas-VDP-eliam Mozilla/5.0 (compatible; BugBountyResearcher) --headers X-Intigriti-Username: eliam --throttle 250 --disable-tls-checks --enumerate vp,vt,cb,dbe --format cli-no-color -o logs/wpscan_dbe-events.txt
+[+] Hostname: LAPTOP-HMH5HJST
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entries:
+ |  - Server: Apache/2.4.58 (Ubuntu)
+ |  - Upgrade: h2,h2c
+ |  - Permissions-Policy: private-state-token-redemption=(self "https://www.google.com" "https://www.gstatic.com" "https://recaptcha.net" "https://challenges.cloudflare.com" "https://hcaptcha.com"), private-state-token-issuance=(self "https://www.google.com" "https://www.gstatic.com" "https://recaptcha.net" "https://challenges.cloudflare.com" "https://hcaptcha.com")
+ |  - X-TEC-API-VERSION: v1
+ |  - X-TEC-API-ROOT: https://dbe-events.dbe.unibas.ch/index.php/wp-json/tribe/events/v1/
+ |  - X-TEC-API-ORIGIN: https://dbe-events.dbe.unibas.ch
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: https://dbe-events.dbe.unibas.ch/xmlrpc.php
+ | Found By: Link Tag (Passive Detection)
+ | Confidence: 100%
+ | Confirmed By: Direct Access (Aggressive Detection), 100% confidence
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: https://dbe-events.dbe.unibas.ch/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: https://dbe-events.dbe.unibas.ch/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[i] The WordPress version could not be detected.
+
+[+] WordPress theme in use: escapade
+ | Location: https://dbe-events.dbe.unibas.ch/wp-content/themes/escapade/
+ | Latest Version: 1.1.3 (up to date)
+ | Last Updated: 2021-12-16 12:00am GMT (4 years ago)
+ | Readme: https://dbe-events.dbe.unibas.ch/wp-content/themes/escapade/readme.txt
+ | Style URL: https://dbe-events.dbe.unibas.ch/wp-content/themes/escapade/style.css?ver=1.1.3
+ | Style Name: Escapade
+ | Style URI: https://github.com/godaddy/wp-escapade-theme
+ | Description: Escapade is a Primer child theme with a unique sidebar navigation....
+ | Author: GoDaddy
+ | Author URI: https://www.godaddy.com/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 1.1.3 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - https://dbe-events.dbe.unibas.ch/wp-content/themes/escapade/style.css?ver=1.1.3, Match: 'Version: 1.1.3'
+
+
+[+] registrations-for-the-events-calendar
+ | Location: https://dbe-events.dbe.unibas.ch/wp-content/plugins/registrations-for-the-events-calendar/
+ | Last Updated: 2026-08-20 2:27pm GMT (1 month ago, per WordPress.org)
+ | Active Installs: 7,000 (per WordPress.org)
+ | Readme: https://dbe-events.dbe.unibas.ch/wp-content/plugins/registrations-for-the-events-calendar/readme.txt
+ | [!] The version is out of date, the latest version is 3.2.2
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ |
+ | [!] 1 vulnerability identified:
+ |
+ | [!] Title: Registrations for the Events Calendar < 3.2.1 - Authenticated (Contributor+) SQL Injection via 'standard' Parameter
+ |     UUID: 8d68e28e-1a03-4a86-8f62-81d45d9e91da
+ |     Fixed in: 3.2.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/8d68e28e-1a03-4a86-8f62-81d45d9e91da
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-13119
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/630cc68e-102e-4e05-98ff-94de434a10ae
+ |
+ | Version: 3.1 (100% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - https://dbe-events.dbe.unibas.ch/wp-content/plugins/registrations-for-the-events-calendar/readme.txt
+ | Confirmed By: Readme - ChangeLog Section (Aggressive Detection)
+ |  - https://dbe-events.dbe.unibas.ch/wp-content/plugins/registrations-for-the-events-calendar/readme.txt
+
+[+] the-events-calendar
+ | Location: https://dbe-events.dbe.unibas.ch/wp-content/plugins/the-events-calendar/
+ | Last Updated: 2026-09-17 10:57pm GMT (6 days ago, per WordPress.org)
+ | Active Installs: 600,000 (per WordPress.org)
+ | Readme: https://dbe-events.dbe.unibas.ch/wp-content/plugins/the-events-calendar/readme.txt
+ | [!] The version is out of date, the latest version is 6.17.5
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ |
+ | [!] 8 vulnerabilities identified:
+ |
+ | [!] Title: The Events Calendar < 6.16.5.1 - Unauthenticated Event Aggregator Import Status Manipulation
+ |     UUID: c7d3b1c5-3b3a-4359-aa41-0dfccb091fa4
+ |     Fixed in: 6.16.5.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/c7d3b1c5-3b3a-4359-aa41-0dfccb091fa4
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-13390
+ |
+ | [!] Title: The Events Calendar &lt; 6.17.3.1 - Contributor+ Non-Public Event, Venue and Organizer Content Disclosure via REST API
+ |     UUID: cf23ee00-322c-4443-a50d-a91f90d179aa
+ |     Fixed in: 6.17.3.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/cf23ee00-322c-4443-a50d-a91f90d179aa
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-84745
+ |
+ | [!] Title: The Events Calendar < 6.17.3 - Unauthenticated PHP Object Injection
+ |     UUID: 40a67c6e-2b42-4d6c-aab7-398265fa9f24
+ |     Fixed in: 6.17.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/40a67c6e-2b42-4d6c-aab7-398265fa9f24
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-78265
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/dc4e9e51-544a-435a-932c-5fd6ac39ac7d
+ |
+ | [!] Title: The Events Calendar < 6.17.3.1 - Unauthenticated RCE via Widget 'classes' Map Callable Invocation
+ |     UUID: 8ff7612b-8672-40c5-879b-a040783cb276
+ |     Fixed in: 6.17.3.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/8ff7612b-8672-40c5-879b-a040783cb276
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-78159
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/cc2ccfeb-6df6-4fee-96a5-94f8dd131f7c
+ |
+ | [!] Title: The Events Calendar < 6.17.4.1 - Unauthenticated PHP Object Injection via is_safe_widget_instance Bypass
+ |     UUID: 7c732cd7-397e-49e4-a9f7-780c095f018a
+ |     Fixed in: 6.17.4.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/7c732cd7-397e-49e4-a9f7-780c095f018a
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-78006
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/a0c67346-534a-4b67-a904-fa148703707a
+ |
+ | [!] Title: The Events Calendar 6.15.16.1 - 6.17.4.1 - Contributor+ Event/Venue/Organizer Update, Trash and Ownership Takeover via by-slug REST Routes
+ |     UUID: 6c20337d-f485-491c-a380-38a3039af17d
+ |     Fixed in: 6.17.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/6c20337d-f485-491c-a380-38a3039af17d
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-84743
+ |
+ | [!] Title: The Events Calendar 6.15.0 - 6.17.4.1 - Contributor+ Content Publication via TEC V1 REST API
+ |     UUID: f9228a51-1293-4a96-95da-0e57b7eb5f6b
+ |     Fixed in: 6.17.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/f9228a51-1293-4a96-95da-0e57b7eb5f6b
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-84742
+ |
+ | [!] Title: The Events Calendar 4.5 - 6.17.4.1 - Unauthenticated Non-Public Venue and Organizer Disclosure via REST API
+ |     UUID: 0f34a90e-3d8b-4a87-a2ed-fe4d2c481732
+ |     Fixed in: 6.17.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/0f34a90e-3d8b-4a87-a2ed-fe4d2c481732
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-84741
+ |
+ | Version: 6.16.3 (100% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - https://dbe-events.dbe.unibas.ch/wp-content/plugins/the-events-calendar/readme.txt
+ | Confirmed By: Translation File (Aggressive Detection)
+ |  - https://dbe-events.dbe.unibas.ch/wp-content/plugins/the-events-calendar/lang/the-events-calendar.pot, Match: 'Project-Id-Version: The Events Calendar 6.16.3'
+
+[+] enable-media-replace
+ | Location: https://dbe-events.dbe.unibas.ch/wp-content/plugins/enable-media-replace/
+ | Last Updated: 2026-08-20 2:24pm GMT (1 month ago, per WordPress.org)
+ | Active Installs: 600,000 (per WordPress.org)
+ | Readme: https://dbe-events.dbe.unibas.ch/wp-content/plugins/enable-media-replace/readme.txt
+ | [!] The version is out of date, the latest version is 4.2.2
+ |
+ | Found By: Known Locations (Aggressive Detection)
+ |  - https://dbe-events.dbe.unibas.ch/wp-content/plugins/enable-media-replace/, status: 200
+ |
+ | [!] 1 vulnerability identified:
+ |
+ | [!] Title: Enable Media Replace < 4.2.2 - Editor+ Stored Cross-Site Scripting
+ |     UUID: b344d487-c57e-46ca-ae07-b29dae96ddcd
+ |     Fixed in: 4.2.2
+ |     References:
+ |      - https://wpscan.com/vulnerability/b344d487-c57e-46ca-ae07-b29dae96ddcd
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-57722
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/c8fe4c70-c196-4f20-b787-bea223726fab
+ |
+ | Version: 4.1.9 (100% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - https://dbe-events.dbe.unibas.ch/wp-content/plugins/enable-media-replace/readme.txt
+ | Confirmed By: Readme - ChangeLog Section (Aggressive Detection)
+ |  - https://dbe-events.dbe.unibas.ch/wp-content/plugins/enable-media-replace/readme.txt
+[+] WPScan DB API OK
+ | Plan: free
+ | Requests Done (during the scan): 11
+ | Requests Remaining: 14
+[+] Finished: Thu Sep 24 11:55:36 2026
+[+] Requests Done: 4162
+[+] Cached Requests: 12
+[+] Most response codes received: 404: 2972, 200: 1174, 403: 15, 302: 1
+[!] Too many client errors (4xx). This could indicate access restrictions, authentication issues, or WAF blocking
+[+] Data Sent: 1.359 MB
+[+] Data Received: 43.282 MB
+[+] Memory used: 376.699 MB
+[+] Elapsed time: 00:19:56
+
+Scan Aborted: SIGTERM
+Trace: /opt/wpscan/lib/wpscan/browser/options.rb:89:in 'Kernel#sleep'
+/opt/wpscan/lib/wpscan/browser/options.rb:89:in 'WPScan::Browser#trottle!'
+/opt/wpscan/lib/wpscan.rb:96:in 'block in <module:WPScan>'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/request/callbacks.rb:146:in 'block in Typhoeus::Request::Callbacks#execute_callbacks'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/request/callbacks.rb:145:in 'Array#each'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/request/callbacks.rb:145:in 'Typhoeus::Request::Callbacks#execute_callbacks'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/request/operations.rb:35:in 'Typhoeus::Request::Operations#finish'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/easy_factory.rb:170:in 'block in Typhoeus::EasyFactory#set_callback'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/easy/response_callbacks.rb:74:in 'block in Ethon::Easy::ResponseCallbacks#complete'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/easy/response_callbacks.rb:74:in 'Array#each'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/easy/response_callbacks.rb:74:in 'Ethon::Easy::ResponseCallbacks#complete'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:189:in 'Ethon::Multi::Operations#check'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:202:in 'Ethon::Multi::Operations#run'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:50:in 'Ethon::Multi::Operations#perform'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/hydra/runnable.rb:15:in 'Typhoeus::Hydra::Runnable#run'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/hydra/memoizable.rb:51:in 'Typhoeus::Hydra::Memoizable#run'
+/opt/wpscan/lib/wpscan/finders/finder/enumerator.rb:49:in 'WPScan::Finders::Finder::Enumerator#enumerate'
+/opt/wpscan/app/finders/plugins/known_locations.rb:30:in 'WPScan::Finders::Plugins::KnownLocations#aggressive'
+/opt/wpscan/lib/wpscan/finders/base_finders.rb:31:in 'WPScan::Finders::BaseFinders#run_finder'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:18:in 'block (2 levels) in WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:17:in 'Array#each'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:17:in 'block in WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:16:in 'Array#each'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:16:in 'WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/independent_finder.rb:24:in 'WPScan::Finders::IndependentFinder#find'
+/opt/wpscan/lib/wpscan/finders/independent_finder.rb:12:in 'WPScan::Finders::IndependentFinder::ClassMethods#find'
+/opt/wpscan/lib/wpscan/target.rb:169:in 'WPScan::Target#plugins'
+/opt/wpscan/app/controllers/enumeration/enum_methods.rb:185:in 'WPScan::Controller::Enumeration#enum_wp_items'
+/opt/wpscan/app/controllers/enumeration/enum_methods.rb:128:in 'WPScan::Controller::Enumeration#enum_plugins'
+/opt/wpscan/app/controllers/enumeration.rb:36:in 'WPScan::Controller::Enumeration#run'
+/opt/wpscan/lib/wpscan/controllers.rb:71:in 'Array#each'
+/opt/wpscan/lib/wpscan/controllers.rb:71:in 'block in WPScan::Controllers#run'
+/usr/lib/ruby/3.4.0/timeout.rb:168:in 'Timeout.timeout'
+/opt/wpscan/lib/wpscan/controllers.rb:66:in 'WPScan::Controllers#run'
+/opt/wpscan/lib/wpscan/scan.rb:58:in 'WPScan::Scan#run'
+/opt/wpscan/bin/wpscan:18:in 'block in <main>'
+/opt/wpscan/lib/wpscan/scan.rb:18:in 'WPScan::Scan#initialize'
+/opt/wpscan/bin/wpscan:6:in 'Class#new'
+/opt/wpscan/bin/wpscan:6:in '<main>'

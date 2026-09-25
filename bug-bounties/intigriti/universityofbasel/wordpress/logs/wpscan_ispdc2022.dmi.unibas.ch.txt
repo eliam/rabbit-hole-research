@@ -1,0 +1,305 @@
+_______________________________________________________________
+         __          _______   _____
+         \ \        / /  __ \ / ____|
+          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+            \  /\  /  | |     ____) | (__| (_| | | | |
+             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+                  WordPress Security Scanner
+                         Version 4.0.1
+                    An Automattic endeavor
+                    https://automattic.com
+_______________________________________________________________
+
+[+] URL: https://ispdc2022.dmi.unibas.ch/ [131.152.217.207]
+[+] Started: Thu Sep 24 12:36:10 2026
+[+] Command Line: wpscan --url https://ispdc2022.dmi.unibas.ch/ --user-agent Intigriti-UniBas-VDP-eliam Mozilla/5.0 (compatible; BugBountyResearcher) --headers X-Intigriti-Username: eliam --throttle 250 --disable-tls-checks --enumerate vp,vt,cb,dbe --format cli-no-color -o logs/wpscan_ispdc2022.dmi.unibas.ch.txt
+[+] Hostname: LAPTOP-HMH5HJST
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.52 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] robots.txt found: https://ispdc2022.dmi.unibas.ch/robots.txt
+ | Interesting Entries:
+ |  - /wp-admin/
+ |  - /wp-admin/admin-ajax.php
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: https://ispdc2022.dmi.unibas.ch/xmlrpc.php
+ | Found By: Link Tag (Passive Detection)
+ | Confidence: 100%
+ | Confirmed By: Direct Access (Aggressive Detection), 100% confidence
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: https://ispdc2022.dmi.unibas.ch/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: https://ispdc2022.dmi.unibas.ch/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[i] The WordPress version could not be detected.
+
+[+] WordPress theme in use: nisarg
+ | Location: https://ispdc2022.dmi.unibas.ch/wp-content/themes/nisarg/
+ | Last Updated: 2026-07-29 11:00pm GMT (1 month ago, per WordPress.org)
+ | Active Installs: 10,000 (per WordPress.org)
+ | Readme: https://ispdc2022.dmi.unibas.ch/wp-content/themes/nisarg/readme.txt
+ | [!] The version is out of date, the latest version is 1.6
+ | Style URL: https://ispdc2022.dmi.unibas.ch/wp-content/themes/nisarg/style.css?ver=6.4.12
+ | Style Name: Nisarg
+ | Style URI: https://www.falgunithemes.com/downloads/nisarg/
+ | Description: Nisarg is a new fully responsive and translation ready theme that allows you to create stunning blog...
+ | Author: Falguni Desai
+ | Author URI: https://www.falgunithemes.com
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ | Confirmed By: Css Style In 404 Page (Passive Detection)
+ |
+ | Version: 1.5 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/themes/nisarg/style.css?ver=6.4.12, Match: 'Version: 1.5'
+
+
+[+] woocommerce
+ | Location: https://ispdc2022.dmi.unibas.ch/wp-content/plugins/woocommerce/
+ | Last Updated: 2026-09-22 2:40pm GMT (1 day ago, per WordPress.org)
+ | Active Installs: 7,000,000 (per WordPress.org)
+ | Readme: https://ispdc2022.dmi.unibas.ch/wp-content/plugins/woocommerce/readme.txt
+ | [!] The version is out of date, the latest version is 11.1.2
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ |
+ | [!] 14 vulnerabilities identified:
+ |
+ | [!] Title: WooCommerce < 8.6 - Contributor+ Private/Draft Products Access
+ |     UUID: a7735feb-876e-461c-9a56-ea6067faf277
+ |     Fixed in: 8.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/a7735feb-876e-461c-9a56-ea6067faf277
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-1310
+ |
+ | [!] Title: WooCommerce < 8.6.0 - Cross-Site Request Forgery
+ |     UUID: 14d03287-6571-46d3-89af-0ad64dad6d33
+ |     Fixed in: 8.6.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/14d03287-6571-46d3-89af-0ad64dad6d33
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-22155
+ |      - https://patchstack.com/database/vulnerability/woocommerce/wordpress-woocommerce-plugin-8-5-2-cross-site-request-forgery-csrf-vulnerability
+ |
+ | [!] Title: WooCommerce < 9.0.0 - Shop Manager+ Content Injection
+ |     UUID: 44887eb0-ee24-4368-ba5e-6ed189ba8e5d
+ |     Fixed in: 9.0.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/44887eb0-ee24-4368-ba5e-6ed189ba8e5d
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-35777
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/ee8436c2-3dda-481c-92b3-cc2ba8fc1993
+ |
+ | [!] Title: WooCommerce < 9.1.4 - Stored XSS
+ |     UUID: d72df81e-c0e8-4705-8bd1-67a71f78a47e
+ |     Fixed in: 9.1.4
+ |     References:
+ |      - https://wpscan.com/vulnerability/d72df81e-c0e8-4705-8bd1-67a71f78a47e
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-39666
+ |
+ | [!] Title: WooCommerce < 9.2 - Contributor+ Stored XSS
+ |     UUID: c966c5ea-3cb4-4dc0-ac85-8d534c83804b
+ |     Fixed in: 9.2
+ |     References:
+ |      - https://wpscan.com/vulnerability/c966c5ea-3cb4-4dc0-ac85-8d534c83804b
+ |      - https://developer.woocommerce.com/2024/08/21/woocommerce-9-2-a-better-experience-for-all-users/
+ |
+ | [!] Title: WooCommerce < 9.1.0 - Unauthenticated HTML Injection
+ |     UUID: ccef1e59-40df-4645-aacb-4bb9c4b96456
+ |     Fixed in: 9.1.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/ccef1e59-40df-4645-aacb-4bb9c4b96456
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-9944
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/b5dfe2a5-612f-4e6c-a639-4afcff2ffa4c
+ |
+ | [!] Title: WooCommerce < 9.4.3 - Reflected XSS
+ |     UUID: 505aa04b-3969-4fea-a296-a6af7ef71409
+ |     Fixed in: 9.4.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/505aa04b-3969-4fea-a296-a6af7ef71409
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-5062
+ |
+ | [!] Title: WooCommerce < 9.4.3 - Unauthenticated Order Creation
+ |     UUID: d51f5bb7-ba87-4ce8-adcf-6bef4217b5db
+ |     Fixed in: 9.4.3
+ |     Reference: https://wpscan.com/vulnerability/d51f5bb7-ba87-4ce8-adcf-6bef4217b5db
+ |
+ | [!] Title: Woocommerce < 9.7.1 - Shop Manager+ Stored XSS via New Product Form
+ |     UUID: 94cbfc1b-9a55-44fa-b1d9-0c47980ace3c
+ |     Fixed in: 9.7.1
+ |     References:
+ |      - https://wpscan.com/vulnerability/94cbfc1b-9a55-44fa-b1d9-0c47980ace3c
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-26762
+ |      - https://developer.woocommerce.com/2025/03/04/woocommerce-9-7-1-dot-release/
+ |
+ | [!] Title: Wocommerce < 9.9.4 - Shop manager+ SQLi
+ |     UUID: b893ee7e-0044-43f4-8d77-0aab5f581c02
+ |     Fixed in: 9.9.4
+ |     References:
+ |      - https://wpscan.com/vulnerability/b893ee7e-0044-43f4-8d77-0aab5f581c02
+ |      - https://hackerone.com/reports/3198980
+ |
+ | [!] Title: WooCommerce < 10.0 - Shop Manager PII Leak in Multisite
+ |     UUID: 7a380aca-4579-4a38-b566-4c4e9ef049f5
+ |     Fixed in: 10.0
+ |     Reference: https://wpscan.com/vulnerability/7a380aca-4579-4a38-b566-4c4e9ef049f5
+ |
+ | [!] Title: WooCommerce < 10.0.3 - Shop manager+ Stored XSS
+ |     UUID: fa00066f-3a14-408d-96a6-3aa60d4ab542
+ |     Fixed in: 10.0.3
+ |     References:
+ |      - https://wpscan.com/vulnerability/fa00066f-3a14-408d-96a6-3aa60d4ab542
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-49042
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/3dbe7a3c-8247-4f1f-aca6-dda4bdcc1daf
+ |
+ | [!] Title: WooCommerce < 11.0 - Shop Manager+ SQLi
+ |     UUID: 9ca90694-8556-4554-a75a-a049e5bafdf7
+ |     Fixed in: 11.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/9ca90694-8556-4554-a75a-a049e5bafdf7
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-57777
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/48cd7580-e52f-4a11-8242-0a9647f5012a
+ |
+ | [!] Title: WooCommerce < 11.1.0 - Unauthenticated DoS
+ |     UUID: 6e0eb3d6-4571-4e99-b201-dd8527c67de2
+ |     Fixed in: 11.1.0
+ |     References:
+ |      - https://wpscan.com/vulnerability/6e0eb3d6-4571-4e99-b201-dd8527c67de2
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-48888
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/22652d78-577c-4467-9b6e-55811ebf6412
+ |
+ | Version: 8.5.5 (100% confidence)
+ | Found By: Query Parameter (Passive Detection)
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=8.5.5
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=8.5.5
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=8.5.5
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=8.5.5
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=8.5.5
+ | Confirmed By: Meta Generator (Passive Detection)
+ |  - https://ispdc2022.dmi.unibas.ch/, Match: 'WooCommerce 8.5.5'
+
+[+] akismet
+ | Location: https://ispdc2022.dmi.unibas.ch/wp-content/plugins/akismet/
+ | Latest Version: 5.7.2
+ | Last Updated: 2026-08-18 11:42pm GMT (1 month ago, per WordPress.org)
+ | Active Installs: 5,000,000 (per WordPress.org)
+ |
+ | Found By: Known Locations (Aggressive Detection)
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/akismet/, status: 403
+ |
+ | [!] 1 vulnerability identified:
+ |
+ | [!] Title: Akismet 2.5.0-3.1.4 - Unauthenticated Stored Cross-Site Scripting (XSS)
+ |     UUID: 1a2f3094-5970-4251-9ed0-ec595a0cd26c
+ |     Fixed in: 3.1.5
+ |     References:
+ |      - https://wpscan.com/vulnerability/1a2f3094-5970-4251-9ed0-ec595a0cd26c
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-9357
+ |      - http://blog.akismet.com/2015/10/13/akismet-3-1-5-wordpress/
+ |      - https://blog.sucuri.net/2015/10/security-advisory-stored-xss-in-akismet-wordpress-plugin.html
+ |
+ | The version could not be determined.
+
+[+] jquery-collapse-o-matic
+ | Location: https://ispdc2022.dmi.unibas.ch/wp-content/plugins/jquery-collapse-o-matic/
+ | Last Updated: 2024-05-28 7:13pm GMT (2 years ago)
+ | Readme: https://ispdc2022.dmi.unibas.ch/wp-content/plugins/jquery-collapse-o-matic/readme.txt
+ | [!] The version is out of date, the latest version is 1.8.5.8
+ |
+ | Found By: Known Locations (Aggressive Detection)
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/jquery-collapse-o-matic/, status: 403
+ |
+ | [!] 3 vulnerabilities identified:
+ |
+ | [!] Title: Collapse-O-Matic <= 1.8.5.8 - Contributor+ Stored XSS
+ |     UUID: f9e04f83-60f9-4883-81d9-8d00f3c312ca
+ |     References:
+ |      - https://wpscan.com/vulnerability/f9e04f83-60f9-4883-81d9-8d00f3c312ca
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-40669
+ |      - https://patchstack.com/database/vulnerability/jquery-collapse-o-matic/wordpress-collapse-o-matic-plugin-1-8-3-cross-site-scripting-xss-vulnerability
+ |
+ | [!] Title: Collapse-O-Matic < 1.8.5.6 - Authenticated (Contributor+) Stored Cross-Site Scripting via Shortcode
+ |     UUID: 467dab11-0ee0-4175-a1e9-10fd8560dc90
+ |     Fixed in: 1.8.5.6
+ |     References:
+ |      - https://wpscan.com/vulnerability/467dab11-0ee0-4175-a1e9-10fd8560dc90
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-7030
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/ea23bcc2-ce71-4f16-85f3-11276deb659f
+ |
+ | [!] Title: Collapse-O-Matic <= 1.8.5.8 - Authenticated (Contributor+) Stored Cross-Site Scripting via Shortcode
+ |     UUID: 618af6ca-42c5-417d-922a-8da4513e8c31
+ |     References:
+ |      - https://wpscan.com/vulnerability/618af6ca-42c5-417d-922a-8da4513e8c31
+ |      - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-4095
+ |      - https://www.wordfence.com/threat-intel/vulnerabilities/id/d4c56931-c2af-4940-95e4-3f3dae51c31c
+ |
+ | Version: 1.8.5.5 (100% confidence)
+ | Found By: Readme - Stable Tag (Aggressive Detection)
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/jquery-collapse-o-matic/readme.txt
+ | Confirmed By: Readme - ChangeLog Section (Aggressive Detection)
+ |  - https://ispdc2022.dmi.unibas.ch/wp-content/plugins/jquery-collapse-o-matic/readme.txt
+[+] WPScan DB API OK
+ | Plan: free
+ | Requests Done (during the scan): 7
+ | Requests Remaining: 3
+[+] Finished: Thu Sep 24 12:54:21 2026
+[+] Requests Done: 3345
+[+] Cached Requests: 14
+[+] Most response codes received: 404: 2164, 200: 1165, 403: 12, 302: 2, 500: 1
+[!] Too many client errors (4xx). This could indicate access restrictions, authentication issues, or WAF blocking
+[+] Data Sent: 1.086 MB
+[+] Data Received: 29.606 MB
+[+] Memory used: 349.938 MB
+[+] Elapsed time: 00:18:11
+
+Scan Aborted: SIGTERM
+Trace: /opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:166:in 'Ethon::Curl.select'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:166:in 'block in Ethon::Multi::Operations#set_fds'
+<internal:kernel>:168:in 'Kernel#loop'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:165:in 'Ethon::Multi::Operations#set_fds'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/ethon-0.18.0/lib/ethon/multi/operations.rb:54:in 'Ethon::Multi::Operations#perform'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/hydra/runnable.rb:15:in 'Typhoeus::Hydra::Runnable#run'
+/opt/wpscan/vendor/bundle/ruby/3.4.0/gems/typhoeus-1.6.0/lib/typhoeus/hydra/memoizable.rb:51:in 'Typhoeus::Hydra::Memoizable#run'
+/opt/wpscan/lib/wpscan/finders/finder/enumerator.rb:49:in 'WPScan::Finders::Finder::Enumerator#enumerate'
+/opt/wpscan/app/finders/plugins/known_locations.rb:30:in 'WPScan::Finders::Plugins::KnownLocations#aggressive'
+/opt/wpscan/lib/wpscan/finders/base_finders.rb:31:in 'WPScan::Finders::BaseFinders#run_finder'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:18:in 'block (2 levels) in WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:17:in 'Array#each'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:17:in 'block in WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:16:in 'Array#each'
+/opt/wpscan/lib/wpscan/finders/same_type_finders.rb:16:in 'WPScan::Finders::SameTypeFinders#run'
+/opt/wpscan/lib/wpscan/finders/independent_finder.rb:24:in 'WPScan::Finders::IndependentFinder#find'
+/opt/wpscan/lib/wpscan/finders/independent_finder.rb:12:in 'WPScan::Finders::IndependentFinder::ClassMethods#find'
+/opt/wpscan/lib/wpscan/target.rb:169:in 'WPScan::Target#plugins'
+/opt/wpscan/app/controllers/enumeration/enum_methods.rb:185:in 'WPScan::Controller::Enumeration#enum_wp_items'
+/opt/wpscan/app/controllers/enumeration/enum_methods.rb:128:in 'WPScan::Controller::Enumeration#enum_plugins'
+/opt/wpscan/app/controllers/enumeration.rb:36:in 'WPScan::Controller::Enumeration#run'
+/opt/wpscan/lib/wpscan/controllers.rb:71:in 'Array#each'
+/opt/wpscan/lib/wpscan/controllers.rb:71:in 'block in WPScan::Controllers#run'
+/usr/lib/ruby/3.4.0/timeout.rb:168:in 'Timeout.timeout'
+/opt/wpscan/lib/wpscan/controllers.rb:66:in 'WPScan::Controllers#run'
+/opt/wpscan/lib/wpscan/scan.rb:58:in 'WPScan::Scan#run'
+/opt/wpscan/bin/wpscan:18:in 'block in <main>'
+/opt/wpscan/lib/wpscan/scan.rb:18:in 'WPScan::Scan#initialize'
+/opt/wpscan/bin/wpscan:6:in 'Class#new'
+/opt/wpscan/bin/wpscan:6:in '<main>'

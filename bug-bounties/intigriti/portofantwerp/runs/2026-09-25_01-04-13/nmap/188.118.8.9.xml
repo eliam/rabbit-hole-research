@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.80 scan initiated Fri Sep 25 01:11:33 2026 as: nmap -sT -Pn -p 443 -oA runs/2026-09-25_01-04-13/nmap/188.118.8.9 -sV -&#45;open -&#45;version-light 188.118.8.9 -->
+<nmaprun scanner="nmap" args="nmap -sT -Pn -p 443 -oA runs/2026-09-25_01-04-13/nmap/188.118.8.9 -sV -&#45;open -&#45;version-light 188.118.8.9" start="1790298693" startstr="Fri Sep 25 01:11:33 2026" version="7.80" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="1" services="443"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1790298698" endtime="1790301149"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="188.118.8.9" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="https" method="table" conf="3"/></port>
+</ports>
+<times srtt="196246" rttvar="196246" to="981230"/>
+</host>
+<runstats><finished time="1790301150" timestr="Fri Sep 25 01:52:30 2026" elapsed="2457.80" summary="Nmap done at Fri Sep 25 01:52:30 2026; 1 IP address (1 host up) scanned in 2457.80 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

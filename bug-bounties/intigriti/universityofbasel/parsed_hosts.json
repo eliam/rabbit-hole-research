@@ -1,0 +1,4644 @@
+[
+ {
+  "ip": "131.152.189.33",
+  "host": "dmi-pubsvnsvr.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.58/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.189.37",
+  "host": "dmi-ai-icaps.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 8.9p1 Ubuntu 3ubuntu0.17 (Ubuntu Linux; protocol 2.0)/"
+   },
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/    Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.189.39",
+  "host": "dmi-ai-web.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.189.40",
+  "host": "dmi-ai-repos.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 8.9p1 Ubuntu 3ubuntu0.17 (Ubuntu Linux; protocol 2.0)/ Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.189.41",
+  "host": "dmi-ai-socs.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.189.48",
+  "host": "dmi-chronos.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/  Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.189.55",
+  "host": "dmi-bmda.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/  Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.109",
+  "host": "fp-dmz-survey-1.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.22.1/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.111",
+  "host": "fp-dmz-support.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.114",
+  "host": "fp-dmz-booked.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.115",
+  "host": "fp-dmz-ocdetect.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.65",
+  "host": "fp-dmz-cdn.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.66",
+  "host": "fp-dmz-psycherocks.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.71",
+  "host": "fp-dmz-apps-2.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.22.1/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.73",
+  "host": "fp-dmz-otree.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.76",
+  "host": "fp-dmz-mdm.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.78",
+  "host": "fp-dmz-meet.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.80",
+  "host": "fp-dmz-limey.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.29.5/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.81",
+  "host": "fp-dmz-filetransfer.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.84",
+  "host": "fp-dmz-forms.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.22.1/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.88",
+  "host": "fp-dmz-gitlab.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.91",
+  "host": "fp-dmz-teams.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.22.1/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.92",
+  "host": "fp-dmz-auth.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.22.1/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.96",
+  "host": "fp-dmz-rocketscience.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.191.97",
+  "host": "fp-dmz-redcap.psycho.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.214.10",
+  "host": "ingress-005.k8s-001.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.214.2",
+  "host": "basel-liver-biobank.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.214.20",
+  "host": "ingress-k001.k8s-001.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "envoy/"
+   },
+   {
+    "port": 443,
+    "svc": "https?",
+    "ver": "/       Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.214.21",
+  "host": "ingress-k002.k8s-001.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "envoy/"
+   },
+   {
+    "port": 443,
+    "svc": "https?",
+    "ver": "/       Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.214.22",
+  "host": "ingress-k003.k8s-001.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "envoy/  Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.214.24",
+  "host": "ingress-k005.k8s-001.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "envoy/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "envoy/       Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.214.26",
+  "host": "ingress-k007.k8s-001.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "https?",
+    "ver": "/  Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.214.3",
+  "host": "ingress-002.k8s-001.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.10",
+  "host": "its-web-010.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.116",
+  "host": "its-iam-viaweb-prod-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.119",
+  "host": "its-gitlab-002.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.12",
+  "host": "its-web-012.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.120",
+  "host": "its-gitlab-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.13",
+  "host": "its-web-013.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.15",
+  "host": "its-web-015.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.16",
+  "host": "its-web-016.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.17",
+  "host": "its-web-017.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.2",
+  "host": "its-web-002.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.20",
+  "host": "its-web-020.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.23",
+  "host": "its-web-023.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.24",
+  "host": "its-web-024.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.26",
+  "host": "its-web-026.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/   Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.28",
+  "host": "its-web-028.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.3",
+  "host": "its-web-003.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.32",
+  "host": "its-web-032.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.38",
+  "host": "its-web-038.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.39",
+  "host": "its-web-039.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.4",
+  "host": "its-web-004.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.40",
+  "host": "its-web-040.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.44",
+  "host": "its-web-oauth-logon-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.58",
+  "host": "its-mag-hap-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.59",
+  "host": "its-mag-hap-002.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.62",
+  "host": "fip-adam-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.64",
+  "host": "its-adam-hap-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.65",
+  "host": "its-adam-hap-002.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.7",
+  "host": "its-web-007.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.79",
+  "host": "its-ilias-web-test-02.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.8",
+  "host": "its-web-008.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.215.9",
+  "host": "its-web-009.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.1",
+  "host": "ita-margini2.romsem.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.129",
+  "host": "bz-rgts01-vsl01.bioz.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.130",
+  "host": "nmc-tales-24.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.133",
+  "host": "zoo-web.zoo.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.134",
+  "host": "dbe-dmzcloud.dbe.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 9.6p1 Ubuntu 3ubuntu13.19 (Ubuntu Linux; protocol 2.0)/"
+   },
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.58/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/      Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.137",
+  "host": "dasch-test-19.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.138",
+  "host": "dbe-derm-labeling.dbe.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 8080,
+    "svc": "http-proxy",
+    "ver": "WSGIServer|0.2 CPython|3.13.12/    Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.142",
+  "host": "nmc-fallback-24.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.143",
+  "host": "dbe-derm.dbe.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.144",
+  "host": "dmi-bebb.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.148",
+  "host": "lzm-medme-fe-dev3.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.150",
+  "host": "dasch-ls-prod-01.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.154",
+  "host": "slw-comicverse.dslw.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.41/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.41 ((Ubuntu))/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.162",
+  "host": "lzm-medme-be-prod1.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 8080,
+    "svc": "http-proxy",
+    "ver": "/     Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.167",
+  "host": "dasch-test-06.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.174",
+  "host": "philhist-papyri-01.philhist.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.177",
+  "host": "its-iam-dist-ext.its.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 9.6p1 Ubuntu 3ubuntu13.19 (Ubuntu Linux; protocol 2.0)/        Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.178",
+  "host": "transcriptiones.dg.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 8080,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.41 ((Ubuntu))/  Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.189",
+  "host": "dasch-test-02.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.190",
+  "host": "dasch-test-03.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.191",
+  "host": "dasch-test-04.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.192",
+  "host": "dasch-test-05.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.196",
+  "host": "lzm-medme-fe-prod1.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.197",
+  "host": "dasch-ops-01.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.198",
+  "host": "lzm-medme-fe-dev1.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.2",
+  "host": "urz-nextron.urz.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.205",
+  "host": "dmi-sada.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.207",
+  "host": "dmi-ispdc2022.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.214",
+  "host": "dasch-test-07.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.215",
+  "host": "dasch-test-08.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.216",
+  "host": "dasch-test-09.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.217",
+  "host": "dasch-test-10.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.219",
+  "host": "dasch-test-11.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.223",
+  "host": "rise-test1.philhist.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.224",
+  "host": "rise-test2.philhist.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.63/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.63 ((Ubuntu))/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.226",
+  "host": "dasch-test-12.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.227",
+  "host": "dasch-test-13.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.228",
+  "host": "dasch-test-14.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/    Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.229",
+  "host": "dasch-svc-01.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.232",
+  "host": "dasch-test-16.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.233",
+  "host": "dasch-test-15.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.234",
+  "host": "lzm-svl-elastic01.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.235",
+  "host": "lzm-svl-elastic02.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.237",
+  "host": "dasch-dsp-demo-01.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.238",
+  "host": "dig-curation.dhlab.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.239",
+  "host": "lzm-medme-fe-dev2.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.241",
+  "host": "dasch-existdb-01.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.242",
+  "host": "dasch-test-17.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.243",
+  "host": "dmi-programming.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/  Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.217.4",
+  "host": "histology-dbm.dbm.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Microsoft IIS httpd 10.0/     Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.222.142",
+  "host": "",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.222.145",
+  "host": "",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.222.146",
+  "host": "",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.222.147",
+  "host": "",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.222.150",
+  "host": "",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/"
+   },
+   {
+    "port": 8443,
+    "svc": "ssl|https-alt",
+    "ver": "/        Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.222.152",
+  "host": "",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.10",
+  "host": "swiss-model.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.12",
+  "host": "cameo5.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.13",
+  "host": "docs.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.14",
+  "host": "uniprot-3d.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.31.0/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https?",
+    "ver": "/    Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.15",
+  "host": "model-archive.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "nginx/       Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.18",
+  "host": "swiss-model-beta.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.19",
+  "host": "glyfix.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.20",
+  "host": "chat.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.22",
+  "host": "sleep-wake-atlas.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.25",
+  "host": "bonsai-new.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.27",
+  "host": "realphy-new.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.38",
+  "host": "alphabet.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.39",
+  "host": "stcs-universe.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.40",
+  "host": "swipe-study.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https?",
+    "ver": "/     Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.41",
+  "host": "redcap-scicore-devel.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.43",
+  "host": "scheiffele-isoform-atlas.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.224.44",
+  "host": "stcs-website.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https?",
+    "ver": "/   Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.225.8",
+  "host": "ucmobile.swisstph.ch",
+  "svc": [
+   {
+    "port": 8443,
+    "svc": "ssl|https-alt",
+    "ver": "/  Ignored State: filtered (5)"
+   }
+  ],
+  "scope": false
+ },
+ {
+  "ip": "131.152.226.103",
+  "host": "dbe-events.dbe.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.226.15",
+  "host": "its-ld-csa-p01.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/       Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.226.240",
+  "host": "its-sma-1.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.227.12",
+  "host": "its-datex-ext.its.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 9.6p1 Ubuntu 3ubuntu13.19 (Ubuntu Linux; protocol 2.0)/        Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.227.14",
+  "host": "pharma-virtualtoxlab-server23.pharma.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.227.30",
+  "host": "unidist-ext.urz.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 4.3 (protocol 2.0)/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.227.68",
+  "host": "its-expressway-e1.unibas.ch",
+  "svc": [
+   {
+    "port": 8443,
+    "svc": "ssl|http",
+    "ver": "Cisco Expressway E/     Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.227.69",
+  "host": "its-expressway-e2.unibas.ch",
+  "svc": [
+   {
+    "port": 8443,
+    "svc": "ssl|http",
+    "ver": "Cisco Expressway E/     Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.227.93",
+  "host": "ns2-ext.its.unibas.ch",
+  "svc": [
+   {
+    "port": 53,
+    "svc": "domain",
+    "ver": "ISC BIND/   Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.100",
+  "host": "webin-dmz.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.103",
+  "host": "sphn-ideal-dev.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https?",
+    "ver": "/     Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.110",
+  "host": "ga4gh-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.111",
+  "host": "terminology-dcc-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.112",
+  "host": "redcap-stcs-ubuntu.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.113",
+  "host": "portal.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.114",
+  "host": "metrics-proxy.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/ Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.120",
+  "host": "",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.121",
+  "host": "scriptgen-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.123",
+  "host": "nidc.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https?",
+    "ver": "/     Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.125",
+  "host": "scicore-web-staging-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.21.6/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.21.6/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.126",
+  "host": "scicore-web-prod-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.21.6/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.21.6/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.130",
+  "host": "exercise-atlas-handschin.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.135",
+  "host": "gleichstellung-simulation.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.136",
+  "host": "scismara.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.15",
+  "host": "ismara.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.20",
+  "host": "schwede-static-webs.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.13.12/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.41",
+  "host": "hp-swisstph.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.6 ((CentOS))/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.46",
+  "host": "crunch.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.6 ((CentOS) OpenSSL|1.0.2k-fips mod_wsgi|4.6.5 Python|2.7)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.6 ((CentOS) OpenSSL|1.0.2k-fips mod_wsgi|4.6.5 Python|2.7)/    Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.47",
+  "host": "realphy.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.48",
+  "host": "dwt.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.6 ((CentOS) OpenSSL|1.0.2k-fips mod_wsgi|4.6.5 Python|2.7)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.6 ((CentOS) OpenSSL|1.0.2k-fips mod_wsgi|4.6.5 Python|2.7)/    Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.50",
+  "host": "gitlab.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.53",
+  "host": "stcs.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.55",
+  "host": "polyasite.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.57",
+  "host": "redcap.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.59",
+  "host": "om.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.14.1/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.14.1/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.67",
+  "host": "polyasite-v1.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.17.0/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.69",
+  "host": "polyasite-dev.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.17.2/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.76",
+  "host": "sarcoatlas.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.17.3/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.17.3/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.77",
+  "host": "stcs-devel.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.79",
+  "host": "crumara.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.87",
+  "host": "talk-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.16.1/    Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.88",
+  "host": "io.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.90",
+  "host": "mirz-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.10/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.93",
+  "host": "iptgxdb-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.29.3/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.229.99",
+  "host": "zavolan-biozentrum-backend.scicore.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.10 ((Debian))/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.230.25",
+  "host": "ub-archeco24.ub.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.230.31",
+  "host": "ub-webproxy22.ub.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.230.51",
+  "host": "ub-po02.ub.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.230.53",
+  "host": "ub-po01.ub.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.230.65",
+  "host": "ub-iiifpresentation24.ub.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.230.7",
+  "host": "ub-rdv22.ub.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.10",
+  "host": "euro-noise.euro.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.100",
+  "host": "dasch-test-27.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.101",
+  "host": "dasch-test-28.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.102",
+  "host": "dasch-test-29.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.103",
+  "host": "dasch-test-30.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.104",
+  "host": "dasch-test-31.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.106",
+  "host": "mws-jidm.philhist.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.108",
+  "host": "rise-services.rise.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.110",
+  "host": "dhlab-iii.dhlab.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.12",
+  "host": "dasch-test-20.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.121",
+  "host": "its-chocolatey-repo-003.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.122",
+  "host": "dbm-spaceexplorer.dbm.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.123",
+  "host": "nmc-video.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.13",
+  "host": "dasch-test-26.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.14",
+  "host": "philhist-d-scribes.philhist.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.41/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.41/    Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.140",
+  "host": "its-ig-iam-dach-dev.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.15",
+  "host": "dasch-ls-test-01.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.17",
+  "host": "its-idm-monitoring.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.19",
+  "host": "dasch-test-22.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.2",
+  "host": "lzm-chat.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.20",
+  "host": "dasch-test-23.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.21",
+  "host": "nmc-scaht.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.22",
+  "host": "dbe-cian.dbe.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52/    Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.23",
+  "host": "dmi-was.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.27",
+  "host": "dasch-meta-01.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.28",
+  "host": "dasch-test-24.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.29",
+  "host": "dg-vocal-media.philhist.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.33",
+  "host": "its-jenkins.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.35",
+  "host": "nmc-web-24.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.36",
+  "host": "rise-web01.philhist.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.4",
+  "host": "bot-isotope-01.bot.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.58/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.40",
+  "host": "bz-resit-vmwebext03.biozentrum.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.41",
+  "host": "rise-mosaic.rise.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.44",
+  "host": "bz-resit-vmwebext04.biozentrum.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.45",
+  "host": "its-cs-sched01.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 8080,
+    "svc": "http",
+    "ver": "Jetty 12.1.12/   Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.47",
+  "host": "its-cct-gitlab-runner-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.48",
+  "host": "lzm-dmz2.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.49",
+  "host": "lzm-dmz1.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.5",
+  "host": "dasch-nodegoat-01.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.51",
+  "host": "lzm-medme-fe-dev5.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 8080,
+    "svc": "http-proxy",
+    "ver": "/  Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.52",
+  "host": "dhlab-journey-star.dhlab.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 8080,
+    "svc": "http",
+    "ver": "nginx 1.17.10/   Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.53",
+  "host": "rise-ndrcore.rise.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.54",
+  "host": "lzm-medme-pub-dev1.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 8080,
+    "svc": "http-proxy",
+    "ver": "/  Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.55",
+  "host": "lzm-medme-ci.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.57",
+  "host": "lzm-kibana.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.59",
+  "host": "bz-resit-vmwebext06.biozentrum.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.60",
+  "host": "dmi-sphexa.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd 2.4.52 ((Ubuntu))/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.61",
+  "host": "dasch-test-25.dasch.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Golang net|http server (Go-IPFS json-rpc or InfluxDB API)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.62",
+  "host": "mewi-fm-db.mewi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.63",
+  "host": "its-avassist.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.64",
+  "host": "bot-furka.bot.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.65",
+  "host": "dmi-gameshow.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.24.0 (Ubuntu)/   Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.67",
+  "host": "met-eodata.met.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 8.9p1 Ubuntu 3ubuntu0.17 (Ubuntu Linux; protocol 2.0)/ Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.68",
+  "host": "philhist-vanuatu-01.philhist.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.69",
+  "host": "its-netcord.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.70",
+  "host": "its-netcord-test.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.72",
+  "host": "zuv-markt-003.zuv.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 8.9p1 Ubuntu 3ubuntu0.17 (Ubuntu Linux; protocol 2.0)/"
+   },
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.73",
+  "host": "lzm-dmz3.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.18.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx 1.18.0 (Ubuntu)/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.74",
+  "host": "zuv-lernboerse.zuv.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 9.6p1 Ubuntu 3ubuntu13.19 (Ubuntu Linux; protocol 2.0)/"
+   },
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 8080,
+    "svc": "rtsp",
+    "ver": "/     Ignored State: filtered (2)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.76",
+  "host": "lzm-ticket.meddek.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.24.0 (Ubuntu)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.77",
+  "host": "nmc-matomo-24.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.78",
+  "host": "nmc-hp5-24.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/"
+   },
+   {
+    "port": 8080,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.68 ((Debian))/        Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.8",
+  "host": "dhlab-shard.dhlab.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.52/  Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.82",
+  "host": "phys-nvc-repo-2.physik.unibas.ch",
+  "svc": [
+   {
+    "port": 22,
+    "svc": "ssh",
+    "ver": "OpenSSH 9.6p1 Ubuntu 3ubuntu13.19 (Ubuntu Linux; protocol 2.0)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.83",
+  "host": "dmi-k8s-04.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.84",
+  "host": "dmi-k8s-05.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.85",
+  "host": "dmi-k8s-06.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx (reverse proxy)/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx (reverse proxy)/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.86",
+  "host": "dslw-comicverse.dslw.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd 2.4.58 ((Ubuntu))/       Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.87",
+  "host": "dmi-matrix.dmi.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.9",
+  "host": "its-thorus-mobile.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.90",
+  "host": "nmc-monitor-24.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/"
+   },
+   {
+    "port": 8080,
+    "svc": "tcpwrapped",
+    "ver": "/        Ignored State: filtered (3)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.91",
+  "host": "nmc-tuana-24.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.92",
+  "host": "bz-resit-vmwebext07.biozentrum.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Apache httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.93",
+  "host": "nmc-stream-24.nmc.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "Caddy httpd/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/      Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.94",
+  "host": "bz-rgrn01-vsl01.bioz.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.95",
+  "host": "bz-rgrn01-vsl02.bioz.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/        Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.238.96",
+  "host": "bz-ovlf-nimwegen.bioz.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "nginx 1.30.3/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "nginx/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.253.3",
+  "host": "fip-dasch-prod-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "https?",
+    "ver": "/    Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.254.209",
+  "host": "fip-exc-nonprod-hap-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Microsoft IIS httpd 10.0/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.254.218",
+  "host": "fip-exc-prod-hap-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Microsoft IIS httpd 10.0/  Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.254.220",
+  "host": "fip-escada-prod-hap-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.254.221",
+  "host": "fip-sap-prod-hap-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|http",
+    "ver": "Apache httpd/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.254.223",
+  "host": "fip-adfs-prod-hap-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.254.224",
+  "host": "fip-itsm-prod-hap-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.254.30",
+  "host": "fip-hap-lccms-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/       Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.254.31",
+  "host": "fip-hap-lccms-ext-002.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/       Ignored State: filtered (5)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.255.150",
+  "host": "fip-ngi-prod-c02-ext-002.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.255.152",
+  "host": "fip-ngi-nonprod-c04-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.255.156",
+  "host": "fip-ngi-prod-c04-ext-001.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.255.182",
+  "host": "fip-ngi-nonprod-c04-ext-005.its.unibas.ch",
+  "svc": [
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.5.243",
+  "host": "vpn.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ },
+ {
+  "ip": "131.152.5.250",
+  "host": "webvpn.unibas.ch",
+  "svc": [
+   {
+    "port": 80,
+    "svc": "http",
+    "ver": "/"
+   },
+   {
+    "port": 443,
+    "svc": "ssl|https",
+    "ver": "/ Ignored State: filtered (4)"
+   }
+  ],
+  "scope": true
+ }
+]
