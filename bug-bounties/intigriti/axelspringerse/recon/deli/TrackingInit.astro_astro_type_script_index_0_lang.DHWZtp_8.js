@@ -1,0 +1,1 @@
+import{t as e}from"./tracking.DFsvgfMg.js";var t=document.getElementById(`tracking-page-data`);t?.textContent&&e(JSON.parse(t.textContent));

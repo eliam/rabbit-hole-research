@@ -1,0 +1,62 @@
+# Nmap 7.991 scan initiated Sat Sep 26 01:01:31 2026 as: nmap -Pn -n -T3 --max-rate 150 --top-ports 100 -iL ip-ranges.txt -oN logs/nmap-iprange.txt
+Nmap scan report for 18.184.198.198
+Host is up (0.00s latency).
+All 100 scanned ports on 18.184.198.198 are in ignored states.
+Not shown: 98 filtered tcp ports (no-response), 2 filtered tcp ports (net-unreach)
+
+Nmap scan report for 18.185.214.59
+Host is up (0.00s latency).
+All 100 scanned ports on 18.185.214.59 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 18.194.109.179
+Host is up (0.00s latency).
+All 100 scanned ports on 18.194.109.179 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 3.121.117.72
+Host is up (0.00s latency).
+All 100 scanned ports on 3.121.117.72 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 3.121.138.10
+Host is up (0.00s latency).
+All 100 scanned ports on 3.121.138.10 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 3.121.138.128
+Host is up (0.00s latency).
+All 100 scanned ports on 3.121.138.128 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 3.121.138.134
+Host is up (0.00s latency).
+All 100 scanned ports on 3.121.138.134 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 3.121.138.170
+Host is up (0.00s latency).
+All 100 scanned ports on 3.121.138.170 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 3.121.138.33
+Host is up (0.00s latency).
+All 100 scanned ports on 3.121.138.33 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 3.121.138.43
+Host is up (0.00s latency).
+All 100 scanned ports on 3.121.138.43 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 3.124.248.208
+Host is up (0.00s latency).
+All 100 scanned ports on 3.124.248.208 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+Nmap scan report for 35.156.137.39
+Host is up (0.00s latency).
+All 100 scanned ports on 35.156.137.39 are in ignored states.
+Not shown: 99 filtered tcp ports (no-response), 1 filtered tcp ports (net-unreach)
+
+# Nmap done at Sat Sep 26 01:03:00 2026 -- 12 IP addresses (12 hosts up) scanned in 89.05 seconds

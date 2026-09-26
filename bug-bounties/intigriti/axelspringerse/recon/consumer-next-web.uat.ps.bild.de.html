@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <script>// Shared ps-rosetta loader, inlined into index.html and cockpit.html at build
+// time by rosetta-loader-plugin.ts. Runs in the real user path, so it stays
+// inline (no extra network fetch) and blocks DOM parsing to guarantee
+// ps-rosetta.js is requested before the app module evaluates.
+(function () {
+  var ROSETTA_URL_COOKIE = 'rosettaurl';
+  var ROSETTA_ALLOWED_URLS = {
+    prod: 'https://rosetta.prod.ps.axelspringer.de/ps-rosetta.js',
+    uat: 'https://rosetta.uat.ps.axelspringer.de/ps-rosetta.js',
+    // local requires a dev setup (local /etc/hosts or local DNS); not reachable otherwise
+    local: 'https://rosetta.local.ps.axelspringer.de/ps-rosetta.js'
+  };
+
+  function getRosettaUrlFromCookie() {
+    var match = document.cookie
+      .split(';')
+      .map(function (c) {
+        return c.trim();
+      })
+      .find(function (c) {
+        return c.startsWith(ROSETTA_URL_COOKIE + '=');
+      });
+    if (!match) return null;
+    var url = decodeURIComponent(match.slice(ROSETTA_URL_COOKIE.length + 1));
+    // allowlist: only accept known rosetta URLs to prevent script injection
+    var allowed = Object.values(ROSETTA_ALLOWED_URLS);
+    return allowed.indexOf(url) !== -1 ? url : null;
+  }
+
+  function getRosettaUrlFromHostname() {
+    var host = window.location.hostname;
+    var stage = host.includes('uat') || host.includes('local') ? 'uat' : 'prod';
+    return ROSETTA_ALLOWED_URLS[stage];
+  }
+
+  var s = document.createElement('script');
+  s.async = false;
+  s.src = getRosettaUrlFromCookie() || getRosettaUrlFromHostname();
+  document.head.appendChild(s);
+})();
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" crossorigin src="/consumerWeb-C3YRChee.js"></script>
+    <link rel="modulepreload" crossorigin href="/feature-6aDJ9cGG.js">
+    <link rel="modulepreload" crossorigin href="/template-CoPTMbnE.js">
+    <link rel="modulepreload" crossorigin href="/Loading-D6WujyUD.js">
+    <link rel="stylesheet" crossorigin href="/template-nGnvFJaF.css">
+    <link rel="stylesheet" crossorigin href="/Loading-DkMyzxf3.css">
+    <link rel="stylesheet" crossorigin href="/consumerWeb-DsWP7-XV.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

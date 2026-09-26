@@ -1,0 +1,147 @@
+/*
+ * $Id$
+ */
+
+
+window.CustomSSO= function(){
+}
+window.CustomSSO.previousURL="";
+window.CustomSSO.loadedProducts=[];
+window.CustomSSO.checkLoggedIn=function(frameObj)
+{
+  var params=[];
+  var currentURL=adsjQuery(frameObj).attr('src'); //No I18N
+  var isReload=(window.CustomSSO.previousURL==currentURL)?true:false;
+  var productName=adsjQuery(frameObj).attr('PRODUCT_NAME'); //No I18N
+  var ignoreSSO=false;
+  
+  // For handling Singout case when SingleSignout is Disabled
+  for(i=0;i<window.CustomSSO.loadedProducts.length;i++)
+  {
+    if(window.CustomSSO.loadedProducts[i]==productName)
+    {
+	ignoreSSO=true;
+    }
+  }
+  
+  if(ignoreSSO==false)
+  {
+   window.CustomSSO.loadedProducts[window.CustomSSO.loadedProducts.length]=productName;
+  }
+  
+  window.CustomSSO.previousURL=currentURL;
+  
+  params[0]=productName;
+  params[1]=window.CustomSSO.getCookie('CUSTOM_SSO_TICKET');
+  params[2]=window.CustomSSO.getCookie('CUSTOM_SSO_APP_NAME');
+  params[3]=isReload; 
+  params[4]=window.CustomSSO.getCookie('APPS_PANE_LOADED');
+  params[5]=window.CustomSSO.getCookie('CUSTOM_SSO_APP_TAG_NAME');
+  params[6]=ignoreSSO;
+  params[7]=window.useSecureCookie;
+
+  if (!(adsjQuery.browser.msie && parseInt(adsjQuery.browser.version)<=7 && !document.documentMode))
+  {
+      	var originParams=[];
+	originParams[0]=window.origin;
+	window.WindowHandler.sendRequest(frameObj.contentWindow,'setAllowedOrigin',JSON.stringify(originParams)); // No I18n
+	window.WindowHandler.sendRequest(frameObj.contentWindow,'CustomSSOVerification',JSON.stringify(params)); // No I18n
+  }
+   // For older product versions which donot have CustomSSO implementation
+  window.setTimeout(function(){window.RequestConstants["showFrame"](params[0]);},1500);
+ }
+
+window.CustomSSO.getCookie=function(cname) {
+    var name = cname + "=";
+    var ca = window.document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = adsjQuery.trim(ca[i]);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+} 
+
+window.CustomSSO.setCookie=function(cname, cvalue, isSecure) {
+   var cookieString = cname + "=" + cvalue + "; path="+"/"+"; ";
+  // there will be issue in clearing shared cookies during sign out from appspane when integrated products context is different ,so path is set to '/'
+  if(isSecure){
+    cookieString += "secure; ";//No i18n
+  }
+  window.document.cookie = cookieString;
+} 
+
+window.CustomSSO.checkSignedInAndSetCookie=function(frameName,ssoTicket,appName,isReload,appsPaneLoaded,tagName,ignoreSSO,isSecure)
+{
+	 var customSSOExists=true;
+	 
+	 // For handling signout when SingleSignout is disabled
+	 if(ignoreSSO==undefined || ignoreSSO==false)
+	 {
+	   //Checking whether ticket is set in cookie
+	     if(window.CustomSSO.getCookie('CUSTOM_SSO_TICKET')=='' || window.CustomSSO.getCookie('CUSTOM_SSO_TICKET')==undefined)
+	     {
+		  customSSOExists=false;
+	     } 
+		 
+		 // If not exists then setting from the parameters Passed
+	     if(!customSSOExists && (ssoTicket!='' && ssoTicket!=undefined))
+	     {
+		//These cookies will be passed to the product running in cross domain
+		   window.CustomSSO.setCookie('CUSTOM_SSO_TICKET',ssoTicket,isSecure); // No I18n
+		   window.CustomSSO.setCookie('CUSTOM_SSO_APP_NAME',appName,isSecure); // No I18n
+		   window.CustomSSO.setCookie('CUSTOM_SSO_APP_TAG_NAME',tagName,isSecure); //No I18n
+		   
+	     }	     
+	 }
+	 if(appsPaneLoaded!='' && (appsPaneLoaded!=undefined))
+	 {
+	 window.CustomSSO.setCookie('APPS_PANE_LOADED',appsPaneLoaded,isSecure); // No I18n
+	 }
+	 
+	 // Checking whether iframe is loaded
+	 // Products in Iframe can call window.parent without exception by creating a frame by the product itself.
+	 if(!self.insideAppsPane)
+	 {
+	    var appsURL="LoadFrame?src="+encodeURIComponent(window.location.href)+"&frame_name="+frameName; // No I18n
+	    window.location.href=appsURL;
+	 }
+	 else if(!customSSOExists && !isReload)
+	 {
+	  window.location.reload();
+	 }
+	 else
+	 {
+		var params=[];
+		params[0]=frameName;
+		window.WindowHandler.sendRequest(parent,'showFrame',JSON.stringify(params)); // No I18n
+	 }
+}
+
+window.CustomSSO.checkIsSessionExpired=function()
+{
+    try
+    {
+      if(self!=top && (self.document.body.innerHTML.indexOf('j_security_check')>0 || self.document.body.innerHTML.indexOf('action=\"two_factor_auth')>0))
+      {
+	  var frameObj=window.frameElement;
+	  if(frameObj)
+	  {
+        	var productName=frameObj.getAttribute("frame_name"); // No I18n
+	        productName=(productName==null)?frameObj.getAttribute("product_name"):productName; // No I18n
+		var params=[];
+		params[0]=productName;
+		params[1]="true";
+		window.WindowHandler.sendRequest(top,"checkAppsPaneLogout",JSON.stringify(params)); // No I18n
+	  }
+      }
+    }catch(err){}
+ }
+
+
+document.onreadystatechange = function()
+{
+     if(document.readyState === 'complete')
+     {
+	window.CustomSSO.checkIsSessionExpired();
+     }
+}

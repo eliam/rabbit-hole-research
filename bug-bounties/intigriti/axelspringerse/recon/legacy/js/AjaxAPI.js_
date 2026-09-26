@@ -1,0 +1,1985 @@
+/**
+ * @class
+ * A <b>static</b> class containing API's for  Ajax related operations.
+ * It has methods for 
+ * <ul><li> Sending Ajax Requests
+ *        <ul><li>{@link #sendRequest}</li></ul></li>
+ *     <li> Predefined functions for handling response such as
+ *        <ul><li>{@link #closeView}</li>
+ *            <li>{@link #refreshView}</li></ul></li>
+ *     <li> General Utilities such as
+ *         <ul><li>{@link #setOnNextPageLoadScript}</li></ul></li>
+ *
+ *            
+ *<br/>
+ * @see WebViewAPI.sendResponse in JavaAPI.
+ */
+var AjaxAPI = new function(){}
+
+/**
+ * The name of the iframe to use in {@link AjaxAPI#sendNavigableRequest}.
+ * @type String
+ */
+AjaxAPI.navigFrameName = null;  
+
+  /**
+   * Returns the native implementation for XMLHTTP based on browser.
+   * Developers should avoid using this API. Rather sendRequest should be used.
+   * @exception Error
+   * @return returns XMLHttpRequest (or) ActiveXObject
+   * @see #sendRequest
+   */
+AjaxAPI.getXMLHttpRequest = function()
+{
+  var http_request = null;
+  if (window.XMLHttpRequest) 
+  { // Mozilla, Safari,...
+    http_request = new XMLHttpRequest();
+  } 
+  else if (window.ActiveXObject) 
+  { // IE
+    try 
+    {
+      http_request = new ActiveXObject("Msxml2.XMLHTTP");
+    } 
+    catch (e) 
+    {
+      http_request = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  }
+  return http_request;
+}
+
+/**
+ * Use this function to send an Ajax Request.
+ *<br>  Following are taken care of.
+ *<ul>
+ *    <li>Showing loading/loaded operation status</li>
+ *    <li>Showing Success/Error Message .  </li>
+ *    <li>Showing Error Message incase of server error.</li>
+ *    <li>Showing a mini-login screen incase of session time out.</li>
+ *    <li>Invoking of scripts if present in response.(Will be done at the end after callback function
+ *      is called).</li>
+ *</ul>
+ *<h4>Sample 1</h4>
+ *<pre>  <code>AjaxAPI.sendRequest({URL:"MyDeleteActionAction.ma",PARAMETERS:"RESID=1"});</code></pre>
+ *<h4>Using Predefined Callback Functions</h4>
+ *<pre>  <code> AjaxAPI.sendRequest({URL:"MyDeleteAction.ma",PARAMETERS:"RESID=1",ONSUCCESSFUNC:"AjaxAPI.refreshView",SRCVIEW:"MyView"});</code>  </pre>
+ *<h4>Using anonyamous/inner call back functions</h4>
+ *<pre><code>
+ *  function myTestFunc()
+ *  {
+ *    var <span style="color:green">localVar</span> = "HelloWorldDiv";
+ *    var <span style="color:blue">myAnonFunction</span> = function(response,reqOptions)
+ *    {
+ *       alert("Wow. Succeeded."); 
+ *       alert(response.responseText);
+ *       document.getElementById(<span style="color:green">localVar</span>).innerHTML = <b>response.getOnlyHtml();</b>
+ *
+ *       //Not really needed in this case as local variables are accessable even though this function 
+ *       //will be called asynchronously. Custom reqOptions are usefull for reusable functions such as
+ *       //AjaxAPI.refreshView!!
+ *       alert(reqOptions["MYCALLBACKPARAM"]);
+ *    };
+ *    AjaxAPI.sendRequest({URL:"MyDeleteAction.ma",PARAMETERS:"RESID=1",MYCALLBACKPARAM:"HAI",ONSUCCESSFUNC:<span style="color:blue">myAnonFunction</span>});
+ *  }
+ * </code></pre>
+ *
+ * @param {Object} requestOptions An JavaScript Object  containing the various options. This set of parameters are passed back
+ * to the callback functions along with response.
+ * <h3>Main Option details :</h3>
+ * <ul><li><code>URL</code> <ul><li>The url to send </li><li><i>Mandatory</i></li></ul></li>
+ * <li><code>METHOD</code>  <ul><li>  The protocol method to use. </li>
+ *                             <li><i>Allowed</i> : GET/POST</li><li><i>Default :</i> POST</li�
+ *                         </ul> </li>
+ * <li><code>PARAMETERS</code> <ul><li>The parameters to send. For POST , it is sent in request body. 
+ *                            For GET , the parameters are attached to the URL itself.</li></ul></li>
+ * <li><code>STATUSFUNC </code> <ul><li>The function to invoke for showing 
+ *         status and handling response messages.Generally this is not overridden.
+ *         <li><i>Default :</i> {@link AjaxAPI#showRespMsg}</li><li><i>Data Type</i>: function name (or) reference to a function</ul></li>
+ * <li><code>ONSUCCESSFUNC</code> : <ul><li>The function to invoke in case of success.See {@link AjaxAPI#refreshView}
+ *  for details about the method signature</li><li><i>Data Type</i> : function name (or) reference to a function</ul></li></ul></li>
+ * <li><code>ONFAILUREFUNC</code> : <ul><li>The function to invoke in case of failure.Similar to ONSUCCESSFUNC</li></ul></li>
+ * </ul>
+ */
+/*
+AjaxAPI.sendRequest({URL:PopupUtils.constructURL(), ONSUCCESSFUNC:updateResultList, ONFAILUREFUNC: updateFailure, OPSTATUSID:"popUpdLoadingDiv", OPSTATUSTYPE:"", OPSTATUSLOADINGCLASS: "loadingMessage", OPSTATUSLOADEDCLASS: "loadedMessage"}); */
+AjaxAPI.sendRequest = function(requestOptions)
+{
+  requestOptions = AjaxOptions.getAsAjaxOptions(requestOptions);
+
+  var reqURL = requestOptions["URL"];		//NO I18N
+  	    
+  var xmlHttpReq = AjaxAPI.getXMLHttpRequest();
+  var parameters = requestOptions["PARAMETERS"];//NO I18N
+  var url = requestOptions.v("URL");		//NO I18N
+  // in rest case, since the address bar url will be
+  // of the form /view/xxx/yyy etc. when user give this 
+  // requrl to be relative, the final url should be formed
+  // properly thats why call to updateStateCookieAndAppendSid
+  // not sure if this can be called for non rest also
+  // but I think it can be called, since the state cookie
+  // values should be transfered to server side ...
+  if(typeof RESTFUL != 'undefined' && RESTFUL == true)
+  {
+  	url = updateStateCookieAndAppendSid(url);
+  }
+ /* var target = requestOptions["TARGET"];
+  alert(target);
+  
+  //we have to find the forward url when target is _opener_view_this
+  // do this only when user has not given forward url himself
+ if (target != null && target.indexOf("_opener_view_this") == 0 && requestOptions["FORWARDURL"] == null)
+  {
+  	   var srcViewRefId = requestOptions["SRCVIEW"];
+	   var sourceEl = document.getElementById(srcViewRefId + "_CT");
+	   var parent = DOMUtils.getParentWithAttr(sourceEl, "opener");
+  	   if(parent)
+  	   {
+		 requestOptions["FORWARDURL"] = parent.getAttribute("opener") + ".cc?" + stateData[parent.getAttribute("opener")]["_D_RP"];
+  	   }
+  }
+  
+  // start - condition occurs for webmenuitem configuration
+  if(url.indexOf('_previousurl_') != -1)
+  {
+  	 var viewtoforward = url.substring("_previousurl_".length);
+  	 if(viewtoforward.indexOf("?") != -1)
+  	 {
+  	   	 viewtoforward = viewtoforward.substring(0,viewtoforward.indexOf("?"));
+  	 }  	   	  
+  	 var mcframe = AjaxAPI.getMCFrame(requestOptions);
+  	 url = mcframe.history.getPreviousURL(viewtoforward);  	   	 
+  }
+  else if(url.indexOf('_previousurl') != -1)
+  {
+  	  var mcframe = AjaxAPI.getMCFrame(requestOptions);  	   
+  	  url = mcframe.history.getPreviousURL();
+  }
+  else if(url.indexOf('_currenturl') != -1)
+  {
+  	  var mcframe = AjaxAPI.getMCFrame(requestOptions);  	   
+  	  url = mcframe.history.getCurrentURL();  
+  }
+  else if(target != null && target.indexOf('_mcframe') != -1)
+  {
+  	  AjaxAPI.getMCFrame(requestOptions);
+  }*/
+  // end - condition occurs for webmenuitem configuration
+    	    
+  if (parameters && (requestOptions.vu("METHOD") == 'GET'))
+  {
+    url = appendParamsToUrl(url, parameters);
+  } 
+
+  //We have to append this because even though we will be able to get the 
+  // info from request header, tomcat does not pass this info properly during session time relogin!!.
+  // See WebViewAPI.isAjaxRequest!!.
+ // url = appendParamsToUrl(url,"SUBREQUEST=XMLHTTP");
+  
+  // start forwardurl -  can be a normal url or predefined words
+/*  var forwardurl = requestOptions["FORWARDURL"];
+  if(forwardurl != null)
+  {
+  	  if(forwardurl.indexOf('_previousurl_') != -1)
+  	  {
+  	   	  var viewtoforward = forwardurl.substring("_previousurl_".length);
+  	   	  var mcframe = AjaxAPI.getMCFrame(requestOptions);
+  	   	  forwardurl = mcframe.history.getPreviousURL(viewtoforward);  	   	 
+  	  }
+  	  else if(forwardurl.indexOf('_previousurl') != -1)
+  	  {
+  	   	  	var mcframe = AjaxAPI.getMCFrame(requestOptions);  	   
+  	   		forwardurl = mcframe.history.getPreviousURL();
+  	  }
+	  else if(forwardurl.indexOf('_currenturl') != -1)
+	  {
+	  	  var mcframe = AjaxAPI.getMCFrame(requestOptions);  	   
+	  	  forwardurl = mcframe.history.getCurrentURL();  
+	  }
+  	  else if(target.indexOf('_mcframe') != -1)
+  	  {
+  	  		AjaxAPI.getMCFrame(requestOptions);
+  	  }
+  
+  	  if(requestOptions.vu("METHOD") == 'GET')
+  	  {
+         url = appendParamsToUrl(url,"FORWARDURL=" + encodeURIComponent(forwardurl));
+  	  }
+  	  else
+  	  {
+	     var urlarr = splitURL(forwardurl);
+	     
+	     var replacedparams;
+  	     if(hasTplReference(urlarr['query']) == true)
+  	     {
+  	         replacedparams =  constructURLParams(urlarr['query'],requestOptions['SRCVIEW']);
+  	     }
+  	     else
+  	     {
+  	     	replacedparams = urlarr['query'];
+  	     }
+  	     forwardurl = urlarr['resource'] + "?" + replacedparams;
+  	     parameters = parameters + '&' + "FORWARDURL=" 
+  	     	+ encodeURIComponent(forwardurl);
+      }
+  }*/
+  // end forwardurl 
+      
+  xmlHttpReq.open(requestOptions.vu("METHOD"), url,
+                  requestOptions.isTrue("ASYNCHRONOUS"));	//NO I18N
+    
+  var requestHeaders = new Object();
+  requestHeaders["X-Requested-With"] = 'XMLHttpRequest';	//NO I18N
+
+  if (requestOptions.vu("METHOD") == 'POST') 
+  {
+    requestHeaders['Content-type']= 'application/x-www-form-urlencoded;charset=UTF-8';	//NO I18N
+  }
+
+  /* Force "Connection: close" for Mozilla browsers to work around
+   * a bug where XMLHttpReqeuest sends an incorrect Content-length
+   * header. See Mozilla Bugzilla #246651. 
+   */
+  var value = ''; //No I18N
+  var csrfCookieValue = CommonUtil.getCookie('adscsrf');//No I18N
+  if(csrfCookieValue)
+  {
+    value = csrfCookieValue;
+  }
+  if(parameters == undefined)
+  {   
+    parameters="adscsrf="+value;//No I18N
+  }
+  else if(parameters.indexOf("adscsrf=") === -1)
+  {
+    parameters=parameters+"&adscsrf="+value; //No I18N
+  }
+
+  if (xmlHttpReq.overrideMimeType)
+  {
+    requestHeaders['Connection'] = 'close';	//NO I18N
+  }
+  AjaxUtils.updateObject(requestHeaders, requestOptions["REQUESTHEADERS"]);	//NO I18N
+
+  var body = requestOptions["POSTBODY"] ? requestOptions["POSTBODY"] : parameters;	//NO I18N
+  body = (requestOptions.vu("METHOD") == 'POST')? body : null;		//NO I18N
+  if(body != null)
+  {
+    requestHeaders['Content-length',body.length];	//NO I18N
+  }
+  else if(requestOptions.vu("METHOD") == 'POST')
+  {
+    body="___DUMMYDATA=aa";	//NO I18N
+    requestHeaders['Content-length',body.length];	//NO I18N
+  }
+
+  for (var header in requestHeaders)
+  {
+    xmlHttpReq.setRequestHeader(header,requestHeaders[header]);
+  }
+  var resp = new AjaxResponse(xmlHttpReq);
+  xmlHttpReq.onreadystatechange = function(){AjaxUtils.handleAjaxResponse(resp,requestOptions);};
+
+  if(requestOptions["STATUSFUNC"])
+  {
+    requestOptions.fn("STATUSFUNC")(resp,requestOptions);	//NO I18N
+  }
+  xmlHttpReq.send(body);
+}
+
+/**
+ * Similar to {@link AjaxAPI#sendRequest}. But the Back/Next Button would be supported as
+ * the request is sent via an iframe.
+ * <br><b>Note:</b>
+ *  <ul><li>Only GET is currently supported</li>
+ *      <li>Ensure that <b>bare minimal</b> options are used as these options are also encoded
+ *         into the URL as hash part. More options, more the size of the url!!
+ *      <ul><li>See {@link AjaxOptions#encode}</li></ul></li></ul>
+ *
+ * @param {Map} requestOptions
+ */
+AjaxAPI.sendNavigableRequest = function(requestOptions)
+{
+  requestOptions = AjaxOptions.getAsAjaxOptions(requestOptions);
+  if(requestOptions["METHOD"] != "GET"){throw new Error("Currently only Get is supported.");}
+  var url = AjaxAPI.getAsNavigableAjaxURL(requestOptions);
+  if(AjaxAPI.navigFrameName != null)
+  {
+    if(window.frames[AjaxAPI.navigFrameName].location.href == url)
+    {
+    	// This is a fix done to problem of  the iframe not sending request in IE and firefox,
+    	// when we try to set the same url which the iframe is already pointing to
+    	// this only happens when the url is  too long and its REST and SAS 
+    	// combination
+		window.frames[AjaxAPI.navigFrameName].location.reload();
+    }
+    else
+    {  	
+    	window.frames[AjaxAPI.navigFrameName].location.href = url;
+    }
+  }
+  else
+  {
+    throw new Error("AjaxAPI.navigFrameName has not been set");		//NO I18N
+  }
+}
+
+/**
+ * Returns MCFrame object for the contentareaname 
+ * detail present in requestOptions
+ * @param {Map} requestOptions
+ */
+AjaxAPI.getMCFrame = function(requestOptions)
+{
+	if(requestOptions["CONTENTAREANAME"] != null)
+	{
+		return MCFrame.getMCFrame(requestOptions["CONTENTAREANAME"]);	//NO I18N
+	}
+  	else if(requestOptions["NAME"] != null 
+  	   	  	&& requestOptions["TARGET"].indexOf("_mcframe_this") != -1)	//NO I18N
+  	{
+  	   	var frm = DOMUtils.getForm(requestOptions["NAME"]);	//NO I18N
+  	   	var mcframe = MCFrame.getMCFrame(frm);
+  	   	requestOptions["CONTENTAREANAME"] = mcframe.contentareaname;	//NO I18N
+  	   	return mcframe;
+  	}
+  	else
+  	{
+  	   	var target = requestOptions["TARGET"];	//NO I18N
+  	   	var contentAreaName = target.substring("_mcframe_".length);
+  	   	
+  	   	// Here we are expecting div id should not have "_". That is not possible. Based on the use 
+  	   	// case for coupled filter views this is commented.  
+  	   	/*if(contentAreaName.indexOf("_") != -1)
+  	   	{
+  	   		contentAreaName = contentAreaName.substring(0, contentAreaName.indexOf("_"));
+  	   	}*/
+  	   	return MCFrame.getMCFrame(contentAreaName);
+  	}	
+}
+
+AjaxAPI.getAsNavigableAjaxURL = function(requestOptions)
+{
+  requestOptions = AjaxOptions.getAsAjaxOptions(requestOptions);
+  var encodedOptions = requestOptions.encode(); 
+  var url = requestOptions["URL"];	//NO I18N
+  if(url.indexOf("SUBREQUEST") == -1){ url = appendSubRequestArgs(url);}
+  if(url.lastIndexOf('#') > -1)
+  {
+    url= url.substring(0,url.lastIndexOf('#'));
+  }
+  url += "#" + encodeURIComponent(encodedOptions);
+  return url;
+}
+
+AjaxAPI.checkIfBlankPage = function(resFrame)
+{
+   if((resFrame.location.href == "about:blank")
+      || (resFrame.location.href.indexOf("blank.html") > 0) 
+      || (resFrame.location.href.indexOf("empty.html") > 0))
+   {
+     return true;
+   }
+   return false;
+}
+
+
+/**
+ * Use this method to invoke navigable action(.i.e, actions that need to support Browser Back!!).
+ * Experimental!!!
+ * @private
+ */
+AjaxAPI.invokeNavigableAction = function(requestOptions)
+{
+  var encodedOptions = requestOptions.encode();
+  requestOptions.fn("NAVIGFUNCTION_N")(requestOptions);		//NO I18N
+  AjaxUtils.ignoreNavigFrameLoad= true;
+  window.frames["AJAXNAVIG"].location.href = CONTEXT_PATH + "/framework/html/blank.html?" + encodedOptions;
+}
+
+
+/**
+ * Use this function to submit a form via Ajax. Internally calls {@link #sendRequest} with form's
+ * elements values as parameters.
+ * <br/><b>Usage :</b> On the form, set this attribute <code>onSubmit = "return AjaxAPI.submit(this);"</code>
+ * <br/><b>Note:</b>
+ * <ul><li>The various request options for {@link #sendRequest} is got from the form's attributes via 
+ *     getAttribute.</li>
+ *     <li>In addition <code>validatefunc</code> attribute can be specified to validate the form before 
+ *   submitting. For example to use {@link FormHandling.js#validateForm} specify 
+ *   <code>validateFunc="validateForm"</code>.</li>
+ *</ul>
+ * @param {HtmlForm} frm the form to submit. 
+ * @return Always returns <i>false</i> as the forms values are sent via XmlHTTP and hence the form need not be submitted.
+ * @type boolean 
+ */
+AjaxAPI.submit = function(frm)
+{
+ var frmOptions = AjaxAPI.getFormAttrsAsOptions(frm);
+  try
+    {
+      if(frmOptions["VALIDATEFUNC"])
+      {
+        if(!frmOptions.fn("VALIDATEFUNC")(frm))
+        {
+          return false;
+        }
+      }
+
+      var reqURL = frm.getAttribute("action");
+      alert("reqURL : "+reqURL);	//NO I18N
+      reqURL = updateStateCookieAndAppendSid(reqURL,null);
+      if(!frmOptions.isTrue("USEIFRAME",false))
+      {
+        var params = AjaxAPI.serialize(frm);
+        frmOptions.update({URL:reqURL,parameters: params});
+        var srcview = frmOptions["SRCVIEW"];	//NO I18N
+        if(srcview == null)
+        {
+            srcview = DOMUtils.getParentWithAttr(frm, "unique_id");	//NO I18N
+            if(srcview != null)
+            {
+                frmOptions.update({SRCVIEW:srcview.getAttribute("unique_id")});
+            }
+        }
+        AjaxAPI.sendRequest(frmOptions);
+      }
+      else
+      {
+        frm.target=AjaxAPI.navigFrameName;
+       
+        var ajaxOpt = new AjaxOptions(frmOptions);
+        ajaxOpt.update({URL:reqURL,ONSUCCESSFUNC:'AjaxAPI.iframeSubmitResponse',ONFAILUREFUNC:'AjaxAPI.iframeSubmitFailure',FORMNAME:frm.name});	//NO I18N
+        var url = AjaxAPI.getAsNavigableAjaxURL(ajaxOpt);
+        StatusMsgAPI.showOperationStatus(StatusMsgAPI.OPSTATUS.STARTED,ajaxOpt["OPSTATUSID"]);	//NO I18N
+        frm.action=url;
+        frm.submit();
+      }
+    }
+  catch(e)
+    {
+      StatusMsgAPI.showMsg("Script Error Occurred : " + e,false,true,frmOptions["STATUSMSGID"]);	//NO I18N
+    }
+  return false;
+}
+
+
+AjaxAPI.getFormAttrsAsOptions = function(frm)
+{
+  var attrList = frm.attributes;
+  var frmOptions = new AjaxOptions({submittedFrm:frm.name});
+  for(var i = 0; i < attrList.length; i++)
+  {
+    frmOptions.setV(attrList.item(i).nodeName, attrList.item(i).nodeValue);
+  }
+  return frmOptions;
+}
+
+/*
+* Since prototype 1.5.0_rc1 version serialize was giving problems
+* in IE, this method was written taking code from the earlier 1.3.1
+* version of prototype js
+*/
+AjaxAPI.serialize = function(form) 
+{
+  	var forms = new Array();
+  	for (var i = 0; i < arguments.length; i++) 
+  	{
+    	var element = arguments[i];
+    	if (typeof element == 'string')
+    	{
+      	element = document.getElementById(element);
+		}
+    	if (arguments.length == 1) 		
+    	{
+    		forms = element;
+    		break;
+    	}
+    	forms.push(element);
+  	}
+  
+    var elements = new Array();
+
+    for (var tagName in Form.Element.Serializers) {
+      var tagElements = forms.getElementsByTagName(tagName);
+      for (var j = 0; j < tagElements.length; j++)
+        elements.push(tagElements[j]);
+    }
+        
+    var queryComponents = new Array();
+    
+    for (var i = 0; i < elements.length; i++) 
+    {
+      // if input is disabled, do not construct query
+      // parameters from the input
+      if(!elements[i].disabled)
+      {	
+          var queryComponent = Form.Element.serialize(elements[i]);
+      	  if (queryComponent)
+          {
+               queryComponents.push(queryComponent);
+          }
+      }
+    }
+
+    return queryComponents.join('&');
+}
+
+
+
+AjaxAPI.iframeSubmitResponse = function(response,reqOptions)
+{
+  var frm = DOMUtils.getForm(reqOptions['FORMNAME']);	//NO I18N
+  var frmOptions = AjaxAPI.getFormAttrsAsOptions(frm);
+  StatusMsgAPI.showOperationStatus(response.opStatus,reqOptions["OPSTATUSID"]); //NO I18N 
+  if(frmOptions["ONSUCCESSFUNC"] != null)
+  {
+    frmOptions.fn("ONSUCCESSFUNC")(response,frmOptions);	//NO I18N
+  }
+}
+
+
+/**
+ * Dummy Function. Does Nothing.
+ * @param {AjaxResponse} response
+ * @param {AjaxOptions} requestOptions
+ * @return {@link StatusMsgAPI.OPSTATUS#FINISHED}
+ * @type StatusMsgAPI.OPSTATUS
+ */
+AjaxAPI.dummyFunction = function(response,requestOptions)
+{
+  return StatusMsgAPI.OPSTATUS.FINISHED;
+}
+
+
+/**
+ * Refreshes the view specified in the <code>SRCVIEW</code> option specified in the requestOptions
+ * @param {AjaxResponse} response
+ * @param {AjaxOptions} requestOptions
+ * @return {@link StatusMsgAPI.OPSTATUS#INPROGRESS}
+ * @type StatusMsgAPI.OPSTATUS
+ */
+AjaxAPI.refreshView = function(response,requestOptions)
+{
+  requestOptions.update({VIEWTOREFRESH_RN:requestOptions.v("SRCVIEW"),NAVIGABLE_RN:false});	//NO I18N
+  ViewAPI.refreshView(requestOptions);
+  return StatusMsgAPI.OPSTATUS.INPROGRESS;
+}
+
+
+/**
+ * Closes the view specified in the <code>SRCVIEW</code> option specified in the requestOptions
+ *  and refreshes only the parent view that contains content area of this view.
+ * @param {AjaxResponse} response
+ * @param {AjaxOptions} requestOptions
+ * @return {@link StatusMsgAPI.OPSTATUS#INPROGRESS}
+ * @type StatusMsgAPI.OPSTATUS
+ */
+AjaxAPI.closeViewAndRefreshDCA = function(response,requestOptions)
+{
+  var uniqueId = requestOptions["SRCVIEW"];	//NO I18N
+  var dca = getContentAreaFromState(uniqueId);
+  var parentId = getParentViewForDCA(dca);
+  closeView(uniqueId,true);
+  requestOptions.update({VIEWTOREFRESH_RN:parentId});
+  ViewAPI.refreshView(requestOptions);
+  return StatusMsgAPI.OPSTATUS.INPROGRESS;
+}
+
+
+
+
+/**
+ * Closes the view specified in the parentNode.
+ * @param element
+ * @return false
+ * @type StatusMsgAPI.OPSTATUS
+ */
+AjaxAPI.close = function(element)
+{
+    var parent = DOMUtils.getParentWithAttr(element, "closefunc"); // NO I18N
+    var func = parent.getAttribute("closefunc");
+
+    if (typeof window[func] === 'function') {
+        window[func](element);
+    }
+    return false;
+};
+
+
+/**
+ * Refreshes the view specified in the <code>OPENER</code> option specified in the requestOptions
+ * @param {String} opener the ViewName of the Opener
+ * @return {@link StatusMsgAPI.OPSTATUS#INPROGRESS}
+ * @type StatusMsgAPI.OPSTATUS
+ */
+AjaxAPI.refreshOpener = function(opener)
+{
+  if (typeof opener == "object")
+  {
+    opener = opener["OPENER"];		//NO I18N
+  }
+  var requestOptions = {VIEWTOREFRESH_RN:opener, NAVIGABLE_RN:false};
+  ViewAPI.refreshView(requestOptions);
+}
+
+
+
+/**
+ * Shows the response in a div dialog. The window parameters for the dialog is got from 
+ * <code>WINPARAMS</code> option.
+ * @param {AjaxResponse} response
+ * @param {AjaxOptions} requestOptions
+ * @return {@link StatusMsgAPI.OPSTATUS#FINISHED}
+ * @type StatusMsgAPI.OPSTATUS
+ */
+
+AjaxAPI.showInDialog = function(response,requestOptions)
+{
+  var oDialog = showDialog(response.responseText,requestOptions["WINPARAMS"],null,null,true);	//NO I18N
+  oDialog.setAttribute("closefunc", "closeParentDialog");
+  oDialog.setAttribute("opener", requestOptions["SRCVIEW"]);
+  return StatusMsgAPI.OPSTATUS.FINISHED;
+}
+
+/**
+ * Shows the response in a div dialog. The window parameters for the dialog is got from
+ * <code>WINPARAMS</code> option.
+ * @param {AjaxResponse} response
+ * @param {AjaxOptions} requestOptions
+ * @return {@link StatusMsgAPI.OPSTATUS#FINISHED}
+ * @type StatusMsgAPI.OPSTATUS
+ */
+
+AjaxAPI.addResponseToElement = function(response,requestOptions)
+{
+  document.getElementById(requestOptions.v('CONTAINERID')).innerHTML = response.getOnlyHtml();
+  var effectstr = requestOptions["EFFECT"];	//NO I18N
+  if(effectstr == null)
+  {
+  	 effectstr = 'Effect.Grow';	//NO I18N
+  }
+  response.getScripts().push('<script>' + effectstr + '(\'' + requestOptions.v('CONTAINERID') + '\')</script>');	//NO I18N
+  return StatusMsgAPI.OPSTATUS.FINISHED;
+}
+
+
+/**
+ * This API can be used to set the script to load on the next page complete page load.
+ * Similar to setTimeout.
+ * @param {String} script.
+ */
+AjaxAPI.setOnNextPageLoadScript = function(script)
+{
+  setCookie("PERSMSG",script,null,CONTEXT_PATH + "/framework/html");	//NO I18N
+}
+
+
+/**
+ *@private
+ */
+AjaxAPI.showPersMsg = function(count)
+{
+  
+  var win = window.frames[ROOT_VIEW_ID + "_RESPONSEFRAME"];
+  if((win == null) || (win.document == null) || (!win.document.isLoaded))
+  {//A scenario where respframe might not be loaded!!
+    if(count < 50)
+    {
+      setTimeout("AjaxAPI.showPersMsg(" + ++count +")",30);
+    }
+    return;
+  }
+
+  var msgStr = getCookie("PERSMSG",win);	//NO I18N	
+  if(msgStr != null)
+  {
+    deleteCookie("PERSMSG",CONTEXT_PATH+ "/framework/html",win);	//NO I18N
+    eval(msgStr);
+  }
+}
+
+
+
+/**
+ * Shows the response status and success/failure messages.
+ * @param {AjaxResponse} response
+ * @param {AjaxOptions} requestOptions 
+ */
+
+
+
+
+/**
+ *@class
+ * The class used to hold the ajax request options. It has some utility methods over
+ * the default javascript object.
+ * <br><b>Usage:</b>
+ * <br>&nbsp;&nbsp;<code>var ajOpts = new AjaxOptions({URL:"test.cc",METHOD:"GET"});</code>
+ * <br><b>Note:</b> All options will be automatically converted to  UpperCase. 
+ *
+ */
+
+function AjaxOptions(options)
+{
+
+  /**
+   * Used to return the value for the option. Throws Error if option is not present and the default
+   * value is also not given.
+   * @param {String} optName.
+   * @param {Object} defaultValue.
+   * @type Object
+   * @throws Error
+   */
+  this.v = function(optName,defaultValue)
+    {
+      var value = this[optName.toUpperCase()];
+      if(value == null)
+      {
+        value = defaultValue;
+      }
+      if(value == null) 
+      {
+        throw new Error("OptionNotPresent:" + optName + " is not present");
+      }
+      return value;
+    }
+
+  
+  /**
+   * Used to return the value in uppercase for the option. Throws Error if option is not present.
+   * @param {String} optName.
+   * @type String
+   * @throws Error
+   */
+  this.vu = function(optName)
+    {
+      return this.v(optName).toUpperCase();
+    }
+
+
+  /**
+   * Used to return the boolean value for the option. Throws Error if option is not present.
+   * <br/> Handles cases where the value could be a string "true".
+   * @param {String} optName.
+   * @type boolean
+   * @throws Error
+   */
+  this.isTrue = function(optName,defaultValue)
+    {
+      var value =  this.v(optName,defaultValue);
+      return ((value == true) || (value == "true"));
+    }
+
+
+  /**
+   * Used to return the function associated for the option. 
+   * <br>Throws Error if 
+   *  <ul><li> Option itself is not configured.</li><li>Corresponding function is not present</li></ul>
+   * <br/> Handles cases where the value configured could be of type
+   * <ul><li>String representing th function name</li><li>Reference to a function</li>
+   * @param {String} optName.
+   * @type Function
+   * @throws Error
+   */
+  this.fn = function(optName)
+    {
+      var value = this.v(optName);
+  
+      if(value instanceof Function)
+      {
+        return value;
+      }
+      
+      var fun = eval(value);
+      if(!fun)
+      { 
+        throw new Error("FunctionNotPresent: " + value + " is not declared in current window");   
+      }
+      if(!(fun instanceof Function))
+      {
+        throw new Error("IllegalOption : " + value + " is not a function.");
+      }
+      return fun;
+    }
+
+
+  /**
+   * Used to return the function associated for the option. Throws Error if option is not present.
+   * <br/> Handles cases where the value configured could be of type
+   * <ul><li>String representing th function name</li><li>Reference to a function</li>
+   * @param {String} optName.
+   * @type Function
+   * @throws Error
+   */
+  this.form = function(optName)
+    {
+      var frm = DOMUtils.getForm(this.v(optName));
+      if(frm == null)
+      {
+        throw new Error(" FormNotFound : " + this.v(optName) + " not found");  
+      }
+      return frm;
+    }
+
+  
+  /**
+   * Sets the value for an option. Stores the option in uppercase.
+   * @param {String} optName.
+   * @param {Object} optValue.
+   */
+  this.setV = function(optName,optValue)
+    {
+      this[optName.toUpperCase()] = optValue;
+    }
+
+  
+  /**
+   * Sets the value for an option. Stores the option in uppercase.
+   * @param {String} optName.
+   * @param {Object} optValue.
+   */
+  this.update = function(newOptions)
+    {
+      for (property in newOptions) 
+      {
+        var val = newOptions[property];
+        this[property.toUpperCase()] = val;
+      }
+    }
+
+
+  /**
+   * Encodes the option into a query parameter. Only simple type(String/numeric) options are encoded.
+   * Any parameters ending with _RN (implying Remove for Navigation) will not be added. Also URL parameter
+   * will not be added.
+   * @return A query string.
+   * @type String.
+   */
+  this.encode = function()
+    {
+      var encodedStr ="";
+      var defaults = new AjaxOptions();
+      for(var i in this)
+      {    
+        if(this[i] instanceof Object)
+        {continue;}
+        if(defaults[i] == this[i])
+        { continue;}
+        
+        if((i == "URL") || (i =="METHOD"))
+        { continue;}
+        var index = i.lastIndexOf("_RN");
+        if(index == i.length - "_RN".length)
+        {
+          continue;
+        }
+        
+        var name = (i == "ONSUCCESSFUNC")? "_OS":i;	//NO I18N
+        encodedStr += name + "=" + this[i] + "&";
+      }
+      if(encodedStr.length > 1)
+      {
+        encodedStr = encodedStr.substring(0,encodedStr.length -1);
+      }
+      return encodedStr;
+    }
+
+  this.update({METHOD:'POST', ASYNCHRONOUS:true});  //NO I18N
+  if((typeof options) == "string")
+  {
+    options = parseRequestParams(options);
+    for(var i in options)
+    {
+      options[i]= options[i][0];
+    }
+    if(options["_OS"] != null){options["ONSUCCESSFUNC"] = options["_OS"]}
+  }
+  this.update(options);
+}
+
+/**
+ * If the "options" param is not of type AjaxOptions then,
+ *  it creates a new AjaxOption and returns otherwise the same
+ *  "options" is returned
+ * @param {Map/AjaxOptions} options
+ * @type AjaxOptions
+ */
+AjaxOptions.getAsAjaxOptions = function(options)
+{
+  if(!(options instanceof AjaxOptions))
+  {
+    options = new AjaxOptions(options);
+  }  
+  return options;
+}
+
+/**
+ * @class
+ * The Class that is used to represent the xml http response.
+ */
+function AjaxResponse(transportUsed)
+{
+  /**
+   * Holds the response text.
+   * @type String
+   */
+  this.responseText = null;
+
+  /**
+   *@private
+   */
+  this.htmlContent = null;
+
+  /**
+   *@private
+   */
+  this.scripts = null;
+
+  /**
+   * Holds the transport used for this request. Generally it is XMLHttpRequest
+   * got from {@link AjaxAPI#getXMLHttpRequest}
+   */
+  this.transport = transportUsed;
+
+  /**
+   * Holds the current status of the response.
+   * @type StatusMsgAPI.OPSTATUS
+   */
+  this.opStatus = StatusMsgAPI.OPSTATUS.STARTED;
+
+  
+  /**
+   * Checks if http request protocol status is success.This is <b>different</b>
+   * from overall success which would be captured in {@link StatusMsgAPI.OPSTATUS}!!.
+   */
+  this.isHttpReqSuccess = function() 
+    {
+      return this.transport.status == undefined
+      || this.transport.status == 0 
+      || (this.transport.status >= 200 && this.transport.status < 300);
+    }
+
+
+
+  /**
+   * Returns the response text stripped of script tags. Incase of adding the 
+   * response to the document, then use this function rather than directly adding
+   * {@link #responseText}.
+   * @type String
+   */
+ /* this.getOnlyHtml = function()
+    {
+      this.splitResponse();
+      return this.htmlContent;
+    }*/
+
+
+  /**
+   * Returns the script tags present in the responseText as an array.
+   * see {@link #invokeScripts} for more details.
+   * @type Strings[]
+   */
+  this.getScripts = function()
+    {
+      this.splitResponse();
+      return this.scripts;
+    }
+
+
+  /**
+   *@private
+   */
+  this.splitResponse = function()
+    {
+      if(this.htmlContent !=null)
+      {
+        return;
+      }
+      var split = AjaxUtils.separateScriptAndHtml(this.responseText);
+      this.htmlContent = split["html"];		//NO I18N
+      this.scripts = split["scripts"];		//NO I18N
+    }
+}
+
+
+/**
+ *@class
+ * The <b>Static</b> utility class containing methods related to Ajax.
+ * Access all functions using AjaxUtils.<functionname>
+ */
+var AjaxUtils = new function(){}
+
+
+
+
+/**
+ *@private
+ */
+AjaxUtils.ignoreNavigFrameLoad = false;
+
+/**
+ *@private
+ */
+AjaxUtils.handleNavigFrameLoad = function()
+{
+  var queryStr = window.frames["AJAXNAVIG"].location.search;
+  window.status = "handle NavigFrameLoad called. " + queryStr + " " + AjaxUtils.ignoreNavigFrameLoad;	//NO I18N
+
+  if(AjaxUtils.ignoreNavigFrameLoad) 
+  {
+    AjaxUtils.ignoreNavigFrameLoad = false;
+     return;
+  }
+
+  if((queryStr == null) || (queryStr == ""))
+  {
+    return;
+  }
+  var requestOptions = new AjaxOptions(queryStr);
+  requestOptions.fn("NAVIGFUN_N")(requestOptions);
+}
+
+
+/**
+ * Utility method that can be used invoke the scripts tag in the. See {@link #invokeScripts}
+ * for more details.
+ * @param {String} text Should be a html text.
+ * @see #separateScriptAndHtml
+ */
+
+AjaxUtils.invokeScriptsInHtml = function(html)
+{
+  /*var match    = new RegExp(Prototype.ScriptFragment, 'img');     //when using html script
+  var scriptTags  = html.match(match);
+  AjaxUtils.invokeScripts(scriptTags);*/
+}
+
+/**
+ * A utility method used to separate the script and html parts!!.
+ * @return An object containing properties "html" containing a string stripped of script tags 
+ *  and "script" containing an array of script tags that were present.
+ * @param {String} text. 
+ * @type Object
+ */
+AjaxUtils.separateScriptAndHtml = function(htmlSnippet)
+{
+  var sepHash = new Object();
+ /* var match    = new RegExp(Prototype.ScriptFragment, 'img');
+  sepHash["html"] = htmlSnippet.replace(match, '');
+  match    = new RegExp(Prototype.ScriptFragment, 'img');
+  sepHash["scripts"] = htmlSnippet.match(match); */	//NO I18N 
+  return sepHash;
+}
+
+
+/**
+ * @private
+ */
+AjaxUtils.handleAjaxResponse = function(ajaxResp,requestOptions)
+{
+  if(ajaxResp.transport.readyState !=4 )
+  {
+    return;
+  }
+  ajaxResp.responseText = ajaxResp.transport.responseText;
+  ajaxResp.opStatus = StatusMsgAPI.OPSTATUS.INPROGRESS;
+  if(requestOptions["ORIGOPTIONS"])
+  {
+    requestOptions = requestOptions["ORIGOPTIONS"];	//NO I18N
+    closeDialog();
+  }
+  ajaxResp.opStatus = AjaxUtils.internalHandleAjaxResponse(ajaxResp,requestOptions);
+  if(requestOptions["STATUSFUNC"])
+  {    
+    requestOptions.fn("STATUSFUNC")(ajaxResp,requestOptions);
+  }
+}
+
+
+/**
+ *@private
+ */ 
+AjaxUtils.internalHandleAjaxResponse = function(response,requestOptions)
+{
+  if(response.responseText.indexOf("__ERROR__LOGIN") > -1)
+  {
+    AjaxUtils.handleReLogin(response,requestOptions);
+    return StatusMsgAPI.OPSTATUS.INPROGRESS_LOGIN;
+  }
+  else if((response.responseText.indexOf("__ERROR__") > -1)
+          || !response.isHttpReqSuccess())
+  {
+    return StatusMsgAPI.OPSTATUS.FAILED;
+  }
+  var opStatus = StatusMsgAPI.OPSTATUS.FINISHED;
+  if(requestOptions["ONSUCCESSFUNC"])
+  {
+    try
+    {
+       opStatus = requestOptions.fn("ONSUCCESSFUNC")(response,requestOptions);
+       if(!opStatus){opStatus = StatusMsgAPI.OPSTATUS.FINISHED;}
+    }
+    catch(ex)
+    {
+      response["EXCEP"] = ex;	//NO I18N
+      if(response.responseText.indexOf('window.top.location.replace("authorization.do")')!=-1)
+      {
+          window.top.location.replace("authorization.do");
+      }
+      return StatusMsgAPI.OPSTATUS.FAILED_SCRIPT;
+    }
+  }
+    
+  if(requestOptions["TARGET"])
+  {
+  	  var target = requestOptions["TARGET"];	//NO I18N
+  	  var srcViewRefId = requestOptions["SRCVIEW"];	//NO I18N
+      var sourceEl = document.getElementById(srcViewRefId + "_CT");
+      
+  	  if (target.indexOf("_opener_view_this") == 0)
+  	  {
+		  var parent = DOMUtils.getParentWithAttr(sourceEl, "opener");
+  	      if(parent)
+  	      {
+  	          replaceWithResponseView(response, parent.getAttribute("opener"));
+  	          // passing the sourceel for cases where, there is more than one
+  	          // div dialog opened
+  	          setTimeout(function(){closeDialog(null,sourceEl);},100, sourceEl);
+  	      }
+  	      else
+  	      {
+			window.opener.replaceWithResponseView(response, window.name);
+	     	setTimeout('window.close()',100);			
+	      }
+  	  } 
+  	  else if (target.indexOf("_opener_view_") == 0)
+  	  {
+  	  	 //start popup window/div form - refresh/replace opener view
+  	     var viewToReplace = target.substring("_opener_view_".length);
+  	     if(window.opener)
+  	     {  	       
+  	        window.opener.replaceWithResponseView(response, viewToReplace);
+  	        setTimeout('window.close()',100);
+  	     }
+  	     else
+  	     {
+  	         replaceWithResponseView(response, viewToReplace);
+  	          // passing the sourceel for cases where, there is more than one
+  	          // div dialog opened
+  	          setTimeout(function() {closeDialog(null,sourceEl);},100, sourceEl);
+  	      }
+  	      //end popup windows/div form   
+  	  } 	  	   
+  	  else if (target.indexOf("_view_this") == 0)
+  	  {
+  	      var viewToReplace = requestOptions['SRCVIEW'];	//NO I18N
+  	      replaceWithResponseView(response, viewToReplace);
+  	  }  	  
+  	  else if(target.indexOf("_mcframe") == 0)  
+  	  {
+  	  	  var mcframe = AjaxAPI.getMCFrame(requestOptions);
+  	  	  var dArr = mcframe.dacarray;
+  	  	  if(dArr == null || dArr.length == 0)
+  	  	  {
+                    replaceWithResponseView(response, mcframe.contentareaname);  	  
+                  }
+                  else
+                  {
+                    var viewToReplace = getUniqueId(dArr[dArr.length -1]);
+                    replaceWithResponseView(response, viewToReplace);
+                  }
+  	  }	  
+  	  else if (target.indexOf("_divpopup") == 0)
+  	  {
+  	  	  if(requestOptions["ONSUCCESSFUNC"] != "AjaxAPI.showInDialog")
+  	  	  {
+  	  	  	AjaxAPI.showInDialog(response, requestOptions);
+  	  	  }
+  	  }
+  	  else if(target.indexOf("_div_") == 0)
+  	  {
+  	       var divid = target.substring("_div_".length);  	
+  	       requestOptions["CONTAINERID"] = divid;	//NO I18N
+		   if(requestOptions["ONSUCCESSFUNC"] != "AjaxAPI.addResponseToElement")
+  	  	   {  	       
+  	          AjaxAPI.addResponseToElement(response, requestOptions);
+  	  	   }
+  	  }
+  	  else if (target.indexOf("_view_") == 0)
+  	  {
+  	       var viewToReplace = target.substring("_view_".length);
+  	       replaceWithResponseView(response, viewToReplace);
+  	  }
+  }
+  return opStatus;
+}
+
+
+/**
+ * @private
+ */
+AjaxUtils.handleReLogin = function(response,requestOptions)
+{
+  if(SASMODE)
+  {
+  	//In sas mode, since the login page is from different domain, its not possible 
+  	// to send in Ajax request,  so  redirecting to normal login page
+  	//TODO: handle relogin as done for non sas mode
+  	location.reload();
+  	return;
+  }
+  showDialog(response.responseText,"title=ReLogin(Session Timed Out),modal=yes");
+  var frm = DOMUtils.getFirstMatchingElement(oDialog.getElementsByTagName("form"),null,"name","login");		//NO I18N
+  if(frm == null)
+  {
+    throw new Error("Login Page should contain a form with name as \"login\"");
+  }
+  frm["REQUESTOPTIONS"] = requestOptions;	//NO I18N
+  frm.onsubmit = function(){AjaxUtils.submitReLoginFrm(frm);return false;};
+  return;
+}
+
+
+/**
+ * @private
+ */
+AjaxUtils.submitReLoginFrm = function(frm)
+{
+  var validateFuncName = frm.getAttribute("validatefunc");
+  if (validateFuncName)
+  {
+    var validateFunc = window[validateFuncName];
+    if (typeof validateFunc === "function")
+    {
+      if (!validateFunc(frm))
+      {
+        return false;
+      }
+    }
+    else
+    {
+      return false;
+    }
+  }
+  var params = AjaxAPI.serialize(frm);
+  AjaxAPI.sendRequest({URL:frm.action,PARAMETERS:params,ORIGOPTIONS:frm["REQUESTOPTIONS"]});	//NO I18N
+  return false;
+}
+
+
+
+/**
+ * @private
+ */
+
+AjaxUtils.updateObject = function(destination, source) {
+  if(source == null){return;}
+  for (property in source) {
+    destination[property] = source[property];
+  }
+  return destination;
+}
+
+
+
+
+
+
+
+/**
+ *@class 
+ * The static class containing apis for showing operation status and messages in client.
+ */
+var StatusMsgAPI = new function(){}
+
+
+/**
+ * Shows the operation status in the ui.
+ * Expects a <code>div</code> containing <b>id</b> named <code>mc_loading</code>
+ * Sets the following classes <code>mcLoading</code> and <code>mcLoaded</code> based on the opstatus.
+ * @param {StatusMsgAPI.OPSTATUS} opStatus.
+ *
+ */
+StatusMsgAPI.showOperationStatus = function(opStatus,opDivId,opstatustype,opstatusmessage, opstatusloadingclass, opstatusloadedclass)
+{
+	var opStatus = ((opStatus == StatusMsgAPI.OPSTATUS.STARTED)  ||  (opStatus == StatusMsgAPI.OPSTATUS.INPROGRESS) || (opStatus == StatusMsgAPI.OPSTATUS.INPROGRESS_LOGIN))
+	
+	if(opstatusmessage == null)
+	{
+		opstatusmessage = "Loading ...";	//NO I18N
+	}
+
+ //This is gmail type throbber
+ 	if(opstatustype == "gmail")
+    {
+    	if((opStatus))
+        {
+        	document.getElementById("mc_loading").innerHTML = '<div class="gmailtype"  >'+ opstatusmessage +  '</div> ';
+        }
+        else
+        {
+        	document.getElementById("mc_loading").innerHTML = "";
+        }
+    }
+
+//This is dialog type throbber
+
+  else if(opstatustype == "dialog")
+  {
+  	   if(opStatus)
+       {
+       		var dlghtml =  '<div class="status-window-table">' + opstatusmessage +'<div class="dialogtype">'  + '</div></div> ';
+       		showDialog(dlghtml,"title=Loading,modal=yes,position=absmiddle,closeOnEscKey=no",null,'abcd');
+       }
+       else
+       {
+       		closeDialog();
+       }
+  }
+       
+//This is for throbber at bottom of the browser.
+       
+  else if(opstatustype == "statusbar")
+  {
+  		if(opStatus)
+  		{
+  			document.getElementById("mc_loading").innerHTML = '<div class="statusbar"><button ' + 'class="imagestyle"></button>'+ opstatusmessage +'</div> ';                    
+  		}
+  		else
+  		{
+        	document.getElementById("mc_loading").innerHTML = "";                      
+        }
+  }
+       
+// This is for Default throbber type
+  else      
+  {
+  		if(opDivId == null)
+        {
+        	opDivId = "mc_loading";		//NO I18N
+        }
+          var el = document.getElementById(opDivId);
+        if(el != null)
+        {
+            	if(opstatusloadedclass == null)
+            	{
+            		opstatusloadedclass = 'mcLoaded';	//NO I18N
+            	}
+        		if(opstatusloadingclass == null)
+        		{
+        			opstatusloadingclass = 'mcLoading';	//NO I18N
+        		}            	        	
+        	if(opStatus)
+            {
+
+            	DOMUtils.replaceCSSClass(el,opstatusloadingclass,opstatusloadedclass);
+            }
+          	else
+        	{
+
+            	DOMUtils.replaceCSSClass(el,opstatusloadedclass,opstatusloadingclass);
+        	}
+   		}
+  }
+
+}
+
+/**
+ * Shows the message on next page load. Usefull for cases where an Ajax Operation is first performed
+ * and then the whole page has to be refreshed.
+ * @param {String} msg
+ * @param {boolean} isSuccess
+ * @see AjaxUtils#showAjaxResponseOnNextPageLoad.
+ * @see AjaxAPI#setOnNextPageLoadScript
+ */
+StatusMsgAPI.showMsgOnNextPageLoad = function(msg,isSuccess)
+{
+  msg = msg.replace(/\n/g,"\\n");
+  var regex = new RegExp("'","g");
+  msg = msg.replace(regex,"\\'");
+  AjaxAPI.setOnNextPageLoadScript("StatusMsgAPI.showMsg('" + msg + "'," + isSuccess + ")");	//NO I18N
+}
+
+
+/**
+ * Shows the message in the client.  See this script for the various css class names and div names!!.
+ * @param {String} msg
+ * @param {boolean} isSuccess
+ */
+
+StatusMsgAPI.showMsg = function(message, isSuccess, fadeout,msgDivId, opstatustype, 
+	statusmsgposition, statusmsgoffsettop, statusmsgoffsetleft, statusmsgrelel, statusmsgeffect,
+	statusmsgeffectoptions)
+{
+	msgDivId = StatusMsgAPI.getDivId(msgDivId,"MSGDIV","mc_msg");		//NO I18N
+    var msgContainer = document.getElementById(msgDivId);
+
+  		if(msgContainer != null)
+  		{
+    		var msgTextEl = document.getElementById(msgDivId +"_txt");
+    		if(msgTextEl == null)
+    		{
+      			msgTextEl = msgContainer;
+    		}
+    		
+  			if(statusmsgposition == "absmiddle")
+  			{
+       			var dlgel = document.getElementById('_DIALOG_LAYER');
+       			if(dlgel != null)
+       			{
+       				dlgel.className="";
+       				dlgel.style.opacity=100;
+       			}
+       			var tmpcontainer = msgContainer.cloneNode(true);
+       			tmpcontainer.setAttribute("id", tmpcontainer.id + "_copy");
+       			tmpcontainer.innerHTML=message;
+       			var dlg = showDialog(tmpcontainer,"title=Loading,position=absmiddle,closeOnEscKey=no",null,'abcd');
+       			dlg.style.display="";
+       			statusMsgEffect(statusmsgeffect, statusmsgeffectoptions, tmpcontainer);
+       			return;  			
+  			}
+  			else if (statusmsgposition == "relative")
+  			{
+				if(statusmsgoffsetleft == null)  				
+				{
+					statusmsgoffsetleft = "25";
+				}
+				if(statusmsgoffsettop == null)
+				{
+					statusmsgoffsettop = "10";
+				}
+       			var dlgel = document.getElementById('_DIALOG_LAYER');
+       			if(dlgel != null)
+       			{
+       				dlgel.className="";
+       			}
+       			var tmpcontainer = msgContainer.cloneNode(true);
+       			tmpcontainer.setAttribute("id", tmpcontainer.id + "_copy");
+       			tmpcontainer.innerHTML=message;       			
+       			var dlg = showDialog(tmpcontainer,"srcElement=" + statusmsgrelel + ",top=" + statusmsgoffsettop 
+       							+ ",left=" + statusmsgoffsetleft		//NO I18N 
+       							+ ",title=Loading,position=relative,closeOnEscKey=no",null,'abcd');	//NO I18N
+       			dlg.style.display="";
+       			statusMsgEffect(statusmsgeffect, statusmsgeffectoptions, tmpcontainer);
+      		
+       			return;  			  			
+  			}
+  			
+    		msgContainer.className = (isSuccess)?"successMsg":"failureMsg";  
+    		msgContainer.style.opacity=100;  			
+    		msgTextEl.innerHTML = message;    		
+  		    		
+    		if(fadeout == null)
+    		{
+       			fadeout = true;
+    		}
+    		if(isSuccess && (fadeout == true))
+    		{
+       			if(statusmsgeffect == "highlight")
+       			{
+       				var effectoptions = {startcolor:'#9EFF7F', endcolor:'#FAD163',afterFinish:closeDialog,queue:'end'};		//NO I18N
+					var tmpeffoptions = eval('(' +statusmsgeffectoptions+ ')');       				       	
+					Object.extend(effectoptions, tmpeffoptions||{});								
+					new Effect.Highlight(msgDivId, effectoptions);
+					effectoptions = { duration: 2.0, transition: Effect.Transitions.linear, 
+       						from: 1.0, to: 0.0 ,queue:'end',afterFinish:closeStatus,msgDivId:msgDivId};	//NO I18N
+					tmpeffoptions = eval('(' +statusmsgeffectoptions+ ')');       				       	
+					Object.extend(effectoptions, tmpeffoptions||{});								       						
+					new Effect.Opacity(msgDivId,effectoptions);
+       			}
+       			else
+       			{
+      				StatusMsgAPI.closeMsg(msgDivId);
+       			}
+    		}
+    		else if(!isSuccess)
+    		{
+    			msgContainer.style.visibility = 'visible';
+    			window.clearInterval(msgContainer.f_intvl);
+    		}
+  		}
+  		else if(!isSuccess)
+  		{
+    		showDialog(message,"title=Error Occured");
+  		}
+}
+
+function statusMsgEffect(statusmsgeffect, statusmsgeffectoptions, tmpcontainer)
+{
+       			if(statusmsgeffect == "highlight")
+       			{
+       				var effectoptions = {startcolor:'#9EFF7F', endcolor:'#FAD163',afterFinish:closeDialog};		//NO I18N
+       				var tmpeffoptions = eval('(' +statusmsgeffectoptions+ ')');
+					Object.extend(effectoptions, tmpeffoptions||{});
+       				new Effect.Highlight(tmpcontainer.id, effectoptions);
+       			}
+       			else
+       			{
+       				new Effect.Opacity(tmpcontainer.id,{ duration: 2.0, transition: Effect.Transitions.linear, 
+       					from: 1.0, to: 0.0 ,afterFinish:closeDialog});
+       			}	
+}
+
+function closeStatus(obj)
+{
+       	StatusMsgAPI.removeMsg(obj['element'].id);		//NO I18N
+}
+
+/**
+ * Closes the message in the client as FADEOUT effect.
+ */
+StatusMsgAPI.closeMsg =function(msgDivId)
+{
+  msgDivId = StatusMsgAPI.getDivId(msgDivId,"MSGDIV","mc_msg");		//NO I18N
+  if(document.getElementById(msgDivId) == null)
+  {
+    return;
+  }  
+  MCEffect.FadeOut(msgDivId, {ONCLOSE:"StatusMsgAPI.removeMsg",MSGDIV:msgDivId});	//NO I18N
+}
+
+/**
+ * Closes the message in the client Immediately.
+ */
+StatusMsgAPI.closeMsgImmediately =function(msgDivId)
+{
+  msgDivId = StatusMsgAPI.getDivId(msgDivId,"MSGDIV","mc_msg");		//NO I18N
+  var divobj = document.getElementById(msgDivId);	
+  if(divobj != null)
+  {
+      divobj.visibility = 'hidden';
+  }
+}
+
+/**
+ * Removes the message in the client.
+ */
+StatusMsgAPI.removeMsg =function(msgDivId)
+{
+  msgDivId = StatusMsgAPI.getDivId(msgDivId,"MSGDIV","mc_msg");		//NO I18N
+  var divobj = document.getElementById(msgDivId);
+  if(divobj != null)
+  {
+      divobj.className = 'hide';
+  }
+}
+
+StatusMsgAPI.getDivId = function(msgDivId,reqParamName,defaultId)
+{
+  if(msgDivId instanceof Object) { msgDivId = msgDivId[reqParamName];}
+  if(msgDivId == null){ msgDivId = defaultId;} 
+  return msgDivId;
+}
+
+/**
+ * The various operational statuses 
+ *
+ */
+StatusMsgAPI.OPSTATUS= new function(){ 
+  /** *@final 
+   *@int */
+  this.STARTED =1;
+  /** *@final 
+   *@int */
+  this.INPROGRESS=2;
+  /** *@final 
+   *@int */
+  this.INPROGRESS_LOGIN=3;
+  /** *@final 
+   *@int */
+  this.FINISHED=4;
+  /** *@final 
+   *@int */
+  this.FAILED=5;
+  /** *@final 
+   *@int */
+  this.FAILED_SCRIPT=6;
+
+}
+
+
+/**
+ *@class
+ * Contains utility functions related to Html DOM.
+ */
+var DOMUtils = new function(){
+  
+  /**
+   * Adds a css class to the list of elements.
+   * @param {DOMElement[]} els
+   * @param {String} cssClass
+   */
+  this.addCSSClass = function(els, cssClass) 
+  {
+    for(var i =0; i < els.length; i++)
+    {
+      var curClass = els[i].className;
+      if(curClass == null)
+      {
+        curClass = cssClass;
+      }
+      else
+      {
+        var index = curClass.indexOf(cssClass);
+        if(index == -1)
+        {
+          curClass = curClass.trim();
+          curClass += " " + cssClass;
+        }
+      }
+      els[i].className = curClass;
+    }
+  }
+
+
+  this.replaceCSSClass = function(el,newClass,oldClass)
+  {
+    var curClass = el.className;    
+    if((curClass == null) || (curClass == oldClass))
+    {
+      curClass = newClass;
+    }
+    else
+    {
+      var index = curClass.indexOf(oldClass);
+      if(index == -1)
+      {
+        if(curClass.indexOf(newClass) == -1)
+        {
+          curClass +=" " + newClass;      
+        }
+      }
+      else
+      {
+        curClass = curClass.substring(0,index) + newClass + curClass.substring(index + oldClass.length);
+      }
+    }
+    el.className = curClass;
+  }
+  
+  /**
+   * Removes a css class to the list of elements.
+   * @param {DOMElement[]} elList
+   * @param {String} cssClass
+   */
+  this.removeCSSClass = function(elList, cssClass)
+  {
+    for(var i =0; i < elList.length; i++)
+    {
+      var curClass = elList[i].className;
+      if(curClass == null)
+      {
+        continue;
+      }
+      var index = curClass.indexOf(cssClass);
+      if(index > -1)
+      {
+        if(curClass == cssClass)
+        { curClass = null;}
+        else
+        {curClass = curClass.substring(0,index) + curClass.substring(index + cssClass.length + 1);}
+      }
+      elList[i].className = curClass;
+    }
+  }
+
+  
+  /**
+   * Can be used to filter a list of dom elements based on the criteria.
+   * Usage
+   *<ul><li><code>DOMUtils.filterElements(myEl.getElementsByTagName("TR"),null,"myattr","abc");</code></li>
+   *  <li><code>DOMUtils.filterElements(myEl.childNodes,"TR");</code></li>
+   *  <li><code>DOMUtils.filterElements(myEl.childNodes,"TR","myattr","abc");</code></li>
+   *  <li><code>DOMUtils.filterElements(myEl.childNodes,"TR","myattr","*");</code></li></ul>
+   *  <li><code>DOMUtils.filterElements(myEl.childNodes,"TR","myattr",null);</code>.(Reverse match)</li></ul>
+   *@return Always returns an Array. Incase no elements match, then returns an array of length 0.
+   *@param {DOMElement[]} elList
+   *@param {String} elType. Can be null.
+   *@param {String} attrName
+   *@param {String} attrValue. A value <b>"*"</b> matches all.
+   *@type DOMElement[]
+   */
+  this.filterElements = function(elList,elType,attrName,attrValue)
+  {
+    var filteredList = new Array();
+    var j = 0;
+    for(var i =0;i < elList.length ; i++)
+    {
+      if((elType == null) || (elList[i].nodeName == elType))
+      {
+        if((attrName == null)|| (elList[i].getAttribute(attrName) == attrValue)
+           || ((attrValue == "*") &&(elList[i].getAttribute(attrName) != null)))
+        {
+          filteredList[j++] = elList[i];
+        }
+      }
+    }
+    return filteredList;
+  }
+
+  /**
+   * Similar to filterElements
+   * @type DOMElement
+   */
+  this.getFirstMatchingElement = function(elList,elType,attrName,attrValue)
+  {
+    for(var i =0;i < elList.length ; i++)
+    {
+      if((elType == null) || (elList[i].nodeName == elType))
+      {
+        if((attrName == null)|| (elList[i].getAttribute(attrName) == attrValue)
+           || ((attrValue == "*") &&(elList[i].getAttribute(attrName) != null)))
+        {
+          return elList[i];
+        }
+      }
+    }
+    return null;
+  }
+
+
+  /**
+   * Gets all child elements irrespective of depth that match the criteria
+   * @param {DOMElement} parentEl
+   * @param {String} attrName
+   * @param {String} attrValue.  A value <b>"*"</b> fetches all elements that have that attribute.
+   * @type DOMElement[]
+   * @return Always returns an array. Incase of no match, returns an array of length 0.
+   */
+  this.getChildElsWithAttr = function(parentEl,attrName,attrValue)
+  {
+    var childNodes = parentEl.getElementsByTagName("*");
+    return this.filterElements(childNodes,null,attrName,attrValue);
+  }
+	/**
+	 * Gets child elements which has attribute name and value as passed...
+	 * but not with a parent having an attribute as filterAttr and its value as Filtervalue   
+	 * @param {DOMElement} parentEl
+	 * @param {String} attrName
+	 * @param {String} attrValue.  A value <b>"*"</b> fetches all elements that have that attribute.
+	 * @param {String} filterAttr returning element should not have a parent with this attribute with value as filterAttr.
+	 * @param {String} filterValue returning element should not havea parent with this value for filterAttr.
+	 */
+	this.getFirstChild = function(parentEl,attrName,attrValue,filterAttr,filterValue)
+	{
+		var b;
+		var a=DOMUtils.getChildElsWithAttr(parentEl,attrName,attrValue);
+		for(i=0 ; i<a.length ; i++)
+		{       
+			b=a[i].parentNode;
+			while(b != parentEl)
+			{	
+				if(b.getAttribute(filterAttr) == filterValue)
+				{
+					break;
+				}
+				b = b.parentNode;
+			}
+			if(b == parentEl) 
+			{
+				return a[i];
+			}
+		}
+	}
+  /**
+   * Gets the parent element With the specified attribute.
+   * @param {DOMElement} childNode
+   * @param {String} parentAttrName
+   * @type DOMElement
+   * @return Returns null in case of no match.
+   */
+  this.getParentWithAttr = function(childNode,parentAttrName)
+  {
+    var parNode = childNode.parentNode;
+    while((parNode != null) && (parNode.getAttribute != null))
+    {
+      if(parNode.getAttribute(parentAttrName) != null)
+      {
+        return parNode;
+      }
+      parNode = parNode.parentNode;
+    }
+    return null;
+  }
+
+  /**
+   * Gets the parent element with the specified attr value.
+   * @param {DOMElement} childNode
+   * @param {String} parentAttrName
+   * @param {String} attrValue
+   * @type DOMElement
+   * @return Returns null in case of no match.
+   */
+  this.getParentWithAttrValue = function(childNode,parentAttrName,attrValue)
+  {
+    var parentNode = childNode.parentNode;
+		while((parentNode != null) && (parentNode.getAttribute != null))
+    {
+      if(parentNode.getAttribute(parentAttrName) == attrValue)
+      {
+        return parentNode;
+      }
+      parentNode = parentNode.parentNode;
+    }
+    return parentNode;
+  }
+	this.getForm = function(frmName)
+	{
+		var frm = document.forms[frmName];
+		if(frm != null)
+		{
+			return frm;
+		}
+		for(var i=0; i<document.forms.length; i++)
+		{
+			if(document.forms[i].name == frmName)
+			{
+				return document.forms[i];
+			}
+		}
+		return null;
+	}
+
+
+  /**
+   * Returns the form
+   * @param {String} frmName
+   * @type HTMLDOMElement
+   * @return Returns null in case of no match
+   */
+  this.getForm = function(frmName)
+  {
+    var frm = document.forms[frmName];
+    if(frm != null)
+    {
+      return frm;
+    }
+    for(var i=0; i<document.forms.length; i++)
+    {
+      if(document.forms[i].name == frmName)
+      {
+        return document.forms[i];
+      }
+    }
+    return null;
+  }
+  
+  /**
+   * Sets the attribute to the given value for the element list.
+   * @param{String} attrName
+   * @param {Object} attrValue
+   * @param {DOMElement[]} elList   
+   */
+  this.setAttribute = function(elList,attrName,attrValue)
+  {
+    for(var i = 0; i < elList.length; i++)
+    {
+      elList[i].setAttribute(attrName,attrValue);
+    }
+  }
+
+  /**
+   * Sets the property to the given value for the element list.
+   * @param{String} attrName
+   * @param {Object} attrValue
+   * @param {DOMElement[]} elList
+   */
+  this.setProperty = function(elList,propName,propValue)
+  {
+    for(var i = 0; i < elList.length; i++)
+    {
+      elList[i][propName] = propValue;
+    }
+  }
+
+
+	this.fillData = function(elements,data)
+	{
+  for(var count=0; count < elements.length; count++)
+  {
+     this.setValueOnEl(elements[count],data[elements[count].getAttribute("name")]);
+  }
+	}
+  
+  this.setValueOnEl = function(curEl,value)
+  {
+    var type = curEl.type;
+    var nodeName = curEl.nodeName;
+    
+    if(value == null){ return;}
+
+    if((type == "radio") || (type == "checkbox"))
+    {
+      curEl.checked = (value == curEl.value);
+    }
+    else if(type == "select-one")
+    {
+      for(var i =0;i < curEl.options.length; i++)
+      {
+        if( (curEl.options[i].value && curEl.options[i].value == value)
+            || (curEl.options[i].innerHTML == value))
+        {
+          curEl.options[i].selected = true;
+        }
+      }
+    }
+    else if((nodeName == "DIV") || (nodeName == "SPAN"))
+    {
+      curEl.innerHTML = value;
+    }
+    else
+    {
+      curEl.value = value;
+    }
+    
+  }
+
+
+}
+
+LangUtils = new function(){}
+/**
+ * Returns a clonedCopy of the array.
+ *@param {Object[]} arrayToClone
+ *@type Object[]
+ */
+LangUtils.cloneArray = function(arrayToClone)
+{
+  var clonedArray = new Array();
+  for(var i =0; i < arrayToClone.length; i++)
+  {
+    clonedArray[i] = arrayToClone[i];
+  }
+  return clonedArray;
+}
+
+
+
+function printfire()
+{
+  if (document.createEvent)
+  {
+    printfire.args = arguments;
+    var ev = document.createEvent("Events");
+    ev.initEvent("printfire", false, true);	//NO I18N
+    dispatchEvent(ev);
+  }
+}
+function removeScriptsFromHead(id)
+{
+	var headElement=document.getElementsByTagName("HEAD")[0];
+	var scriptTagsToBeRemoved=DOMUtils.getChildElsWithAttr(headElement,"id","script_"+id);
+	for(var i=(scriptTagsToBeRemoved.length)-1;i>0;i--)
+	{
+		headElement.removeChild(scriptTagsToBeRemoved[i]);
+	}
+	
+}
+
+/**
+ * Can be used for logging in FireFox. But needs FireBug.
+ *
+ */
+LangUtils.log = printfire;

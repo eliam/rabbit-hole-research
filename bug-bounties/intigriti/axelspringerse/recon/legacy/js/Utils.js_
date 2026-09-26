@@ -1,0 +1,344 @@
+/*$Id$ */
+
+// ------------------- General Object related methods ---------------------- //
+
+var browser_opera = false;
+var browser_ie = false;
+var browser_nn6 = false;
+var browser_nn4 = false;
+
+if (document.all)
+{
+  if (window.navigator.appName.toUpperCase=="OPERA")
+	browser_opera=true;
+  else
+	browser_ie=true;
+}
+else if (document.layers || (!document.all && document.getElementById))
+  browser_nn6=true;
+else if (document.layers)
+  browser_nn4=true;
+
+function getInternetExplorerVersion()
+{
+  var rv = -1; // Return value assumes failure.
+  if (navigator.appName == 'Microsoft Internet Explorer')
+  {
+    var ua = navigator.userAgent;
+    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+    if (re.exec(ua) != null)
+      rv = parseFloat( RegExp.$1 );
+  }
+  return rv;
+}
+
+var ie_version = getInternetExplorerVersion();
+
+/**
+ * Retruns the x position of the given object in the window / screen.
+ */
+function findPosX(obj) {
+	var curleft = 0;
+	if (document.getElementById || document.all) {
+		curleft += document.body.offsetLeft;
+		while (obj.offsetParent) {
+			curleft += obj.offsetLeft;
+			obj = obj.offsetParent;
+		}
+	}
+	else if (document.layers) {
+		curleft += obj.x;
+	}
+	return curleft;
+}
+
+/**
+ * Retruns the x position of the given object in the window / screen.
+ */
+function findPosY(obj) {
+	var curtop = 0;
+	if (document.getElementById || document.all) {
+		curtop += document.body.offsetTop;
+		while (obj.offsetParent) {
+			curtop += obj.offsetTop;
+			obj = obj.offsetParent;
+		}
+	} else if (document.layers) {
+		curtop += obj.y;
+	}
+	return curtop;
+}
+
+function findDocDim() {
+	if (browser_ie) {
+		return {
+    		width : document.body.offsetWidth + document.body.scrollLeft,
+			height : document.body.offsetHeight + document.body.scrollTop
+		}
+	} else if (browser_nn4 || browser_nn6) {
+		return {
+			width : window.innerWidth + document.body.scrollLeft,
+			height : window.innerHeight + document.body.scrollTop
+		}
+	}
+}
+
+function findDocClientDim() {
+	if (browser_ie) {
+		return {
+    		width : document.body.offsetWidth,
+			height : document.body.offsetHeight
+		}
+	} else if (browser_nn4 || browser_nn6) {
+		return {
+			width : window.innerWidth,
+			height : window.innerHeight
+		}
+	}
+}
+
+function getCursorPos(ev) {
+	if (browser_ie) {
+		var x = window.event.clientX + document.body.scrollLeft;
+		var y = window.event.clientY + document.body.scrollTop;
+	} else if (browser_nn6) {
+		var x = ev.pageX;
+		var y = ev.pageY;
+	}
+
+	return { x : x, y : y };
+}
+
+/**
+ * Retruns the object for the given element id and document object.
+ */
+function getObj(n,d) 
+{
+	var p,i,x;
+	if(!d)
+		d=document;
+
+	if((p=n.indexOf("?"))>0&&parent.frames.length) {
+		d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);
+	}
+
+	if(!(x=d[n])&&d.all){
+		x=d.all[n];
+	}
+
+	for(i=0;!x&&i<d.forms.length;i++){
+		x=d.forms[i][n];
+	}
+
+	for(i=0;!x&&d.layers&&i<d.layers.length;i++){
+		x=getObj(n,d.layers[i].document);
+	}
+
+	if(!x && d.getElementById){
+		x=d.getElementById(n);
+	}
+	return x;
+}
+
+/**
+ * Creating trim() function and added to String object as prototype
+ */
+String.prototype.trim = function() {
+  var x = this;
+  x = x.replace(/^\s*(.*)/, "$1");
+  x = x.replace(/(.*?)\s*$/, "$1");
+  return x;
+}
+
+/**
+ * Clears text selection
+ */
+function clearTextSelection() {
+	if (window.getSelection) {
+		window.getSelection().removeAllRanges();
+	} else if (document.getSelection) {
+		var s = document.getSelection();
+		if (s.collapse) s.collapse(true);
+		if (s.removeAllRanges) s.removeAllRanges();
+ 	} else if (document.selection) {
+		document.selection.empty();
+	}
+}
+
+function getForm(action, keys, vals, method) 
+{
+	var samplef = null;
+	if(samplef == null) {
+		samplef = document.createElement('form');
+		samplef.method="post";//No I18N
+		document.body.appendChild(samplef);
+	}
+	if(method && method != null && (method.toLowerCase() == "get" || method.toLowerCase() == "post"))
+	{
+		samplef.method=method.toLowerCase();
+	}
+	else
+	{
+		samplef.method="post";//No I18N
+	}
+	var elems = samplef.elements;
+	for(var i = elems.length-1; i>=0; i--) {
+		samplef.removeChild(elems.item(i));
+	}
+	samplef.action = action;
+	for(var i=0; i<keys.length; i++) {
+		samplef.appendChild(getInp(keys[i], vals[i]));
+	}
+	return samplef;
+}
+
+function getFormandAppendElem(fElem, keys, vals)
+{
+	samplef = fElem;
+	for(var i=0; i<keys.length; i++) {
+		samplef.appendChild(getInp(keys[i], vals[i]));
+	}
+	return samplef;
+}
+
+
+/*if(!document.all) 
+{
+   HTMLElement.prototype.outerHTML
+     setter =  function(str)
+               {
+                 var r = this.ownerDocument.createRange();
+                 r.setStartBefore(this);
+                 var df = r.createContextualFragment(str);
+                 this.parentNode.replaceChild(df, this);
+                 return str;
+               };
+
+   HTMLElement.prototype.outerHTML
+     getter =  function ()
+               {
+                 return getOuterHTML(this)
+               };
+
+   function getOuterHTML(node)
+   {
+         var str = "";
+     var empties = ["IMG", "HR", "BR", "INPUT"];//No I18N
+
+     switch (node.nodeType)
+     {
+       case 1: // ELEMENT_NODE
+         str += "<" + node.nodeName;
+         for(var i = 0; i < node.attributes.length; i++)
+         {
+           if(node.attributes.item(i).nodeValue != null)
+           {
+             str += " "
+             str += node.attributes.item(i).nodeName;
+             str += "=\"";
+             str += node.attributes.item(i).nodeValue;
+             str += "\"";
+           }
+         }
+
+                 var index = -1;
+                 for(var i = 0; i < empties.length; i++)
+                 {
+                   if(empties[i] == node.nodeName)
+                   {
+                         index = i;
+                         break;
+                   }
+                 }
+
+                 if(node.childNodes.length == 0 && index > 0)
+           str += ">";
+         else
+         {
+           str += ">";
+           str += node.innerHTML;
+           str += "</" + node.nodeName + ">"
+        }
+         break;
+
+       case 3:  //TEXT_NODE
+         str += node.nodeValue;
+         break;
+
+       case 4: // CDATA_SECTION_NODE
+         str += "<![CDATA[" + node.nodeValue + "]]>";//No I18N
+         break;
+
+       case 5: // ENTITY_REFERENCE_NODE
+         str += "&" + node.nodeName + ";"
+         break;
+
+       case 8: // COMMENT_NODE
+         str += "<!--" + node.nodeValue + "-->"
+         break;
+     }
+
+     return str;
+   }
+}*/
+/*
+ * This function will hide the div if we click on some other part of the page. 
+ * Note : It won't hide the div if we click on the opener(lead to open the div) and div(that going to open).
+ */
+
+function hideOnBlur(e) 
+{
+	var openerArr = new Array('DOWN_ARROW', 'filterIcon','licenseFilterIcon','searchDownArrow'); //div(s) to be ignored if a click is made on thats
+	var divs = new Array('SEARCH_CRI', 'filter','licenseFilterDiv'); // div(s) to be closed on click
+	for(var i=0; i<openerArr.length; i++)
+	{
+		var openerId = openerArr[i];
+		var divId = divs[i];
+
+		if(docid(divId))
+		{
+			e = e || event
+				var target = e.target || e.srcElement	
+
+			var tarId	= target.id;
+			var tag		= target.tagName;
+			var clName	= target.className;
+
+			//var topPos	= parseInt(docid(divId).offsetTop);
+			//var leftPos	= parseInt(docid(divId).offsetLeft);	
+
+			var topPos	= parseInt(findPosY(docid(divId)));
+			var leftPos 	= parseInt(findPosX(docid(divId)));
+
+			var elWidth	= parseInt(docid(divId).scrollWidth);
+			var elHeight	= parseInt(docid(divId).scrollHeight);
+
+			var cursorPos 	= getCursorPos(e);
+			var xPos	= parseInt(cursorPos.x);
+			var yPos	= parseInt(cursorPos.y);
+
+			//alert("xPos :: "+xPos+"::"+leftPos+"::"+eval(leftPos+elWidth)+". yPos :: "+yPos+"::"+topPos);
+			if(tarId !=openerId && ( xPos < leftPos || xPos > eval(leftPos+elWidth) || yPos < topPos || yPos > eval(topPos+elHeight) ))
+			{
+				docid(divId).style.display='none';
+			}
+		}
+	}
+}
+
+function openChildStatus(pId, cId, minFrmTopPos, minFrmLeftPos)
+{
+	var posTop = findPosY(docid(pId));
+	var posLeft = findPosX(docid(pId));
+
+	var parElHeight	= parseInt(docid(pId).scrollHeight);
+	var parElWidth	= parseInt(docid(pId).scrollWidth);
+
+	var t = posTop + parElHeight/2 - new Number(minFrmTopPos);
+	var l = posLeft + parElWidth/2 - new Number(minFrmLeftPos);
+
+	docid(cId).style.top=t+"px";
+	docid(cId).style.left=l+"px";
+	docid(cId).style.display='block';
+}
+function hCEle(id, dis){docid(id).style.display=dis;}

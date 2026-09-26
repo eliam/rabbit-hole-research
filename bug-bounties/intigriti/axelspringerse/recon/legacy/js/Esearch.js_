@@ -1,0 +1,624 @@
+function docid(id){return document.getElementById(id);};
+function sHSP(selId){docid(selId).style.display = (docid(selId).style.display=="none" ? "block" : "none");}
+function showHideES(selId)
+{
+	docid(selId).className = (docid(selId).className.indexOf("_enable") != -1 ? "notify_disable" : "notify_enable");
+	docid(selId+"_COMBO").style.display = (docid(selId+"_COMBO").style.display=="none" ? "" : "none");
+}
+
+function checkConfiguration()
+{
+
+	if(isEmpSearchEnabled == 0)
+	{
+		eDCDS(false, 'CORPARATE_DIR_SEARCH');//NO I18N
+	}
+	else
+	{
+		docid('ENABLE_EMPLOYEE_SEARCH').checked=true;
+		for(var i=0; i<tabs.length; i++)
+		{
+			if(!docid(tabs[i]+"_search").checked)
+			{
+				eDCDS(false, tabs[i]+'_OPTIONS');
+			}
+		}
+	}
+	docid('SHOW_ON_LOGIN_PAGE').checked = (showOnLogonPage == 0 ? false : true);
+	docid('ENABLE_OU_CHART').checked = (isOUChartEnabled == 0 ? false : true);
+	docid('DISABLE_PHOTO').checked = (isPhotoDisabled == 0 ? false : true);
+	docid('SHOW_JPEGPHOTO').checked = (showJPEGPhoto == 0 ? false : true);
+	docid('HIDE_DISABLED_USERS').checked = (hideDisabledUsers == 0 ? false : true);
+	docid('HIDE_UNMANAGED_USERS').checked = (hideUnmanagedUsers == 0 ? false : true);
+	docid('SHOW_SAME_FOREST_USERS_ONLY').checked = (showOnlyForestUsers == 0 ? false : true);
+	configJPEGPhoto(isPhotoDisabled == 0 ? false : true);	
+	//Disable hide unmanaged users if enable ou chart is unchecked
+	enableDisableUnmanagedUsers();
+	
+}
+//Enable Disable Corparate Directory Search
+function eDCDS(checked, id)
+{	
+	
+	var inputs = docid(id).getElementsByTagName('input');
+	//var combos = docid(id).getElementsByTagName('select');
+	for(var i=0; i<inputs.length; i++)
+	{
+		if(!checked)
+		{
+			inputs[i].checked= false;
+		}
+		else if(id == "CORPARATE_DIR_SEARCH")
+		{
+			docid("contact_search").checked=true;
+			docid("user_search").checked=true;
+		}
+		inputs[i].disabled=!checked;
+	}
+	//for(var i=0; i<combos.length; i++){combos[i].disabled=!checked;}
+
+	
+	 var disSt = (checked ? 'backgroundColor:;opacity:1;filter:;padding-left:20px' : 'color:#666;padding-left:20px;background-color:rgba(192,192,192,0.03)');//NO I18N 
+	docid(id).setAttribute('style', disSt);	
+	if(id=='CORPARATE_DIR_SEARCH'&&!checked)
+	{
+		docid('ENABLE_OU_CHART').checked=false;
+		enableDisableUnmanagedUsers();
+	}	
+}
+function showMoreTab()
+{		
+	var divToShow = $("#more_TAB");
+    	divToShow.css({display: "block", position: "absolute",left:($("#more_tab_space").offset().left+8) + "px",top: ($("#more_tab_space").offset().top +3 )+ "px"}); //NO I18N
+}
+
+function changeESTab(selId)
+{
+	for(var i=0; i<tabs.length; i++)
+	{
+		var clName = docid(tabs[i]+"_TAB").className;
+		if(selId == tabs[i]+"_TAB")
+		{
+			docid(tabs[i]+"_TAB").className = clName.replace("Disable", "Enable");
+			docid(tabs[i]).style.display="block";
+		}
+		else
+		{
+			docid(tabs[i]+"_TAB").className = clName.replace("Enable", "Disable");
+			docid(tabs[i]).style.display="none";
+		}
+	}	
+
+	if(selId == "more_TAB")
+	{
+		docid(selId).className = "flRight empSrchMoreOptEnable curPoint";
+		docid('more').style.display="block";
+		docid('tabContent').style.display="none";
+	}
+	else
+	{
+		docid('more_TAB').className = "flRight empSrchMoreOpt curPoint";
+		docid('more').style.display="none";
+		docid('tabContent').style.display="block";
+	}
+	showMoreTab();
+}
+
+function moveSelValues(fId, tId)
+{
+	var fromList = docid(fId);
+	var toList = docid(tId);
+	for (i=0;i<fromList.options.length;i++)
+	{
+		var current = fromList.options[i];
+		if (current.selected)
+		{
+			if(fromList.options.length == 1 && fId.indexOf("_SEL") !=-1){break;}
+			txt = current.text;
+			val = current.value;
+			ide = current.id;
+			var obj = new Option(txt,val);
+			toList.options[toList.length] = obj;
+			obj.id = ide;
+			fromList.options[i] = null;
+			i--;
+		}
+	}
+}
+function moveUpDown(objId, go)
+{
+	
+	var $op = $('#'+objId+' option:selected'); //NO I18N									 
+    (go == "UP") ? $op.first().prev().before($op) : $op.last().next().after($op); //NO I18N
+   
+}
+function sHSearchFilter(selId)
+{
+	docid(selId+"_arrow").className = (docid(selId+"_arrow").className.indexOf("searchRightArrow") != -1 ? "flLeft searchDownArrow" : "flLeft searchRightArrow");
+	sHSP(selId+"_SEARCH_BY");//NO I18N
+}
+
+function sHEmbedSearchFilter(selId)
+{
+	docid(selId+"_arrow").className = (docid(selId+"_arrow").className.indexOf("searchRightArrow") != -1 ? "searchDownArrow" : "searchRightArrow");
+	sHSP(selId+"_SEARCH_BY");//NO I18N
+}
+
+function selectAllFields(selId)
+{
+	var tabs = new Array("user", "contact", "group");
+	changeESearchFilter('SEARCH_BY', selId);//No I18N
+	for(var i=0; i<tabs.length; i++)
+	{
+		if(docid(tabs[i]+"_arrow"))
+		{
+			docid(tabs[i]+"_arrow").className = "flLeft searchRightArrow";
+			docid(tabs[i]+"_SEARCH_BY").style.display='none';
+		}
+	}
+}
+
+function changeESearchFilter(frm, selId)
+{
+	var types = docid(frm).getElementsByTagName('a');
+	for(var i=0; i<types.length; i++)
+	{
+		if(types[i].id != selId)
+		{
+			docid(types[i].id+"_arrow").className = "blockElement flLeft tickIconNone";
+		}
+		else
+		{
+			docid(types[i].id+"_arrow").className = "blockElement flLeft tickIcon";
+		}
+	}
+	if(selId != "ALL_FIELDS" && docid(selId).parentNode.id !="SEARCH_TYPE")
+	{docid('ALL_FIELDS_arrow').className = "blockElement flLeft tickIconNone";}
+}
+
+function searchEmp(selId)
+{
+	var val = docid(selId).value;
+	var defText = docid('DEFAULT_TEXT').value;
+	if(val == '' || defText == val)
+	{
+		var msg = (docid('domainLogin') ? window.frames.domainLogin.jsTitleMsg.adssp_admin_restrict_users_alert_searchkey : jsTitleMsg.adssp_admin_restrict_users_alert_searchkey);
+		return alertMsg(msg, null, '200');
+	}
+
+	var searchBy = getSearchOpts("SEARCH_BY");//NO I18N
+	var searchType = getSearchOpts("SEARCH_TYPE");//NO I18N
+
+	var params = 'searchString='+encodeURIComponent(val)+'&searchBy='+encodeURIComponent(searchBy)+'&searchType='+encodeURIComponent(searchType);//NO I18N
+	CreateAndSubmitForm('EmployeeSearch.cc?actionId=Search', window.name, params);//NO I18N
+}
+var isSearching=false;
+function searchContact()
+{
+	if(isSearching!=undefined && isSearching){	return;		}
+	var searchValue=docid("searchBox").value;
+	var defText = docid('DEFAULT_TEXT').value;
+	if(encodeURIComponent(searchValue).length>100)
+	{
+		alertMsg(docid('domainLogin') ? window.frames.domainLogin.jsTitleMsg.adssp_search_term_limit_characters:jsTitleMsg.adssp_search_term_limit_characters);
+		return false;
+	}
+	if(searchValue.trim()!="" && searchValue!=defText)
+	{
+		var searchBy = getSearchOpts("SEARCH_BY");//NO I18N
+		var searchType = getSearchOpts("SEARCH_TYPE");//NO I18N
+		var url = "EmpSearch.cc?operation=getSearchResult&REQUEST_TYPE=JSON&searchType="+searchType+"&searchBy="+searchBy+ "&actionId=Search";	//No I18N
+
+		var params = 'searchString='+encodeURIComponent(searchValue)+'&searchType='+encodeURIComponent(searchType)+'&searchBy='+encodeURIComponent(searchBy); //No I18N
+		CreateAndSubmitForm('EmployeeSearch.cc?actionId=Search', window.name, params); //No I18N
+	}
+	else
+	{	alertMsg(docid('domainLogin') ? window.frames.domainLogin.jsTitleMsg.adssp_common_alert_search_pls_enter_text:jsTitleMsg.adssp_common_alert_search_pls_enter_text); return false;	}
+}
+function loadSearchResults(searchString,searchBy,searchType)
+{
+	if(searchString!="")
+	{
+
+		var substring = 'searchString='+encodeURIComponent(searchString)+'&searchBy='+encodeURIComponent(searchBy)+'&searchType='+encodeURIComponent(searchType);//NO I18N
+		CreateAndSubmitForm('EmployeeSearch.cc?actionId=showList', window.name, substring);//NO I18N
+	}
+	else
+	{	docid('searchBox').style.border='2px solid red';	searchErrorMessage();	}
+}
+function setFieldValues(searchString,searchBy,searchType)
+{
+	if(docid('searchBox'))
+	{
+		docid("searchBox").value=decodeHtmlEntities(decodeHtmlEntities(searchString));	//No I18N
+		changeESearchFilter('SEARCH_TYPE', searchType); //No I18N
+		if(searchBy=='ALL_FIELDS'){	selectAllFields("ALL_FIELDS");	}
+		else
+		{
+			var searchByArr = searchBy.split(";;;");
+			for(var i=0;i<searchByArr.length;i++)
+			{
+				changeESearchFilter(searchByArr[i].split("_")[0]+'_SEARCH_BY',searchByArr[i]);
+			}
+		}
+	}
+	else{	setTimeout(function(){setFieldValues(searchString,searchBy,searchType);},500);	}
+}
+
+function showSearchResult(response)
+{
+	var result;
+	var req = response.transport;
+	var result = req.responseText;
+	var pos1=result.indexOf("\"",result.indexOf("genId")+6)+1;
+	var pos2=result.indexOf("\"",pos1);
+	var genId=result.substr(pos1,pos2-pos1);
+	var params = "&searchString="+encodeURIComponent(searchString)+"&searchType="+encodeURIComponent(searchType)+"&searchBy="+encodeURIComponent(searchBy)+"&genID="+genId+"&sortIndex=0"; //No I18N
+	CreateAndSubmitForm("EmployeeSearch.cc?actionId=showList", window.name, params);	//No I18N
+}
+var i,tr,td,text,searchResults,tabChanged=false;
+
+function searchErrorMessage()
+{
+	if(docid("preLoading")){	docid("preLoading").style.display='none';	}
+	docid('errorMsgDisp').style.display='';
+}
+function closeEmpDetails()
+{
+	adsjquery('.emp-search-table tr').removeClass("active"); //No I18N
+	adsjquery('.emp-details-box').removeClass("open"); //No I18N
+}
+
+function getSearchOpts(container)
+{
+	var fields 	= docid(container).getElementsByTagName("a");
+	var selFields	="";
+	for(var i=0; i<fields.length; i++)
+	{
+		var fId = fields[i].id;
+		var clN	= docid(fId+"_arrow").className;
+
+		if(clN.indexOf("tickIcon") !=-1 && clN.indexOf("tickIconNone") == -1)
+		{
+			selFields += (selFields !="" ? ";;;"+fId : fId);
+		}
+	}
+	return selFields;
+}
+
+function showHierarchy(domainName, objGuid)
+{
+	var userDN = docid(objGuid+"_DN").value;
+	var url = "OrganizationChart.cc?selectedTab=dash#"+userDN;//NO I18N
+	var params = 'methodToCall=show&DOMAIN_NAME='+domainName+'&userDN='+encodeURIComponent(userDN);//NO I18N
+	CreateAndSubmitForm(url, window.name, params);
+	if(eval(window.event)){window.event.returnValue=false;}
+}
+
+function retainFilters()
+{
+	if(!docid('SEARCH_BOX')){
+        setTimeout(retainFilters, 100);
+        return false;
+	}
+	
+	docid('SEARCH_STRING').value=decodeHtmlEntities(searchValue);
+	docid('SEARCH_STRING').style.color="#000000";
+	changeESearchFilter('SEARCH_TYPE', searchType);//No I18N
+
+	if(searchBy == "ALL_FIELDS"){selectAllFields("ALL_FIELDS");}
+	else
+	{
+		var selFields = searchBy.split(";;;");
+		for(var i=0; i<selFields.length; i++)
+		{
+			var field = selFields[i];
+			var obj = field.split("_")[0];
+			changeESearchFilter(obj+"_SEARCH_BY", field);//No I18N	
+		}
+	}
+}
+function createSearch(access)
+{
+	var divID = document.getElementById('Esearch');
+	if(divID != null)
+	{
+		var url = 'UnAuthAction.cc'; var params = 'methodToCall=populateEmpSearch&criteria='+access;//NO I18N
+		AjaxAPI.sendRequest({URL:url, PARAMETERS:params, ONSUCCESSFUNC:addEmpFields});
+	}
+	var orgID = document.getElementById('oChart');
+	if(orgID != null)
+	{
+		var url = 'OrgChartLink.cc';//NO I18N
+		AjaxAPI.sendRequest({URL:url, ONSUCCESSFUNC:addOrgChart});
+	}
+}
+
+function addEmpFields(response, reqOptions)
+{
+	var req = response.transport;
+	var result = req.responseText;
+	document.getElementById('Esearch').innerHTML= result;	
+	if(contextPath != undefined)
+	{
+		$(document).ready(function (){
+			setDirSearchBox();
+
+		});
+	}
+}
+
+function addOrgChart(response, reqOptions)
+{
+	var req = response.transport;
+	var result = req.responseText;
+	document.getElementById('oChart').innerHTML= result;
+}
+
+function configJPEGPhoto(isChecked)
+{
+	docid('SHOW_JPEGPHOTO').disabled = (isChecked)?true:false;
+	if(isChecked)
+	{
+		docid('SHOW_JPEGPHOTO').checked = false;
+	}
+	docid('SHOW_JPEGPHOTO_LABEL').className = (isChecked)?"grayfont":"normalFont";
+}
+
+var isEmbedSearch = false;
+function embedEmpSearch(selId)
+{
+	isEmbedSearch = true;
+	triggerEmpSearch(selId,true,docid('DEFAULT_TEXT').value);
+}
+
+function resizeSearch()
+{
+	var reg = /^\d+$/;
+	var width = reg.test($('#EMP_SEARCH_WIDTH').val())? $('#EMP_SEARCH_WIDTH').val():"250";
+	var height = reg.test($('#EMP_SEARCH_HEIGHT').val())? $('#EMP_SEARCH_HEIGHT').val():"25";
+	$('#searchTable').css('width',width);
+	$('#searchTable').css('height',height);
+	setCode(width,height);
+}
+
+function setCode(width,height)
+{
+	
+	var embedCode = "<script language=\"JavaScript\" type=\"text/javascript\" src=\""+accessURL+"/js/EmbedEmployeeSearch.js\"></script>\n<div style=\"width:"+width+"px;font-size: 10px; font-family: verdana;text-align:right\">"; // NO I18N;
+	if(!($("#ORG_CHART").prop("checked"))){ 
+		embedCode = embedCode + "\n<div><a href=\""+accessURL+"/unAuth/OrganizationChart\">Organization Chart</a></div>"; // NO I18N 
+	}
+	embedCode = embedCode + "\n<div id=\"adsspSearch\" style=\"width:"+width+"px; height:"+height+"px; font-size: 10px; font-family: verdana\"></div></div>"; // NO I18N
+	$('#EMP_SEARCH_CODE').text(embedCode); // NO I18N
+}
+
+function func(ev,id)
+{
+	if(ev.keyCode == 38) {$('#'+id).val((parseInt($('#'+id).val())+1));resizeSearch();}				//up arrow
+	else if(ev.keyCode == 40) {$('#'+id).val((parseInt($('#'+id).val())-1));resizeSearch();}			//down arrow	
+}
+
+function changeSize(selObj)
+{
+	//[Small,Large,Custom]
+	var width = ["250","350","450"]; // NO I18N
+	var height = ["25","30","35"]; // NO I18N
+	var disp = ["none","none",""]; // NO I18N
+	var selIndex = selObj.selectedIndex;
+	$('#EMP_SEARCH_WIDTH').val(width[selIndex]);
+	$('#EMP_SEARCH_HEIGHT').val(height[selIndex]);
+	$('#dimensionsRow').css('display',disp[selIndex]);	
+	resizeSearch();
+}
+
+function enableAndDisableOrgChart()
+{
+	$("#ORG_CHART").is(":checked")? $("#embedOrgChart").css("visibility","hidden"):$("#embedOrgChart").css("visibility","visible");
+	resizeSearch();
+}
+
+function enableDisableUnmanagedUsers()
+{
+	if(docid('ENABLE_OU_CHART').checked)
+	{
+		docid('HIDE_UNMANAGED_USERS').disabled=false;
+	}
+	else
+	{
+		docid('HIDE_UNMANAGED_USERS').checked=false;
+		docid('HIDE_UNMANAGED_USERS').disabled=true;
+	}
+}
+
+var selCondn = '', searchBy = '';
+
+function triggerEmpSearch(fieldId,isOldUISearch,defValue,isValidUser)
+{			
+	//to prevent trigger when searchbox is not in focus
+	if(!isOldUISearch && !$("#employeeSearch").hasClass("open")){
+		$("#employeeSearch").addClass('open');
+		return;
+	}
+	var searchValue = $("#"+fieldId).val();//No I18N
+    if(searchValue != null && searchValue.trim() !=''  && searchValue != defValue)
+    {
+        searchValue  = jsonEscape(searchValue);
+		if(searchBy == '')
+		{
+			searchBy = 'ALL_FIELDS';//No I18N
+		}
+		if(selCondn == '')
+		{
+			selCondn = 'contains';//No I18N
+		}
+		if(isOldUISearch)
+		{
+			searchBy = getSearchOpts("SEARCH_BY");//NO I18N
+			selCondn = getSearchOpts("SEARCH_TYPE");//NO I18N			
+		}
+		var filterParams = '"FILTER_PARAMS":{"action":"search","searchType":"'+selCondn+'","searchBy":"'+searchBy+'","searchString":"'+searchValue+'"},';//NO I18N 
+    	var filterReqParams = '{'+filterParams+'}';
+		if(isOldUISearch && isEmbedSearch)
+		{
+			//For embed search, initSearch will be called from selfservice ember app 
+			isEmbedSearch = false;
+			var tempUrlPath  = typeof urlPath == "undefined" ? "" : urlPath;	//NO I18N
+			window.location.href = tempUrlPath+'/unAuth/EmployeeSearch?FILTER_PARAMS='+encodeURIComponent(filterReqParams) + '&IS_EMBED_SEARCH=true';
+		}
+		else
+		{
+			var requestParams = "REQUEST_PARAMS="+encodeURIComponent(filterReqParams);//No I18N
+			requestParams += "&IS_UNAUTH=true";//NO I18N
+			var url = "/ServletAPI/DirSearch/initSearch";//No I18N
+			if(!isOldUISearch){
+				url = contextPath + url;
+			}
+			else{
+				var tempUrlPath  = typeof urlPath == "undefined" ? "" : urlPath;//NO I18N
+				url = tempUrlPath + url;
+			}
+        	AjaxAPI.sendRequest({URL: url, PARAMETERS: requestParams,ONSUCCESSFUNC: function(){
+				if(!isOldUISearch)
+				{
+					if(isValidUser!=undefined && isValidUser)
+					{
+						window.location.href = contextPath+"/webclient/index.html#/directory-search";
+					}
+					else
+					{
+					window.location.href = contextPath+"/unAuth/EmployeeSearch";
+				}
+				}
+				else
+				{
+					var tempUrlPath  = typeof urlPath == "undefined" ? "" : urlPath;	//NO I18N 
+					if(isValidUser!=undefined && isValidUser)
+					{
+						window.location.href = tempUrlPath+"/webclient/index.html#/directory-search";
+					}
+					else
+					{
+					window.location.href = tempUrlPath+"/unAuth/EmployeeSearch";
+				}
+				}
+        	}});
+		}
+				
+    }
+    else
+    {
+        $("#"+fieldId).trigger('focus');              
+    }
+    if (event.which == 13) // Prevents form submission on Enter
+    {
+       event.preventDefault();
+    }
+}
+
+function jsonEscape(inputValue)
+{
+	if(inputValue!= null && inputValue != '')
+	{
+		inputValue = encodeURIComponent(inputValue); 		
+		if(inputValue.indexOf("%5C") != -1)
+		{
+			inputValue = inputValue.replace(/%5C/g,"%5C%5C");//NO I18N 					 					
+		} 				
+		else if(inputValue.indexOf("%22") != -1)
+		{
+			inputValue = inputValue.replace(/%22/g,"%5C%22");//NO I18N
+			inputValue = decodeURIComponent(inputValue); 				
+		}
+		inputValue = decodeURIComponent(inputValue); 		
+	}
+	return inputValue; 	
+}	
+	
+
+function setDirSearchBox()
+{
+		$(document).on("click", function(e) //No I18N
+		{
+			if (!$(e.target).closest("#employeeSearch").length) 
+			{
+			  $("#employeeSearch").removeClass("open");//No I18N
+			}
+		});
+
+		$("#employeeSearch .dropdown-menu").on("click", function(e) { return false; })//No I18N
+		$(".classic-dropdown", $("#employeeSearch")).on("click", function(e) {})//No I18N
+		$("#employeeSearch.open .classic-dropdown").on("click", function(e) //No I18N
+		{
+			e.preventDefault();
+			return true;
+		})
+
+        $('[data-toggle="emp-panel"]').on("click", function(e) //No I18N
+		{
+			$(this).closest('td').find("div.emp-panel").show("slide", { "direction": "right" }, 200);//No I18N
+		});
+
+		$('.emp-panel .close').on("click", function(e) //No I18N
+		{
+			$(this).closest("div.emp-panel").hide("slide", { "direction": "right" }, 200);//No I18N
+		});
+		if ($(".employee-conditions").length) 
+		{
+			$(".employee-conditions li").on("click", function(e) //No I18N
+			{
+				selCondn = this.id;
+				$("li .icn-tick-green", $(this).closest("ul")).remove();//No I18N
+				$(this).prepend("<i class='ssp-icon icn-tick-green emp-filter-caret'></i>");
+				e.stopPropagation();
+			})
+		}
+
+		if ($(".emp-sub-menu").length) 
+		{
+			$(".emp-sub-menu li").on("click", function(e) //No I18N
+			{
+				  var searchById = this.id;
+				  var currentSearchBy = searchBy;
+				  var parentSubMenu = $(this).closest("ul").attr("id");//No I18N
+				  var indexOfPrevId = currentSearchBy.indexOf(parentSubMenu);
+				  if(indexOfPrevId != -1)
+				  {
+					  var colonIndex = currentSearchBy.indexOf(";;;",indexOfPrevId);
+					  var prevSearchBy = currentSearchBy.substring(indexOfPrevId,colonIndex+3);
+					  currentSearchBy=currentSearchBy.replace(prevSearchBy,"");
+				  }
+				  currentSearchBy += parentSubMenu+"_"+searchById+";;;";
+				  searchBy = currentSearchBy;
+				  $("#allFields .icn-tick-green").remove();//No I18N
+				  $("li .icn-tick-green", $(this).closest("ul")).remove();//No I18N
+				  $(this).prepend("<i class='ssp-icon icn-tick-green emp-filter-caret'></i>");
+				  e.stopPropagation();
+				  return false;
+			})
+		}
+		if ($(".employee-filters").length) 
+		{
+			$(".employee-filters li").on("click", function(e) //No I18N
+			{
+			  e.stopPropagation();
+			  $(this).toggleClass("open");//No I18N
+			})
+		}
+		$('#allFields').on("click",function() //No I18N
+		{
+			$(".employee-filters li").removeClass("open");//No I18N
+			$("li .icn-tick-green", $(this).closest("ul")).remove();             //No I18N   
+			$(this).prepend("<i class='ssp-icon icn-tick-green emp-filter-caret'></i>");
+			searchBy = "";
+		})
+		if ($("#employeeSearch").length) 
+		{
+			$("#employeeSearch ").on("click", function(e) //No I18N
+			{
+			  if(e.target.id != "empsearch-search-icon"){
+				$(this).addClass('open');//No I18N
+			  }
+			})
+		}
+}

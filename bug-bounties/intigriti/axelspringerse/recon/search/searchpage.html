@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search: kaffee - FITBOOK</title>
+	<link rel="stylesheet" href="/app6.css">
+	<link rel="stylesheet" href="/fitbook.css">
+	<meta name="google" content="notranslate">
+	<meta name="google" content="nopagereadaloud">
+	<script async="async" src="https://www.google.com/adsense/search/ads.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		(function(g, o) { g[o] = g[o] || function() { (g[o]['q'] = g[o]['q'] || []).push(arguments) }, g[o]['t'] = 1 * new Date })(window, '_googCsa');
+	</script>
+</head>
+
+<body class="">
+	<div class="wrapper">
+		<nav>
+			<div class="nav-logo">
+				<a href="/">
+					FITBOOK
+				</a>
+			</div>
+
+		    
+
+			<div class="nav-search">
+				<form method="GET" action="/search">
+					<div class="searchbar">
+						<input type="text" name="q" value="kaffee" />
+						<button type="submit" alt="Search">🔍</button>
+					</div>
+				</form>
+			</div>
+		</nav>
+
+		<main>
+			<div class="container page">
+				<div style="margin-bottom:32px"></div>
+
+				<div class="ad-container">
+					<div id="ads1"></div>
+				</div>
+
+				<div class="webresults">
+					<div>Web results:</div>
+
+					
+				</div>
+			</div>
+		</main>
+
+		<footer class="container">
+			<span class="copyright">© 2026 FITBOOK</span> •
+			<a href="/copyright">Copyright</a> •
+			<a href="/disclaimer">Disclaimer</a> •
+			<a href="/privacy">Privacy</a> •
+            <a href="/imprint">Imprint</a>
+            
+		</footer>
+	</div>
+
+	<script type="text/javascript" charset="utf-8">
+		function adLoadedCallback(containerName, adsLoaded, isExperimentVariant, callbackOptions) {
+			trackEvent("csa:adLoadedCallback", {
+				containerName: containerName,
+				adsLoaded: adsLoaded,
+				isExperimentVariant: isExperimentVariant,
+				callbackOptions: callbackOptions,
+			})
+		}
+
+		var pageOptions = {
+			"pubId": "partner-pub-5158639315251745",
+			"query": "kaffee",
+			"adsafe": "low",
+			"adtest": "off",
+			"resultsPageBaseUrl": "https://suche.fitbook.de/search?txid=6ab79931a624cfc9926befc6",
+			"resultsPageQueryParam": "q",
+			"ivt": false,
+			"ignoredPageParams": "adtitle,hl,utm_source,utm_content,terms,s1,camp_id,txid",
+			"linkTarget": "_blank"
+		};
+
+		var language = "";
+		if (language != "") pageOptions.hl = language;
+
+		var channels = "";
+		if (channels != "") pageOptions.channel = channels;
+
+		var styleId = "6036788606";
+		if (styleId != "") pageOptions.styleId = styleId;
+
+		var adblock1 = {
+			"container": "ads1",
+			"maxTop": 1,
+			"adLoadedCallback": adLoadedCallback
+		};
+
+		_googCsa("ads", pageOptions, adblock1);
+
+		_googCsa("jsLoadedCallback", function() {
+			trackEvent("csa:jsLoadedCallback")
+		});
+
+		function trackEvent(name, details) {
+			try { fetch("/api/events", { method: "POST", body: JSON.stringify({ name: name, txid: "6ab79931a624cfc9926befc6", pageOptions: pageOptions, details: details }) }); } catch (err) { }
+		}
+
+		window.addEventListener("message", onWindowMessage);
+
+		function onWindowMessage(ev) {
+			if (ev.origin !== "https://www.google.com" && ev.origin !== "https://www.adsensecustomsearchads.com" && ev.origin !== "https://syndicatedsearch.goog") {
+				return;
+			}
+			if (typeof ev.data === "string" && ev.data.startsWith("FSXDC,.aCS:")) {
+				trackEvent("adclick", { data: ev.data });
+			}
+		}
+	</script>
+</body>
+
+</html>

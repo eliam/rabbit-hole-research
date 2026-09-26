@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <title data-rh="true">
+    Hey_ Die künstliche Intelligenz von BILD
+  </title>
+
+  <script>
+    function isSharedConversationPath(pathname) {
+      return /^(?:\/(?:app|embedded|companion))?\/shared\/[^/]+/.test(pathname);
+    }
+
+    if (isSharedConversationPath(window.location.pathname)) {
+      const referrerPolicy = document.createElement("meta");
+      referrerPolicy.name = "referrer";
+      referrerPolicy.content = "no-referrer";
+      document.head.appendChild(referrerPolicy);
+    }
+  </script>
+
+  
+  <link data-n-head="ssr" href="/assets/favicon-e7a3e064.ico" rel="shortcut icon" sizes="16x16" />
+  
+  <link data-n-head="ssr" href="/assets/favicon-e7a3e064.ico" rel="shortcut icon" sizes="32x32" />
+  
+  <link data-n-head="ssr" href="/assets/favicon-e7a3e064.ico" rel="shortcut icon" sizes="196x196" />
+  
+  <link data-n-head="ssr" href="/assets/favicon-e7a3e064.ico" rel="shortcut icon" sizes="152x152" />
+  
+  <link data-n-head="ssr" href="/assets/favicon-e7a3e064.ico" rel="shortcut icon" sizes="167x167" />
+  
+  <link data-n-head="ssr" href="/assets/favicon-e7a3e064.ico" rel="shortcut icon" sizes="180x180" />
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content" />
+  <meta content="Hey_ Die Künstliche Intelligenz von BILD. Entdecken Sie, wie KI Sie unterstützen kann!" name="description" data-rh="true"/>
+  <meta property="og:type" content="website" data-rh="true"/>
+  <meta name="robots" content="index, follow" data-rh="true"/>
+  <meta charset="UTF-8">
+  <meta property="og:url" content="https://hey.bild.de" data-rh="true"/>
+  <meta property="og:description" content="Hey_ Die Künstliche Intelligenz von BILD. Entdecken Sie, wie KI Sie unterstützen kann!" data-rh="true"/>
+  <meta property="og:image" content="/src/assets/favicons/bild/favicon.ico" data-rh="true"/>
+  <meta property="og:site_name" content="bild.de" data-rh="true"/>
+  <meta property="twitter:url" content="https://hey.bild.de" data-rh="true"/>
+  <meta property="twitter:title" content="Die Künstliche Intelligenz von BILD" data-rh="true"/>
+  <meta property="twitter:description" content="Hey_ Die Künstliche Intelligenz von BILD. Entdecken Sie, wie KI Sie unterstützen kann!" data-rh="true"/>
+  <meta property="twitter:image" content="/src/assets/favicons/bild/favicon.ico" data-rh="true"/>
+  <meta name="keywords" content="ChatGPT, AI, KI, Bild, Technologie, Künstliche Intelligenz" data-rh="true"/>
+
+  <script type="text/javascript">
+    function isSurfacePath(pathname, basePath) {
+      return pathname === basePath || pathname.startsWith(basePath + "/");
+    }
+
+    function isFramedSurfacePath(pathname) {
+      return isSurfacePath(pathname, "/embedded") || isSurfacePath(pathname, "/companion");
+    }
+
+    var loadScriptDynamic = (src, pos = "body") => {
+      // Immediately create and append the script element
+      const script = document.createElement('script');
+      script.src = src;
+      if (pos === "head") {
+        document.head.appendChild(script);
+      } else if (pos === "body") {
+        document.body.appendChild(script);
+      }
+    }
+  </script>
+  
+  <script>
+    if (!isSharedConversationPath(window.location.pathname)) {
+      const script = document.createElement('script');
+      script.type = "text/javascript";
+      script.src = "https://rosetta.prod.ps.bild.de/ps-rosetta.js"
+      document.head.appendChild(script);
+    }
+  </script>
+  
+
+  <!-- START: Loading Consent Management Platform: see https://github.com/spring-media/red-sourcepoint-cmp-web/blob/master/docs/sp-unified-script.md -->
+  <script>
+    if(typeof window !== 'undefined' && !isFramedSurfacePath(window.location.pathname) && !isSharedConversationPath(window.location.pathname)){
+      function _typeof(t) { return (_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (t) { return typeof t } : function (t) { return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t })(t) } !function () { for (var t, e, o = [], n = window, r = n; r;) { try { if (r.frames.__tcfapiLocator) { t = r; break } } catch (t) { } if (r === n.top) break; r = n.parent } t || (function t() { var e = n.document, o = !!n.frames.__tcfapiLocator; if (!o) if (e.body) { var r = e.createElement("iframe"); r.style.cssText = "display:none", r.name = "__tcfapiLocator", e.body.appendChild(r) } else setTimeout(t, 5); return !o }(), n.__tcfapi = function () { for (var t = arguments.length, n = new Array(t), r = 0; r < t; r++)n[r] = arguments[r]; if (!n.length) return o; "setGdprApplies" === n[0] ? n.length > 3 && 2 === parseInt(n[1], 10) && "boolean" == typeof n[3] && (e = n[3], "function" == typeof n[2] && n[2]("set", !0)) : "ping" === n[0] ? "function" == typeof n[2] && n[2]({ gdprApplies: e, cmpLoaded: !1, cmpStatus: "stub" }) : o.push(n) }, n.addEventListener("message", (function (t) { var e = "string" == typeof t.data, o = {}; if (e) try { o = JSON.parse(t.data) } catch (t) { } else o = t.data; var n = "object" === _typeof(o) ? o.__tcfapiCall : null; n && window.__tcfapi(n.command, n.version, (function (o, r) { var a = { __tcfapiReturn: { returnValue: o, success: r, callId: n.callId } }; t && t.source && t.source.postMessage && t.source.postMessage(e ? JSON.stringify(a) : a, "*") }), n.parameter) }), !1)) }();
+    }
+  </script>
+  <script>
+    var CMP_CLOSE_DELAY_MS = 200;
+
+    function updateCmpMessageVisibility(isVisible) {
+      window.__cmpMessageVisible = isVisible;
+      window.dispatchEvent(new CustomEvent("cmpVisibilityChanged", { detail: isVisible }));
+    }
+
+    function finishCmpMessage() {
+      window.setTimeout(function () {
+        updateCmpMessageVisibility(false);
+      }, CMP_CLOSE_DELAY_MS);
+    }
+
+    var cmpDismissRequested = false;
+
+    function handleChatbotAdvertisingConsent(data, success) {
+      // Check if vendor consent exists and is true
+      if (data.grants &&
+      data.grants['67d0075a75d8e5b9a1b1335e'] &&
+      data.grants['67d0075a75d8e5b9a1b1335e'].vendorGrant === true) {
+        // User has granted consent for chatbot advertising
+        window.__initialConsentEventData = { detail: true };
+        window.dispatchEvent(new CustomEvent("chatAdsConsentChanged", { detail: true }));
+      } else {
+        // User has not granted consent for chatbot advertising
+        window.dispatchEvent(new CustomEvent("chatAdsConsentChanged", { detail: false }));
+      }
+    }
+
+    if(typeof window !== 'undefined' && !isFramedSurfacePath(window.location.pathname) && !isSharedConversationPath(window.location.pathname)){
+
+      var nonPurLayer = false;
+      if (navigator.userAgent.toLocaleLowerCase().includes('[as]') || isSurfacePath(window.location.pathname, "/app")) {
+        nonPurLayer = true;
+      }
+
+      window._sp_ = {
+        config: {
+          accountId: 75,
+          consentLanguage: "de",
+          baseEndpoint: "https://cdn.privacy-mgmt.com",
+          propertyId: Number('6804'),
+          gdpr: {},
+          events: {
+            onMessageReady: function () {
+              updateCmpMessageVisibility(true);
+            },
+            onMessageChoiceSelect: function (messageType, choiceId, choiceTypeId) {
+              cmpDismissRequested = [1, 11, 13].includes(choiceTypeId);
+
+              if (choiceTypeId === 15) {
+                finishCmpMessage();
+              }
+            },
+            onPrivacyManagerActionStatus: function () {
+              finishCmpMessage();
+            },
+            onPMCancel: function () {
+              finishCmpMessage();
+            },
+            onMessageReceiveData: function (messageType, data) {
+              window.__cmp_onMessageReceiveData = data
+              updateCmpMessageVisibility(data.messageId !== 0);
+            },
+            onConsentReady: function (message_type, consentUUID, euconsent) {
+              window.dispatchEvent(new Event("startAdvertising"));
+              __tcfapi('getCustomVendorConsents', 2, handleChatbotAdvertisingConsent);
+
+              if (cmpDismissRequested) {
+                cmpDismissRequested = false;
+                finishCmpMessage();
+              }
+            },
+            onError: function (messageType, errorCode) {
+              if (String(errorCode).startsWith("RENDERING_APP")) {
+                finishCmpMessage();
+              }
+            },
+          },
+          targetingParams: {
+            setNonPurLayer: nonPurLayer,
+          },
+        },
+      }
+    }
+  </script>
+
+  <script>
+    
+      function isMobile() {
+        // Primary check: User agent detection
+        const userAgentCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        // Secondary check: Touch capability
+        const touchCheck = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        // Tertiary check: Screen size (as a fallback)
+        const screenCheck = window.screen.width <= 768;
+
+        return userAgentCheck || (touchCheck && screenCheck);
+      }
+      if (typeof window !== 'undefined' && !isFramedSurfacePath(window.location.pathname) && !isSurfacePath(window.location.pathname, "/app") && !isSharedConversationPath(window.location.pathname)) {
+        window.adSSetup = {
+          siteName: "bildhey",
+          view: isMobile() ? "m" : "d",
+          autoStart: false,
+          partners: true,
+          adPlacements: isMobile() ? ["banner", "mrec"] : ["superbanner", "sky"],
+          adSlotSizes: {
+            superbanner: [{ minWidth: 1, sizes: [[800, 250], [970, 250], [728, 600], [1000, 600]] }],
+            sky: [{ minWidth: 1, sizes: [[160, 600], [120, 600], [300, 600], [500, 1000], [1000, 1000]] }],
+            mrec: [{ minWidth: 1, sizes: [[320, 160], [300, 300], [300, 250]] }],
+            banner: [{ minWidth: 1, sizes: [[320, 50], [320, 75], [320, 80]] }],
+          },
+          placeholder: {
+            default: {
+              "border-color": "transparent",
+              "background-color": "transparent",
+              "admarkPosition": "center center",
+              "markerText": " ",
+              "color": "#BCBCBC",
+              "font-size": "12px",
+              "font-family": "Trebuchet ms"
+            },
+            "disableOnHome": false,
+            "disablePlaceholders": false,
+            banner: {
+              disable: true
+            }
+          },
+          isArticle: true,
+          pageName: "hey_story",
+          target: "",
+        };
+        ((i, p) => { i.adSSetup?.siteName ? { addPlaceholder: function (o) { let a = 0, r = 0; const d = i.adSSetup, t = this.getWinWidth(), n = { "728x600": ["100%", 90], "1000x600": ["100%", 90], "1000x300": [300, 300], "993x90": [970, 90], "320x480": [300, 300], "300x600": [300, "m" === d.view ? 300 : 600], "640x360": ["100%", "auto"], "1x1": [0, 0], "2x2": [0, 0], "3x3": [0, 0], "4x4": [0, 0], "5x5": [0, 0], "500x1000": [0, 0], "1000x1000": [0, 0], "290x79": [0, 0], "427x23": [0, 0] }; if (o && !/sky|betad/.test(o) && d.adSlotSizes[o] && !p.getElementById("plhcss_" + o)) { d.adSlotSizes[o].forEach(e => { e.sizes.forEach(e => { var t, i; "string" == typeof e || (t = e.join("x"), /640x360|16x9|9x16/.test(t)) || "1000x300" === t && "d" === d.view || ("100%" === (i = (n[t] || e)[0]) ? r = "100%" : parseInt(i) > r && (r = parseInt(i)), i = (n[t] || e)[1], isNaN(i) ? a = "100%" : parseInt(i) > a && (a = parseInt(i))) }) }); var l = d.placeholder.disablePlaceholders || d.placeholder[o]?.disable || !1; if (0 < a && !l) { let i = ""; if (d.placeholder[o]?.custom) i = d.placeholder[o].custom; else if (d.placeholder[o] || d.placeholder.default) { var l = (r + "px").replace("%px", "%"), s = (a + "px").replace("%px", "%"), h = d.placeholder[o] || d.placeholder.default, c = h["border-color"]; let e = "border: " + (h.border || "solid 1px " + c) + ";"; if ("banner" !== o && t !== r || (e = `border-top: solid 1px ${c}; border-bottom: solid 1px ${c};`), i = `#${o} {margin:auto;left:0;right:0;min-width: ${l};min-height: ${s};background: ${h["background-color"]};${e}box-sizing: border-box;position: relative;} #${o} > div {margin-top:-1px;margin-left:-1px;}`, h.after && (i += `div#${o}::after ` + h.after), h.before) i += `div#${o}::before ` + h.before; else if (-1 === h.admarkPosition.indexOf("hidden")) { c = h.admarkPosition.split(" "); let e = (c[0] || "bottom") + ": 1px;", t = (c[1] || "right") + ": 5px;"; "center" === c[0] && (e = "top:0;bottom:0;"), "center" === c[1] && (t = "left:0;right:0;text-align: center;"), i += `#${o}::before {content: "${h.markerText || "ANZEIGE"}";margin: auto;position: absolute;${e + t}color: ${h.color};font-size: ${h["font-size"]};height: ${h["font-size"]};line-height: ${h["font-size"]};font-family: ${h["font-family"]};}` } } i && ((l = p.createElement("style")).id = "plhcss_" + o, l.innerHTML = i, p.getElementsByTagName("head")[0].appendChild(l)) } } }, getWinHeight: function () { return isNaN(this.metaWidth) ? !this.isMobile && (p.documentElement?.clientHeight || p.body?.clientHeight) || i.innerHeight : this.metaWidth / i.screen.width * i.innerHeight }, getWinWidth: function () { return isNaN(this.metaWidth) ? this.isMobile ? i.outerWidth : p.body?.clientWidth || p.documentElement?.clientWidth || i.innerWidth : this.metaWidth }, init: function () { var e = p.querySelector("meta[name=viewport]"); e && "m" === i.adSSetup.view && (e = /width=(\d+)/i.exec(e.getAttribute("content"))) && (this.metaWidth = parseInt(e[1])), i.adSSetup.placeholder && i.adSSetup.adPlacements.forEach(e => { this.addPlaceholder(e) }), !1 !== i.adSSetup.autoStart ? this.startLib() : i.addEventListener("startAdvertising", this.startLib, !1) }, startLib: function () { var e = p.createElement("script"); e.async = !0, e.src = `https://www.asadcdn.com/adlib/pages/${adSSetup.siteName}.js`, p.querySelector("script").parentNode.appendChild(e) }, isMobile: /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent), metaWidth: 0 }.init() : console.log("In order to load the adlib for your domain, please add 'siteName' property to the adSSetup.") })(window, document);
+    }
+    
+  </script>
+
+  <script>
+    if (isSurfacePath(window.location.pathname, '/app')) {
+      const script = document.createElement('script');
+      script.type = "module";
+      script.src = "https://linki.prod.ps.bild.de/ps-linki.js";
+      document.head.appendChild(script);
+    }
+  </script>
+
+  <script>
+    if (!isSharedConversationPath(window.location.pathname)) {
+      loadScriptDynamic("https://cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js", "head");
+    }
+  </script>
+  <!-- END: Loading Consent Management Platform -->
+
+
+  <link as="style" href="https://a.bildstatic.de/app.9a3c9e6b.css" rel="preload" />
+  <link as="style" href="https://a.bildstatic.de/pages/_.7a229ebe.css" rel="preload" />
+  <link as="style" href="https://a.bildstatic.de/7.ace4e15e.css" rel="preload" />
+  <link href="https://a.bildstatic.de/app.9a3c9e6b.css" rel="stylesheet" />
+  <link href="https://a.bildstatic.de/pages/_.7a229ebe.css" rel="stylesheet" />
+  <link href="https://a.bildstatic.de/7.ace4e15e.css" rel="stylesheet" />
+  
+  <link rel="manifest" href="/manifest.json">
+
+  <script type="module" crossorigin src="/assets/index-ee58ac72.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-runtime-cf010ec4.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-highlight-4d0cefdc.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-react-05094e8f.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-misc-fa51b142.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-redux-c45fa506.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-ui-d573e209.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-carousel-a10553d2.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-markdown-43cfe5ab.js">
+  <link rel="stylesheet" href="/assets/vendor-highlight-4437fcc2.css">
+  <link rel="stylesheet" href="/assets/vendor-misc-89bc56ee.css">
+  <link rel="stylesheet" href="/assets/index-d80ababf.css">
+</head>
+
+<body>
+  <script type="text/javascript">
+    if (!isSharedConversationPath(window.location.pathname)) {
+      ; (function (a, b, c, d) {
+        a = 'https://ast.bild.de/bild-bild.de/prod/utag.js';
+        b = document;
+        c = "script";
+        d = b.createElement(c);
+        d.src = a;
+        d.type = "text/java" + c;
+        d.async = true;
+        a = b.getElementsByTagName(c)[0];
+        a.parentNode.insertBefore(d, a);
+      })();
+    }
+  </script>
+  <div class="page-wrapper nobp">
+    
+    <div class="ad-wrapper--superbanner ad-wrapper ad-wrapper--mark" id="superbannerWrapper">
+      <div id="superbanner"></div>
+    </div>
+    <div id="bannerWrapper" class="ad-wrapper ad-wrapper--banner">
+      <div id="banner" ></div>
+    </div>
+    <script type="text/javascript">
+      let superbannerWrapper  = document.getElementById("superbannerWrapper")
+      let bannerWrapper  = document.getElementById("bannerWrapper")
+
+      if (isMobile() || isFramedSurfacePath(location.pathname)) {
+        superbannerWrapper.style.display = "none";
+        bannerWrapper.style.display = "block";
+      }
+      else if(isSurfacePath(location.pathname, '/app')){
+        superbannerWrapper.style.display = "none";
+        bannerWrapper.style.display = "none";
+      }
+       else {
+        bannerWrapper.style.display = "none";
+      }
+    </script>
+    
+    <div id="hey-main-wrapper" class="page-content">
+      
+      <div class="ad-wrapper ad-wrapper--mark ad-wrapper--sky" id="skyWrapper" style="min-height: 1px">
+        <div id="sky"></div>
+      </div>
+      <div class="ad-wrapper ad-wrapper--mark ad-wrapper--sky_btf" id="sky_btfWrapper">
+        <div id="sky_btf"></div>
+      </div>
+      
+      <div class="main-content" id="main">
+        <div id="hey-app-root"></div>
+      </div>
+    </div>
+  </div>
+  
+  
+</body>
+
+</html>

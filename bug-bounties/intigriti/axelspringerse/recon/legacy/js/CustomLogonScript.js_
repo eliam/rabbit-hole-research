@@ -1,0 +1,31 @@
+/*
+  $Id$
+  */
+//elem used for future reference. Show LogonForm if hidden, else focus the text field with a message
+function showLogonTo(elem, msg)	
+{
+	var loginFrameStyle = document.getElementById('LoginFrame').style.visibility;
+	if(loginFrameStyle == "hidden")
+	{
+		document.getElementById('LoginFrame').style.visibility="visible";
+	}
+	if(eval(document.getElementById('j_username')))
+	{
+		window.frames[0].document.getElementById('j_username').focus();
+	}
+	else
+	{
+		window.frames[0].document.getElementById('j_username').focus();
+	}
+	document.getElementById('LoginFrame_txt').style.display = 'block';
+	document.getElementById('LoginFrame_txt').innerHTML = msg;
+	document.getElementById('LoginFrame_txt').className = 'redtxtbold fntSize fntFamily';
+	window.frames[0].document.getElementById('statusTable').style.display = 'none';
+}
+		
+function hideError()
+	{		
+		
+			$('#loginFailureStatus').animate({"top":"-70px"}, 1000);
+					
+}

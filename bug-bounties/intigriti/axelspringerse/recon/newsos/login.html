@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<meta name="color-scheme" content="light dark" />
+<title>Sign in — newsOS</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23292524' stroke-width='2'/%3E%3Cpath d='M16 3 A13 13 0 0 0 16 29 Z' fill='%23292524'/%3E%3C/svg%3E" />
+<!--
+  Self-contained gateway login page. Served unauthenticated by APISIX at /login
+  (proxy-rewritten to this object on the SPA origin), so everything — styles,
+  logo, icons — is inlined: any other asset path on this host requires a
+  session and would 302 right back here.
+
+  Colors mirror the newsOS design tokens in packages/ui/src/styles.css
+  (taupe oklch scale, radius 0.45rem). Update both together.
+-->
+<style>
+  :root {
+    /* newsOS tokens (light) */
+    --background: oklch(0.986 0.002 67.8);
+    --foreground: oklch(0.147 0.004 49.3);
+    --panel: oklch(0.147 0.004 49.3);
+    --panel-foreground: oklch(0.986 0.002 67.8);
+    --panel-muted: oklch(0.714 0.014 41.2);
+    --primary: oklch(0.214 0.009 43.1);
+    --primary-foreground: oklch(0.986 0.002 67.8);
+    --card: oklch(1 0 0);
+    --muted-foreground: oklch(0.547 0.021 43.1);
+    --border: oklch(0.922 0.005 34.3);
+    --ring: oklch(0.714 0.014 41.2);
+    --radius: 0.45rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* newsOS tokens (dark) */
+      --background: oklch(0.147 0.004 49.3);
+      --foreground: oklch(0.986 0.002 67.8);
+      --panel: oklch(0.114 0.004 49.3);
+      --panel-foreground: oklch(0.986 0.002 67.8);
+      --panel-muted: oklch(0.62 0.016 41.2);
+      --primary: oklch(0.922 0.005 34.3);
+      --primary-foreground: oklch(0.214 0.009 43.1);
+      --card: oklch(0.214 0.009 43.1);
+      --muted-foreground: oklch(0.714 0.014 41.2);
+      --border: oklch(1 0 0 / 12%);
+      --ring: oklch(0.547 0.021 43.1);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    display: flex;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .stagger { animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: var(--d, 0s); }
+  .d1 { --d: 0.05s; }
+  .d2 { --d: 0.12s; }
+  .d3 { --d: 0.2s; }
+
+  /* The masthead tiles come online one after another, then the caption names
+     them — the page-load sequence saying what the headline says: many
+     newsrooms, one layer underneath. Scale rather than rise, because these are
+     small tiles rather than blocks of text. */
+  @keyframes tile-in {
+    from { opacity: 0; transform: scale(0.82); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .brands > * {
+    animation: tile-in 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(0.45s + var(--i, 0) * 0.06s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stagger, .brands > * { animation: none !important; }
+  }
+
+  /* ── Left: brand panel ─────────────────────────────────────────── */
+  .panel {
+    flex: 1 1 58%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 3.5rem;
+    background: var(--panel);
+    color: var(--panel-foreground);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle grain so the ink panel doesn't read flat. */
+  .panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.58 0 0 0 0 0.55 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .panel > * { position: relative; }
+  .as-wordmark {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .as-wordmark::after {
+    content: "_";
+    color: #2400ff; /* Axel Springer brand underscore */
+    animation: blink 1.2s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .as-wordmark::after { animation: none; } }
+
+  .panel-middle { max-width: 40rem; }
+  .panel h1 {
+    /* Scaled so each sentence holds its own line at every desktop width; the
+       two-line break is the point, so a mid-sentence wrap would undo it. */
+    font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  /* Two sentences, two lines, revealed in order: the many, then the one. */
+  .panel h1 .line { display: block; }
+  .panel .sub {
+    margin-top: 1.3rem;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--panel-muted);
+    max-width: 30rem;
+  }
+
+  .brands {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+  .chip {
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: calc(var(--radius) * 1.4);
+    background: #fff;
+    overflow: hidden;
+  }
+  .chip img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  /* Marks drawn on a white tile need breathing room; full-bleed tiles don't. */
+  .chip.pad img { width: 74%; height: 74%; object-fit: contain; }
+  .brands .caption {
+    margin-left: 0.5rem;
+    font-size: 0.78125rem;
+    color: var(--panel-muted);
+  }
+
+  /* ── Right: sign-in column ─────────────────────────────────────── */
+  .form-col {
+    flex: 1 1 42%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+  }
+  .form-inner { width: 100%; max-width: 22.5rem; }
+
+  .os-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.2rem;
+  }
+  .os-brand svg { color: var(--foreground); }
+  .os-brand span { font-size: 0.95rem; font-weight: 700; letter-spacing: -0.02em; }
+
+  h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.45rem;
+  }
+  .lede {
+    color: var(--muted-foreground);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    margin-bottom: 1.8rem;
+  }
+
+  .idp {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    width: 100%;
+    padding: 0.9rem 1.05rem;
+    margin-bottom: 0.65rem;
+    border: 1.5px solid var(--primary);
+    border-radius: var(--radius);
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .idp.secondary {
+    background: var(--card);
+    color: var(--foreground);
+    border-color: var(--border);
+  }
+  .idp:hover { transform: translateY(-1px); box-shadow: 0 3px 0 0 var(--border); }
+  .idp:active { transform: translateY(0); box-shadow: none; }
+  .idp:focus-visible, .quiet:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  .idp .glyph {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: none;
+    border-radius: calc(var(--radius) * 0.7);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+  .idp .glyph { background: #fff; overflow: hidden; }
+  .idp .glyph img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .glyph.pad img { width: 78%; height: 78%; }
+  .idp .arrow {
+    margin-left: auto;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .idp:hover .arrow { opacity: 1; transform: translateX(0); }
+
+  .or {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 1.5rem 0 1.1rem;
+    color: var(--muted-foreground);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--border); }
+
+  .password-line { text-align: center; }
+  .quiet {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: color 0.12s ease, border-color 0.12s ease;
+  }
+  .quiet:hover { color: var(--foreground); border-color: var(--foreground); }
+
+  .fineprint {
+    margin-top: 2.4rem;
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: var(--muted-foreground);
+  }
+
+  /* ── Responsive ────────────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    body { flex-direction: column; }
+    .panel {
+      flex: none;
+      padding: 1.8rem 1.5rem;
+      gap: 1.4rem;
+    }
+    /* Holds both sentences to one line each down to 320px; above ~390px this
+       resolves to the same 1.7rem as before. */
+    .panel h1 { font-size: clamp(1.45rem, 7vw, 1.7rem); }
+    .panel .sub, .brands .caption { display: none; }
+    .panel-middle { margin-top: 0.4rem; }
+    /* Seven mastheads have to sit on one row at 320px, or the last one orphans
+       onto a line of its own. */
+    .brands { gap: 0.45rem; }
+    .chip { width: 1.85rem; height: 1.85rem; }
+    .form-col { flex: 1; align-items: stretch; padding: 2.2rem 1.5rem; }
+    .form-inner { margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+  <!-- Brand panel -->
+  <section class="panel" aria-hidden="true">
+    <div class="as-wordmark stagger d1">axel springer</div>
+    <div class="panel-middle">
+      <h1>
+        <span class="line stagger" style="--d: 0.14s">Every newsroom.</span>
+        <span class="line stagger" style="--d: 0.27s">One operating system.</span>
+      </h1>
+      <p class="sub stagger" style="--d: 0.4s">Wires, agents and publishing — one shared layer under every masthead, from Berlin and Warsaw to London and Washington.</p>
+    </div>
+    <div class="brands">
+      <span class="chip" style="--i: 0"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACNElEQVRYhe2WP2vqYBTGH5MYCwFRFOeCDmZRXBx0EMHJpU5d/QyCUL+Bs6uL2k3cpSBUqJNa0EUXh3QQwSr4hy7R5D0d7q3c4K2gNtc7+MAh4eEl55fzJuc9FiJiuKCE31fLhfITd6HEO10BrgD/JwBjDKqqYrvdmg7w1QdARFAUBU9PT+h0Onh/f4coipBlGclkEsFgEM/Pz5jP5wCAQCCAcDh8PgERsc1mQ+Vymfx+P3EcRwAM4XK5KJVKkdPp3HnZbJZ+QAyMMVYsFslut+8lPhQ/BcB1u13k83ms12vj3ggCJEkCz/Pnl/mAuFKpBEVRDGY0GkWpVEK9XkehUIDf7zePwOfzMfxRWlmWaTgcGurUaDTI7XabswXj8dgAFI/HIcuywYtEIgiFQqYUgNN13WDYbLa9RTzPQxRFcwA8Ho/BaLfbmE6nBm80GmEwGJgDEI1G9wByuRz6/T4mkwlarRay2Sze3t6+fYiuA5p2WgjpdNrQ4XRdR6VSQb1eh8PhwGw2w2Kx+DY5Y0ChALy8AMf+sTc3AFRVZblcjnieP6kRaRrR/T0RcHxIEjFOFEU8PDwgk8nAbrf/ldRqtcLr9Ro+RCLa3VvOmCgt9GsqtqiqimaziWq1il6vh9VqBUEQcHt7i7u7O8RiMdRqNSwWCxAREokEUqkUGAMeH4HXV4A78nC32UA7gC9T0zQsl0t8fHxAEAQ4nU5IknT6Kx7WPsA/1nUsvwJcAXZTMR1cZaI+AY2CHjzGRfk1AAAAAElFTkSuQmCC" alt="Axel Springer" /></span>
+      <span class="chip" style="--i: 1"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFySURBVHgB7ZddasJAEMdnTQpKkUhr+9Anb6LewBuoJxBPIJ7AI+gVPIF6Ay9Q8KmFfiGUgv2g7fxDEzbJrtktLPEhPxDZzezsPzOb3VlxS/RDBVKhgilcgC83blYr8lutjNHXbkdP4zF9bLcJG/QJ/r+czWK7u243M/6814ttDus1PQyHagFwrBKAPji4Z+eyjddohAtINUZGsF1kk7Y1TsFZziT/xdc9eF0sWLqger+f6EfYK/xGAOGsdjrkRMBhswnDmxZgCoRF4a6122QtQEeT10Lk+JEXk2oTuZrPqT4YkAlOPsOaRVqc7wPf+33402GdAlueedEiTdecFhWntRPKeLzQvCCI28fC6ETAxWSSaL8tl+QC4xS4ioCxgGA0IhdoBWCTkU8tV5QFSSmgFHC6Z0H1SBVjQ54frQDTiiaPPD/GKUDNb8qnhW0iArh4qCbCQfQynWZsMBEqZFTHskgUIc2/i0iadx4vI8rLKRXML3SFc44DIjRyAAAAAElFTkSuQmCC" alt="BILD" /></span>
+      <span class="chip pad" style="--i: 2"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABxklEQVR42u3Wz4tPURjH8dcx40dNYSGLkZT8KJSNEkYz/wBlzYbs5R9gMwtl4w9g5efChkQUi8mGMdMYWTATMaNQyK8pv+bYfL7j8g/Mwj1163k+9znneZ/znHPvKbVW89kWmOfWArQALUAL0ALIv2AYj9Ebfw+e4iYWRTsSbR8W4wy+oOIeBhK3HRM4FX8npvEi+mT86VrrHMDVDLQXBafjz2JLYu5G24hLsV/ifuxPWB2AisvptwtTeBW9xp9qAuxPspPxJxvBh9GF7xjF7ujDtdZO/6PpP4jNsc/l3cJMalX0R/FLrVV3KjGUlztKKWuwFrfRh36MZKBrWB+A3lLKaOA6SfpxpZOglNJJVEsps43Ec3eA7uyDqVLKGLbiUAJP4DgG8Drxt7Ah9rfUcgk+40Fq3PVne9VaSvn574YPmNpZwgANZmbv8RWLcCzaB8ygB9uijaMnfZdhU+x+/MLFwC3NWL3Rx//K2wDob9T9TrS+hjYUreB8tBk8zMAV67LparR3+IjrWBF9ognQ3TiRo6n7cpyNNoYbWJmknaU8iOc4kFPxBBfwJjMeCWhXnrf4Ef1Z8zNQ2jthC9ACtAAtwH8P8Bt2yeZy5BAAQAAAAABJRU5ErkJggg==" alt="WELT" /></span>
+      <span class="chip" style="--i: 3"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAALVBMVEUAJf/////y9P8jM/8BHf8ADv+9v/9JUP9RXf/9/v9hbP+YoP93gf/T2f83Qv/gjKgwAAAA7klEQVRYhe2V2w7DIAhArQUUL/3/z11vtDNLmoHZ0zwPTaDx1AtU5waDweA3zA2A+PnqebxvoRxOBUQ+c+FZMN0w8/qkGQ6BpL8XiCfBu4DVgvWb0Cmo2CmYol6w7/clyKgWRESEJBHpBfvOY+kUXIMKmJaArp6R029iJaIqQe48RuqrRF/2drIL+Ogms2BtSR8NvdBUIhtmsNUBLFVWYSwk586QZ6MAJAygFiCsf9Q0sfiUAs4ppULXWehn0OL1e9BiOIWWpa+ZuPR1o09bN1kF7LPuZqKGXALI9bpIcnkSALYA3O8k9zR+MBj8NS99gws2kbv3PQAAAABJRU5ErkJggg==" alt="Business Insider" /></span>
+      <span class="chip" style="--i: 4"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAANlBMVEXXGSD////WEBjVAADcTlHkcXTtpafbOD377e30yMnfXF/cQkbxu73ZJSvnh4rpl5n21dblfH+mAj/ZAAAA70lEQVRYhe2WSQ7DIAwAAceEAFn6/8+2YkkXiGTDpa2YoxUmNmBAiMHgX1EFTAF+YGcAlkMWGO04ilLwwK90Q1Ug5QSdAolUw5VAOmIV8evtXIV9yXPJEkyQdwGAO2JM04pIgpffKUhJsDJ4yxdMCN5IRdQECkNwIdVQEwgVUjDtgjQLzSUI8CG69mZAGX8h6JwDZTtXAeJe3FsFoGOQdihkgXo2Q1wC6Tm9YOeEQ537WdDasTwIEshq5xLaDF4Ltr4z0Vjy+JrgQP694HVmR9VyMzk44d6NeSMxhw3BEHybID4rSHdQnabH5WDw69wBRsMGfhwPhF0AAAAASUVORK5CYII=" alt="POLITICO" /></span>
+      <span class="chip" style="--i: 5"><img src="data:image/png;base64,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" alt="Onet" /></span>
+      <span class="chip" style="--i: 6"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAHgElEQVR4nO1drVIrTRAdUtey9wGyCpegUIsCBQoMcWBAgQIFKihQQYFCERQKFCjAgEoUiqBQkBdIHoCvzlT6fkvYn/ndnQ17qlJcuJDMnj3T3dPdMzs1MzPzxUpYR8X+R5QoiR6D53nMFv5Ye+cC4vb2lg0GA/b29sZubm5Yt9s19t5TpY3+X813d3esWq2OfsLY5+cnJ/v09JT1+32mg5LoMTQaDba3t/eNcODs7IwT7jTRnufxgfu+z6anp/nP8G8oBiC1YMpi6uaNIAjY1dXVj59jvOvr60rqtkI0iK3VamxpaYm/fN8X/luykb1ej18Qvpq0laIA0SA8anwgG2PMjWgMDMRi+pn24N1ul5P+8PCQCfHNZpNtbW1F/p8K2UaIhnoPDw8jFWAL3W6Xk97pdKTVJYLd3V1uq+MAM7K6uips6rSIhmoxmM3NTZYnPkfRAandhJ2PMx1htNttdnx8bJdoODcMRsb+ZgWy6/SSJR7X9vz8nPp7eN/FxUWh91ciGqYCJNtcSZlWPDlYimyiIhxcD/wLzIbotR0dHbHLy0vzRMPZtVqtwpCcBpBNhKvMTpirnZ0ds0twKHmSSAZwLTrXA06MZu9gt87PzyeKZBMQnQXCRJ+cnDjp+IoCIaLhILKMkYsE0YimImIy4IVLREM071ERUXNpMuJBiTEjRJdIDu+0iS7VnA7RBFclbXFSIh4od4majtiVIeLll5cXpoPxQfz9+/df4n8SgDyHKNF/dFc8wHA4ZK+vr+zx8fFbPiHuBvq+z6MZfAbCxtnZ2cLdAJS2RElOJFokbgbBFxcXPKkiGk8OBgN+MyiJD8IRItXr9X/Ez8/P/6jZuWYyZOuHsUTjwpOAD5IheBwgFLlskItqBZGPiwCgeqrYgHhXFC+TgxYiOi6nARVvb28rl5Oq1SpfztOMwfvhNQ5MS7yIePw+vUB81sAY9/f3hcM5YWf49PQUuVBB+QbKk4XnebwGh2pM+CZCzbI3DX8fJj5t9ulAxTxKKRoRQpQDUCG5VqvxzN/4jcP7qcwMXDCUReqiqjsIB/GYNTrkg9z7+3s+m0y1QMQq+v39/dv3cFgLCwvSHwAVN5vNHz/HRRwcHDCboOiGbgQVW1HQDV8XiMRXqsTIRBPaisaHhRUo62VxcSA4agk/HA65mm0Bnw3nSXYeAIEgGt9vbGywrCFcYZFxAlQkiJu+7XbbimrCZgoKhf13BbFEh+2STCU5rTre7/e1etjSzBQVVqempphLiCUaU40UKeoARVoQOiH7aArjISNVpwtDNEFEzVCRSJ/HmWHbDHLHa5nUTFMIomXDOFTH00jujzy7CSR1ScEHuIZERSM6EFn6wi6KpFQ7hsxGXFwejrFdQyUt+ZOGcHyahp7CYifK4SWZKBsNj9bDu+vra24Dkzw4lCWKNw0SohxeFGyFjVaJRn55bm4u1hnCZMgUbvuK+0CiHF4cXNgxIE100qChMFGToUqCSltwIYlOgizJsiQkObxfs3MWarbZhrCV4vCKCCVF20y8Xwl02v8aRdvcShFMIMlKROsk1f0JMgXWiV5eXrYzkglHJcupXXW4hcBJ06EKvzQd4gsInaJnNQNFu7pgqWRJlJ+Bol1NKkkRrbtRKLAcuiGXkscGfeeI9n3f6q4uW7XIzIk20f+2ZKnnGn0i1D7mIjI/JSywYD5gMmz2iWROtO65QqRok+aD+jdcTfjnpmhv1J71m0jORdGquewikyxNtKnFQDBqtx2HqElBNX1lZSUXkumoCetERzWNm1J1TcCkoAMJTYp5rQAxbvSwRHXIGrXRHx8fzASC0baJMJKW91jxoQle5BASW4CSKRcvuzCq5LnEbbVa35b1UQUFzCCoGKbCRF+IKjBOUjH8g2yTTq5Ee57HezXiduliAYLm9zxVHG7eJB+i0nElTbTpdqsgCLiywycoYFsDNktiR0De2bioDlmV3j7p4iw8vWhPnigaIy+OC4B6XQnZSARhkmGbVWa10oIFrWI2UK/X2deXGwe0x7U8qOZTlIi21a0ZjA5fzfPoChpDVPgGJ6hKtFJfB6aPafNBgIIwXXHBJs5tlt3Jm5T00knDKuc6sMnRJhqNBj9NkUi3AdpkCgWnNe7oqFnryEwMEkRktUf7c3T+KJ26K+uQMFOwGxhRDAijzZ82jowwfghs2om0ttHr9bgJSzIvCM9oU6dqelZ1o73R03azVHUewE3EqlQ3ntfKR+PDXa7TmQDOHTWxaNJO/GNauVp51oXqIQPWKiy461mFYVkBAjI5W40QjakFsk3lqvMGIhrTxV5jNUNMMde2BeuUyEwns4wWZ7M4g8O2km2QbKUKDrJRCSmaGel0OlaLvVbaDWBGEHsWxUG2223rdUhrfR1QBqojLm6AJ2DWwYnrrvqceVaW7/s8aeNSxz9SvSA4qyJDpk9/a8Q8WS1rW6x6OlnhHrPXaDTY2tpapgcF5kWwE88z9EfHYtoiHTYYZbesHmRWiAdHeqPmRzqZUWU/I51bRznrvMl1kui0QwKBKNuOEJIOCcy7NaHQRE8KyueCs2zwH5naVmo1vsP3AAAAAElFTkSuQmCC" alt="The Telegraph" /></span>
+      <span class="caption" style="--i: 7">Axel Springer · BILD · WELT · Business Insider · POLITICO · Onet · The Telegraph</span>
+    </div>
+  </section>
+
+  <!-- Sign-in column -->
+  <main class="form-col">
+    <div class="form-inner">
+      <div class="os-brand stagger d1">
+        <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M16 3 A13 13 0 0 0 16 29 Z" fill="currentColor" />
+        </svg>
+        <span>newsOS</span>
+      </div>
+
+      <h2 class="stagger d2">Welcome back</h2>
+      <p class="lede stagger d2">Sign in with your corporate account. Workspace access follows your directory profile.</p>
+
+      <nav class="stagger d3" aria-label="Sign-in options">
+        <a class="idp" id="idp-entra" href="/login/entra">
+          <span class="glyph" aria-hidden="true"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACNElEQVRYhe2WP2vqYBTGH5MYCwFRFOeCDmZRXBx0EMHJpU5d/QyCUL+Bs6uL2k3cpSBUqJNa0EUXh3QQwSr4hy7R5D0d7q3c4K2gNtc7+MAh4eEl55fzJuc9FiJiuKCE31fLhfITd6HEO10BrgD/JwBjDKqqYrvdmg7w1QdARFAUBU9PT+h0Onh/f4coipBlGclkEsFgEM/Pz5jP5wCAQCCAcDh8PgERsc1mQ+Vymfx+P3EcRwAM4XK5KJVKkdPp3HnZbJZ+QAyMMVYsFslut+8lPhQ/BcB1u13k83ms12vj3ggCJEkCz/Pnl/mAuFKpBEVRDGY0GkWpVEK9XkehUIDf7zePwOfzMfxRWlmWaTgcGurUaDTI7XabswXj8dgAFI/HIcuywYtEIgiFQqYUgNN13WDYbLa9RTzPQxRFcwA8Ho/BaLfbmE6nBm80GmEwGJgDEI1G9wByuRz6/T4mkwlarRay2Sze3t6+fYiuA5p2WgjpdNrQ4XRdR6VSQb1eh8PhwGw2w2Kx+DY5Y0ChALy8AMf+sTc3AFRVZblcjnieP6kRaRrR/T0RcHxIEjFOFEU8PDwgk8nAbrf/ldRqtcLr9Ro+RCLa3VvOmCgt9GsqtqiqimaziWq1il6vh9VqBUEQcHt7i7u7O8RiMdRqNSwWCxAREokEUqkUGAMeH4HXV4A78nC32UA7gC9T0zQsl0t8fHxAEAQ4nU5IknT6Kx7WPsA/1nUsvwJcAXZTMR1cZaI+AY2CHjzGRfk1AAAAAElFTkSuQmCC" alt="" /></span>
+          Axel Springer SSO
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="idp secondary" id="idp-telegraph" href="/login/telegraph">
+          <span class="glyph" aria-hidden="true"><img src="data:image/png;base64,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" alt="" /></span>
+          Telegraph SSO
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
+      <div class="or stagger d3"><span>or</span></div>
+      <p class="password-line stagger d3">
+        <a class="quiet" id="idp-password" href="/login/password">Sign in with email and password <span aria-hidden="true">→</span></a>
+      </p>
+
+      <p class="fineprint stagger d3">Single sign-on via your corporate identity provider. Access is provisioned by your administrator. © Axel Springer Tech</p>
+    </div>
+  </main>
+
+<script>
+  // Carry the post-login destination through to the IdP entry routes. The
+  // gateway re-validates before redirecting; this same check here just keeps
+  // hrefs honest. Relative single-slash paths only — never absolute URLs.
+  var next = new URLSearchParams(location.search).get("next");
+  var hasCtrlByte = false;
+  if (next) {
+    for (var i = 0; i < next.length; i++) {
+      if (next.charCodeAt(i) < 32) { hasCtrlByte = true; break; }
+    }
+  }
+  var clean = !!next && next.charAt(0) === "/" && next.charAt(1) !== "/" &&
+    next.indexOf("\\") === -1 && !hasCtrlByte;
+  if (clean) {
+    for (var id of ["idp-entra", "idp-telegraph", "idp-password"]) {
+      var a = document.getElementById(id);
+      a.href += "?next=" + encodeURIComponent(next);
+    }
+  }
+</script>
+</body>
+</html>

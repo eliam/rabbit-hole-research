@@ -1,0 +1,666 @@
+/*
+  $Id$
+*/
+
+function showDemoOfferMsg(ipData)
+{
+	var showOfferMsgInDemoServer = true;
+	document.getElementById("year_end_offer_container").style.display = "none";
+	if(showOfferMsgInDemoServer)
+	{
+		if(ipData.COUNTRY_CODE == "GB" || ipData.COUNTRY_CODE == "US" || ipData.COUNTRY_NAME == "UNITED STATES" || ipData.COUNTRY_NAME=="UNITED KINGDOM")
+		{
+			document.getElementById("year_end_offer_container").style.display = "block";
+		}	
+	}
+}
+
+function closeMacro(x)
+{
+	var objs = docid(x).getElementsByTagName('div');
+		for(i=0;i<objs.length;i++)
+		{
+			var obj = objs[i];
+			if(obj.id == 'macrosId')
+			{
+				obj.style.display="none";
+			}
+		}
+}
+
+function docid(x){return document.getElementById(x);}
+function docna(name){return document.getElementsByName(name)[0];}
+//Common Functions
+function getBgImgPos(imgId)
+{
+	var oElement = document.getElementById(imgId), oColor;
+	if( window.getComputedStyle ) 
+	{
+		oColor = window.getComputedStyle(oElement,null).backgroundPosition;
+	} 
+	else if( oElement.currentStyle ) 
+	{
+		//oColor = oElement.currentStyle.backgroundPosition;
+		var backposx = oElement.currentStyle.backgroundPositionX;
+		var backposy = oElement.currentStyle.backgroundPositionY;
+		oColor = backposx+" "+backposy;	
+	}
+	return oColor;
+}
+//Ending
+function hideFadeOut(elId, intvl, callBackFunc)
+{
+	alphaVal = 9;
+	fadeOutCall = true;
+	fadeOutIntvl = window.setInterval('doFadeOut(\"' + elId + '\", ' + callBackFunc + ')', intvl);
+}
+
+var alphaVal = 0, fadeInIntvl, fadeOutIntvl;
+
+function doFadeOut(elId, callBackFunc) 
+{
+   var el = docid(elId);
+   if(!el || fadeOutCall == false) 
+   {
+       alphaVal = 0;
+       fadeOutCall = false;
+       window.clearInterval(fadeOutIntvl);
+       if (typeof callBackFunc != "undefined") callBackFunc();
+   } 
+   else 
+   {
+	   if (alphaVal > 0) 
+	   {
+	       el.style.filter = "alpha(opacity=" + (alphaVal * 10) + ")";
+	       //alert(el + " : " + alphaVal);
+	       el.style.opacity = (alphaVal / 10);
+	       alphaVal--;
+	   } 
+	   else 
+	   {
+	       alphaVal = 0;
+	       el.style.filter = "alpha(opacity=0)";
+	       el.style.opacity = 0.01;
+	       el.style.display = "none";
+	       window.clearInterval(fadeOutIntvl);
+       	       fadeOutCall = false;
+	       if (typeof callBackFunc != "undefined") callBackFunc();
+	   }
+   }
+   
+}
+function closeAndUnFreeze(id)
+{
+	yreg_popLayer(id);
+	freezeUnfreezeLayer(true);
+	document.body.style.overflow = 'auto';	
+}
+function freezedAlert(innerText)
+{
+	var mouseLeft = (document.body.clientWidth/2) - 100 ;
+	var mouseTop = (document.body.clientHeight/2) - 50 ;
+	freezeAndOpen('alertBox', mouseLeft, mouseTop);	//NO I18N
+	docid('alertBox').style.top = mouseTop;
+	docid('alertBox').style.left = mouseLeft;
+	docid('alert_InsertMsg').innerHTML = innerText;
+	document.body.style.overflow = 'hidden';
+}
+function clearAllFields()
+{
+	var arr = document.getElementsByTagName('input');
+	if(eval(arr.length)){
+		for(var i=0; i<arr.length; i++){
+			if(arr[i].type=='text' || arr[i].type=='password') {
+				arr[i].value='';
+			}
+		}
+}			 
+}
+function showHideDiv(divId)
+{
+    var dis = docid(divId).style.display;
+	docid(divId).style.display=(dis=='block' ? 'none' : 'block');
+}
+function showHideTable(divId)
+{
+    var dis = docid(divId).style.display;
+    docid(divId).style.display=(dis=='block' || dis=='' ? 'none' : '');
+}
+function showDiv(divId)
+{
+	if(docid(divId)!=null)
+	docid(divId).style.display = "block";
+}
+	
+function hideDiv(divId)
+{
+	if(docid(divId)!=null)
+	docid(divId).style.display = "none";
+}
+function hideDivsByName(divName)
+{
+	adsjQuery("div[name='"+divName+"']").hide(); //NO I18N    
+}
+
+function isCSVFile(csvFile)
+{
+	var str = csvFile;
+	if(str != "")
+	{
+		var checkFile = str.match("csv");
+		if(checkFile == null)
+		{
+			checkFile = str.match("CSV");
+		}
+		if(checkFile != 'csv' && checkFile != 'CSV')
+		{
+			return(jsTitleMsg.adssp_configuration_gina_invalid_csv_file_format);		
+		}
+		var checkDot = str.split(".");
+
+		if(checkDot == str)
+		{
+			return(jsTitleMsg.adssp_configuration_gina_invalid_csv_need_proper_file); //<fmt:message key='adssp.configuration.gina.csvimport.need_proper_file'/>
+		}
+		return "true";		
+	}
+	else
+	{
+		return(jsTitleMsg.adssp_configuration_gina_pls_select_csv_file);
+	}
+
+}
+
+//Set custom tootip for the element
+function setADSTooltip(ele,text)
+{
+	adsjQuery(ele).attr("onmouseenter","showADSTooltip(this,'"+text+"')").attr("onmouseout","hideADSTooltip()");//NO I18N
+}
+
+// Show custom tool tip above the element
+function showADSTooltip(ele,text)
+{
+	var pos= ele.getBoundingClientRect();  //jQuery Offset will return the position relative to the document, while getBoundingClientRect() returns the position relative to the viewport
+	adsjQuery("#toolTipBoxContent").html(text);	//NO I18N
+	var height=adsjQuery("#toolTipBox").height();	//NO I18N
+	var width=adsjQuery("#toolTipBox").width();	//NO I18N
+	adsjQuery("#popupToolTip").css('top',pos.top).css('left',pos.left).css('margin-top',-height-10); //NO I18N
+	adsjQuery("#toolTipArrow").css('margin-left',width/2); //NO I18N
+	adsjQuery("#popupToolTip").show(); //NO I18N
+}
+
+// Hide the custom tool tip
+function hideADSTooltip()
+{
+	adsjQuery("#popupToolTip").css('top',-100).css('left',-100); //NO I18N
+}
+
+function checkUrl(theUrl){
+	var urlValue= theUrl.value;
+	var regexp = "/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/";	//NO I18N
+	if(urlValue!=null && trimAll(urlValue)=="")
+	{
+	    alertMsg(jsTitleMsg.adssp_configuration_task_scheduler_enter_enroll_url);
+	    theUrl.focus();
+            return false;
+	}
+       if(urlValue.match(/^(http|https)\:\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/) ||
+          urlValue.match(/^mailto\:\w+([\.\-]\w+)*\@\w+([\.\-]\w+)*\.\w{2,4}$/i)){
+    		return true;
+       }else{
+                alertMsg(jsTitleMsg.adssp_common_text_valid_url);
+                theUrl.select();
+                theUrl.focus();
+                return false;
+       }
+}
+
+
+// encode the html entities
+function encodeHtmlEntities(str) 
+{
+	if(typeof str!="undefined"){
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+	}
+	return str;
+}
+
+// decode the html entities 
+function decodeHtmlEntities(str) 
+{
+    return str.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&\#39;/g,'\'').replace(/&nbsp;/g,' ');
+}
+
+// need to escape the id value before using it in jQuery
+function escapeId(id) 
+{
+    return id.replace(/([;&,\.\+\*\~':"\!\^#$%@\[\]\(\)<?\{\}`=>\/\|\\])/g, "\\\$1");
+}
+
+// script Escape
+function scriptEscape(str) 
+{
+    return str.replace(/'/g,'\'').replace(/\\/g,'\\\\');
+}
+
+function scriptUnEscape(str)
+{
+	return str.replace(/\'/g,"'").replace(/\\\\/g,'\\');
+}
+
+function opacityDiv(checked, id)
+{	
+    checked = eval(checked);
+	var inputs = docid(id).getElementsByTagName('input');
+	var combos = docid(id).getElementsByTagName('select');
+	for(var i=0; i<inputs.length; i++){inputs[i].disabled=!checked;}
+	for(var i=0; i<combos.length; i++){combos[i].disabled=!checked;}
+
+	var exCl = docid(id).className;
+	if(checked  ){
+		if(exCl.indexOf('opacityDiv') != -1) {
+			docid(id).className = exCl.replace(/opacityDiv/g, ''); 
+		}
+	var exCl = docid(id).className;
+		if(exCl.indexOf('disableLink') != -1){
+			docid(id).className = exCl.replace(/disableLink/g, '');
+		} 
+	}
+	else if(!checked){docid(id).className +=" opacityDiv disableLink";}//No I18N
+}
+
+/* Sets the focus to the first field*/
+function setDefaultFocus()
+{
+	var obj = document.getElementsByTagName('input');
+	for(var i=0; i<obj.length ;i++)
+	{
+		if((obj[i].type == 'password'|| obj[i].type == 'text') && obj[i].style.display != 'none' && !obj[i].disabled)
+		{
+			try
+			{
+				obj[i].focus();
+				break;
+			}catch(err){}
+		}	
+	}
+}
+
+function demoAlert()
+{
+	return alertMsg("Its in demo mode. So you can't perform this action.");//No I18N	
+}
+function isObjectEmpty(str)
+{
+	if(str=="" || str=="{}" || str=="null")
+	{
+		return true;
+	}
+	return false;
+}
+
+function isValidPhoneTemplate(template)
+{
+	var template_array = template.split(',');
+	for(var i = 0; i < template_array.length; i++)
+	{
+		var temp = template_array[i];
+		if(!(/^[0-9-Xx+\s\(]{1}[0-9-Xx()+\s]*$/.test(temp)) || (temp.replace(/[ -\(\)+]/gi,'') == '') )
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+var CommonUtil = new function(){
+}
+/*Load the dashboard for the changed domain.*/
+CommonUtil.changeDomain=function(th, callback)
+{
+    eval(callback)(th);
+}
+
+CommonUtil.getCookie=function(cname)
+{
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) 
+	{
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1);
+		if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+	}
+	return '';
+}
+
+if (window.addEventListener) {
+	window.addEventListener("load", maxLengthLoadFunc, false);
+}
+else{
+	window.attachEvent("onload", maxLengthLoadFunc);
+}
+
+function maxLengthLoadFunc(){
+
+	var textArea = document.getElementsByTagName('textarea');
+	for(var i = 0, l = textArea.length; i < l; i++) 
+	{
+		if(/^[0-9]+$/.test(textArea[i].getAttribute("maxlength"))) 
+		{
+			var func = function() 
+			{
+			       var len = parseInt(this.getAttribute("maxlength"), 10); 
+				if(this.value.length > len) 
+				{ 
+					this.value = this.value.substr(0, len); 
+					return false; 
+				} 
+			}
+
+			textArea[i].onkeyup = func;
+			textArea[i].onblur = func;
+		} 
+	} 
+	
+}
+
+function preventDefaultAction(event) 
+{
+	var ev = (window.event) ? window.event : event; ev.preventDefault();ev.cancelBubble = true;if(ev.stopPropagation) {ev.stopPropagation();}
+}
+
+function validateCSV(str)
+{
+	
+	if(str != "")
+	{
+		var checkFile = str.match("csv");
+		if(checkFile == null)
+		{
+			checkFile = str.match("CSV");
+		}
+		if(checkFile != 'csv' && checkFile != 'CSV')
+		{
+			alertMsg(jsTitleMsg.adssp_admin_importanswers_invalid_filefromat);
+			return false;
+		}
+		var checkDot = str.split(".");
+
+		if(checkDot == str)
+		{
+			alertMsg(jsTitleMsg.adssp_admin_importanswers_need_properfile);
+			return false;
+		}
+
+		
+		return true;
+	}
+	else
+	{
+		alertMsg(jsTitleMsg.adssp_admin_importanswers_blank_importcsv);
+		return false;
+	}
+}
+
+//To avoid spl character issues when set as id for element in Add OU. TODO need to set objectGuid as id instead DN.
+function toCharCode(str)
+{
+	var charCode='';
+	for(var i=0;i<str.length;i++)
+	{
+		charCode+=''+str.charCodeAt(i);
+	}
+	return charCode;
+}
+
+function resetBorder(ele)
+{
+	ele.style.border='#7F9DB9 1px solid ';		 //NO I18N
+}
+
+function countMessageBytes(input) {
+
+        //var countMe = document.getElementById("mobTextArea").value;
+		var countMe = input;
+		
+	    var escapedStr = encodeURI(countMe);
+        if (escapedStr.indexOf("%") != -1) {
+            var count = escapedStr.split("%").length - 1;   // count here No of special characters used
+            if (count == 0) count++ ; //perverse case; can't happen with real UTF-8
+            var tmp = escapedStr.length - (count * 3);     // subtracting *3 is to remove special charcters from the counting  [each special charcters has 3 letters ex: %20  for space]
+            count = count + tmp;  						// add no. of special characters to the special characters count removed  string length
+			// add 3 values to if line feed is in message
+			if(escapedStr.indexOf("0A") != -1){
+				var LFcount = escapedStr.split("0A").length - 1;   // count here No of special characters [LineFeed] used
+				count = (LFcount*3) + count;  						
+			}
+			if(escapedStr.indexOf("22") != -1){
+				var dQcount = escapedStr.split("22").length - 1;   // count here No of special characters [Double Quotes] used
+				count = (dQcount*1) + count;  						
+			}
+			if(escapedStr.indexOf("5C") != -1){
+				var bScount = escapedStr.split("5C").length - 1;   // count here No of special characters [symbol back Slash \ ]used
+				count = (bScount*1) + count;  						
+			}
+        } else {
+            count = escapedStr.length;
+        }
+		
+	
+		return count;
+}
+ function validatePayloadSize(message,title,customAttribs)
+ {
+	
+	//var customJSON = JSON.parse(customAttribs);
+	var alertContent = '';
+	var customJSON=JSON.parse(customAttribs);
+	 for (var prop in customJSON) {
+		alertContent =  alertContent + '"'+prop +'":"' +customJSON[prop] +'",';        // NO I18N
+	};
+	alertContent = alertContent.substring(0,alertContent.length-1);
+	
+	var payload = '{"aps":{"alert":{"body":"'+message+'","title":"'+title+'",'+alertContent +'}}}';         // NO I18N
+	
+   var count=	countMessageBytes(payload);
+
+	return count;
+ }
+function backToList(url)
+{
+	SubmitCsrfForm(url);
+	if(eval(window.event)){window.event.returnValue=false;}	
+}
+function mailSettingAlert(alertMsg)
+{
+	confirmMsg(jsTitleMsg[alertMsg], 'redirectToURL', 'ServerSettings.do?selectedTab=admin&selectedTile=ServerSettings&methodToCall=serverSettings&selectedServerTab=mailSettingsTab'); //NO I18N
+}
+function redirectToURL(url)
+{
+	SubmitCsrfForm(url);
+}
+
+CommonUtil.getCNfromDN = function(dn){
+	//dn = (new String(dn)).toUpperCase();
+	var cn = "", ou = "", retCN = "";
+	var dcIndex = dn.indexOf("DC=");
+	var domainDNS = dn.substring(dcIndex, dn.length).replace(/\,/g,'.').replace(/\DC=/g,'').replace(/\ /g,'');
+	
+	var ouIndex = (dn.indexOf("OU=") != -1) ? dn.indexOf("OU=") : dcIndex;
+	
+	var cnArr = dn.substring(0, ouIndex-1).split("CN=");
+	for (var j=cnArr.length-1; j>=0 && (cnArr[j]!=""); j--)	{
+		var cnI = cnArr[j].replace(/^\s+|\s+$/g, '');	
+		cnI = (cnI.charAt(cnI.length-1)==",") ? cnI.substring(0, cnI.length-1) : cnI;
+		retCN = cnI;
+		cn += '/' + cnI;
+	}
+
+	if(ouIndex != dcIndex){
+		var ouArr = dn.substring(ouIndex, dcIndex-1).replace(/\,/g,'').split("OU=");
+		for (var i=ouArr.length-1; i>=0 && (ouArr[i]!=""); i--)	{
+			ou += '/' + ouArr[i]; 
+		}
+	}
+	var ret = domainDNS + ou + cn;
+	return {canonical:ret,cn:retCN} ; 				//NO I18N
+}
+
+function isIE()
+{
+	return !!document.documentMode;
+}
+function getIEVersion()
+{
+	var rv = -1; // Return value assumes failure.
+	if ( !!document.documentMode )
+	{
+		rv = parseFloat( document.documentMode );
+	}
+	return rv;
+}
+function isDuplicateMailId(mailId)
+{
+	var mailIds = mailId.split(",");
+	var newMailIds = [];
+	for(var i=0;i<mailIds.length;i++)
+	{
+		if(newMailIds.indexOf(mailIds[i]) != -1)
+		{
+			return true;
+		}
+		newMailIds.push(mailIds[i]);
+	}
+}
+function showHideTH(id)
+{
+	if(docid(id).style.display=='none')
+	{
+		scrollTo(0, 0);
+		var popupZindx = $("#alertBox").css("z-index"); //No I18N
+		adsjQuery("#"+id).css("z-index",popupZindx+2); //No I18N
+		docid(id).style.display='block';
+		freezeAndOpen('pageFreeze', '0', '0');//No I18N
+	}
+	else
+	{
+		docid(id).style.display='none';
+		closeAndUnFreeze('pageFreeze'); //No I18N
+	}
+
+}
+
+function hideTabStatus()
+{	
+	
+	adsjQuery('#loginFailureStatus').slideUp();//No I18N
+		//adsjQuery('#loginFailureStatus').animate({"top":"42px"}, 1000); //No I18N
+			
+}
+function showTabStatus()
+{	
+	adsjQuery('#loginFailureStatus').slideDown();//No I18N
+	//adsjQuery('#loginFailureStatus',parent.document).animate({"top":"78px"}, 1000); //No I18N
+				
+}
+
+function initPasswordVisibility(inputSelector, toggleSelector, toggleClass, onToggle, onInputChange, resetIcons)
+{
+
+	var ieVersion = getInternetExplorerVersion()
+	if(ieVersion != -1 && ieVersion<=9)
+	{
+	    if(resetIcons != null) {
+            resetIcons(inputSelector);
+        }
+		return;
+	}
+	var toggleRef = $(inputSelector).siblings(toggleSelector);
+
+	if(toggleRef != null)
+	{
+		$(toggleRef).on("click", function(e){
+			togglePasswordVisibility(toggleRef, toggleClass, inputSelector, onToggle);
+		});
+
+		$(inputSelector).on("keyup", function(e){
+            var state = (e.target.value.length <= 0);
+            $(toggleRef).toggleClass('hide', (state)); //NO I18N
+
+            if(onInputChange)
+            {
+                onInputChange(inputSelector);
+            }
+        });
+        //to show the eye icon on copy/paste
+        $(inputSelector).on("paste", function(e){
+            setTimeout(function(){
+                $(inputSelector).trigger('keyup');
+            },0);
+        });
+
+		if(onInputChange)
+		{
+		    onInputChange(inputSelector);
+		}
+		$(inputSelector).parents("form").on("submit",function(){
+            toggleEyeIconOnSubmit(inputSelector, toggleRef);
+        });
+	}
+}
+
+function toggleEyeIconOnSubmit(inputSelector, toggleRef)
+{
+    if(inputSelector && $(inputSelector)[0] )
+	{
+        //handled case the encrypted password will be shown as text, transformed to password and disabled the eye icon
+        var type = $(inputSelector)[0].type;
+        if(type=='text')
+        {
+           $(toggleRef).click();
+        }
+        $(toggleRef).off('click');
+	}
+}
+
+
+function togglePasswordVisibility(toggleRef, toggleClass, inputRef, onToggle)
+{
+	var inputVal = $(inputRef).val();
+    var type = $(inputRef).attr('type'); //NO I18N
+    if(inputVal.length > 0)
+    {
+        var iconType = type=="text"; //NO I18N
+        $(inputRef).attr("type", iconType ? "password" : "text"); //NO I18N
+        $(toggleRef).toggleClass(toggleClass,iconType);
+        if(onToggle)
+        {
+          onToggle(toggleRef, iconType);
+        }
+    }
+}
+
+function base64UrlToUint8Array(base64urlString)
+{
+	var base64String = base64urlString.replace(/-/g, "+").replace(/_/g, "/");
+	var binaryString =  atob(base64String);
+	var binaryArray = new Uint8Array(binaryString.length);
+	for (var i = 0; i < binaryString.length; i++)        
+	{
+		binaryArray[i] = binaryString.charCodeAt(i);
+	}
+	return binaryArray;
+}
+
+function uint8ArrayToBase64Url(arrayBuffer)
+{
+	var binaryArray = new Uint8Array(arrayBuffer);
+	var binaryString = '';
+	for (var i = 0; i < binaryArray.byteLength; i++) {
+		binaryString += String.fromCharCode(binaryArray[i]);
+	}
+	var base64String = btoa(binaryString);
+	var base64urlString = base64String.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=/g, '')
+	return base64urlString;
+}

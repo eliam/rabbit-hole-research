@@ -1,0 +1,249 @@
+//$Id$
+
+/**
+ * @author: Patrick-2626 & Vigneshwar-5036
+ *
+ * @wiki: https://intranet.wiki.zoho.com/security/client-side-security.html
+ *
+ * Reference
+ *  1)https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/
+ *  2)https://github.com/danielstjules/blankshield
+ */
+'use strict'; // No I18N
+(function() {
+
+/**
+ * It's a wrapper over Object.defineProperty for setting  data descriptors for object .A data descriptor is a property that has a value, which sets isWritable,isConfigurable,isEnumerable for an object. By default all configuration values are false.
+ *
+ * @param   {Object} obj
+ * @param   {string} property
+ * @param   {value}  value
+ * @param   {boolean}  isOverrideDefaultValue
+ * @param   {boolean}  isWritable
+ * @param   {boolean}  isConfigurable
+ * @param   {boolean}  isEnumerable
+ * @returns {Object}
+ */
+/* eslint-disable-next-line max-params */
+
+function defineProperty(
+  obj,
+  property,
+  value,
+  isOverrideDefaultValue,
+  isWritable,
+  isConfigurable,
+  isEnumerable
+) {
+  if (!isOverrideDefaultValue && property in obj) {
+    return;
+  }
+  if (
+    !Object.defineProperty ||
+    !(function() {
+      try {
+        Object.defineProperty({}, 'x', {}); // No I18N
+        return true;
+      } catch (e) {
+        return false;
+      }
+    })()
+  ) {
+    obj[property] = value;
+    return obj;
+  }
+
+  isWritable = isWritable === true;
+  isConfigurable = isConfigurable === true;
+  isEnumerable = isEnumerable === true;
+  return Object.defineProperty(obj, property, {
+    value: value,
+    writable: isWritable,
+    configurable: isConfigurable,
+    enumerable: isEnumerable
+  });
+}
+
+var zsec = {};
+defineProperty(zsec, "util", {}, true, false, false, false);  // No I18N
+
+zsec.util.defineProperty = defineProperty;
+
+
+//initializing ZSEC values
+zsec.util.defineProperty(zsec, 'version', "4.6", true); // No I18N
+zsec.util.defineProperty(zsec, 'constants', zsec.constants || {}, true); // No I18N
+
+
+/**
+ * polyfill
+ * */
+
+/**
+ * Array.indexOf function is not supported below IE-9 .
+ * since defineProperty also is not supported below IE-9, And since there are many use cases where service teams are using property enumeration (for...in loop) for Arrays (which is not recommended)
+ * the Array.indexOf function is stored in the variable(ZSEC.util.ArrayIndexOf) instead of assigning it directly to Array.prototype. And later it is called using ZSEC.util.ArrayIndexOf.call(params...)
+ * */
+zsec.util.ArrayIndexOf = Array.prototype.indexOf;
+if (!zsec.util.ArrayIndexOf) {
+    zsec.util.ArrayIndexOf = function(searchElement) {
+        if (this === void 0 || this === null) {
+            throw TypeError();
+        }
+
+        var t = {};
+        var len = t.length >>> 0;
+        if (len === 0) {
+            return -1;
+        }
+
+        var n = 0;
+        if (arguments.length > 0) {
+            n = Number(arguments[1]);
+            if (isNaN(n)) {
+                n = 0;
+            } else if (n !== 0 && n !== (1 / 0) && n !== -(1 / 0)) {
+                n = (n > 0 || -1) * Math.floor(Math.abs(n));
+            }
+        }
+
+        if (n >= len) {
+            return -1;
+        }
+
+        var k = n >= 0 ? n : Math.max(len - Math.abs(n), 0);
+
+        for (; k < len; k++) {
+            // try{
+                if (k in t && t.charAt(k) === searchElement) {
+                    return k;
+                }
+            // } catch (e){
+            //     console.log("e", e.message);
+            //     console.log("k", k);
+            //     console.log("t", t.constructor);
+            // }
+        }
+        return -1;
+    };
+}
+
+/**
+ * defining String.prototype.codePointAt if not defined already
+ * Which is not supported bellow IE-11
+ */
+
+if (!String.prototype.codePointAt) {
+    var codePointAt = function(position) {
+        if (this == null) {
+            throw TypeError();
+        }
+        var string = String(this);
+        var size = string.length;
+        // `ToInteger`
+        var index = position ? Number(position) : 0;
+        if (index != index) { // better `isNaN`
+            index = 0;
+        }
+        // Account for out-of-bounds indices:
+        if (index < 0 || index >= size) {
+            return undefined;
+        }
+        // Get the first code unit
+        var first = string.charCodeAt(index);
+        var second;
+        if ( // check if itâ€™s the start of a surrogate pair
+            first >= 0xD800 && first <= 0xDBFF && // high surrogate
+            size > index + 1 // there is a next code unit
+        ) {
+            second = string.charCodeAt(index + 1);
+            if (second >= 0xDC00 && second <= 0xDFFF) { // low surrogate
+                // https://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+                return (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
+            }
+        }
+        return first;
+    };
+    zsec.util.defineProperty(String.prototype, 'codePointAt', codePointAt, false); // No I18N
+} else {
+    zsec.util.defineProperty(String.prototype, 'codePointAt', String.prototype.codePointAt, true); // No I18N
+}
+
+
+/**
+ * defining String.fromCodePoint if not defined already
+ * Which is not supported in many browsers like IE ,Android ,Opera Mobile
+ * */
+
+if (!String.fromCodePoint) {
+    var stringFromCharCode = String.fromCharCode;
+    var floor = Math.floor;
+    var fromCodePoint = function() {
+        var MAX_SIZE = 0x4000;
+        var codeUnits = [];
+        var highSurrogate;
+        var lowSurrogate;
+        var index = -1;
+        var length = arguments.length;
+        if (!length) {
+            return ''; // No I18N
+        }
+        var result = ''; // No I18N
+        while (++index < length) {
+            var codePoint = Number(arguments[index]);
+            if (!isFinite(codePoint) || // `NaN`, `+Infinity`, or `-Infinity`
+                codePoint < 0 || // not a valid Unicode code point
+                codePoint > 0x10FFFF || // not a valid Unicode code point
+                floor(codePoint) != codePoint // not an integer
+            ) {
+                throw RangeError('Invalid code point: ' + codePoint); // No I18N
+            }
+            if (codePoint <= 0xFFFF) { // BMP code point
+                codeUnits.push(codePoint);
+            } else { // Astral code point; split in surrogate halves
+                // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+                codePoint -= 0x10000;
+                highSurrogate = (codePoint >> 10) + 0xD800;
+                lowSurrogate = (codePoint % 0x400) + 0xDC00;
+                codeUnits.push(highSurrogate, lowSurrogate);
+            }
+            if (index + 1 == length || codeUnits.length > MAX_SIZE) {
+                result += stringFromCharCode.apply(null, codeUnits);
+                codeUnits.length = 0;
+            }
+        }
+        return result;
+    };
+    zsec.util.defineProperty(String, 'fromCodePoint', fromCodePoint, false); // No I18N
+
+} else {
+    zsec.util.defineProperty(String, 'fromCodePoint', String.fromCodePoint, true); // No I18N
+}
+
+    if (!window.ZSEC) {
+        defineProperty(window, "ZSEC", zsec, true, true, false, false);  // No I18N
+    }
+    defineProperty(window, "ZSEC_v4_6", zsec, true, true, false, false);  // No I18N
+})();
+
+(function(){
+
+    var Console = {
+        log : function(input){
+            //Only a static message is displayed for now. Support for giving API to user to customize message maybe given in future
+            if (navigator && navigator.userAgent) {
+                var userAgent = navigator.userAgent;
+                var browser = userAgent.match(/opera|chrome|safari|firefox|msie|trident(?=\/)/i);
+                if (browser && browser[0].search(/trident|msie/i) < 0){
+                    //Supported  browser
+                    window.console.log("%cSTOP!", "color:red;font-size:xx-large;font-weight:bold;");
+                    window.console.log("%cThis is a browser feature intended for developers. Do not enter or paste code which you don't understand. It may allow attackers to steal your information or impersonate you.\nSee https://en.wikipedia.org/wiki/Self-XSS for more details", "font-size:large;");
+                    return;
+                }
+            }
+        }
+    };
+    var zsec = window.ZSEC_v4_6 || window.ZSEC;
+    zsec.util.defineProperty(zsec, 'Console', Console, true, false, false, true); // No I18N
+    zsec.Console.log();
+})()

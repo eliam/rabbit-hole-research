@@ -1,0 +1,919 @@
+/*
+  $Id$
+*/
+var userLoginName='';
+//Disable the help checkbox at Domain User Logon.
+function saveAppVariables(varName, elementId)
+{
+	var elem = document.getElementById(elementId);
+	var status = ((elem.checked) ? "true" : "false") ;
+	var url ='UnAuthAction.cc';//NO I18N
+	var params = 'methodToCall=saveApplicationVariables&variableName='+varName+'&variableValue='+status;//No I18N
+	AjaxAPI.sendRequest({URL:url, PARAMETERS:params, ONSUCCESSFUNC:displayStatus});
+}
+
+//Remove the Div when check box is checked.
+function displayStatus()
+{
+	var tbObj = document.getElementById("exploreLoginDiv");
+	tbObj.style.display = 'none';
+}
+
+//fill the default elements.
+function getCookie()
+{
+	var form = document.SSPLogin;
+	if(isPasswordChanged == null || isPasswordChanged == "" || isPasswordChanged == "false")
+	{
+		document.getElementById('j_username').value="admin";//NO I18N
+		document.getElementById('j_password').value="admin";//NO I18N
+		var adminStyle = document.getElementById('SSPAdminLogin').style.display;
+		if(form != null && (adminStyle == 'block' || adminStyle == '')) form.loginButton.focus();
+	}
+	if(isPasswordChanged == "true")
+	{
+		if(document.getElementById('DomainUserLogin').style.display == 'block') { form = document.DomainUserLogin; }
+		document.getElementById('j_username').value="";
+		document.getElementById('j_password').value="";
+		init = (document.cookie).indexOf("username");
+		if(init != -1 )
+		{
+			userlen = "username".length;//NO I18N    
+			beginIndex = ((document.cookie).indexOf("username")+userlen);        
+			endIndex = (document.cookie).indexOf(";",beginIndex);
+			if(endIndex == -1)
+			{
+				endIndex = (document.cookie).length;
+			}
+			username=(document.cookie).substring(beginIndex+1,endIndex);
+			startIndex = ((document.cookie).indexOf("password")+"password".length);//NO I18N
+			endInd = (document.cookie).indexOf(";",startIndex); 
+			if(endInd == -1)
+			{
+				endInd=(document.cookie).length;
+			}
+			password=(document.cookie).substring(startIndex+1,endInd);
+
+			domStartIndex = ((document.cookie).indexOf("domain")+"domain".length);//NO I18N
+			domEndInd = (document.cookie).indexOf(";",domStartIndex);
+			if(domEndInd == -1)
+			{
+				domEndInd=(document.cookie).length;
+			}
+			domain=(document.cookie).substring(domStartIndex+1,domEndInd);
+			var sel = document.getElementById('domainName');
+
+			if(eval(sel)){
+				var len = sel.length;
+				for(var i=0; i<len; i++){
+					if(sel.options[i].text == domain) sel.options[i].selected = true;
+					else sel.options[i].selected = false;
+				}
+			}
+
+			document.getElementById('j_username').value=username;
+			document.getElementById('j_password').value=password;
+			if(form != null)
+			{
+				if(form.j_username.value == "")
+					form.j_username.focus();
+				else
+					form.j_password.focus();
+			}
+		}
+		else
+		{
+			if(form != null)
+			{
+				form.j_username.focus();
+			}
+		}
+	}
+}
+
+function IsBrowseCompatible()
+{
+	var userAgent = navigator.userAgent.toLowerCase();
+	if(userAgent.match("msie") == "msie")
+	{
+		browser = "internet explorer";//NO I18N
+		if(browser=="internet explorer")
+		{
+			version = userAgent.substring(userAgent.indexOf("msie")+4,userAgent.lastIndexOf(";"));
+			var ver =parseFloat(version);
+			if(browser == "internet explorer" && ver < 5.5)
+			{
+				return true;
+			}
+		}
+	}
+
+	else if( userAgent.match("netscape") == "netscape")
+	{
+		browser="Netscape";//NO I18N
+		if(browser=="Netscape")
+		{
+			version = userAgent.substring(userAgent.indexOf("netscape")+4,userAgent.lastIndexOf(";"));
+			var ver =parseFloat(version);
+			if(browser == "Netscape" && version < 7.0)
+			{
+				return true;
+			}
+		}
+	}	
+
+	else if(userAgent.match("mozilla") == "mozilla")
+	{
+
+		browser = "mozilla";//NO I18N
+		if(browser=="mozilla")
+		{
+			version = userAgent.substring(userAgent.indexOf("rv:")+3,userAgent.indexOf(")"));
+			var ver = parseFloat(version);
+			if(browser == "mozilla" && ver < 1.5)
+			{
+				return true;
+			}
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+//validate logon details
+function checkForNull(form, toValidateLogin)
+{
+	if(eval(form.DIGEST) && !validateCaptchaFT(form.DIGEST.parentNode.parentNode))
+	{
+		showCombos();
+		return false;
+	}
+
+	var browser = IsBrowseCompatible();
+	if(browser == true)
+	{
+		var browserInfo = jsTitleMsg.adssp_login_admin_page_script_alert_browser_info;//No I18N	
+
+		if(form.name == "SSPLogin")
+		{
+			flatThemeJquery("#fTLoginAlertText").text(browserInfo);	//No I18N
+        	flatThemeJquery("#fTLoginAlert").delay(500).slideDown('slow') //No I18N
+        	return;
+        }
+        else
+        {
+			return alertMsg(browserInfo, null, null, null, 'showCombos');//NO I18N
+		}
+	}
+
+	if(toValidateLogin)
+	{
+		return validateAccount(form);
+	}
+
+	var expDate = new Date();
+	if(eval(form.checkbox))
+	{
+		if(form.checkbox.checked)
+		{  
+			expDate.setTime(expDate.getTime()+(24*60*60*1000*365));
+			document.cookie="username= "+form.j_username.value+";expires= "+((expDate).toGMTString());       
+			document.cookie="password= "+form.j_password.value+";expires= "+((expDate).toGMTString());
+
+			var sel = document.getElementById('domainName');
+
+			if(eval(sel)){
+				var domain =sel.options[sel.selectedIndex].text;
+				document.cookie="domain= "+domain+";expires= "+((expDate).toGMTString());
+			}
+		}
+		else
+		{   
+			expDate.setTime(expDate.getTime());
+			document.cookie="username= "+form.j_username.value+";expires= "+((expDate).toGMTString());       
+			document.cookie="password= "+form.j_password.value+";expires= "+((expDate).toGMTString());
+			var sel = document.getElementById('domainName');
+
+			if(eval(sel)){
+				var domain =sel.options[sel.selectedIndex].text;
+				document.cookie="domain= "+domain+";expires= "+((expDate).toGMTString());
+			}
+		}
+	}
+	if(form.j_username.value.trim() == "" || form.j_password.value == "")
+	{
+		if(form.name == "SSPLogin")
+		{
+			flatThemeJquery("#fTLoginAlertText").text(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_name_pwd);	//No I18N
+        	flatThemeJquery("#fTLoginAlert").delay(500).slideDown('slow') //No I18N
+        }
+        else
+        {
+        	if(parent.alertMsg)
+			{
+				parent.alertMsg(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_name_pwd, null, null, null, 'showCombos');//No I18N
+			}
+			else
+			{
+				alertMsg(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_name_pwd, null, null, null, 'showCombos');//No I18N
+			}
+        }
+		
+		/*if(form.j_username.value=="")
+		{
+			form.j_username.focus();
+		} 
+		else
+		{ 
+			form.j_password.focus();
+		}*/
+		return false;
+	}
+	{
+		if(!validateFields(form.j_username.value, form))
+		{
+			return false;
+		}
+		if(eval(document.getElementById('loading'))){document.getElementById('loading').innerHTML = jsTitleMsg.adssp_login_user_page_domain_user_text_loading;}
+	}
+	checkAndDisableDomainSelection(form);
+	document.getElementById('loginButton').disabled = true;
+
+	if(form.name == "SSPLogin" || form.name == "DomainUserLogin")
+	{	
+		$("#loginButton").toggleClass("hide");
+	    $(".login-rolling-loader").toggleClass("hide");
+	}
+	else
+	{
+		document.getElementById("progress_"+form.name).style.visibility = "visible";
+	}
+
+	return true;
+}
+
+
+//funtion called on key up event
+function onKeyUpEvent(event, form)
+{
+	if(event && (event.keyCode == 8 || event.which == 8 || event.keyCode == 46 || event.which == 46))	//8 Backspace, 46 Delete
+	{
+		checkAndDisableDomainSelection(form);	
+	}		
+	else if (isOtherLoginAttrEnabled == "true")
+	{
+		checkAndDisableDomainSelection(form);	
+	}
+}
+
+//funtion called on key press event
+function onKeyPressEvent(event, form)
+{
+	if(isOtherLoginAttrEnabled != "true" && event && (event.keyCode == 92 || event.which == 92 || event.keyCode == 64 || event.which == 64 ))	//92 Backslash, 64 @
+	{
+		disableDomainSelection(form.name);
+	}
+    var formElement = flatThemeJquery(form);
+	var isPasswordFieldPresent = formElement.has("input[name='j_password']").length ? true : false;//NO I18N
+	if(!isPasswordFieldPresent && event.keyCode == 13 && (form.name == 'SSPLogin' || form.name == 'DomainUserLogin'))
+	{
+	 checkForNull(form,true);
+	}
+	
+}
+
+//funtion called on paste event
+function onPasteEvent(ele, form)
+{
+	setTimeout(function (){
+    var text = $(ele).val();
+	checkAndDisableDomainSelection(form);	
+  }, 100);
+}
+
+function checkAndDisableDomainSelection(form)
+{
+	var uname = (form.name == 'UAForm' || form.name == 'RPForm') ? form.DOMAIN_USER_NAME.value : form.j_username.value;
+	var disableStatus = false;
+	if(isOtherLoginAttrEnabled != "true")
+	{
+		var objRegExp = "\\@";
+		for (var i = 0; i < uname.length; i++) {
+			if (objRegExp.indexOf(uname.charAt(i)) != -1) {
+				disableStatus = true;			
+			}
+		}
+	}
+	else
+	{
+		if(uname.startsWith(".\\"))
+		{
+			disableStatus = true;
+		}
+		
+	}
+
+		if(disableStatus)	{ disableDomainSelection(form.name);	} else { enableDomainSelection(form.name); }
+	}
+
+function disableDomainSelection(formName)
+{
+
+		var element = 'domainName'; //NO I18N
+		if(formName == 'UAForm'){element = 'SELECTED_DOMAIN_UAForm';}
+		else if(formName == 'RPForm'){element = 'SELECTED_DOMAIN_RPForm';}
+		var select = document.getElementById(element);
+		if(eval(select))  
+		{ 
+			select.disabled = true; 
+		}
+
+		if($(select).hasClass('selectpicker'))
+		{
+			flatThemeJquery(select).selectpicker('refresh'); //No I18N
+		}
+
+}
+function enableDomainSelection(formName)
+{
+	var element = 'domainName'; //NO I18N
+	if(formName == 'UAForm'){element = 'SELECTED_DOMAIN_UAForm';}
+	else if(formName == 'RPForm'){element = 'SELECTED_DOMAIN_RPForm';}	
+	var select = document.getElementById(element);
+	if(eval(select))  
+	{
+		select.disabled = false;
+	}
+
+	if($(select).hasClass('selectpicker'))
+	{
+		flatThemeJquery(select).selectpicker('refresh'); //No I18N
+	}
+}
+	
+//funtion called on key submit event
+function onKeySubmit(event, form, allowSpaceSubmit)
+{
+	if(event.preventDefault){event.preventDefault();}
+	if(event && (event.keyCode == 13 || event.which == 13) || (allowSpaceSubmit && (event.keyCode == 32 || event.which == 32)))	//13 Return/Enter, 32 Space
+	{
+		if(event && (event.keyCode == 13 || event.which == 13))
+		{
+			if(validateFields(document.DomainUserLogin.j_username.value, form))
+			{
+				if(event && (event.keyCode == 13 || event.which == 13))
+				{
+					document.getElementById('loginButton').disabled = true;
+					document.DomainUserLogin.submit();
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+}
+
+
+//Show & Hide the Admin/Domain User Tabs
+function showHide(component)
+{
+	var obj1 = document.getElementById('SSPAdminLogin');
+	var obj2 = document.getElementById('DomainUserLogin');
+	var prevoiusTab;
+	if(docid('showDomainLogin').className.indexOf("loginTabEnable")!=-1)
+	{	prevoiusTab = 'showDomainLogin';		}	//No I18N
+	else	{	prevoiusTab = 'showAdminLogin';	}	//No I18N
+	var capId = "AU_CAPTCHA";//No I18N
+	if(eval(obj1) && eval(obj2))
+	{
+	if(component == 'ssp')
+	{
+		capId = "DU_CAPTCHA";//No I18N
+		obj1.style.display = 'none';
+		obj2.style.display = 'block';
+		document.getElementById('domainuser').childNodes[0].focus();
+		document.getElementById('showDomainLogin').className='loginTabEnable flLeft curPoint';
+		document.getElementById('showAdminLogin').className='loginTabDisable flLeft curPoint';
+	}
+	else
+	{
+		obj1.style.display = 'block';
+		obj2.style.display = 'none';
+		document.getElementById('adminuser').childNodes[0].focus();
+		document.getElementById('showAdminLogin').className='loginTabEnable flLeft curPoint';
+		document.getElementById('showDomainLogin').className='loginTabDisable flLeft curPoint';
+	}
+	}
+	var currentTab;
+	if(docid('showDomainLogin').className.indexOf("loginTabEnable")!=-1)
+	{	currentTab = 'showDomainLogin';		}	//No I18N
+	else	{	currentTab = 'showAdminLogin';	}	//No I18N
+	if(prevoiusTab!=currentTab)
+	{
+		reloadCaptcha(docid(capId));
+	}
+}
+
+//Function called while closing the status div.
+function hideStatus()
+{
+	javascript:document.getElementById('statusTable').style.visibility='hidden';
+	document.getElementById('AU_DIV').style.display = 'none';
+	document.getElementById('DU_DIV').style.display = 'none';
+}
+
+function validateFields(userName, form)
+{
+	if(form.j_username.value == "" || form.j_password.value == "")
+	{
+		if(form.name == "SSPLogin")
+		{
+			flatThemeJquery("#fTLoginAlertText").text(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_name_pwd);	//No I18N
+        	flatThemeJquery("#fTLoginAlert").delay(500).slideDown('slow') //No I18N
+        }
+        else
+        {
+        	if(parent.alertMsg)
+			{
+				parent.alertMsg(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_name_pwd, null, null, null, 'showCombos');//No I18N
+			}
+			else
+			{
+				alertMsg(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_name_pwd, null, null, null, 'showCombos');//No I18N
+			}
+        }
+
+		if(form.j_username.value=="")
+		{
+			form.j_username.focus();
+		} 
+		else
+		{ 
+			form.j_password.focus();
+		}
+
+		return false;
+	}
+
+	var elementId = 'domainNameDrop';//NO I18N
+	if(form.name == 'SSPLogin' || form.name == 'DomainUserLogin') { elementId = 'domainName'; }
+	
+	if(eval(document.getElementById(elementId)))
+	{
+		var domainName = document.getElementById(elementId).value;
+		var backSlashIndex = userName.indexOf('\\');
+		var atIndex = userName.indexOf('@');
+		if(domainName == '--' &&  form.j_username.value.slice(0,2)!==".\\" && ((backSlashIndex ==-1 && atIndex == -1 ) ||( isOtherLoginAttrEnabled == "true") ) )
+		{
+			if(form.name == "SSPLogin")
+			{
+				flatThemeJquery("#fTLoginAlertText").text(jsTitleMsg.adssp_admin_policies_enroll_settings_select_domain);	//No I18N
+	        	flatThemeJquery("#fTLoginAlert").delay(500).slideDown('slow') //No I18N
+	        }
+			else if(form.name == "DomainUserLogin")
+			{
+				flatThemeJquery("#fTLoginAlertText",parent.document).text(jsTitleMsg.adssp_admin_policies_enroll_settings_select_domain);	//No I18N
+	        	flatThemeJquery("#fTLoginAlert",parent.document).delay(500).slideDown('slow') //No I18N
+	        }
+	        else
+	        {
+	        	if(parent.alertMsg)
+				{
+					parent.alertMsg(jsTitleMsg.adssp_admin_policies_enroll_settings_select_domain, null, null, null, 'showCombos');//No I18N
+				}
+				else
+				{
+					alertMsg(jsTitleMsg.adssp_admin_policies_enroll_settings_select_domain, null, null, null, 'showCombos');//No I18N
+				}
+	        }
+
+			return false;
+		}
+	}
+	return true;	
+}
+function onKeySubmitLogin(formName, event)
+{
+	var form = document.forms[formName];
+	if(event && (event.keyCode == 13 || event.which == 13))
+	{
+		checkForNull(form);
+		form.submit();
+	}
+}
+
+function showCombos()
+{
+	var selectObjs = null;
+	if(eval(window.frames[0]))
+	{
+		selectObjs = window.frames[0].document.getElementsByTagName('select');
+	}
+	else
+	{
+		selectObjs = document.getElementsByTagName('select');
+	}
+	for(var i=0; i<selectObjs.length;i++)
+	{
+		if(eval(selectObjs[i]))
+		{
+			selectObjs[i].style.visibility='visible';//NO I18N
+		}
+	}
+}
+
+
+function validateLoginPage(eventFrom,loginPage)
+{
+    if(eventFrom == "init")
+    {
+        if(statusMsg !=null && statusMsg != "")
+        {
+            flatThemeJquery("#fTLoginAlertText").html(statusMsg);	//No I18N
+            flatThemeJquery("#fTLoginAlert").delay(500).slideDown('slow') //No I18N
+        }
+    }
+    else
+    {
+        var userName = flatThemeJquery("#j_username").val();//No I18N
+        var password = flatThemeJquery("#j_password").val();//No I18N
+
+        if(userName == "" || password == "")
+        {
+			if(loginPage!=undefined && loginPage == 'userLoginPage')
+			{
+			    if(userName == "")
+				{
+				   flatThemeJquery("#fTLoginAlertText",parent.document).text(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_name);	//No I18N
+				}
+				else
+				{
+				   flatThemeJquery("#fTLoginAlertText",parent.document).text(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_pwd);	//No I18N
+				}
+				
+				flatThemeJquery("#fTLoginAlert",parent.document).delay(500).slideDown('slow') //No I18N
+			}
+			else
+			{
+        	   flatThemeJquery("#fTLoginAlertText").text(jsTitleMsg.adssp_login_admin_page_script_alert_enter_valid_name_pwd);	//No I18N
+               flatThemeJquery("#fTLoginAlert").delay(500).slideDown('slow') //No I18N
+            }
+        }
+        else
+        {  
+        	return true;
+        }
+    }
+
+    return false;
+}
+
+function validateSelfServiceForm(form)
+{
+	if(form.DOMAIN_USER_NAME.value.trim() == "")
+	{
+		flatThemeJquery("#fTLoginAlertText",parent.document).text(jsTitleMsg.adssp_reset_unlock_accounts_username_alert_enter_name);	//No I18N
+    	flatThemeJquery("#fTLoginAlert",parent.document).delay(500).slideDown('slow') //No I18N
+
+    	form.DOMAIN_USER_NAME.focus();
+
+		return false;
+	}
+	else
+	{
+		form.DOMAIN_USER_NAME.value = form.DOMAIN_USER_NAME.value.trim();
+		var userName = form.DOMAIN_USER_NAME.value;
+		if(!validateUPNFormatUserName(userName))
+		{
+		    form.DOMAIN_USER_NAME.focus();
+			return false;
+		}
+		if(form.SELECTED_DOMAIN != undefined)
+		{
+			var domainName = form.SELECTED_DOMAIN.value;
+			var backSlashIndex = userName.indexOf('\\');
+			var atIndex = userName.indexOf('@');
+			if(domainName == '--' && ((backSlashIndex ==-1 && atIndex == -1 ) ||( isOtherLoginAttrEnabled == "true") ) )
+			{
+				flatThemeJquery("#fTLoginAlertText",parent.document).text(jsTitleMsg.adssp_admin_policies_enroll_settings_select_domain);	//No I18N
+	        	flatThemeJquery("#fTLoginAlert",parent.document).delay(500).slideDown('slow') //No I18N
+
+				return false;
+			}
+		}
+
+		if(eval(form.DIGEST) && !validateCaptchaFT(form.DIGEST.parentNode.parentNode))
+		{
+			return false;
+		}
+	}
+
+    setTimeout(function(){ //IE stop rendering, while waiting for next page response. So, displaying gif after form submits.
+        document.getElementById("progress_" + form.name).style.display = ""; //NO I18N
+    }, 50);
+
+	return true;
+}
+
+function validateAccount(form)
+{
+	if(!isLoginNameValid(form))
+	{
+		return false;
+	}
+
+	//Disable login and show progress
+	if(document.getElementById('loading')!=null)
+	{
+		document.getElementById('loading').innerHTML = jsTitleMsg.adssp_login_user_page_domain_user_text_loading;
+	}
+	//checkAndDisableDomainSelection(form);
+	document.getElementById('loginButton').disabled = true;
+	if(form.name == "SSPLogin" || form.name == "DomainUserLogin")
+	{
+		$("#loginButton").toggleClass("hide");
+	    $(".login-rolling-loader").toggleClass("hide");
+	}
+	else
+	{
+		document.getElementById("progress_"+form.name).style.visibility = "visible";
+	}
+
+	var elementId = 'domainNameDrop';//NO I18N
+	if(form.name == 'SSPLogin' || form.name == 'DomainUserLogin') { elementId = 'domainName'; }
+	var isDomainSelectionDisabled = document.getElementById(elementId) !=null ? document.getElementById(elementId).disabled : true;
+	var domainName = isDomainSelectionDisabled ? "" : document.getElementById(elementId).value;
+	var loginName = (form.j_username!=undefined) ? encodeURIComponent(form.j_username.value.trim()) : encodeURIComponent(userLoginName);
+	var paramArray = ["loginName","domainName"];//NO I18N
+	var params = "loginName=" + loginName + "&domainName=" + domainName;//No I18N
+
+	if(form.j_password!=undefined)
+    {
+	  form.j_password.value = encryptText(form.j_password.value);
+    }
+	if(form.DIGEST!=undefined)
+	{
+	  params =params + "&DIGEST=" + form.DIGEST.value; //NO I18N
+	  paramArray.push("DIGEST");
+	}
+
+	 var formInputElements = form.getElementsByTagName("input");
+	 for ( var i = 0; i < formInputElements.length; i++ )
+	 {
+       var formElement = formInputElements[i];
+	   if(!(paramArray.indexOf(formElement.name)!=-1) && formElement.name!='')
+	   {
+			if((formElement.name).toString() === "j_username")
+			{
+				formElement.value = formElement.value.trim();
+				params = params + "&" + formElement.name + "=" + encodeURIComponent(formElement.value);
+			}
+			else
+			{
+	    	   params = params + "&" + formElement.name + "=" + encodeURIComponent(formElement.value);
+			}
+	   }
+     }
+	
+	
+	//To remove the any alert which was displayed earlier
+    flatThemeJquery("#fTLoginAlert",document).delay(500).slideUp('slow') //No I18N
+
+	//Make server call for login
+	flatThemeJquery.ajax({
+		url: 'ServletAPI/accounts/login',	//No I18N
+		dataType: 'json',	//No I18N
+		type: 'POST',		//No I18N
+		data: params	
+	}).done(function(json){
+	    var frameElement = window.name == "domainLogin" ? "_parent" : null;
+		if('eSTATUS' in json && !('LOGIN_STATUS' in json))
+		{
+			var url = json.REDIRECT_URI;
+			var urlParams = json.REDIRECT_URI_PARAMS!=undefined ? json.REDIRECT_URI_PARAMS : "";//No I18N
+			CreateAndSubmitForm(url,frameElement,urlParams);//No I18N
+		}
+		else
+		{
+			var loginStatus = json.LOGIN_STATUS;
+			if(loginStatus == 'PASSWORD')
+			{
+			    if('REDIRECT_URI' in json)
+				{  
+				   var urlParams = json.REDIRECT_URI_PARAMS + ((json.REDIRECT_URI_PARAMS.indexOf("j_username=") == -1) ? ("&j_username=" + loginName) : ""); //No I18N
+				   urlParams =urlParams+ ((form.j_password ) ? ("&j_password=" + encodeURIComponent(form.j_password.value) ) : ""); //No I18N
+                   CreateAndSubmitForm(json.REDIRECT_URI,null,urlParams);//No I18N				
+				   return;
+				}
+			    stopProgressLoding(form);
+				userLoginName = form.j_username.value;
+				var userDisplayName = encodeHtmlEntities(json.WELCOME_NAME);
+				flatThemeJquery(".login-user-info").removeClass("hide");//NO I18N
+				flatThemeJquery("#username").append((userDisplayName.indexOf('.\\')==0)? userDisplayName.substring(2) : userDisplayName);//NO I18N
+				flatThemeJquery("#editUsername").removeClass("hide");//NO I18N
+				flatThemeJquery("#LOGIN_DOMAIN_DROPDOWN").addClass("hide");//NO I18N
+				flatThemeJquery("#PRIMARY_AUTHS").addClass("hide");//NO I18N
+				var captchaContainer =flatThemeJquery(flatThemeJquery(".user-login-form")).find('.captcha-container')[0];//No I18N
+				if(captchaContainer!=undefined)
+				{
+				  reloadCaptcha(captchaContainer);
+				}
+				toggleUsernameField(form,false);
+				showPasswordLogin(form,'');
+			}
+			else if(loginStatus == 'PASSWORDLESS')
+			{
+				var url = json.REDIRECT_URI;
+				var urlParams = json.REDIRECT_URI_PARAMS;//No I18N
+				CreateAndSubmitForm(url,frameElement,urlParams);//No I18N
+			}
+		}
+	}).fail(function(jqXHR)
+	{   
+	    stopProgressLoding(form);
+	    showLoginAlert(form.name,jsTitleMsg.adssp_login_network_error_message); //NO I18N
+	});
+
+	return false;
+}
+
+function stopProgressLoding(form)
+{
+
+	enableDomainSelection('');
+	document.getElementById('loginButton').disabled = false;
+	$("#loginButton").toggleClass("hide");
+	$(".login-rolling-loader").toggleClass("hide");
+    checkAndDisableDomainSelection(form);
+}
+
+function isLoginNameValid(form)
+{
+	if(!form)
+	{
+		return false;
+	}
+	
+	if(form.j_username==undefined && userLoginName!='')
+	{
+	 return true;
+	}
+
+	//login name validation
+	if(form.j_username.value.trim() == "")
+	{
+		showLoginAlert(form.name, jsTitleMsg.adssp_admin_configuration_tech_alert_enter_valid_username);
+		form.j_username.focus();
+		return false;
+	}
+	else if(!validateUPNFormatUserName(form.j_username.value.trim()))
+	{
+	    form.j_username.focus();
+		return false;
+	}
+	//domain selection validation
+	var elementId = 'domainNameDrop';//NO I18N
+	if(form.name == 'SSPLogin' || form.name == 'DomainUserLogin') { elementId = 'domainName'; }
+
+	var domainName = document.getElementById(elementId)!=null ? document.getElementById(elementId).value : "";
+	var backSlashIndex = form.j_username.value.indexOf('\\');
+	var atIndex = form.j_username.value.indexOf('@');
+	if(domainName == '--' &&  form.j_username.value.slice(0,2)!==".\\" && ((backSlashIndex ==-1 && atIndex == -1 ) ||( isOtherLoginAttrEnabled == "true") ) )
+	{
+		showLoginAlert(form.name, jsTitleMsg.adssp_admin_policies_enroll_settings_select_domain);
+		return false;
+	}
+	return true;
+}
+
+function showLoginAlert(formName, alertText)
+{
+	if(!formName)
+	{
+		formName = document.forms[0].name;
+	}
+
+	if(formName == "SSPLogin")
+	{
+		flatThemeJquery("#fTLoginAlertText").text(alertText);	//No I18N
+		flatThemeJquery("#fTLoginAlert").delay(500).slideDown('slow') //No I18N
+	}
+	else if(formName == "DomainUserLogin")
+	{
+		flatThemeJquery("#fTLoginAlertText",parent.document).text(alertText);	//No I18N
+		flatThemeJquery("#fTLoginAlert",parent.document).delay(500).slideDown('slow') //No I18N
+	}
+	else
+	{
+		if(parent.alertMsg)
+		{
+			parent.alertMsg(alertText, null, null, null, 'showCombos');//No I18N
+		}
+		else
+		{
+			alertMsg(alertText, null, null, null, 'showCombos');//No I18N
+		}
+	}
+}
+
+function togglePasswordField(form, toShow, defaultVal, placeholder)
+{
+	var formElement = flatThemeJquery(form);
+	var isPasswordFieldPresent = formElement.has("input[name='j_password']").length ? true : false;//NO I18N
+	if(isPasswordFieldPresent && !toShow)
+	{
+		formElement.find("input[name='j_password']").parent().remove();
+	}
+	else if(!isPasswordFieldPresent && toShow)
+	{
+		var passwordField = getPasswordField(defaultVal, placeholder);
+		flatThemeJquery(passwordField).insertAfter(".login-user-info");
+		flatThemeJquery(form.j_password).ready(function() {
+            function onInputChange(inputRef)
+            {
+                var state = flatThemeJquery(inputRef).length>0 && flatThemeJquery(inputRef).val().length>0;
+                var passwordIcon = flatThemeJquery(inputRef).siblings('span.add-on.form-icn-password'); //NO I18N
+                passwordIcon.toggleClass('hide', state); //NO I18N
+            }
+            initPasswordVisibility(".form-input-with-icon .linput","span.add-on.form-icn-eye",'open',null,onInputChange); //NO I18N
+        });
+		form.j_password.focus();
+	}
+}
+
+function toggleUsernameField(form, toShow, defaultVal, placeholder)
+{
+	var formElement = flatThemeJquery(form);
+	var isUserNameFieldPresent = formElement.has("input[name='j_username']").length ? true : false;//NO I18N
+	if(isUserNameFieldPresent && !toShow)
+	{
+		formElement.find("input[name='j_username']").parent().remove();
+	}
+	else if(!isUserNameFieldPresent && toShow)
+	{
+		var passwordField = getUserNameField(defaultVal, placeholder);
+		flatThemeJquery(passwordField).insertAfter(".login-user-info");
+	}
+}
+
+function getPasswordField(defaultVal, placeholder)
+{
+	return '<li class="ssp-make-relative PsSwrD form-input-with-icon"><input name="j_password" type="password" maxlength="256" id="j_password" value="'+defaultVal+'" placeholder="'+placeholder+'" class="linput" autocomplete="off"/><span class="add-on form-icn-password" style="cursor:text"></span><span class="add-on form-icn-eye open hide"></span></li>';
+}
+
+function editUsername(form)
+{
+				userLoginName = '';
+				document.getElementById("username").innerHTML = ""; 
+				flatThemeJquery("#editUsername").addClass("hide");//NO I18N
+				flatThemeJquery(".login-user-info").addClass("hide");
+				flatThemeJquery("#LOGIN_DOMAIN_DROPDOWN").removeClass("hide");//NO I18N
+				flatThemeJquery("#PRIMARY_AUTHS").removeClass("hide");//NO I18N
+				var captchaContainer = flatThemeJquery(flatThemeJquery(".user-login-form")).find('.captcha-container')[0];//No I18N
+				if(captchaContainer!=undefined)
+				{
+				  reloadCaptcha(captchaContainer);
+				}
+				togglePasswordField(form,false);
+				showUserNameField(form, '');
+				checkAndDisableDomainSelection(form);
+				form.j_username.focus();
+}
+function validateUPNFormatUserName(userName)
+{
+		var backSlashIndex = userName.indexOf('\\');
+		var atIndex = userName.indexOf('@');
+		var domainName ="";
+		if((backSlashIndex!=-1 || atIndex!=-1) && isOtherLoginAttrEnabled == "false")
+		{
+			var upnName = userName;
+			if(backSlashIndex != -1)
+			{
+				domainName = upnName.slice(0,backSlashIndex);
+				userName = upnName.slice(backSlashIndex+1);
+			}
+			else if(atIndex !=-1)
+			{
+				userName = upnName.slice(0,atIndex);
+				domainName = upnName.slice(atIndex+1);
+			}
+
+			if(userName.trim() == "")
+			{
+				flatThemeJquery("#fTLoginAlertText",parent.document).text(jsTitleMsg.adssp_reset_unlock_accounts_username_alert_enter_name);	//No I18N
+				flatThemeJquery("#fTLoginAlert",parent.document).delay(500).slideDown('slow') //No I18N
+				return false;
+			}
+			else if(domainName.trim() == "" )
+			{
+				flatThemeJquery("#fTLoginAlertText",parent.document).text(jsTitleMsg.adssp_admin_policies_enroll_settings_select_domain);	//No I18N
+	        	flatThemeJquery("#fTLoginAlert",parent.document).delay(500).slideDown('slow') //No I18N
+				return false;
+			}
+		}
+		return true;
+}

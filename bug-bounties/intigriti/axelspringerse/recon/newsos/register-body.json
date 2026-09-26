@@ -1,0 +1,7 @@
+{
+  "client_name": "intigriti-bugbounty-test-DO-NOT-USE-8ab7936f",
+  "redirect_uris": ["https://example.invalid/callback"],
+  "grant_types": ["authorization_code"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "none"
+}

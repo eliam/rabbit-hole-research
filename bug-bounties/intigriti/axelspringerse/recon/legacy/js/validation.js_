@@ -1,0 +1,367 @@
+/*
+  $Id$
+  */
+function trimAll(str)
+{
+        /*************************************************************
+        Input Parameter :str
+        Purpose         : remove all white spaces in front and back of string
+        Return          : str without white spaces
+        ***************************************************************/
+
+        //check for all spaces
+        var objRegExp =/^(\s*)$/;
+        if (objRegExp.test(str))
+        {
+                str = str.replace(objRegExp,'');
+                if (str.length == 0)
+                return str;
+        }
+
+        // check for leading and trailling spaces
+        objRegExp = /^(\s*)([\W\w]*)(\b\s*$)/;
+        if(objRegExp.test(str))
+        {
+                str = str.replace(objRegExp, '$2');
+        }
+        return str;
+}
+function isValidFilePath(str)
+{
+	// file path should not contain \ / : * ? " < > | and should either starts with c:\local-path or \\network-path
+	var objRegExp=/^(?:[\w]\:|\\)(\\[^\\/:*?"<>|\s]+[^\\/:*?"<>|]*)+$/; //NO I18N
+	return objRegExp.test(str);
+
+}
+function isPositiveInteger(str)
+{
+	/****************************************************************
+	input   : str
+	purpose : check if number is positive integer
+	output  : returns true or false
+	*****************************************************************/
+	var temp  = parseInt(str,10);
+	if ( isNaN(temp) || temp.toString().length != str.length) {
+		return false;
+	}
+	var objRegExp = /(^\d\d*$)/;
+	return objRegExp.test(temp);
+}
+
+function isPositiveIntegers(numFields,type,isZeroIncluded)
+{
+	for(var i=0; i<numFields.length; i++)
+	{
+	   if((type!=undefined || type!=null) && (type=="name"))
+	      {
+		      var ele=document.getElementsByName(numFields[i]);
+		      for(var j=0; j<ele.length; j++)
+		      {
+			  if(!isPositive(ele[j],isZeroIncluded)){return false;}
+		      }
+	      }
+	      else
+	      {
+		    if(!isPositive(docid(numFields[i]),isZeroIncluded)){return false;}
+	      }
+	}
+return true;
+
+}
+function isPositive(ele, isZeroIncluded)
+{
+		if(eval(ele))
+		{
+			var temp = ele.value;
+			if(isZeroIncluded=="no")
+			{
+				if(isNaN(temp) || temp < 0){return false;}
+			}
+			else if(isNaN(temp) || temp <= 0){return false;}
+	}
+	return true;
+}
+function trimTextFields(){
+	var arr = document.getElementsByTagName('input');
+	if(eval(arr.length)){
+		for(var i=0; i<arr.length; i++){
+			if(arr[i].type=='text') {
+				var trimValue = trimAll(arr[i].value);
+				arr[i].value = trimValue;
+			}
+		}
+	}
+	arr = document.getElementsByTagName('textarea');
+	if(eval(arr.length)){
+		for(var i=0; i<arr.length; i++){
+				var trimValue = trimAll(arr[i].value);
+				arr[i].value = trimValue;
+		}
+	}
+}
+
+//Check Valid Server Name
+function isValidServerName(val)
+{
+	// Compuer dns name should not contain othet than a-z 0-9 - .
+	return /^[a-zA-Z0-9][a-zA-Z0-9\-\.:%]*$/.test(val);
+}
+
+// Check Valid host ( Address/Name ).  Valid address could be both IPV4 and IPV6 
+function isValidHost(val)
+{
+	// IP Macro checking
+	if(/^[0-9][0-9\.\*]+[0-9\.\*]+$/.test(val) && ! /^[0-9]+$/.test(val) )
+	{
+		return isValidIPMacro(val);
+	}
+	else
+	{
+		return isValidServerName(val);
+	}
+}
+
+// Check valid host (Address/Name). Here, IPV6 is not valid host
+function isValidIPV4Host(val) 
+{
+	// IP Macro checking
+	if(/^[0-9][0-9\.\*]+[0-9\.\*]+$/.test(val) && ! /^[0-9]+$/.test(val) )
+	{
+		return isValidIPMacro(val);
+	}
+	// Compuer dns name should not contain othet than a-z 0-9 - .	
+	return /^[a-zA-Z0-9][a-zA-Z0-9\-\.]*$/.test(val);
+}
+
+function isValidPort(val)
+{
+	return (!isNaN(val) && (0 <= val) && (val <= 65535)); 
+
+}
+
+//Check Valid IP (xx.xx.x.x)
+function isValidIPAddress(val)
+{
+	return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(val); 
+}
+
+//Check Valid IP Macro (xx.xx.xx.y , xx.xx.x.* , xx.xx.*.x ) returns true
+function isValidIPMacro(val)
+{
+	return /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(\*))\.((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(\*))\.((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(\*))$/.test(val); 
+}
+
+//check IP1 smaller then IP2
+function isSmallerIP(ip1,ip2)
+{
+	var ip1Blocks=ip1.split(".");
+	var ip2Blocks=ip2.split(".");
+	for(var i=0;i<ip1Blocks.length;i++)
+	{
+		if(parseInt(ip2Blocks[i])>parseInt(ip1Blocks[i]))
+		{
+			return true; //ip2>ip1
+		}
+		else if(parseInt(ip1Blocks[i])>parseInt(ip2Blocks[i]))
+		{
+			return false; //ip1>ip2
+		}
+
+	}
+	return true; //ip2>ip1
+}
+
+function isValidUserName(val){
+	var objRegExp = "/\\[]:;|=,+*?<>@\"";
+	for (var i = 0; i < val.length; i++) {
+	  	if (objRegExp.indexOf(val.charAt(i)) != -1) {
+		  	return false;
+	  	}
+  	}
+}
+function isValidFullName(val){
+	var objRegExp = "+\\\"";
+	for (var i = 0; i < val.length; i++) {
+	  	if (objRegExp.indexOf(val.charAt(i)) != -1) {
+		  	return false;
+	  	}
+  	}
+}
+function selectAll(selectAllObj, objs, flag)
+{
+	if(eval(objs).length)
+	{
+		for(var i=0; i<objs.length; i++)
+		{
+			objs[i].checked = flag;
+		}
+	}
+	else
+	{
+		objs.checked = flag;
+	}
+	selectAllObj.checked = flag;
+}
+function isValidName(val){
+         var objRegExp = "/\\[]:;|=+*?<>@\"";
+         for (var i = 0; i < val.length; i++) {
+                 if (objRegExp.indexOf(val.charAt(i)) != -1) {
+                         return false;
+                 }
+         }
+		return true;
+ }
+var emailFilter = new RegExp(".+@.+\\.[a-zA-Z]{2,4}");
+
+function isValidMailID(mailId)
+{
+	var arr = mailId.split(',');
+	var ret = true;
+	for(var i=0; i<arr.length; i++)
+	{
+		ret=emailFilter.test(arr[i]);
+		if(!ret){break;}
+	}
+	return ret;
+}
+
+function isAlpha(str)
+{
+	if(str.match(/[0-9@!#\$\^%&*()+=\-\[\]\\\';,\.\/\{\}\|\":<>\?]+/)==null){
+		return true;
+	}
+	return false;
+}
+
+function isNumber(str)
+{
+	return /^[0-9+]{1}[0-9]*$/.test(str);
+}
+
+function isHexaDecimal(str)
+{
+	return /0[xX][0-9a-fA-F]+/.test(str);
+}
+
+//To get the target
+function getTarget(e){var target;if (!e){var e = window.event;}
+if (e.target){target = e.target;}else if (e.srcElement){target = e.srcElement;}
+if (target.nodeType == 3){target = target.parentNode;}return target;}
+//Ending
+
+//Text Field Focus
+function textFieldFocus(e,txtValue)
+{
+	var src = getTarget(e);
+	src.style.color="#000";
+	if (src.value == txtValue)
+	{
+		src.value = "";
+	}
+}
+//Ending
+
+function defaultTxt(e, val)
+{
+	var src = getTarget(e);
+	if(src.value =="")
+	{
+		src.style.color="#CCC";
+		src.value = val;
+	}
+}
+
+function setFooterPosition(id)
+{
+	var pageHeight = document.body.clientHeight;
+	var pageHeigh = pageHeight - 25;//the height of the footer element in pixels
+	document.getElementById(id).style.minHeight = pageHeigh;
+	document.getElementById(id).style.height = pageHeigh;
+}
+function isNumFldEmpty(numFields)
+{
+	for(var i=0; i<numFields.length; i++)
+	{
+	    var ele=document.getElementsByName(numFields[i]);
+		for(var j=0; j<ele.length; j++)
+		    {
+			  	eval(ele[j]);
+			  	if(ele[j].value=="")
+			    {return false;}
+		    }
+	}
+return true;
+}
+function isValidPhoneNumber(formats,value,ele)
+{
+	var isValid=false;
+	var allowedChars=['(',')','-','+',' '];
+	value=value.replace(/\D/g,'');
+	var formatArray=formats.split(",");
+	for(i=0;i<formatArray.length;i++)
+	{
+		if(formatArray[i].replace(/[-+() ]/g,'').length==value.length)
+		{
+			isValid=true;
+			var formatValue=formatArray[i];
+			for(j=0,n=0;j<formatValue.length;j++)
+			{
+				if(formatValue.charAt(j)=='x' || formatValue.charAt(j)=='X')
+				{
+					formatValue=formatValue.substring(0,j)+value.charAt(n)+formatValue.substring(j+1,formatValue.length);
+					n++;
+				}
+				else if(allowedChars.contains(formatValue.charAt(j)))
+				{
+					formatValue=formatValue.substring(0,j)+formatValue.charAt(j)+formatValue.substring(j+1,formatValue.length);
+				}
+				else if(formatValue.charAt(j)!=value.charAt(n))
+				{
+					isValid=false;
+					break;
+				}
+				else
+				{
+					n++;
+				}
+			}
+			if(isValid)
+			{
+				ele.value=formatValue;
+				break;
+			}
+		}
+	}
+	return isValid;
+}
+
+function isValidDomainName(domainName)
+{
+
+	/*
+	Based on RFC 952, 1034, 1123 and 3696
+		1) Each labels must start and end with a letter or digit, and have as interior characters only letters, digits, and hyphen.
+		2) The length of each label must be 63 characters or less.
+		3) Top-level domain names labels must not be all-numeric.
+		4) The length of complete domain name must be 255 characters or less.
+	 */
+	var dotlessDomainNameregex = new RegExp("^(?![0-9]+$)[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$");
+	var domainNameregex = new RegExp("^([A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\\.)+(?![0-9]+$)[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$");
+	if (domainName.length <= 255 && (dotlessDomainNameregex.test(domainName) || domainNameregex.test(domainName))) {
+		return true;
+	}
+	return false;
+}
+
+function isParentDomain(currentDomainName, newDomainName)
+{
+	currentDomainName = currentDomainName.toLowerCase();
+    newDomainName = newDomainName.toLowerCase();
+	var escapedNewDomainName = newDomainName.replace(/[-.]/g, '\\$&'); //escape dot and hyphen
+	var parentDomainNameregex = new RegExp("^([a-zA-Z0-9-]+\\.)*" + escapedNewDomainName + "$");
+	if (parentDomainNameregex.test(currentDomainName)) 
+	{
+		return true;
+	}
+	return false;
+}

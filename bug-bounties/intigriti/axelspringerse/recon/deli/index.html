@@ -1,0 +1,566 @@
+<!DOCTYPE html><html lang="de" data-tenant="welt" style="--color-primary: #f18825; --color-background: #ffffff; --color-text: #1d1d1d; --color-border: #e0e0e0; --font-body: ps-welt-ffmark, sans-serif" data-astro-cid-jnn4cz6s><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><!-- Basic SEO --><title>WELT im Abo lesen – digital oder gedruckt</title><meta name="description" content="Jeden Tag stellt die Redaktion die besten und wichtigsten Stücke der vielfach ausgezeichneten WELT-Reporter zusammen. Diese anspruchsvolle Auswahl gibt es exklu"><meta name="keywords" content="WELT.de, www.welt.de, Welt Online, WELTplus, WELT Club, WELTplus Premium, WELTplus Gold, Nachrichten, News, Premium, Abo, Abonnement, Digital, Paket, Zeitung"><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><link rel="canonical" href="http://pss-deli.prod.pss.welt.de/"><link rel="icon" href="https://assets.prod.pss.axelspringer.de/welt/favicon.ico"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:title" content="WELT im Abo lesen – digital oder gedruckt"><meta property="og:description" content="Jeden Tag stellt die Redaktion die besten und wichtigsten Stücke der vielfach ausgezeichneten WELT-Reporter zusammen. Diese anspruchsvolle Auswahl gibt es exklu"><meta property="og:url" content="http://pss-deli.prod.pss.welt.de/"><meta property="og:site_name" content="WELT"><!-- Twitter Card --><meta name="twitter:card" content="summary"><meta name="twitter:title" content="WELT im Abo lesen – digital oder gedruckt"><meta name="twitter:description" content="Jeden Tag stellt die Redaktion die besten und wichtigsten Stücke der vielfach ausgezeichneten WELT-Reporter zusammen. Diese anspruchsvolle Auswahl gibt es exklu"><!-- Structured Data (JSON-LD) --><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"WELT im Abo lesen – digital oder gedruckt","url":"http://pss-deli.prod.pss.welt.de/","publisher":{"@type":"Organization","name":"WELT","url":"https://welt.de","logo":"https://assets.prod.pss.axelspringer.de/welt/logo.svg"},"description":"Jeden Tag stellt die Redaktion die besten und wichtigsten Stücke der vielfach ausgezeichneten WELT-Reporter zusammen. Diese anspruchsvolle Auswahl gibt es exklu"}</script><style>*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  line-height: 1.43;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+/* Text elements own their spacing; no browser-default margins (parity with ps-deli). */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+*:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  border-radius: 3px;
+}
+
+:root {
+  --color-primary: #333333;
+  --color-background: #ffffff;
+  --color-text: #222222;
+  --color-border: #cccccc;
+  --font-body: system-ui, sans-serif;
+  --font-heading: var(--font-body);
+  --surface-brand: var(--color-primary);
+  --on-surface-brand: #fff;
+  /* TopBar band: transparent shows the top-area brand surface through it (default);
+     a tenant sets --top-bar-bg to paint the bar full-width and --top-bar-fg for contrast. */
+  --top-bar-bg: transparent;
+  --top-bar-fg: var(--on-surface-brand);
+  --brand-logo-width: 73px;
+  --brand-logo-height: 20px;
+  --focus-ring: #33333380;
+
+  --label-font-size: 0.75rem;
+  --label-font-weight: 400;
+  --label-letter-spacing: normal;
+  --label-text-transform: none;
+  --label-underline: none;
+  --label-underline-hover: none;
+  --label-underline-color: currentColor;
+
+  --header-padding-top: 15px;
+  /* Includes the 6px baseline descender ps-deli's inline-svg logo link rendered. */
+  --header-padding-bottom: 6px;
+  --header-margin-bottom: 32px;
+
+  /* Top-area defaults (WELT/fallback); the active tenant's theme file overrides. */
+  --top-area-min-height: 312px;
+  --top-area-overlap-min-height: 312px;
+  --top-area-overlap-pull: -96px;
+  /* Horizontal inset that keeps the overlapping offer box off the screen edge on mobile. */
+  --top-area-overlap-inset-mobile: 8px;
+  --top-area-headline-size: 32px;
+  --top-area-headline-margin-bottom: 24px;
+  --top-area-subline-size: 16px;
+  --top-area-subline-weight: 400;
+  /* wonp MuiTypography h2 override: 27px even after the subline shrinks to 16px. */
+  --top-area-subline-line-height: 27px;
+  --top-area-subline-margin-bottom: 0;
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --header-margin-bottom: 24px;
+  }
+}
+
+:root {
+  --surface: var(--color-background);
+  --text: var(--color-text);
+  --heading-color: var(--color-primary);
+}
+
+:root {
+  --content-max-width: 936px;
+  --content-padding-inline: 16px;
+}
+@media (min-width: 936px) {
+  /* Keep in sync with --content-max-width. */
+  :root {
+    --content-padding-inline: 32px;
+  }
+}
+
+/* Voucher box (WELT/fallback defaults; tenant blocks override). */
+:root {
+  --voucher-box-bg: rgba(0, 0, 0, 0.15);
+  --voucher-box-radius: 5px;
+  --voucher-box-shadow: none;
+  --voucher-box-color: #ffffff;
+  --voucher-box-max-width: none;
+  --voucher-box-min-height: 230px;
+  --voucher-box-margin-mobile: 0;
+  --voucher-box-steps-gap-desktop: 16px;
+  --voucher-box-steps-mb-desktop: 24px;
+  --voucher-box-steps-mb-mobile: 10px;
+  --voucher-box-step-bg: rgba(255, 255, 255, 0.1);
+  --voucher-box-step-radius-mobile: 2px;
+  --voucher-box-step-divider-color: transparent;
+  --voucher-box-step-number-bg: #ffffff;
+  --voucher-box-step-number-color: #003a5a;
+  --voucher-box-step-number-size: 16px;
+  --voucher-box-step-number-opacity: 0.9;
+  --voucher-box-step-text-color: #ffffff;
+  --voucher-box-step-text-size: 14px;
+  --voucher-box-step-text-line-height: normal;
+  --voucher-box-step-text-weight: 800;
+  --voucher-box-kupon-max-height-mobile: 220px;
+  --voucher-box-kupon-margin-top: 0;
+}
+
+[data-tenant="bild"] {
+  --voucher-box-bg: #ffffff;
+  --voucher-box-radius: 8px;
+  --voucher-box-shadow: 0 16px 24px 0 rgba(0, 0, 0, 0.1);
+  --voucher-box-color: #212529;
+  --voucher-box-max-width: 872px;
+  --voucher-box-min-height: 0;
+  --voucher-box-margin-mobile: 0 16px;
+  --voucher-box-steps-gap-desktop: 8px;
+  --voucher-box-steps-mb-desktop: 0;
+  --voucher-box-steps-mb-mobile: 0;
+  --voucher-box-step-bg: transparent;
+  --voucher-box-step-radius-mobile: 5px;
+  --voucher-box-step-divider-color: #ced4da;
+  --voucher-box-step-number-bg: #ced4da;
+  --voucher-box-step-number-color: #495057;
+  --voucher-box-step-number-size: 18px;
+  --voucher-box-step-number-opacity: 1;
+  --voucher-box-step-text-color: #212529;
+  --voucher-box-step-text-size: 21px;
+  --voucher-box-step-text-line-height: 25px;
+  --voucher-box-step-text-weight: 325;
+  --voucher-box-kupon-max-height-mobile: 150px;
+  --voucher-box-kupon-margin-top: 10px;
+}
+@media (max-width: 935px) {
+  :root {
+    --voucher-box-min-height: 510px;
+  }
+  [data-tenant="bild"] {
+    /* Equal specificity: re-assert over the :root override above, not source order elsewhere. */
+    --voucher-box-min-height: 0;
+  }
+}
+</style><style>:root {
+  --surface-brand:
+    linear-gradient(to top, rgb(21, 88, 134), rgb(1, 58, 91)),
+    linear-gradient(to top, rgb(0, 58, 90), rgba(0, 58, 90, 0));
+  --brand-logo-width: 73px;
+  --brand-logo-height: 20px;
+  --focus-ring: #f1882580;
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --top-area-headline-size: 20px;
+    --top-area-headline-margin-bottom: 16px;
+    --top-area-subline-size: 14px;
+  }
+}
+
+@media (max-width: 599.95px) {
+  :root {
+    --top-area-overlap-pull: -48px;
+  }
+}
+
+/* Multi-user activation box */
+:root {
+  --multi-user-activation-box-min-height: 240px;
+  --multi-user-activation-box-surface: transparent;
+  --multi-user-activation-box-color: var(--on-surface-brand);
+  --multi-user-activation-box-radius: 0;
+  --multi-user-activation-box-padding-block: 0 24px;
+  --multi-user-activation-box-padding-inline: 0;
+  --multi-user-activation-box-outer-max-width: none;
+  --multi-user-activation-box-inner-max-width: 538px;
+  --multi-user-activation-box-headline-size: 32px;
+  --multi-user-activation-box-headline-weight: 800;
+  --multi-user-activation-box-headline-line-height: 40px;
+  --multi-user-activation-box-intro-font-family: var(--font-body);
+  --multi-user-activation-box-intro-size: 16px;
+  --multi-user-activation-box-intro-weight: 400;
+  --multi-user-activation-box-cta-bg: rgb(241, 136, 37);
+  --multi-user-activation-box-cta-hover-bg: transparent;
+  --multi-user-activation-box-cta-hover-color: rgb(241, 136, 37);
+  --multi-user-activation-box-cta-hover-border: 1px solid rgb(241, 136, 37);
+  --multi-user-activation-box-cta-radius: 3px;
+  --multi-user-activation-box-cta-font-size: 14px;
+  --multi-user-activation-box-cta-font-weight: 800;
+  --multi-user-activation-box-cta-padding: 12px 16px;
+  --multi-user-activation-box-input-bg: rgba(255, 255, 255, 0.1);
+  --multi-user-activation-box-input-color: rgba(255, 255, 255, 0.8);
+  --multi-user-activation-box-input-border: none;
+  --multi-user-activation-box-input-border-bottom: 1px solid
+    rgba(255, 255, 255, 0.5);
+  --multi-user-activation-box-input-error-border: none;
+  --multi-user-activation-box-input-error-border-bottom: 1px solid
+    rgb(183, 19, 54);
+  --multi-user-activation-box-input-error-color: inherit;
+  --multi-user-activation-box-input-radius: 0;
+  --multi-user-activation-box-input-padding: 8px 16px;
+  --multi-user-activation-box-input-min-height: 24px;
+  --multi-user-activation-box-input-font-family: var(--font-body);
+  --multi-user-activation-box-input-font-size: 16px;
+  --multi-user-activation-box-input-font-weight: 400;
+  --multi-user-activation-box-input-text-color: #fff;
+  --multi-user-activation-box-input-placeholder-color: rgba(255, 255, 255, 0.8);
+  --multi-user-activation-box-input-placeholder-transform: none;
+  --multi-user-activation-box-input-disabled-color: grey;
+  --multi-user-activation-box-error-bg: rgb(183, 19, 54);
+  --multi-user-activation-box-error-gap: 10px;
+  --multi-user-activation-box-error-font-size: 16px;
+  --multi-user-activation-box-error-font-weight: 400;
+  --multi-user-activation-box-error-line-height: normal;
+  --multi-user-activation-box-success-bg: rgba(0, 0, 0, 0.15);
+  --multi-user-activation-box-success-padding: 28px 16px;
+  --multi-user-activation-box-success-radius: 0;
+  --multi-user-activation-box-success-icon-margin-top: 24px;
+}
+
+/* Countdown */
+:root {
+  --countdown-bg: rgba(255, 255, 255, 0.3);
+  --countdown-border: 1px solid rgba(255, 255, 255, 0.15);
+  --countdown-radius: 7px;
+  --countdown-padding: 16px 16px 32px 16px;
+  --countdown-title-weight: 800;
+  --countdown-title-size: 25px;
+  --countdown-title-line-height: 32px;
+  --countdown-value-font: var(--font-body);
+  --countdown-value-weight: 800;
+  --countdown-value-size: 30px;
+  --countdown-value-line-height: 25px;
+  --countdown-label-color: rgba(255, 255, 255, 0.6);
+  --countdown-label-font: var(--font-body);
+  --countdown-label-weight: 400;
+  --countdown-label-margin-top: 12px;
+  --countdown-label-margin-bottom: 0;
+  --countdown-overlap-pad: 70px;
+}
+
+@media (max-width: 599px) {
+  :root {
+    --countdown-padding: 8px;
+    --countdown-title-size: 14px;
+    --countdown-title-line-height: 17px;
+    --countdown-value-size: 24px;
+    --countdown-value-line-height: 32px;
+    --countdown-label-margin-top: 6px;
+    --countdown-label-margin-bottom: 4px;
+    --countdown-overlap-pad: 16px;
+  }
+}
+
+/* FAQ section (OMQ help widget) -- restyles OMQ's injected DOM. Shared
+   cross-tenant rules (icons, grid skeleton) live in blocks/Faq.astro. */
+.faq-section .omq-help {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 24px;
+}
+.faq-section .omq-help .omq-help-navigation__link {
+  color: #003a5a;
+  font-weight: 800;
+}
+.faq-section .omq-help .omq-help-container {
+  padding: 12px 0;
+}
+.faq-section .omq-help .omq-answer-item text {
+  line-height: 24px;
+}
+.faq-section .omq-help .omq-question-list-headline {
+  font-size: 22px;
+  line-height: 27px;
+  color: #1d1d1d;
+  margin-top: 14px;
+  margin-bottom: 24px;
+}
+.faq-section .omq-help .omq-question-list__question {
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #edece8;
+}
+.faq-section .omq-help .omq-question-list__question:not(:last-of-type) {
+  margin-bottom: 16px;
+}
+.faq-section .omq-help .omq-question-list__question--focus {
+  border: 1px solid #edece8;
+}
+.faq-section .omq-help .omq-question-list__link {
+  color: #003a5a;
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 800;
+  padding: 16px 0;
+}
+.faq-section
+  .omq-help
+  .omq-question-list__question--activ
+  .omq-question-list__link {
+  padding-bottom: 10px;
+}
+.faq-section .omq-help .omq-question-list__answers {
+  padding: 10px 0 16px 0;
+}
+.faq-section .omq-help .omq-category-grid::before {
+  content: "Wählen Sie ein Hilfsthema";
+  flex-basis: 100%;
+  font-family: MarkWebProHeavy, Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  opacity: 90%;
+  padding-bottom: 24px;
+  padding-top: 24px;
+  text-align: center;
+}
+.faq-section .omq-help .omq-category-grid__category {
+  background: #f7f7f7;
+  border: 1px solid #edece8;
+  border-radius: 3px;
+  color: #003a5a;
+  flex-basis: calc(100% / 2 - 8px);
+  flex-wrap: wrap;
+  align-items: flex-end;
+  height: 84px;
+  margin: 0 4px 10px 4px;
+  padding: 27px 10px 27px 16px;
+}
+.faq-section .omq-help .omq-category-grid__category:hover {
+  text-decoration: underline;
+}
+.faq-section .omq-help .omq-category-grid__category::after {
+  content: url('data:image/svg+xml;charset=UTF-8,<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.11199 21L17.112 12L8.11199 3L6.91199 4.2L14.712 12L6.91199 19.8L8.11199 21Z" fill="black"/></svg>');
+}
+.faq-section .omq-help .omq-category-grid__label {
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 27px;
+}
+.faq-section .omq-help .omq-category-grid__icon {
+  display: none;
+}
+.faq-section .omq-help .omq-search {
+  background: rgba(29, 29, 29, 0.04);
+  border-radius: 0;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-bottom-color: rgba(29, 29, 29, 0.5);
+  box-shadow: none;
+}
+.faq-section .omq-help .omq-more-questions {
+  margin-inline: auto;
+  width: max-content;
+  padding: 13px 25px;
+  color: rgb(243, 169, 105);
+  border: 1px solid;
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 18px;
+}
+
+@media (max-width: 935.95px) {
+  .faq-section .omq-help .omq-question-list__question:not(:last-of-type) {
+    margin-bottom: 24px;
+  }
+  .faq-section .omq-help .omq-category-grid__category {
+    height: 60px;
+    flex-basis: 98%;
+    padding: 16px 10px 16px 16px;
+    margin-bottom: 8px;
+  }
+  .faq-section .omq-help .omq-more-questions {
+    margin-top: 24px;
+    width: 100%;
+  }
+}
+
+/* CTA button */
+:root {
+  --cta-font: ps-welt-ffmark, MarkWebProRegular, Arial, Helvetica, sans-serif;
+  --cta-font-size: 14px;
+  --cta-font-weight: 800;
+  --cta-padding: 12px 16px;
+  --cta-radius: 3px;
+  --cta-ghost-color: #003a5a;
+  --cta-ghost-hover-bg: transparent;
+  --cta-ghost-hover-color: rgb(241, 136, 37);
+  --cta-primary-bg: rgb(241, 136, 37);
+  --cta-primary-color: #ffffff;
+  --cta-primary-hover-bg: transparent;
+  --cta-primary-hover-border: rgb(241, 136, 37);
+  --cta-primary-hover-color: rgb(241, 136, 37);
+  --cta-secondary-bg: transparent;
+  --cta-secondary-color: rgb(241, 136, 37);
+  --cta-secondary-border: rgb(241, 136, 37);
+  --cta-secondary-hover-bg: rgb(241, 136, 37);
+  --cta-secondary-hover-color: #ffffff;
+}
+
+/* ImageText content block (WELT renders a separator between content sections). */
+:root {
+  --content-separator-display: block;
+  --image-text-logo-width: 52px;
+  --image-text-headline-font:
+    ps-welt-ffmark, MarkWebProRegular, Arial, Helvetica, sans-serif;
+  --image-text-headline-weight: 800;
+  --image-text-headline-size: 22px;
+  --image-text-headline-line-height: 27px;
+  --image-text-body-font:
+    ps-welt-ffmark, MarkWebProRegular, Arial, Helvetica, sans-serif;
+  --image-text-body-weight: 400;
+  --image-text-body-size: 14px;
+  --image-text-body-line-height: 24px;
+}
+
+/* FullPageText content block */
+:root {
+  --full-page-text-headline-font:
+    ps-welt-ffmark, MarkWebProRegular, Arial, Helvetica, sans-serif;
+  --full-page-text-headline-weight: 800;
+  --full-page-text-headline-size: 25px;
+  --full-page-text-headline-line-height: 27px;
+  --full-page-text-headline-margin: 24px 0;
+  --full-page-text-headline-accent-display: none;
+  --full-page-text-headline-accent-bg: transparent;
+  --full-page-text-body-font:
+    ps-welt-ffmark, MarkWebProRegular, Arial, Helvetica, sans-serif;
+  --full-page-text-body-weight: 400;
+  --full-page-text-body-size: 16px;
+  --full-page-text-body-line-height: 24px;
+  --full-page-text-logo-margin-bottom: 0;
+}
+
+/* Footer -- ported from ps-deli wonp styleClasses (footer, footerLinks,
+   footerLogo, footerPhoneTooltip omitted: chat-only, phone fallback is dead
+   code) and leftyFootnotesDiv. */
+.footer {
+  background: #235474;
+  /* ps-deli applies its footer class twice (shell + welt variant div), so the
+     rendered padding is doubled: 20px top, 120px bottom. Match the result. */
+  padding: 20px 0 120px;
+}
+.footer hr {
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  margin: 10px;
+}
+.footer a {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition-property: color, background-color, border-color, outline-color;
+}
+.footer a:focus,
+.footer a:focus-visible {
+  outline-color: #f1882580;
+  border-color: #fff;
+}
+.footer .footer-offer-box {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  max-width: 992px;
+}
+.footer .footer-contact,
+.footer .footer-logo-row,
+.footer .footer-nav ul {
+  margin: 0 auto;
+  text-align: center;
+  padding: 5px 0;
+}
+.footer .footer-contact,
+.footer .footer-logo-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.footer .footer-contact div[data-external-ps-component="ps-troubadix"] {
+  margin-top: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.footer .footer-footnotes {
+  color: white;
+  max-width: 545px;
+  text-align: center;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+.footer .footer-footnotes ol {
+  counter-reset: list;
+  padding-inline-start: 0;
+}
+.footer .footer-footnotes ol li {
+  list-style: none;
+  position: relative;
+  margin-bottom: 16px;
+}
+.footer .footer-footnotes ol li::before {
+  content: counter(list) ")";
+  counter-increment: list;
+  font-weight: bold;
+  font-size: 75%;
+  top: -0.5em;
+  margin-right: 0.5em;
+  position: relative;
+}
+@media (max-width: 935.95px) {
+  .footer .footer-logo {
+    margin-left: 20px;
+  }
+}
+
+/* MultiColumn content block */
+:root {
+  --multi-column-headline-font:
+    ps-welt-ffmark, MarkWebProRegular, Arial, Helvetica, sans-serif;
+  --multi-column-headline-weight: 800;
+  --multi-column-headline-size: 22px;
+  --multi-column-headline-line-height: 27px;
+  --multi-column-headline-margin-bottom: 24px;
+  --multi-column-headline-accent-display: none;
+  --multi-column-headline-accent-bg: transparent;
+  --multi-column-body-font:
+    ps-welt-ffmark, MarkWebProRegular, Arial, Helvetica, sans-serif;
+  --multi-column-body-weight: 400;
+  --multi-column-body-size: 16px;
+  --multi-column-body-line-height: 24px;
+  --multi-column-svg-size: 100px;
+  --multi-column-item-padding-top: 16px;
+}
+@media (max-width: 935.95px) {
+  :root {
+    --multi-column-headline-margin-bottom: 0;
+  }
+}
+</style><link rel="preconnect" href="https://fonti.prod.ps.welt.de"><link rel="stylesheet" href="https://fonti.prod.ps.welt.de/wonp.css"><script async src="https://clig.prod.ps.welt.de/pp-clig.js"></script><script async src="https://rosetta.prod.ps.welt.de/ps-rosetta.js"></script><script type="application/json" id="tracking-page-data">{"page_app_name":"WELT.de","page_brand":"welt","page_doc_type":"offerpage"}</script><script type="module" src="/_astro/TrackingInit.astro_astro_type_script_index_0_lang.DHWZtp_8.js"></script><link rel="stylesheet" href="/_astro/preview.CnSOxhnh.css"></head><body data-astro-cid-jnn4cz6s><div class="layout-top" data-astro-cid-jnn4cz6s><section class="top-area has-overlap has-bg" style="--top-area-bg:url('/media/welt/W_3600%E2%9C%951000.jpg') center / cover no-repeat" data-astro-cid-xzh5j2ln><div class="top-bar-band" data-astro-cid-nazmfhjt><div class="container" data-astro-cid-ap6mcnip><div class="top-bar" data-astro-cid-nazmfhjt><a class="brand" href="https://welt.de" aria-label="Zur Startseite" data-astro-cid-nazmfhjt><img class="brand-logo" src="https://assets.prod.pss.axelspringer.de/welt/logo.svg" alt="WELT" data-astro-cid-nazmfhjt></a><a class="login-cta" href="https://signin.auth.welt.de/login" data-testid="login-cta" data-astro-cid-nazmfhjt><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-astro-cid-lpdfelte><path fill-rule="evenodd" clip-rule="evenodd" d="M6.96 7.8C6.96 12.024 9.24 14.64 12 14.64C14.76 14.64 17.04 12.024 17.04 7.8C17.04 4.128 15.048 2.16 12 2.16C8.952 2.16 6.96 4.128 6.96 7.8ZM8.64 7.8C8.64 5.232 9.96 3.84 12 3.84C14.04 3.84 15.36 5.232 15.36 7.8C15.36 11.016 13.848 12.96 12 12.96C10.152 12.96 8.64 11.016 8.64 7.8ZM15.24 15.48L16.8 14.448L18.552 15.144C21.024 16.128 21.84 17.616 21.84 19.8V20.28C21.84 21.192 21.192 21.84 20.28 21.84H3.72C2.808 21.84 2.16 21.192 2.16 20.28V19.8C2.16 17.616 2.976 16.128 5.448 15.144L7.2 14.448L8.76 15.48L6 16.56C4.32 17.208 3.84 18.384 3.84 19.8V20.16H20.16V19.8C20.16 18.384 19.68 17.208 18 16.56L15.24 15.48Z" fill="currentColor" data-astro-cid-lpdfelte></path></svg>Sie haben bereits ein Konto?</a></div></div></div><script type="module" src="/_astro/TopBar.astro_astro_type_script_index_0_lang.DNTSemPL.js"></script><div class="container" data-astro-cid-ap6mcnip><div class="top-content" data-astro-cid-xzh5j2ln></div></div></section><div class="top-area-overlap" data-astro-cid-xzh5j2ln><div class="offer-box" data-external-ps-component="ps-lefty-next" data-external-props-context="deli-offerpage" data-external-props-platform="web" data-external-props-service="wonp" data-external-props-offerids="O_3QT7V59WEQWXIUPWPY,O_IF0QWIXMP7CDX8U8ID,O_2WWRXU31413PVDZXTH" data-external-props-identifier="top" data-astro-cid-zlzpc4zz></div></div></div><div class="layout-content" data-astro-cid-jnn4cz6s><div class="container" data-astro-cid-ap6mcnip><div class="content-sections" data-astro-cid-jnn4cz6s><div class="full-page-text" data-astro-cid-2zoehptx><h2 class="headline" data-astro-cid-2zoehptx>Vorsicht, Hintergründe</h2><p class="text" data-astro-cid-2zoehptx>Wenn viel passiert, zählt guter Journalismus. WELT.</p></div><script type="module">function e({link:e,param:t}){if(!e.includes(`${t}=[[token]]`))return e;let n=new URLSearchParams(window.location.search).get(t);return n===null?null:e.replace(`[[token]]`,n)}for(let t of document.querySelectorAll(`.full-page-text a`)){let n=t.getAttribute(`href`);if(!n)continue;let r=e({link:n,param:`activationToken`});if(r===null){window.location.replace(`/partner/token-fehler`);break}r!==n&&t.setAttribute(`href`,r)}</script><div class="image-text" data-astro-cid-nzgc53oa><div class="image-column" data-astro-cid-nzgc53oa><img src="https://ps-kitchen-prod-assets.s3.eu-central-1.amazonaws.com/202604_WELT_Tag_Der_Pressefreiheit_2000x1332_2_a59522686b.jpg" width="2000" height="1332" alt="WELTplus Logo vor einer Collage mit Bildern aus dem Redaktionsalltag" loading="lazy" decoding="async" data-astro-cid-tiuzxqxe></div><div class="text-column" data-astro-cid-nzgc53oa><div data-astro-cid-nzgc53oa><div class="logo" data-astro-cid-nzgc53oa><img src="https://assets.prod.pss.axelspringer.de/welt/plus-logo.svg" alt="WELTplus" data-astro-cid-nzgc53oa></div><h3 class="headline" data-astro-cid-nzgc53oa>Darum lohnt sich WELTplus</h3><p class="text" data-astro-cid-nzgc53oa>WELTplus gibt Ihnen Zugang zu exklusiven Recherchen, fundierten Analysen und besonderen Angeboten unserer Redaktion. Mit WELTplus Premium bekommen Sie noch mehr: alle WELT Experten-Pässe, ePaper und die Magazin-App WELT Edition bei weniger Werbung.</p></div><div data-astro-cid-nzgc53oa><a href="https://www.welt.de/weltplus/article697cb69ffa531953d52161cc/alle-artikel-von-welt-darum-lohnt-sich-weltplus.html" target="_self" class="cta-button secondary" data-astro-cid-vydq27ri>JETZT INFORMIEREN</a></div></div></div><hr class="content-separator" aria-hidden="true" data-astro-cid-aktuaycm><div class="image-text image-right" data-astro-cid-nzgc53oa><div class="image-column" data-astro-cid-nzgc53oa><img src="https://ps-kitchen-prod-assets.s3.eu-central-1.amazonaws.com/WELT_Packshot_1_Print_Markenabo_85e3cea84c.jpg" width="840" height="570" alt="WELT Zeitungen und App inklusive WELTplus Premium" loading="lazy" decoding="async" data-astro-cid-tiuzxqxe></div><div class="text-column" data-astro-cid-nzgc53oa><div data-astro-cid-nzgc53oa><h3 class="headline" data-astro-cid-nzgc53oa>DIE WELT und WELT AM SONNTAG – die ganze Woche top informiert</h3><p class="text" data-astro-cid-nzgc53oa>Das Abo beinhaltet die Print-Ausgaben von WELT und WELT AM SONNTAG sowie alle digitalen Inhalte von WELT. Jetzt attraktive Angebote entdecken und Prämie sichern!</p></div><div data-astro-cid-nzgc53oa><a href="https://www.lesershop24.de/die-welt/?utm_campaign=WELT+Teaser+Aboweiche+ab+2024&amp;utm_content=aboweiche&amp;utm_medium=Content&amp;utm_source=welt.de" target="_self" class="cta-button secondary" data-astro-cid-vydq27ri>Zu den Angeboten</a></div></div></div><hr class="content-separator" aria-hidden="true" data-astro-cid-aktuaycm><div class="image-text" data-astro-cid-nzgc53oa><div class="image-column" data-astro-cid-nzgc53oa><img src="https://ps-kitchen-prod-assets.s3.eu-central-1.amazonaws.com/WELT_Packshot_2_Print_WESA_abc15a7b47.jpg" width="840" height="570" alt="WELT AM SONNTAG Zeitung und WELT App inklusive WELTplus Premium" loading="lazy" decoding="async" data-astro-cid-tiuzxqxe></div><div class="text-column" data-astro-cid-nzgc53oa><div data-astro-cid-nzgc53oa><h3 class="headline" data-astro-cid-nzgc53oa>WELT AM SONNTAG – inspirierende Lektüre für Ihr Wochenende</h3><p class="text" data-astro-cid-nzgc53oa>Genießen Sie die Frühausgabe von WELT AM SONNTAG bereits am Samstag. WELTplus Premium ist im Abo inbegriffen. Jetzt Wunsch-Abo und Prämie wählen!</p></div><div data-astro-cid-nzgc53oa><a href="https://www.lesershop24.de/welt-am-sonntag/?utm_campaign=WESA+Teaser+Aboweiche+ab+2024&amp;utm_content=aboweiche&amp;utm_medium=Content&amp;utm_source=welt.de" target="_self" class="cta-button secondary" data-astro-cid-vydq27ri>Zu den Angeboten</a></div></div></div><hr class="content-separator" aria-hidden="true" data-astro-cid-aktuaycm><div class="image-text image-right" data-astro-cid-nzgc53oa><div class="image-column" data-astro-cid-nzgc53oa><img src="https://ps-kitchen-prod-assets.s3.eu-central-1.amazonaws.com/BF_Offerpage_COMMUNITY_840x570_2f24999523.jpg" width="840" height="570" alt="Person nutzt ein Smartphone vor einem Bücherregal. Im Vordergrund ist ein QR-Code zum Download der WELT Edition App" loading="lazy" decoding="async" data-astro-cid-tiuzxqxe></div><div class="text-column" data-astro-cid-nzgc53oa><div data-astro-cid-nzgc53oa><div class="logo" data-astro-cid-nzgc53oa><img src="https://assets.prod.pss.axelspringer.de/welt/plus-logo.svg" alt="WELTplus" data-astro-cid-nzgc53oa></div><h3 class="headline" data-astro-cid-nzgc53oa>WELT-Community</h3><p class="text" data-astro-cid-nzgc53oa>Seien Sie Teil der meinungsstärksten Community Deutschlands und diskutieren Sie mit. Treten Sie in direkten Austausch mit anderen Lesern und der Redaktion.</p></div><div data-astro-cid-nzgc53oa><a href="https://digital.welt.de/community/" target="_self" class="cta-button secondary" data-astro-cid-vydq27ri>MEHR ERFAHREN</a></div></div></div><hr class="content-separator" aria-hidden="true" data-astro-cid-aktuaycm><div class="image-text" data-astro-cid-nzgc53oa><div class="image-column" data-astro-cid-nzgc53oa><img src="https://ps-kitchen-prod-assets.s3.eu-central-1.amazonaws.com/BF_Offerpage_APP_840x570_23ecc01675.jpg" width="840" height="570" alt="Smartphone mit geöffneter WELT News App" loading="lazy" decoding="async" data-astro-cid-tiuzxqxe></div><div class="text-column" data-astro-cid-nzgc53oa><div data-astro-cid-nzgc53oa><div class="logo" data-astro-cid-nzgc53oa><img src="https://assets.prod.pss.axelspringer.de/welt/plus-logo.svg" alt="WELTplus" data-astro-cid-nzgc53oa></div><h3 class="headline" data-astro-cid-nzgc53oa>WELT News App</h3><p class="text" data-astro-cid-nzgc53oa>Immer und überall auf dem neuesten Stand mit der WELT News App: Nutzen Sie die besonderen Features, sodass Sie z. B. keinen Artikel Ihrer Lieblingsautoren verpassen.</p></div><div data-astro-cid-nzgc53oa><a href="https://welt.onelink.me/lCfd/4gjpx0k9" target="_self" class="cta-button secondary" data-astro-cid-vydq27ri>App Download</a></div></div></div><hr class="content-separator" aria-hidden="true" data-astro-cid-aktuaycm><div class="image-text image-right" data-astro-cid-nzgc53oa><div class="image-column" data-astro-cid-nzgc53oa><img src="https://ps-kitchen-prod-assets.s3.eu-central-1.amazonaws.com/Ki_Pass_2_IMG_1120x760_234a8c2809.jpg" width="1120" height="760" alt="Zwei Personen schauen gemeinsam auf einen Computer neben dem Schriftzug „KI-Pass“" loading="lazy" decoding="async" data-astro-cid-tiuzxqxe></div><div class="text-column" data-astro-cid-nzgc53oa><div data-astro-cid-nzgc53oa><h3 class="headline" data-astro-cid-nzgc53oa>Der neue KI-Pass – in 6 Folgen auf den neuesten Stand der Technologie</h3><p class="text" data-astro-cid-nzgc53oa>Sie interessieren sich für Künstliche Intelligenz, wissen aber nicht, wie Sie anfangen können? Mit dem neuen WELT KI-Pass machen wir Sie fit – Vorwissen ist nicht nötig. Anhand relevanter Lebenssituationen und mit konkreten Anleitungen.</p></div><div data-astro-cid-nzgc53oa><a href="https://www.welt.de/premium" target="_self" class="cta-button secondary" data-astro-cid-vydq27ri>Mehr erfahren</a></div></div></div><hr class="content-separator" aria-hidden="true" data-astro-cid-aktuaycm><div class="image-text" data-astro-cid-nzgc53oa><div class="image-column" data-astro-cid-nzgc53oa><img src="https://ps-kitchen-prod-assets.s3.eu-central-1.amazonaws.com/Gewinnspiele_Offerpage_2000x1332_4060e67ad6.jpg" width="2000" height="1332" alt="Banner „Gewinnspiele“ mit WELTplus Logo vor einem Bühnenscheinwerfer und grafischem Hintergrund" loading="lazy" decoding="async" data-astro-cid-tiuzxqxe></div><div class="text-column" data-astro-cid-nzgc53oa><div data-astro-cid-nzgc53oa><div class="logo" data-astro-cid-nzgc53oa><img src="https://assets.prod.pss.axelspringer.de/welt/plus-logo.svg" alt="WELTplus" data-astro-cid-nzgc53oa></div><h3 class="headline" data-astro-cid-nzgc53oa>Regelmäßige Gewinnspiele</h3><p class="text" data-astro-cid-nzgc53oa>Nur Abonnenten können bei WELT regelmäßig an Gewinnspielen teilnehmen. Reisen, hochwertige Technik, Veranstaltungen und vieles mehr – nutzen Sie Ihre exklusive Chance und nehmen Sie teil. Viel Glück!</p></div><div data-astro-cid-nzgc53oa><a href="https://www.welt.de/weltplus/gewinnspiele/" target="_self" class="cta-button secondary" data-astro-cid-vydq27ri>Gewinnspiele</a></div></div></div></div></div></div><footer class="footer" data-testid="footer"><div class="container" data-astro-cid-ap6mcnip><div class="footer-offer-box" data-external-ps-component="ps-lefty-next" data-external-props-context="deli-offerpage" data-external-props-platform="web" data-external-props-service="wonp" data-external-props-offerids="O_3QT7V59WEQWXIUPWPY,O_IF0QWIXMP7CDX8U8ID,O_2WWRXU31413PVDZXTH" data-external-props-identifier="bottom"></div><div class="footer-footnotes" data-element-id="ps-lefty-web-footnotes" data-testid="ps-lefty-web-footnotes"></div><div class="footer-contact"><a>Haben Sie Fragen?</a><a href="mailto:digital@welt.de">SCHREIBEN SIE UNS</a><div data-external-ps-component="ps-troubadix" data-external-props-tenant="welt" data-external-props-displaymode="link" data-external-props-hyperlinktext="Chat starten" data-external-props-style="footer" data-testid="ps-troubadix-link"></div><a href="https://digital.welt.de/faq">FAQ</a></div><hr aria-hidden="true"><div class="footer-logo-row"><a href="https://welt.de" aria-label="Zur WELT-Startseite"><img class="footer-logo" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='227'%20height='60'%20viewBox='0%200%20227%2060'%20fill='%23ffffff'%3e%3ctitle%3eWelt%20Logo%3c/title%3e%3cpath%20d='M195.995%2014.036h-16.556V1.686h46.964v12.35h-16.515v44.186h-13.893zM149.157%201.687h13.893V45.87h24.165v12.35h-38.058zM139.248%2051.088l-.178.165c-6.081%205.59-13.46%208.194-23.22%208.194-17.197%200-28.752-11.783-28.752-29.32C87.098%2012.383%2098.354.46%20115.106.46c16.044%200%2026.862%2011.828%2026.92%2029.434%200%201.735-.117%203.807-.288%205.077h-39.647l.135.656c1.702%207.528%206.711%2011.506%2014.484%2011.506%205.044%200%209.838-1.794%2013.86-5.188l.18-.152%208.498%209.294zm-11.8-26.384l-.14-.645c-1.577-7.27-5.837-11.113-12.318-11.113-6.758%200-11.156%203.843-12.718%2011.115l-.137.643h25.314zM62.304%2042.362L51.214%201.687H36.236L25.147%2042.28%2014.584%201.687H.147L16.11%2058.222h16.763l10.752-36.569%2010.752%2036.569H71.14L87.102%201.687H72.866z'/%3e%3c/svg%3e" alt=""></a></div><nav class="footer-nav" aria-label="Footer-Navigation"><ul><li><a href="https://www.welt.de/impressum">IMPRESSUM</a></li><li><a href="https://www.welt.de/datenschutz">DATENSCHUTZ</a></li><li><a href="https://www.welt.de/agb">AGB</a></li><li><a href="https://cancellation.prod.ps.welt.de/" target="_blank" rel="noreferrer">ABO KÜNDIGEN</a></li><li><a href="" data-cmp-layer="reject">WIDERRUF TRACKING UND COOKIES</a></li><li><a href="" data-cmp-layer="privacy">PRIVACY-MANAGER</a></li><li><a href="https://www.welt.de/premium/widerruf">WIDERRUFSBELEHRUNG</a></li><li><a href="https://www.welt.de/barrierefreiheit">BARRIEREFREIHEIT</a></li><li><a href="https://cancellation.prod.ps.welt.de/widerruf.html" class="underlined" target="_blank" rel="noreferrer">VERTRAG WIDERRUFEN</a></li></ul></nav><script type="module" src="/_astro/FooterNav.astro_astro_type_script_index_0_lang.CjEW0UlG.js"></script></div></footer></body></html>

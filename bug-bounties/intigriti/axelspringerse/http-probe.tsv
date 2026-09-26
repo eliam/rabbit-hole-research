@@ -1,0 +1,47 @@
+emarketer.com	https	000			
+newsos.com	https	302	APISIX/3.17.0	401 Authorization Required	https://newsos.com/login?next=%2F
+politico.eu	https	301	cloudflare	301 Moved Permanently	https://www.politico.eu/
+adtechnology.axelspringer.com	https	200	Apache/2.4.58 (Ubuntu)	AS Adtechnology	
+asadcdn.com	https	000			
+bild.de	https	301	AkamaiGHost		https://www.bild.de/
+welt.de	https	301		301 Moved Permanently	https://www.welt.de:443/
+epaper.welt.de	https	200	nginx	Menu	
+cancellation.prod.ps.welt.de	https	200	AmazonS3		
+digital.welt.de	https	200		WELT im Abo lesen – digital oder gedruckt	
+signin.auth.welt.de	https	200	AmazonS3		
+m.bild.de	https	200	Apache	User Icon	
+hey.bild.de	https	200	AmazonS3	    Hey_ Die künstliche Intelligenz von BILD  	
+go.welt.de	https	200	AmazonS3	    WELTgo! Ihr Assistent mit KI  	
+auth.bild.de	https	000			
+sportbild.de	https	301			https://sportbild.bild.de/
+meinkonto.bild.de	https	200	AmazonS3		
+bild.tv	https	302			https://www.bild.de/tv/mediathek/livestream/startseite-77204148.bild.html
+computerbild.de	https	301			https://www.computerbild.de/
+dealer.prod.ps.axelspringer.de	https	503	awselb/2.0	503 Service Temporarily Unavailable	
+germany.politico.eu	https	000			
+bild.design	https	301	cloudflare	301 Moved Permanently	https://www.bild.design/
+autobild.de	https	301			https://www.autobild.de/
+bz-berlin.de	https	301			https://www.bz-berlin.de/
+spring-media.de	https	301			https://career.axelspringer.com/de/
+springtools.de	https	000			
+editorial.one	https	000			
+as-nmt.de	https	302			https://moveoffice.sharepoint.com/sites/NMT/SitePages/de/Home.aspx
+ein-herz-fuer-kinder.de	https	301			https://www.ein-herz-fuer-kinder.de/
+fitbook.de	https	301			https://www.fitbook.de/
+myhomebook.de	https	301			https://www.myhomebook.de/
+petbook-magazine.com	https	301			https://www.petbook-magazine.com/
+petbook.de	https	301			https://www.petbook.de/
+stylebook.de	https	302	AkamaiGHost		https://www.fitbook.de/?ref=stylebook
+techbook.de	https	301			https://www.techbook.de/
+travelbook.de	https	301			https://www.travelbook.de/
+wissen-sie-mehr.de	https	301			https://www.bild.de/sonstiges/corporate-site/wissen-sie-mehr-haben-sie-wichtige-informationen-fuer-bild-662636d7314ccc2a36b5dbf7
+technik.autobild.de	https	000			
+technik.beta.autobild.de	https	000			
+emarketer.com	http	301	nginx	301 Moved Permanently	https://www.emarketer.com/
+asadcdn.com	http	000			
+auth.bild.de	http	000			
+germany.politico.eu	http	000			
+springtools.de	http	000			
+editorial.one	http	000			
+technik.autobild.de	http	000			
+technik.beta.autobild.de	http	000			

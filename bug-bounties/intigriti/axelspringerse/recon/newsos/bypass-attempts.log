@@ -1,0 +1,36 @@
+=== DCR allowlist BYPASS tests (validation test) ===
+Timestamp: 2026-09-26T11:36:20+01:00
+Endpoint : https://newsos.prod.tech.as-nmt.de/oauth/register
+Domains  : RFC2606 reserved (.invalid) only - no real third party targeted
+Plan     : one attempt per pattern; STOP on first success to minimise artifacts
+
+[path-suffix /newsos.com]
+  redirect_uri: https://example.invalid/newsos.com
+  HTTP 400
+  resp: {"error":"invalid_redirect_uri","error_description":"redirect_uri not allowed: https://example.invalid/newsos.com"}
+
+[path-suffix /as-nmt.de]
+  redirect_uri: https://example.invalid/as-nmt.de
+  HTTP 400
+  resp: {"error":"invalid_redirect_uri","error_description":"redirect_uri not allowed: https://example.invalid/as-nmt.de"}
+
+[domain-suffix .newsos.com]
+  redirect_uri: https://newsos.com.example.invalid/
+  HTTP 400
+  resp: {"error":"invalid_redirect_uri","error_description":"redirect_uri not allowed: https://newsos.com.example.invalid/"}
+
+[userinfo @newsos.com]
+  redirect_uri: https://example.invalid@newsos.com/
+  HTTP 400
+  resp: {"error":"invalid_redirect_uri","error_description":"redirect_uri not allowed: https://example.invalid@newsos.com/"}
+
+[path+query]
+  redirect_uri: https://example.invalid/?u=newsos.com
+  HTTP 400
+  resp: {"error":"invalid_redirect_uri","error_description":"redirect_uri not allowed: https://example.invalid/?u=newsos.com"}
+
+[backslash]
+  redirect_uri: https://example.invalid\\@newsos.com
+  HTTP 400
+  resp: {"error":"invalid_redirect_uri","error_description":"redirect_uri not allowed: https://example.invalid\\\\@newsos.com"}
+

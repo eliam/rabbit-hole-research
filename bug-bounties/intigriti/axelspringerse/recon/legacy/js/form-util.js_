@@ -1,0 +1,176 @@
+/*
+  $Id$
+  */
+
+  function OpenWindow(url, windowname, querystring, props)
+  {
+	  var win = null;
+	  if(windowname!=null && windowname.match(/^[a-zA-Z0-9-_]*$/)) {
+		  win = windowname;
+	  }
+	  window.open('', win, props);
+	  CreateAndSubmitForm(url, win, querystring);
+  }
+
+  function selectAllUsers(childDivId, parentId)
+  {
+	  var check = docid(parentId).checked;
+	  var inputFields = docid(childDivId).getElementsByTagName('input');
+	  for(var i=0; i<inputFields.length; i++)
+	  {
+		  if(inputFields[i].type == "checkbox" || inputFields[i].type == "radio")
+		  {
+			  inputFields[i].checked = check;
+		  }
+	  }
+  }
+  function openPopUp(divId, minLPos, minTPos)
+  {
+	  window.scrollTo(0,0);
+	  if (window.ActiveXObject){var cW = document.body.clientWidth;var cH = document.body.clientHeight;}
+	  else{var cW = window.parent.innerWidth;var cH = window.parent.innerHeight;}
+	  var mouseLeft = new Number((cW/2) - minLPos);var mouseTop = new Number((cH/2) - minTPos);
+
+	  freezeAndOpen(divId, mouseLeft, mouseTop);//No I18N
+	  docid(divId).style.left=mouseLeft;
+	  docid(divId).style.top=mouseTop;
+	  docid(divId).style.position="absolute";
+	  docid(divId).style.zIndex="100";
+	  docid(divId).style.display="block";
+
+	  docid('freezeSearch').setAttribute('style','display:block;width:'+cW+100+'px; height:'+cH+100+'px;');
+	  document.body.style.overflow = 'hidden';
+  }
+
+  //Issue Fix 02314
+  function SubmitDCForm(url, windowname, querystring, dup)
+  {
+	  var query = "";
+	  var hiddenParams = querystring.split("&");
+	  for(var i=0; i<hiddenParams.length; i++)
+	  {
+		  var paramName = hiddenParams[i].substring(0, hiddenParams[i].indexOf("="));
+		  var paramValue = hiddenParams[i].substring(hiddenParams[i].indexOf("=")+1, hiddenParams[i].length);
+		  var di = paramValue.indexOf("%26");
+		  if(di >= 0)
+		  {
+			  paramValue = paramValue.replace(/%26/g,"&");
+		  }
+		  di = paramValue.indexOf("%");
+		  if(di >= 0)
+		  {
+			  paramValue = paramValue.replace(/%/g,"%25");
+		  }
+		  di = paramValue.indexOf("&");
+		  if(di >= 0)
+		  {
+			  paramValue = paramValue.replace(/&/g,"%26");
+		  }
+		  var param = paramName + "=" + paramValue;
+		  if(i > 0)
+		  {
+			  param = "&" + param;
+		  }
+		  query = query + param;
+	  }
+	  CreateAndSubmitForm(url,windowname,query);
+  }
+
+  function CreateAndSubmitForm(url, windowname, querystring)
+  {
+	  var formObj;
+		  formObj = document.createElement('form');
+		  formObj.setAttribute('action',url);
+		  if(windowname != null){formObj.setAttribute('target',windowname)};
+		  formObj.setAttribute('method','POST');
+		  formObj.setAttribute('enctype','application/x-www-form-urlencoded;charset=UTF-8');
+
+	  document.body.appendChild(formObj);
+	  var hiddenParams = querystring.split("&");
+	  var isCSRFElementCreated = false;
+	  for(var i=0; i<hiddenParams.length; i++)
+	  {
+		  var paramName = hiddenParams[i].substring(0, hiddenParams[i].indexOf("="));
+		  var paramValue = hiddenParams[i].substring(hiddenParams[i].indexOf("=")+1, hiddenParams[i].length);
+		  var hiddenObj;
+		  hiddenObj = document.createElement('input');
+		  hiddenObj.setAttribute('type','hidden');
+		  hiddenObj.setAttribute('name',paramName);
+		  hiddenObj.setAttribute('value',decodeURIComponent(paramValue));
+		  formObj.appendChild(hiddenObj);
+		  if(paramName === "adscsrf")
+		  {
+			isCSRFElementCreated = true;
+		  }
+	  }
+	  // This if check is added to avoid Duplication in CSRF Param in Post Request body
+	  if(!isCSRFElementCreated)
+	  {
+		var csrfElement=document.createElement('input');
+		csrfElement.setAttribute('type','hidden');
+		csrfElement.setAttribute('name',"adscsrf");
+		csrfElement.setAttribute('id',"adscsrf");
+		csrfElement.setAttribute('value',CommonUtil.getCookie('adscsrf'));
+		formObj.appendChild(csrfElement);
+	  }
+
+	  formObj.submit();
+  }
+
+  function SubmitCsrfForm(url,param)
+  {
+	  var win=null;
+	  if((typeof(param) == undefined || param == null || param.indexOf('adscsrf=') == -1)){
+		  param =''; //NO I18N
+		  var winName = window.name;
+		  //To avoid DOM Based XSS, we have to sanitize the DOM Object which can be altered by Attackers.
+		  //From now on window name should not contain any spl char.
+		  if (winName.match(/^[a-zA-Z0-9-_]*$/)){
+		  win = window.name;
+		  }
+	  }
+	  CreateAndSubmitForm(url,win,param);
+  }
+
+
+  function SubmitGetForm(url)
+  {
+	  var windowName = null;
+
+	  //To avoid DOM Based XSS, we have to sanitize the DOM Object which can be altered by Attackers.
+	  //From now on window name should not contain any spl char.
+	  if (window.name.match(/^[a-zA-Z0-9-_]*$/)){
+		  windowName = window.name;
+	  }
+
+
+	  var formObj = document.createElement('form');
+	  formObj.setAttribute('action',url);
+
+	if(windowName != null) { formObj.setAttribute('target', windowName) };
+	var urlParts = url.split("?");
+    var actionUrl = urlParts[0];
+    var params = urlParts[1];
+	formObj.setAttribute('action',actionUrl);
+    if (params) {
+        var paramPairs = params.split("&");
+        paramPairs.forEach(function (paramPair) {
+            var keyValue = paramPair.split("=");
+            if (keyValue.length === 2) {
+                var paramName = keyValue[0];
+                var paramValue = keyValue[1];
+                var inputObj = document.createElement('input');
+                inputObj.setAttribute('type', 'hidden');
+                inputObj.setAttribute('name', paramName);
+                inputObj.setAttribute('value', paramValue);
+                formObj.appendChild(inputObj);
+            }
+        });
+    }
+	formObj.setAttribute('method','GET');
+	formObj.setAttribute('enctype','application/x-www-form-urlencoded;charset=UTF-8');
+
+	  document.body.appendChild(formObj);
+
+	  formObj.submit();
+  }

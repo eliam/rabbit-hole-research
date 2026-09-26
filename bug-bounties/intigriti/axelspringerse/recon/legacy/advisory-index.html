@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<title>ManageEngine ADSelfService Plus Security Advisories</title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="Browse the latest ManageEngine ADSelfService Plus security advisories to stay informed about vulnerabilities, fixes, and product security updates." />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="ManageEngine">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--[if lt IE 9]><script src="https://www.manageengine.com/js/html5shiv.js"></script><![endif]-->
+<link href="//www.manageengine.com/favicon.ico" rel="shortcut icon">
+<script type="text/javascript" src="https://www.manageengine.com/js/ipcallback-new.js"></script>
+<link rel="preload" as="style" href="https://www.manageengine.com/css/me-v1.css?v2">
+<link rel="preload" as="style" href="https://www.manageengine.com/products/self-service-password/style/prd-style.css">
+<link rel="stylesheet" type="text/css" href="//www.manageengine.com/css/me-v1.css?v2">
+<link rel="stylesheet" type="text/css" href="/products/self-service-password/style/prd-style.css">
+
+<link rel="canonical" href="https://www.manageengine.com/products/self-service-password/advisory/" />
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+<style>
+.heading-menu{display:none;}
+#example tr th.sorting{background:#424f57;border:none;color:#fff;font-size:14px;font-weight:normal}
+#example tr.filters th{background:#f3f3f3;border:none;border-left:solid 1px #ddd;}
+#example tr.filters th:last-child{border-right:solid 1px #ddd;}
+#example tr.filters th input{border:solid 1px #ccc;font-size:12px;padding:5px;}
+table.dataTable.display tbody tr.odd > .sorting_1, table.dataTable.order-column.stripe tbody tr.odd > .sorting_1,
+table.dataTable.display tbody tr:hover > .sorting_1, table.dataTable.order-column.hover tbody tr:hover > .sorting_1{background:none}
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{background:#fff;}
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.even{background:#fafafa}
+table.dataTable.display tbody tr td{border-left:solid 1px #ddd;font-size:14px;position:relative}
+table.dataTable.display tbody tr td:last-child{border-right:solid 1px #ddd;}
+table.dataTable.display tbody tr td:nth-child(2){padding-left:25px;}
+table.dataTable.display tbody tr td:nth-child(2):before{background:#f00;border-radius:12px;content:"";display:inline-block;height:10px;left:8px;line-height:10px;position:absolute;top:15px;width:10px}
+table.dataTable.display tbody tr td.hig:before{background:#ff7302}
+table.dataTable.display tbody tr td.med:before{background:#ffcd02}
+table.dataTable.display tbody tr td.cri:before{background:#cf202f}
+table.dataTable.display tbody tr td.low:before{background:#6cc04a}
+#example_filter{background:#f3f3f3;box-sizing:border-box;padding:5px;width:100%}
+#example_filter label{font-size:12px;}
+#example_filter input{font-size:12px;}
+.dataTables_wrapper .dataTables_paginate .paginate_button{font-size:12px;line-height:16px;padding:0px 7px}
+table.dataTable.no-footer{border-bottom:solid 1px #ddd}
+#example_info,
+#example_length{margin:7px 0 0 10px;position:absolute}
+#example_paginate{box-sizing:border-box;width:100%}
+
+
+.foottbx{margin:50px 0 0 0}
+.foottbx .per70{background:#fafafa;border:solid 1px #d3d7da;width:68.5%}
+.foottbx .per30{border:solid 1px #d3d7da;margin:0 0 0 2%;padding:0;width:27%}
+.foottbx .per30 ul{margin:0;padding:0 !important}
+.foottbx .per30 ul li{list-style:none;margin:0 20px;padding:10px 0 10px 29px;position:relative}
+.foottbx .per30 ul li:before{background:url(images/advisories-sprite.png) no-repeat;background-position:-75px -9px;background-size:112px;content:"";height:20px;left:0;position:absolute;top:13px;width:20px}
+.foottbx .per30 ul li:nth-child(1):before{display:none}
+.foottbx .per30 ul li:nth-child(2):before{background-position:-7px -10px}
+.foottbx .per30 ul li:nth-child(3):before{background-position:-42px -10px}
+.foottbx .per30 ul li:nth-child(1){background:#fafafa;font-weight:500;margin:0 !important;padding:7px 20px 8px;}
+.foottbx .per30 ul li:nth-child(2),
+.foottbx .per30 ul li:nth-child(3){border-bottom:solid 1px #d8d8d8}
+.foottbx h2{font-size:20px;margin:20px 0 15px}
+.dwn-priv{color:#494949;margin-bottom:30px;margin-top:0}
+.dataTables_wrapper .dataTables_length select{background:#fff;}
+#adRhsLnk{display:none}
+
+tfoot{display:table-header-group;}
+tfoot th{background:#f3f3f3;border-bottom:solid 1px #ddd !important;border-left:solid 1px #ddd !important;}
+tfoot th:last-child{border-right:solid 1px #ddd !important;}
+tfoot input[type=text],
+tfoot select{background:#fff;border:solid 1px #ccc;width:100%}
+#example tr:last-child td{border-bottom:solid 1px #ccc;}
+.dataTables_wrapper .dataTables_filter input{background:#fff}
+
+
+
+#example tr td span{display:block}
+
+@media screen and (max-width:830px) {
+.foottbx .per70{width:98%}
+.foottbx .per30{margin:20px 0 0 0;width:100%}
+.foottbx .per30 ul li{border:none !important;display:inline-block;}
+.foottbx .per30 ul li:nth-child(1){display:block}
+.emailLnktxt{display:none}
+}
+@media screen and (max-width:540px) {
+.dataTables_wrapper{overflow:auto}
+#example_filter{height:37px;}
+#example_filter label{float:right}
+#example_paginate{float:right;width:auto;}
+#example_info, #example_length{margin:13px 0 0 10px}
+.pg-head, .head{margin:20px 0 30px;line-height:34px}
+}
+@media screen and (max-width:410px) {
+#example_info, #example_length{position:unset;width:100%}
+#example_filter label{float:unset}
+#example_paginate{width:100%}
+#example_info{margin-top:0}
+}
+
+#scroll .one-line-form{width:510px;margin:0 auto 20px;}
+#scroll .one-line-form *{font-family:"ZohoPuvi",verdana,arial,sans;font-size:14px;outline:0;margin:0;padding:0;box-sizing:border-box}
+#scroll .one-line-form > form > ul{margin:0;padding:0}
+#scroll .one-line-form > form > ul li{list-style-type:none;float:left;border:1px solid #e6e6e6}
+#scroll .one-line-form > form > ul li:nth-child(1){width:270px;position:relative;border-radius:3px 0 0 3px;border-right-width:0}
+#scroll .one-line-form > form > ul li:nth-child(1) input{font-size:14px;}
+#scroll .one-line-form > form > ul li:nth-child(1) input::placeholder{color:#b3b3b3}
+#scroll .one-line-form > form > ul li:nth-child(2){width:50px;border-left:0;border-right:0;position:relative;background: #fff;}
+#scroll .one-line-form > form > ul li:nth-child(3){padding-left:0;border-color:#d63327;border-radius:0 3px 3px 0}
+#scroll .one-line-form > form > ul li .ffw-errmsg{display:none;color:red;font-size:12px;margin-top:-20px;position:absolute;font-weight:300;white-space:nowrap}
+#scroll .one-line-form > form > ul li input{width:100%;height:43px;border:0;padding:0 10px;font-size:14px;color:#000;font-weight:300}
+#scroll .one-line-form > form > ul li .selectedCountry{text-align:left;width:50px;height:33px;top:2px;position:absolute;color:#444;font-size:14px;margin:5px 0 0;line-height:33px;left:0;padding-left:8px;border-left:1px solid #e5e5e5;font-weight:300}
+#scroll .one-line-form > form > ul li .selectedCountry:before{content:"";position:absolute;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid #1e0437;z-index:0;right:10px;top:15px}
+#scroll .one-line-form > form > ul li .selectedCountry:after{content:"";position:absolute;width:1px;height:33px;top:0;right:0;background-color:#e6e6e6;display:none}
+#scroll .one-line-form > form > ul li input[type=submit]{font-size:16px;background:#d63327;color:#fff;padding:0 33px;cursor:pointer;font-weight:500;height:43px;border:0}
+#scroll .one-line-form > form > ul li input[type=submit]:hover{background:#9e0303;transition:all .5s ease}
+#scroll .one-line-form > form > ul li select{font-weight:300;width:50px;height:43px;border:0;padding:0 10px;box-sizing:border-box;border-radius:0;margin:0;z-index:9;position:relative;color:#444;font-size:12px;opacity:0;-moz-appearance:none;-webkit-appearance:none;cursor:pointer;float:left}
+#scroll .one-line-form > form > ul li select.commonselect{position:relative;font-size:14px;opacity:1;width:100px;float:left;padding-left:0;line-height:22px;    overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+#scroll .one-line-form > form > .misc-field .dwn-priv{margin-top:10px}
+#scroll .one-line-form > form > .misc-field .dwn-priv,#scroll .one-line-form > form > .misc-field .dwn-priv *{font-size:11px;color:#000}
+#scroll .one-line-form > form > .misc-field .dwn-priv strong{font-weight:600}
+#scroll .one-line-form > form > .misc-field .dwn-priv a{font-size:11px;color:#1281bd;text-decoration:underline}
+#scroll .one-line-form > form > .misc-field #meGDPRMessage{line-height:16px;margin:5px 0 0!important;width:100%}
+#scroll .one-line-form > form > .misc-field #meGDPRMessage label, #scroll .one-line-form > form > .misc-field .dwn-priv{font-size:11px;line-height:18px;color:#000;font-weight:300;opacity:.8}
+#scroll .one-line-form > form > .misc-field #meGDPRMessage .checkmarkgdpr{margin-bottom:0;position:relative;right:1px;top:1px;}
+#scroll .one-line-form > form > .misc-field::before{content:" ";display:table;clear:both}
+#scroll .one-line-form > form > .misc-field *{color:#a6a6a6;font-weight:300}
+#scroll .one-line-form > form > .misc-field strong{font-weight:600}
+#scroll .one-line-form > form > .misc-field a{color:#1281bd;text-decoration:underline;font-size: inherit; line-height: inherit;}
+#scroll .one-line-form > .success-message{display:none;text-align: center; margin-top: 20px;}
+#scroll .one-line-form > .success-message h2{margin-bottom:10px;color:#000;font-size: 18px}
+#scroll .one-line-form > .success-message p{font-size:13px;line-height:23px;margin-top:0;color:#000}
+#scroll .one-line-form.success ul{display:none}
+#scroll .one-line-form.success .success-message{display:block}
+#scroll .one-line-form.success .misc-field{display:none}
+#scroll .one-line-form.with-state{width:520px}
+#scroll .one-line-form.with-state ul li #headerCountryListItem:after{content:"";position:absolute;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid #1e0437;z-index:0;right:7px;top:23px}
+#scroll .one-line-form.with-state ul li:nth-child(1){margin-left:0;width:200px}
+#scroll .one-line-form.with-state ul li .commonselect{margin-left:8px}
+#scroll .one-line-form.with-state ul li .selectedCountry:after{display:block}
+#scroll .one-line-form.with-state ul li input[type=submit]{padding:0 20px}
+#scroll .one-line-form.with-state ul li:nth-child(2){width:160px}
+#scroll .one-line-form.with-state .ffw-country-list{position:relative}
+#scroll .one-line-form.with-state .ffw-country-list:after{content:"";position:absolute;right:4px;top:19px;width:13px;height:13px;z-index:1;zoom:.95}
+@media screen and (max-width: 500px) {
+#scroll .one-line-form{width:100%}
+#scroll .one-line-form ul li{width:100%!important}
+#scroll .one-line-form ul li select{width:100%!important}
+#scroll .one-line-form ul li:first-child{border:1px solid #8ca2ba!important;margin-top:5px!important;width:100%!important;display:block}
+#scroll .one-line-form ul li:nth-child(2) select{border:1px solid #8ca2ba!important;margin-top:5px!important;width:100%!important;display:block;opacity:1;-webkit-appearance:listbox}
+#scroll .one-line-form ul li .selectedCountry{display:none;width:100%!important}
+#scroll .one-line-form ul li:nth-child(3){margin-top:5px}
+#scroll .one-line-form.with-state{width:100%!important}
+#scroll .one-line-form.with-state ul li select.commonselect{margin-left:0;padding:0 10px;font-size:12px}
+}
+#meGDPRMessage .checkmarkgdpr.enableCheckgdpr:before{border-width: 0 1px 1px 0; top: 0; left: 3px;}
+.checkmark{width:52px;height:52px;position:relative}
+.checkmark__circle{stroke-dasharray:166;stroke-dashoffset:166;stroke-width:2;stroke-miterlimit:10;stroke:#2FBB77;fill:none;-webkit-animation:stroke .6s cubic-bezier(.65,0,.45,1) forwards;animation:stroke .6s cubic-bezier(.65,0,.45,1) forwards}
+.checkmark{width:56px;height:56px;border-radius:50%;stroke-width:2;stroke:#fff;stroke-miterlimit:10;-webkit-box-shadow:inset 0 0 0 #2fbb77;box-shadow:inset 0 0 0 #2fbb77;-webkit-animation:fill .4s ease-in-out .4s forwards,scale .3s ease-in-out .9s both;animation:fill .4s ease-in-out .4s forwards,scale .3s ease-in-out .9s both}
+.checkmark__check{-webkit-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform-origin:50% 50%;stroke-dasharray:48;stroke-dashoffset:48;-webkit-animation:stroke .3s cubic-bezier(.65,0,.45,1) .8s forwards;animation:stroke .3s cubic-bezier(.65,0,.45,1) .8s forwards}
+@-webkit-keyframes stroke{
+100%{stroke-dashoffset:0}
+}
+@keyframes stroke{
+100%{stroke-dashoffset:0}
+}
+@-webkit-keyframes scale{
+0%,100%{-webkit-transform:none;transform:none}
+50%{-webkit-transform:scale3d(1.1,1.1,1);transform:scale3d(1.1,1.1,1)}
+}
+@keyframes scale{
+0%,100%{-webkit-transform:none;transform:none}
+50%{-webkit-transform:scale3d(1.1,1.1,1);transform:scale3d(1.1,1.1,1)}
+}
+@-webkit-keyframes fill{
+100%{-webkit-box-shadow:inset 0 0 0 30px #2fbb77;box-shadow:inset 0 0 0 30px #2fbb77}
+}
+@keyframes fill{
+100%{-webkit-box-shadow:inset 0 0 0 30px #2fbb77;box-shadow:inset 0 0 0 30px #2fbb77}
+}
+</style>
+ 
+</head>
+<body>
+<div class="pop-box" id="disableDiv">&nbsp;</div>
+<div class="pop-container" id="PopupContainer">&nbsp;</div>
+<div id="adRhsLnk"><a href="https://www.manageengine.com/products/self-service-password/pricing-details.html#pricing?rhsFixed" data-tooltip="Starts @ $595" class="tooltip-left"><span class="adRhsIcon prc">&nbsp;</span>Pricing</a> <a href="/products/self-service-password/get-quote.html?rhsFixed" data-tooltip="Starts @ $595" class="tooltip-left"><span class="adRhsIcon qte">&nbsp;</span>Get Quote</a></div>
+<header>
+  <div id="commonHeader" class="me-global-hdr">
+  <div id="header-topsec">&nbsp;</div>
+  <div class="" id="MEmobPanel">
+    <div id="MEdropPanel">&nbsp;</div>
+  </div>
+  <div id="header-mainsec">
+    <div class="headerinner">
+      <div class="clearfix head-container">
+        <div class="fl prdLogo">
+        <a class="adssplogosvg " href="/products/self-service-password/"><img src="https://cdn.manageengine.com/images/productlogos/adselfserviceplus-dark.svg" alt="ManageEngine ADSelfService Plus" loading="eager" fetchpriority="high" width="253" height="29"/></a>
+        </div>
+        <div class="fr">
+          <nav>
+             <div class="nav-dwn fr"><a href="/products/self-service-password/download.html?topMenu" title="Download">Download <span class="nav-dwn-icon">&nbsp;</span></a></div>
+            <div class="fr pr">
+              <ul class="nav header-nav productmenu clearfix" itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement">
+                <li id="over"><a href="/products/self-service-password/?topMenu" title="Overview">Overview</a></li>
+			  <li id="lnk"><a href="/products/self-service-password/email-download-link.html?topMenu" title="Email Download Link">Email Download Link</a></li>
+              <li id="fea"><a href="/products/self-service-password/features.html?topMenu" title="Features">Features</a></li>
+              <li id="demo"><a href="/products/self-service-password/demo-form.html?topMenu" title="Demo">Demo</a></li>
+              <li id="doc"><a href="/products/self-service-password/resources.html?topMenu" title="Documents">Documents</a></li>
+              <li id="quote"><a href="/products/self-service-password/get-quote.html?topMenu" title="Get Quote">Get Quote</a></li>
+              <li id="sup"><a href="/products/self-service-password/support.html?topMenu" title="Support">Support</a></li>
+              <li id="cust"><a href="/products/self-service-password/customers.html?topMenu" title="Customers">Customers</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  </div>
+</header>
+
+<section>
+  <div class="heading-menu">
+    <div class="container"><h2>Features</h2>
+<div class="breadcrumb"><a title="Self Service Password Management" href="https://www.manageengine.com/products/self-service-password/index.html?breadcrumbs">Self Service Password Management</a> &raquo; Features</div></div>
+     </div>
+</section>
+
+<section id="maincontent">
+  <div class="container sec-pTB" id="scroll">
+    
+    <h1 class="pg-head tac">ManageEngine ADSelfService Plus Security Advisories</h1>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>CVE IDs</th>
+            <th>Severity</th>
+            <th>Title</th>
+            <th>Fixed product version</th>
+            <th>Fixed on</th>
+        </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>CVE IDs</th>
+        <th>Severity</th>
+        <th>Title</th>
+        <th>Fixed product version</th>
+        <th>Fixed on</th>
+    </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2026-11374.html">CVE-2026-11374</a></td>
+            <td class="hig">High</td>
+            <td>Account takeover</td>
+            <td>6529</td>
+            <td>03-Jun-2026</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2026-2740.html">CVE-2026-2740</a></td>
+            <td class="hig">High</td>
+            <td>Authenticated RCE vulnerability</td>
+            <td>6525</td>
+            <td>05-Feb-2026</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2026-3183.html">CVE-2026-3183</a></td>
+            <td class="hig">High</td>
+            <td>Broken Authentication vulnerability</td>
+            <td>6524</td>
+            <td>31-Jan-2026</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2026-1367.html">CVE-2026-1367</a></td>
+            <td class="hig">High</td>
+            <td>SQL injection vulnerability</td>
+            <td>6523</td>
+            <td>25-Jan-2026</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2025-11250.html">CVE-2025-11250</a></td>
+            <td class="cri">Critical</td>
+            <td>Critical security vulnerability</td>
+            <td>6519</td>
+            <td>01-Oct-2025</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2025-3833.html">CVE-2025-3833</a></td>
+            <td class="hig">High</td>
+            <td>SQL injection vulnerability</td>
+            <td>6514</td>
+            <td>22-April-2025</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2025-1723.html">CVE-2025-1723</a></td>
+            <td class="hig">High</td>
+            <td>Account takeover vulnerability</td>
+            <td>6511</td>
+            <td>26-Feb-2025</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2024-0252.html">CVE-2024-0252</a></td>
+            <td class="hig">High</td>
+            <td>Authenticated RCE vulnerability in cluster APIs</td>
+            <td>6402</td>
+            <td>10-Jan-2024</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2023-28342.html">CVE-2023-28342</a></td>
+            <td class="hig">High</td>
+            <td>DoS attack issue in Mobile App Authentication API</td>
+            <td>6218</td>
+            <td>03-Mar-2023</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2022-36413.html">CVE-2022-36413</a></td>
+            <td class="hig">High</td>
+            <td>Reset password vulnerability in Password Sync Agent</td>
+            <td>6218</td>
+            <td>03-Mar-2023</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2022-34829.html">CVE-2022-34829</a></td>
+            <td class="hig">High</td>
+            <td>DoS attack issue in Mobile App Deployment API</td>
+            <td>6203</td>
+            <td>30-Jun-2022</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2022-28987.html">CVE-2022-28987</a></td>
+            <td class="low">Low</td>
+            <td>User enumeration vulnerability</td>
+            <td>6202</td>
+            <td>27-Jun-2022</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2021-37423.html">CVE-2021-37423</a></td>
+            <td class="hig">High</td>
+            <td>Password Sync Agent functionality breach</td>
+            <td>6200</td>
+            <td>24-May-2022</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2022-28810.html">CVE-2022-28810</a></td>
+            <td class="hig">High</td>
+            <td>Authenticated Remote Code Execution Vulnerability</td>
+            <td>6122</td>
+            <td>09-Apr-2022</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/kb/CVE-2022-24681.html">CVE-2022-24681</a></td>
+            <td class="low">Low</td>
+            <td>Stored XSS</td>
+            <td>6121</td>
+            <td>03-Mar-2022</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-44228">CVE-2021-44228</a></td>
+            <td class="cri">Critical</td>
+            <td>Log4j dependency</td>
+            <td>6119</td>
+            <td>21-Dec-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-20147">CVE-2021-20147</a></td>
+            <td class="med">Medium</td>
+            <td>Domain user exposure</td>
+            <td>6116</td>
+            <td>30-Sep-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-20148">CVE-2021-20148</a></td>
+            <td class="med">Medium</td>
+            <td>Domain password policy exposure</td>
+            <td>6116</td>
+            <td>30-Sep-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2021-40539.html">CVE-2021-40539</a></td>
+            <td class="cri">Critical</td>
+            <td>Authentication bypass</td>
+            <td>6114</td>
+            <td>07-Sep-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-37420">CVE-2021-37420</a></td>
+            <td class="cri">Critical</td>
+            <td>E-mail MIME injection</td>
+            <td>6112</td>
+            <td>26-Aug-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2021-37422.html">CVE-2021-37422</a></td>
+            <td class="med">Medium</td>
+            <td>Boolean SQL injection</td>
+            <td>6112</td>
+            <td>26-Aug-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-37424">CVE-2021-37424</a></td>
+            <td class="hig">High</td>
+            <td>Account takeover via machine account creation</td>
+            <td>6112</td>
+            <td>26-Aug-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-37419">CVE-2021-37419</a></td>
+            <td class="hig">High</td>
+            <td>Server-side request forgery (SSRF) attack in the high availability <span>environment</span></td>
+            <td>6112</td>
+            <td>26-Aug-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-37927">CVE-2021-37927</a></td>
+            <td class="hig">High</td>
+            <td>Account takeover</td>
+            <td>6110</td>
+            <td>29-Jul-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/kb/unauthenticated-and-authenticated-REC-vulnerability-CVE-2021-33055.html">CVE-2021-33055</a></td>
+            <td class="cri">Critical</td>
+            <td>Remote code authentication using <span>PowerShell injection</span></td>
+            <td>6105</td>
+            <td>26-May-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-37417">CVE-2021-37417</a></td>
+            <td class="med">Medium</td>
+            <td>CAPTCHA bypass vulnerability</td>
+            <td>6104</td>
+            <td>08-May-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-27956">CVE-2021-27956</a></td>
+            <td class="hig">High</td>
+            <td>Cross-Site-Scripting attack</td>
+            <td>6104</td>
+            <td>08-May-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-37416">CVE-2021-37416</a></td>
+            <td class="med">Medium</td>
+            <td>Reflected Cross-Site-Scripting attack</td>
+            <td>6104</td>
+            <td>08-May-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-31874">CVE-2021-31874</a></td>
+            <td class="hig">High</td>
+            <td>Database application information exposure</td>
+            <td>6104</td>
+            <td>08-May-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2021-37421">CVE-2021-37421</a></td>
+            <td class="med">Medium</td>
+            <td>Admin portal access restriction bypass via <span>X-Forwarded-For header</span></td>
+            <td>6104</td>
+            <td>08-May-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/advisory/CVE-2021-28958.html">CVE-2021-28958</a></td>
+            <td class="cri">Critical</td>
+            <td>Unauthenticated remote code execution <span>during password change function</span></td>
+            <td>6102</td>
+            <td>20-Mar-2021</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2019-7161">CVE-2019-7161</a></td>
+            <td class="hig">High</td>
+            <td>Fixed ciphering keys</td>
+            <td>6100</td>
+            <td>31-Dec-2020</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html#cve-2020-11552">CVE-2020-11552</a></td>
+            <td class="hig">High</td>
+            <td>Unauthenticated remote code execution</td>
+            <td>6003</td>
+            <td>24-Jul-2020</td>
+        </tr>
+    </tbody>
+</table>
+<div class="clearfix foottbx">
+<div class="per70">
+<h2 class="tac">Subscribe to ADSelfService Plus release notification</h2>
+<!--start-->
+<div class="one-line-form">
+<form action="https://creator.zohopublic.in/addRecordValidate.do" colvalue="1" elname="Form_Fill_Data" formtype="1" method="post" name="Form_Fill_Data" tagfor="form" id="Form_Fill_Data" siq_id="autopick_5122">
+    <div class="config-field"><input name="formid" type="hidden" value="37980000048001283" />                 <input id="nxtURL" name="nexturl" type="hidden" value="" />                 <input name="scriptembed" type="hidden" value="true" />                 <input name="sharedBy" type="hidden" value="supportuser_admanagerplus" />                 <input id="User_Random" name="User_Random" type="hidden" value="" />                 <input name="appLinkName" type="hidden" value="adsolution-forms" />                 <input name="formLinkName" type="hidden" value="Form_Fill_Data" />                 <input name="privatelink" type="hidden" value="5dg3dpVDG3YDHvhXrRTutTP6VGksdBDgFMzmrkYs5aFtuGDuqa4afGGw16Pkme3nsjz2r6rafW9WvnmaFE9BfgRnxqm619MtVaVA" /></div>
+    <ul>
+        <li class="ffw-field">
+        <div class="ffw-errmsg">&nbsp;</div>
+        <input type="text" name="Email" id="emailID" placeholder="Business E-Mail ID*" /></li>
+        <li class="ffw-field ffw-country-list">
+        <div class="selectedCountry">-Select-</div>
+        <select data-countrygdpr="MECountryListing" data-businessemail="business" name="Country"></select></li>
+        <li class="ffw-field"><input type="submit" name="submit" id="submit" value="Subscribe" /></li>
+    </ul>
+    <div class="misc-field"><input type="hidden" name="subject" value="" />                 <input type="hidden" name="Page_URL" class="pageURL" value="" />                 <input type="hidden" name="Form_Details" value="37980000258560057" />
+    <div class="dwn-priv" data-clickgdpr="formCTAgdpr">By clicking <strong>'Subscribe'</strong>, you agree to processing of personal data according to the <a href="https://www.manageengine.com/privacy.html" target="_blank">Privacy                         Policy</a>.</div>
+    </div>
+</form>
+<div class="success-message"><svg class="checkmark" xmlns="http://www.w3.org/2000/svg">                                         <circle class="checkmark__circle" cx="28" cy="28" r="25" fill="none"></circle>
+<path class="checkmark__check" fill="none" d="M17.1 27.2l7.1 7.2 16.7-16.8">                                         </path>
+</svg>
+<h2>Subscribed!</h2>
+<p>You'll be informed whenever there's a new ADSelfService Plus release.</p>
+</div>
+</div>
+<!--end--></div>
+<div class="per30">
+<ul>
+    <li>Related links:</li>
+    <li><a href="https://pitstop.manageengine.com/portal/en/community/adselfservice-plus" target="_blank">ADSelfService Plus forum</a></li>
+    <li><a href="https://bugbounty.zoho.com/bb/info" target="_blank">Bug Bounty</a></li>
+    <li><a href="mailto:support@adselfserviceplus.com">Contact ADSelfService Plus</a></li>
+</ul>
+</div>
+</div>
+  </div>
+</section>
+<section>
+
+</section>
+<section id="adsspcutomerlogos">
+  <div class="adsspcstmrtmpftrbg mT20">
+  	<div class="container sec-pTB">
+      <h3 class="head tac">ADSelfService Plus trusted by</h3>
+      <div id="adsspcus_logos" class="adssp-logo-blocks">
+        <div id="cb-1" class="adsspcus-block adsspcstmr01">
+        	<a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img active" >
+        	 <img src="/products/self-service-password/images/logo-toshiba.png" alt="Toshiba" title="Toshiba" loading="lazy">
+             </a>
+             <a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img" >
+            <img src="/products/self-service-password/images/logo-ibm.png" alt="IBM" title="IBM" loading="lazy">     		</a>
+        </div>	
+        <div id="cb-3" class="adsspcus-block adsspcstmr03">
+        <a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img active" >
+        	<img src="/products/self-service-password/images/logo-chsi.png" alt="CHSi" title="CHSi" loading="lazy">
+            </a>
+            <a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img" >
+        	<img src="/products/self-service-password/images/logo-symantec.png" alt="Symantec" title="Symantec" loading="lazy"> 
+            </a>
+        </div>
+        <div id="cb-5" class="adsspcus-block adsspcstmr04">
+        <a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img active" >
+        	<img src="/products/self-service-password/images/logo-alcatel-lucent.png" alt="Alcatel Lucent" title="Alcatel Lucent" loading="lazy">
+            </a>
+            <a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img" >
+            <img src="/products/self-service-password/images/logo-northrop-grumman.png" alt="Northrop Grumman" title="Northrop Grumman" loading="lazy">    
+            </a>   
+        </div>
+        <div id="cb-4" class="adsspcus-block adsspcstmr02 selected">
+        <a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img active" >
+            <img src="/products/self-service-password/images/logo-landt-infotech.png" alt="L & T Infotech" title="L & T Infotech" loading="lazy">
+            </a>
+            <a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img" >
+            <img src="/products/self-service-password/images/logo-cisco.png" alt="Cisco" title="Cisco" loading="lazy">
+            </a>
+        </div>
+        <div id="cb-2" class="adsspcus-block adsspcstmr05">
+        <a href="https://www.manageengine.com/products/self-service-password/customers.html" class="cb-img active" >
+            <img src="/products/self-service-password/images/logo-ebay.png" alt="Ebay" title="Ebay" loading="lazy">
+            </a>
+        </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="allFea">
+  <div class="sec-pTB mbH">
+    <div class="fea-nav container">
+      <div class="h2 tac m0">Embark on a journey towards identity security and Zero Trust</div>
+      <div class="fea-nav-link clearfix">
+		<span class="act" data-nav="allFeaDiv1">Password management</span>
+		<span data-nav="allFeaDiv2">Adaptive MFA </span>
+		<span data-nav="allFeaDiv3">Enterprise SSO</span>
+		<span data-nav="allFeaDiv4">Self-service & security</span>
+		<span data-nav="allFeaDiv5">Related products</span>
+	</div>
+      <div class="fea-nav-list">
+                    <div id="allFeaDiv1" class="fea-list-cont clearfix" style="display: block;">
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/self-service-password-reset.html?footer">Self-service password reset</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/self-service-account-unlock.html?footer">Self-service account unlock</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/active-directory-change-password.html?footer">Web-based domain password change</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/password-expiration-notifier.html?footer">Password expiration notifications</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/active-directory-password-synchronizer.html?footer">Password synchronization</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/password-policy-enforcer.html?footer">Password policy enforcer</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/update-windows-active-directory-cached-credentials.html?footer">Cached credentials update</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/reports-and-email-notification.html?footer">Reporting and auditing</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/self-service-login-agent-for-windows-mac-os.html?footer">Password self-service from logon screens</a></li>
+                            <li><a href="https://www.manageengine.com/mobile-apps/adselfservice-plus-mobile-app.html?footer">Mobile password management</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/password-security-compliance.html?footer">Password security and compliance</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/active-directory-password-audit.html?footer">Active Directory password audit</a></li>
+                        </ul>
+                    </div>
+                    <div id="allFeaDiv2" class="fea-list-cont clearfix">
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/active-directory-multi-factor-authentication.html?footer">Active Directory MFA</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/conditional-access-policy.html?footer">Conditional access</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/passwordless-authentication.html?footer">Passwordless authentication</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/two-factor-authentication.html?footer">Two-factor authentication</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/endpoint-multi-factor-authentication.html?footer">Endpoint MFA</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/windows-logon-two-factor-authentication.html?footer">MFA for remote and local Windows logons</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/endpoint-multi-factor-authentication-for-macos.html?footer">MFA for remote and local macOS</a> and <a href="https://www.manageengine.com/products/self-service-password/endpoint-multi-factor-authentication-for-linux.html?footer">Linux logons</a>
+</li>
+ <li><a href="https://www.manageengine.com/products/self-service-password/multi-factor-authentication-for-secured-vpn.html?footer">MFA for VPN</a> and  <a href="https://www.manageengine.com/products/self-service-password/multi-factor-authentication-mfa-for-owa.html?footer">OWA logons</a></li>
+                        </ul>
+                        <ul>
+                           <li><a href="/products/self-service-password/fido2-authentication.html?footer">FIDO2 MFA</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/multi-factor-authentication-mfa-for-uac.html?footer">MFA for UAC</a></li>
+							<li><a href="https://www.manageengine.com/products/self-service-password/offline-multi-factor-authentication.html?footer">Offline MFA</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/machine-based-multifactor-authentication-mfa.html?footer">Device-based MFA</a></li>
+                        </ul>
+                    </div>
+                    <div id="allFeaDiv3" class="fea-list-cont clearfix">
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/saml-sso-integration-active-directory.html?footer">SAML SSO</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/oauth-oidc-single-sign-on-sso.html?footer">OAuth and OIDC SSO</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/multi-factor-authentication-for-cloud-apps-security.html?footer">MFA for cloud apps</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/passwordless-authentication.html?footer">Passwordless authentication</a></li>
+							<li><a href="/products/self-service-password/just-in-time-provisioning.html?footer">Just-in-time provisioning</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/adselfserviceplus-siem-integration.html?footer">SIEM integration</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/adselfserviceplus-servicedesk-plus-integration.html?footer#integration">ITSM integration</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/adselfserviceplus-servicedesk-plus-integration.html?footer">IAM integration</a></li>
+                        </ul>
+                    </div>
+                    <div id="allFeaDiv4" class="fea-list-cont clearfix">
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/self-service-ad-mail-group-subscription.html?footer">Self-service group management</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/active-directory-self-update.html?footer">Directory self-update</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/employee-search.html?footer">Employee search</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/employee-search.html?footer#org-chart">Organization chart</a></li>
+                            <li><a href="https://www.manageengine.com/products/self-service-password/help-desk-assisted-password-self-service.html?footer">Approval-based workflow for self-service</a></li>
+							<li><a href="https://www.manageengine.com/products/self-service-password/active-directory-password-self-service-notifications.html?footer">Post-action notifications</a></li>
+                        </ul>
+                        <ul>
+                            
+                            <li><a href="https://www.manageengine.com/products/self-service-password/self-service-password-application-security-importance.html?footer">Security and its importance</a></li>
+							<li><a href="https://manageengine.com/products/self-service-password/endpoint-security.html?footer">Endpoint security</a></li>
+                        </ul>
+                    </div>
+                    <div id="allFeaDiv5" class="fea-list-cont clearfix">
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/ad-manager/index.html?adssp-related-products"
+                                    title="Active Directory Management &amp; Reporting" target="_blank">Active
+                                    Directory Management &amp; Reporting</a></li>
+                            <li><a
+                                    href="https://www.manageengine.com/products/exchange-reports/index.html?adssp-related-products"
+                                    title="Exchange Server Auditing &amp; Reporting" target="_blank">Exchange Server
+                                    Auditing &amp; Reporting</a></li>
+                            <li><a href="https://www.manageengine.com/ad-recovery-manager/index.html?adssp-related-products"
+                                    title="Active Directory Backup &amp; Recovery Tool" target="_blank">Active
+                                    Directory Backup &amp; Recovery Tool</a></li>
+                            <li><a title="Active Directory FREE Tools" target="_blank"
+                                    href="https://www.manageengine.com/products/free-windows-active-directory-tools/free-active-directory-tools-index.html?adssp-related-products">Active
+                                    Directory FREE Tools</a></li>
+                            <li><a title="All Windows AD Tools" target="_blank"
+                                    href="https://www.manageengine.com/windows-active-directory-tools.html?adssp-related-products">All
+                                    Windows AD Tools</a></li>
+                        </ul>
+                        <ul>
+                            <li><a
+                                    href="https://www.manageengine.com/products/active-directory-audit/index.html?adssp-related-products"
+                                    title="Active Directory Auditing" target="_blank">Active Directory Auditing</a>
+                            </li>
+                            <li><a title="File server auditing &amp; data discovery" target="_blank"
+                                    href="https://www.manageengine.com/data-security/?adssp-related-products">File server auditing
+                                    &amp; data discovery</a></li>
+                            <li><a title="SharePoint Management and Auditing Solution" target="_blank"
+                                    href="https://www.manageengine.com/sharepoint-management-reporting/index.html?adssp-related-products">SharePoint
+                                    Management and Auditing Solution</a></li>
+                            <li><a title="Integrated Identity &amp; Access Management (AD360)"
+                                    target="_blank"
+                                    href="https://www.manageengine.com/active-directory-360/index.html?adssp-related-products">Integrated
+                                    Identity &amp; Access Management (AD360)</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="https://www.manageengine.com/products/eventlog/?adssp-related-products"
+                                    target="_blank" title="Real-time Log Analysis and Reporting Solution">Real-time
+                                    Log Analysis and Reporting Solution</a></li>
+                            <li><a title="Microsoft 365 Management &amp; Reporting Tool" target="_blank"
+                                    href="https://www.manageengine.com/microsoft-365-management-reporting/index.html?adssp-related-products">Microsoft
+                                    365 Management &amp; Reporting Tool</a></li>
+                            <li><a title="Cloud Security &amp; Log Management" target="_blank"
+                                    href="https://www.manageengine.com/cloud-security/index.html?adssp-related-products">Cloud
+                                    Security &amp; Log Management</a></li>
+                            <li><a title="Comprehensive threat mitigation &amp; SIEM (Log360"
+                                    target="_blank"
+                                    href="https://www.manageengine.com/log-management/index.html?adssp-related-products">Comprehensive
+                                    threat mitigation &amp; SIEM (Log360)</a></li>
+                        </ul>
+                    </div>
+                </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="btmBar min-mbH">
+    <div class="menuheader" id="btmBar">
+      <div class="container clearfix">
+        <ul class="prd-nav">
+          <li class="mbH btm-dwn"><a href="https://www.manageengine.com/products/self-service-password/download.html?btmMenu" title="Download">Download <span class="dwn-btm-icon">&nbsp;</span></a></li>
+          <li><a href="http://demo.adselfserviceplus.com/?btmMenu" target="_blank" title="Live Demo"><span class="demo-icon">&nbsp;</span><br>
+            Live Demo</a></li>
+			<li><a href="https://www.manageengine.com/products/self-service-password/pricing-details.html?btmMenu#Editioncompare" title="Compare Editions"><span class="comp-icon">&nbsp;</span><br>
+            Compare Editions</a></li>
+          <li><a href="https://www.manageengine.com/products/self-service-password/download-free.html?btmMenu" title="Free Edition"><span class="free-icon">&nbsp;</span><br>
+            Free Edition</a></li>
+          <li><a href="https://www.manageengine.com/products/self-service-password/get-quote.html?btmMenu" title="Get Quote"><span class="quote-icon">&nbsp;</span><br>
+            Get Quote</a></li>
+          <li><a href="https://store.manageengine.com/self-service-password/?btmMenu" target="_blank" title="Buy Now"><span class="buy-icon">&nbsp;</span><br>
+            Buy Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="footer-stripe mbS tac">
+  		<h2>A single pane of glass for complete <strong>self service password management</strong></h2>
+		<a href="https://www.manageengine.com/products/self-service-password/download.html">Free Trial</a> <a href="https://www.manageengine.com/products/self-service-password/get-quote.html">Get Quote</a>
+  </div>
+<footer id="meCommonFooterNew"></footer>       
+  
+ 
+   <!--<div class="emailLnktxt"><a href="/products/self-service-password/email-download-link.html">Email Download Link</a></div>-->
+  
+  <div id="survey" data-surveyprd="selfservice">&nbsp;</div>
+  <div class="fooBanner" id="fooBanner"></div>
+  
+  <!-- MOBILE MENU --> 
+<div class="uni-bott-menu" role="region" aria-label="ADSelfService Plus mobile quick actions">
+    <button type="button" class="uni-bott-menu__overlay" aria-label="Close ADSelfService Plus quick menu" aria-controls="uni-bott-menu-panel" tabindex="-1"></button>
+    <nav class="uni-bott-menu__panel" id="uni-bott-menu-panel" role="navigation" aria-labelledby="uni-bott-menu-title" aria-describedby="uni-bott-menu-desc" aria-hidden="true">
+      <ul></ul>
+    </nav>
+    <div class="uni-bott-menu__bar">
+      <a href="https://www.manageengine.com/products/self-service-password/download-free.html?topMobileMenu" class="uni-bott-menu__chat" aria-label="Start a free ADSelfService Plus trial">FREE TRIAL</a>
+      <button type="button" class="uni-bott-menu__toggle" aria-label="Open ADSelfService Plus quick menu" aria-controls="uni-bott-menu-panel" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+    </div>
+  </div>
+  
+ <script src="https://accounts.zoho.com/u/info" type="text/javascript"></script>
+<script src="https://www.manageengine.com/js/me-v1-header-a.js"></script>
+<script src="https://www.manageengine.com/js/me-v1.js"></script>
+<script src="/products/self-service-password/js/prd-adssp.js"></script>
+<script type="text/javascript">$(document).ready(function(){
+	$("#storelnk").attr("href", "https://store.manageengine.com/self-service-password/");
+	$("#forumlnk").attr("href", "https://forums.manageengine.com/adselfservice-plus");
+	$("#blogslnk").attr("href", "https://blogs.manageengine.com/active-directory/adselfservice-plus");
+	$("#smaplnk").attr("href", "https://www.manageengine.com/products/self-service-password/sitemap.html");
+	$("#fbacklnk").attr("data-feedback","49000004360315");
+});</script>
+<script type="text/javascript">
+	$(document).ready(function(e) {
+        count=0;
+		countCh=1;
+		shower=[0,4,1,3,5,2];
+		var getch=$('#adsspcus_logos').children();
+		//setTimeout(function(){
+			getVal();	
+		//},500)
+		function getVal(){
+			if(countCh<=2){
+					//console.log('countCh',countCh)
+			var myVar=setInterval(function(){
+				if(count<=5){
+					//console.log('count',count);
+					$(getch[shower[count]]).addClass('selected').siblings().removeClass('selected');
+					pp=$(getch[shower[count]]).children()[countCh-1]
+					$(pp).addClass('active').siblings().removeClass('active');
+					//console.log(pp);
+					count+=1;
+				}
+				else{
+						clearInterval(myVar);
+						getVal();
+						count=0;
+					}
+			},750)
+			countCh+=1;
+			}
+				else{
+						countCh=0;
+						getVal();
+					}
+		}
+    });
+</script>
+<script>$('.ssRhs').append('<li><span>Direct Inward Dialing</span></li><li><a href="tel:+14089169890"><strong>Tel:</strong> +1 408 916 9890</a></li>');</script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="https://www.manageengine.com/js/jquery.validation.min.js"></script> 
+<script type="text/javascript">
+$('#fea').addClass('selecteddivnew');$("#survey").addClass("hideGetQuo");
+var obj = [{
+            selector: '#emailID',
+            required: true,
+            validationtype: 'business-email'
+        }];
+        var defaults = {
+            isSubmit: true,
+            submitButtonDisabled: true,
+            beforeSubmit: function () {
+                var email = $('#emailID').val();
+                appendGtmSource();
+                getMarkvalcreator();
+                setSalesIQParams(email, "", "");
+            },
+            beforeInit: function (val) {
+                $('.submit_text', val).text($('[type=submit]', val).val());
+            },
+            errorAnimation: {
+                type: 'slide',
+                duration: 200
+            },
+            submitText: 'Please wait...'
+        };
+        function toggleCountry() {
+            var selectedText = $(this).find("option:selected").attr("data-ipcode");
+            $('.banner-country-select').addClass('changed');
+
+            if (selectedText === "-Select-") {
+                $('.header-selected-country').text('-');
+            } else {
+                $('.header-selected-country').text(selectedText);
+            }
+
+            if (selectedText === 'US' || selectedText==='GB') {
+                $('.one-line-form').addClass('with-state');
+            } else {
+                $('.one-line-form').removeClass('with-state');
+            }
+            $(".selectedCountry").text(selectedText);
+        }
+        
+       
+$(document).ready(function () {
+   
+ $('#example tfoot th').each(function () {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+    });
+    // DataTable
+    var table = $('#example').DataTable({
+		order: [[3, 'desc']],
+        initComplete: function () {
+            // Apply the search
+            this.api()
+                .columns()
+                .every(function () {
+                    var that = this;
+ 
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        if (that.search() !== this.value) {
+                            that.search(this.value).draw();
+                        }
+                    });
+                });
+        },
+    });
+	
+	 $('#example tfoot th:nth-child(2)').each(function () {
+      var select = $('<select><option value="" selected>All</option></select>') .appendTo( $(this).empty() ) .on( 'change', function () { var val = $(this).val(); table.column( 1 ) .search( val ? '^'+$(this).val()+'$' : val, true, false ) .draw(); } ); table.column( 1 ).data().unique().sort().each( function ( d, j ) {select.append( '<option value="'+d+'">'+d+'</option>' ) } ); 
+    });
+	
+    $('#Form_Fill_Data').validate(obj, defaults);
+    $(".pageURL").val(window.location.href);   
+    cleanPageUrl = window.location.href.split('?')[0] + "?subscribed=yes";
+    $("#nxtURL").val(cleanPageUrl);
+            
+    var country = $("[name=Country]");
+    country.each(function () {
+        $(".selectedCountry").text($(this).find("option:selected").attr("data-ipcode"));
+    });
+    country.on('change', toggleCountry);
+
+    if (urlParam("subscribed") == "yes") {
+        $("#Form_Fill_Data").hide();
+        $('.success-message').show();
+    } 
+	
+});
+
+</script>
+
+</body>
+</html>

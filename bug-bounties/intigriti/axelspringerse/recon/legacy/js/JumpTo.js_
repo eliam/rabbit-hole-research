@@ -1,0 +1,872 @@
+/*
+ * $Id$
+ */
+
+
+window.JumpTo = function(){
+}
+
+var showStatus = new Object();
+var parentAppName=null;
+var adsSecurityToken = null ;
+var appspaneNavParams =null;
+var reverseProxyTag = null;
+var reverseProxyTagsSet = null;
+var topBarStatus ={};
+window.JumpTo.testConnection = function(url, productName, isIntegrated, initiator)
+{
+	var currentUrl = window.location.protocol+'//'+window.location.hostname+':'+window.location.port;
+	if((url.toLowerCase().indexOf("https://") != -1 || url.toLowerCase().indexOf("http://") != -1)  && (url.indexOf(currentUrl)==-1 || url.indexOf('ignoreReferer=true')!=-1))
+	{
+		var actionURL = "JumpToAction.do?mTCall=getServerStatus"; //No I18N
+		if(AppsPane.isActivated === "false" )
+		{
+			productName = parentAppName;
+		}
+		params = "URL="+url+"&PRODUCT_NAME="+productName;//No I18N
+		if(initiator!=undefined)
+		{
+			params = params + "&initiator="+initiator;//No I18N
+		}
+		AjaxAPI.sendRequest({URL:actionURL, PARAMETERS:params, ONSUCCESSFUNC:window.JumpTo.handleProductStatusResponse, PRODUCT_NAME:productName});
+	}
+}
+
+window.JumpTo.handleProductStatusResponse = function(response, reqOptions)
+{
+	var productName = reqOptions["PRODUCT_NAME"];
+	//This has been included to prevent script error when json is not returned after session invalidate
+	try
+	{
+		var productStatus = adsjQuery.parseJSON(response.transport.responseText);
+		AppsPane.setReloadFlag(productName,"false");//NO I18N
+		AppsPane.toggleAppsPaneNotifications(productName);
+		// Only show status if the status from and active product are same
+		if(productStatus.SERVER_STATUS_MSG != undefined) {
+			if (productStatus.SERVER_STATUS.indexOf("status-alert-danger") != -1){
+				AppsPane.hideLoader(productName,showErrorPage=true);
+				AppsPane.loadAppsInBackground(productName);
+				AppsPane.toggleAppsPaneNotifications(productName,false);
+				if(!AppsPane.isComponentLoaded(productName)) {
+					AppsPane.showCustomMessage(productName, productStatus.SERVER_STATUS_MSG);
+				}
+			}else if(productStatus.SERVER_STATUS.indexOf("status-alert-warning") != -1){
+				if(productStatus.SERVER_STATUS_DATA!=undefined){
+					var dataList="";
+					var template="<li><span>{data}</span></li>";//No I18N
+					var data=JSON.parse(productStatus.SERVER_STATUS_DATA);
+					data.forEach(function(item){
+						dataList+=template.replace("{data}",item);
+					});
+					AppsPane.showCustomMessage(productName, productStatus.SERVER_STATUS_MSG.replace("{data}", dataList));
+				}else{
+					AppsPane.showCustomMessage(productName,  productStatus.SERVER_STATUS_MSG);
+				}
+			}
+		}
+		setTimeout(function () {
+			if(!AppsPane.isComponentLoaded(productName)){
+				AppsPane.hideLoader(productName,true);
+			}
+		},30000);
+	}
+	catch(e)
+	{
+		var param=[];
+		param[0]='./AppsHome.do?LogoutFromSSO=true';
+		window.CustomSSO.setCookie('APPSPaneLoggedOut','true',window.useSecureCookie);// No I18n
+		window.WindowHandler.sendRequest(parent.parent,"logOutAppsPane",JSON.stringify(param)); // No I18n
+	}
+}
+
+window.JumpTo.loadProductStatus = function()
+{
+	var url = "JumpToAction.do?mTCall=checkServerAvailability"; //No I18N
+	AjaxAPI.sendRequest({URL:url, ONSUCCESSFUNC:window.JumpTo.showProductStatus});
+}
+
+window.JumpTo.isInsideAppsPane = function()
+{
+	return self != top;
+}
+
+var jumpToObject=null; // Used in Integration Settings AD360
+window.JumpTo.showProductStatus = function(response, reqOptions)
+{
+	jumpToObject = adsjQuery.parseJSON(response.transport.responseText);
+	for(var i=0; i<jumpToObject.length; i++)
+	{
+		var obj = jumpToObject[i];
+		adsjQuery("#"+obj["PRODUCT_ID"]+"_STATUS").removeClass("adsServerDown adsServerUp").addClass(obj["SERVER_STATUS"]); //No I18N
+		adsjQuery("#"+obj["PRODUCT_ID"]+"_CLICK").attr('PRODUCT_URL', obj["LINK"]); //No I18N
+		adsjQuery("#"+obj["PRODUCT_ID"]+"_CLICK").attr('TARGET', obj["TARGET"]); //No I18N
+	}
+}
+
+window.JumpTo.loadURL = function(th, url, productName, target, isIntegrated,isLoadURL,isCustomApp)
+{
+	url = (url !=null ? url : th.getAttribute("PRODUCT_URL"));
+	target = (target !=null ? target : th.getAttribute("TARGET"));
+	productName = (productName !=null ? productName : th.getAttribute("PRODUCT_NAME"));
+	isIntegrated = (isIntegrated !=null ? isIntegrated : th.getAttribute("IS_INTEGRATED"));
+	isIntegrated=(isIntegrated !=null ? isIntegrated :false);
+	isLoadURL=(isLoadURL !=null ? isLoadURL : th.getAttribute("LOAD_URL"));
+	isCustomApp=(isCustomApp !=null ? isCustomApp :th.getAttribute("IS_CUSTOM_APP"));//No I18N
+
+	if( self!=top && ( isIntegrated == 'true' || isCustomApp!='true' ))
+	{
+		// Need to send request to the Apps Pane to take necessary Action
+		var params=[];
+		params[0]=url;
+		params[1]=productName;
+		params[2]=isIntegrated;
+		params[3]=(isLoadURL==null)?"true":isLoadURL;
+		params[4]=isCustomApp;
+		params[5]="jumpTo";
+		params[6]=true;
+		window.WindowHandler.sendRequest(parent,"JumpToToggleApp",JSON.stringify(params)); // No I18n
+	}
+	else // Normal Flow
+	{
+		url = ZSEC.URLValidator.sanitize(url);
+		window.open(url, target);
+	}
+}
+window.JumpTo.getProductUrl = function (productName){
+	productUrl = sessionStorage.getItem(productName+" PRODUCT URL"); //No I18N
+	var divSelector="div[FW_MODULE='APPS_PANE_APP_DIV'] li[PRODUCT_NAME='"+productName+"']"; //No I18N
+	if(productUrl!=null) {
+		return productUrl
+	}else if(adsjQuery(divSelector).attr("is_activated")==="false"){ //No I18N
+		productUrl = adsjQuery(divSelector).attr("parent_app_url"); //No I18N
+	}else{
+		productUrl = adsjQuery(divSelector).attr("product_url"); //No I18N
+	}
+	return(productUrl);
+}
+
+/*
+ * Toggle Apps i.e loading the app's iframe
+ * isIntegrated - "true" - Should be string not boolean
+ * loadURLOnEveryClick - "false" - Should be string not boolean
+ */
+window.JumpTo.toggleApp = function(url, productName, isIntegrated, loadURLOnEveryClick,isCustomApp, initiator,isOnclickEvent, isActivated)
+{
+
+
+	if(self!=top) // It is inside Apps Pane
+	{
+		// Need to send request to the Apps Pane to take necessary Action
+		var params=[];
+		params[0]=url;
+		params[1]=productName;
+		params[2]=isIntegrated;
+		params[3]=loadURLOnEveryClick;
+		params[4]=isCustomApp;
+		params[5]=initiator;
+		window.WindowHandler.sendRequest(parent,"JumpToToggleApp",JSON.stringify(params)); // No I18n
+	}
+	else
+	{
+		if(productName!=null){
+			// If child componnent jumpto toggle app is triggered, and if the top pane url (which is more likely to be loaded inside iframe) needs to be retained. instead of toggling with hostname url.
+			var productUrl = window.JumpTo.getProductUrl(productName);
+			var currentUrlObject = new URL(productUrl);
+			var newUrlObject = new URL(url);
+			if(newUrlObject.pathname!=currentUrlObject.pathname){
+				currentUrlObject.pathname=newUrlObject.pathname;
+			}
+			if(newUrlObject.search!=currentUrlObject.search){
+				currentUrlObject.search=newUrlObject.search;
+			}
+			if(newUrlObject.hash!=currentUrlObject.hash){
+				currentUrlObject.hash=newUrlObject.hash;
+			}
+			url = currentUrlObject.toString();
+		}
+		isCustomApp=(isCustomApp!=null)?isCustomApp:false;
+		if(isOnclickEvent)
+		{
+			adsjQuery("#JUMPTO_STATUS").hide();//No I18N
+		}
+		isActivated = isActivated == undefined ? true : isActivated;
+		if(!isActivated)
+		{
+			AppsPane.isActivated = "false";
+		}
+
+		if(initiator!="APPSPANE_REDIRECT"){
+		url=JumpTo.appendParam(url, 'APPSPANE_PRODUCT_NAME', currentProductName); // No I18n
+		if(reverseProxyTag != null && reverseProxyTag != 'null')
+		{
+			url=JumpTo.appendParam(url, 'REVERSE_PROXY_TAG_NAME', reverseProxyTag); // No I18n
+		}
+		if(reverseProxyTagsSet != null && reverseProxyTagsSet != 'null')
+		{
+			var reverseProxyTagArray = reverseProxyTagsSet.replace("]", "").replace("[", "").split(", ");
+			if(reverseProxyTagArray.indexOf(productName+"_"+currentProductName+"_"+reverseProxyTag) == -1)
+			{
+				url=JumpTo.appendParam(url, 'REVERSE_PROXY_RESET_TAG', 'true'); // No I18n
+			}
+		}
+		if(adsSecurityToken != null)
+		{
+			url=JumpTo.appendParam(url, 'ADS_SECURITY_TOKEN', adsSecurityToken); // No I18n
+		}
+		}
+		isOnclickEvent = isOnclickEvent == undefined ? true : isOnclickEvent;
+		window.JumpTo.testConnection(url, productName, isIntegrated, initiator);
+
+		//Creating new Application Frame if not present
+		if(isIntegrated == "true" || isIntegrated == true)
+		{
+		    // If the product is not integrated in Parent App it will be displayed in new window
+		    if(!window.AppsPane.isIntegrated(productName) && (isActivated == "true" || isActivated == true))
+			{
+				url = ZSEC.URLValidator.sanitize(url);
+			  window.open(url);
+			  return;
+			}
+			if(isOnclickEvent){
+             window.AppsPane.setCurrentPane(productName);
+			}
+			if(!adsjQuery("#APPS_FRAMES div[PRODUCT_NAME='"+productName+"']").length)//No I18N
+			{
+				//If the product is integrated. Create New Application Frame and load the product
+				if(initiator!=undefined)
+				{
+				  url = JumpTo.appendParam(url, 'initiator', initiator); //No I18N
+				}
+				
+				//Cloning the existing Frame Object
+				var copyFrame = adsjQuery("#APPS_FRAMES").find(">:first-child").clone();//No I18N
+				copyFrame.attr("PRODUCT_NAME", productName);//No I18N
+				copyFrame.find("iframe").attr("name","");//No I18N
+				copyFrame.find("iframe").attr("src", url); //No I18N
+				copyFrame.find("iframe").attr("PRODUCT_NAME", productName); //No I18N
+				copyFrame.find("#skeleton-loaderV1").css("display","block"); //NO I18N
+				if(!isOnclickEvent){
+					copyFrame.css("z-index",0);
+				}
+				copyFrame.find("iframe").css("height",top.innerHeight);
+
+				//Appending the newly created frame to the component
+				adsjQuery("#APPS_FRAMES").append(copyFrame);//No I18N
+			} else if (isOnclickEvent) { // Same call will go in onLoad of iframes but in background loading elements will be hidden so dimensions will be always 0.So sending same call on navigating to other products
+				window.JumpTo.requestToggleJumpTo(adsjQuery("#APPS_FRAMES div[PRODUCT_NAME='"+productName+"'] iframe")[0]); //NO I18N
+			}
+			// Hiding app-pane logo incase any product is in older version.After receiving acknowledgement(only in updated products) app-pane logo will be displayed
+			if(isOnclickEvent && window.AppsPane.willAcknowledgeReceive.indexOf(productName) == -1 ){
+				adsjQuery('.product-logo').addClass('hide');    //NO I18N
+				JumpTo.adjustLogoWithTopBarNotification(productName);
+                 adsjQuery("#APPS_FRAMES div[PRODUCT_NAME='"+productName+"']").focus();//NO I18N
+			}
+
+		}
+		else //If the product is not integrated. Redirect to AD360's Admin Page
+		{
+		    	// If custom app then need to display in new window
+		    	if((isCustomApp=="true" || isCustomApp==true)&&(isIntegrated == "false" || isIntegrated == false))
+		    	{
+		    	    url = ZSEC.URLValidator.sanitize(url);
+		    	    window.open(url);
+		    	    return;
+		    	}
+				var prodname=parentAppName;
+
+			if((isCustomApp=="true" || isCustomApp==true)&&(isIntegrated == "true" || isIntegrated == true)){
+				prodname=productName;
+			}
+			productName=prodname;
+				window.AppsPane.setCurrentPane(productName);
+			if(!adsjQuery("#APPS_FRAMES div[PRODUCT_NAME='"+productName+"']").length)//No I18N
+			{
+				//Cloning the existing Frame Object
+				var copyFrame = adsjQuery("#APPS_FRAMES").find(">:first-child").clone();//No I18n
+				copyFrame.attr("PRODUCT_NAME", productName);//No I18N
+				copyFrame.find("iframe").attr("name","");//No I18N
+				copyFrame.find("iframe").attr("src", url); //No I18N
+				copyFrame.find("iframe").attr("PRODUCT_NAME", productName); //No I18N
+				copyFrame.find("#skeleton-loaderV1").css("display","block"); //NO I18N
+                if(!isOnclickEvent){
+                    copyFrame.css("z-index",0);
+                }
+                copyFrame.find("iframe").css("height",top.innerHeight);
+				//Appending the newly created frame to the component
+				adsjQuery("#APPS_FRAMES").append(copyFrame);//No I18N
+			}
+			else
+			{
+				adsjQuery("#APPS_FRAMES").find("div[PRODUCT_NAME='"+productName+"'] iframe").attr("src", url);//No I18N
+			}
+			if (isOnclickEvent) { // Same call will go in onLoad of iframes but in background loading elements will be hidden so dimensions will be always 0.So sending same call on navigating to other products
+            	window.JumpTo.requestToggleJumpTo(adsjQuery("#APPS_FRAMES div[PRODUCT_NAME='"+productName+"'] iframe")[0]); //NO I18N
+            }
+
+		}
+        // Need to toggle app pane and apps frames only if it's a onclick event not background loading
+		if(isOnclickEvent){
+		//Toggle the App Icon
+		adsjQuery(".appCurrentState").each(function()//No I18N
+		{
+			var clName = "appCurrentState" + ((adsjQuery(this).attr("PRODUCT_NAME") == productName) ? " active" : "");//No I18N
+			var productNameAttr= adsjQuery(this).attr("PRODUCT_NAME");//NO I18N
+			var re = new RegExp("\\s", "g");
+			clName=clName+" "+productNameAttr.replace(re, "-");
+			adsjQuery(this).attr("class", clName);//No I18N
+		});
+//		AppsPane.updateUrlHash(productName);  This piece of Code is needed for Appspane Based Direct Url Access functionality, will be enabling this in future
+
+		//Toggle the App Frame
+			adsjQuery("#APPS_FRAMES div[name='product-div']").each(function() //No I18N
+				{
+					adsjQuery(this).css("z-index", (adsjQuery(this).attr("PRODUCT_NAME") == productName) ? 1000 : 0);//No I18N
+					window.WindowHandler.sendRequest(parent,"windowResize",'[]'); // No I18n
+					//Loading URL on Every Click
+					if(adsjQuery(this).attr("PRODUCT_NAME") == productName && loadURLOnEveryClick != "false")
+		{
+			adsjQuery(this).find("iframe").attr("src", url);//No I18N
+		}
+				});
+	}
+}
+JumpTo.adjustLogoWithTopBarNotification(productName);
+AppsPane.copyErrorPageToFrameDiv(productName);
+if(AppsPane.errorPageShownProducts.indexOf(productName)>=0){
+	adsjQuery(".product-logo").addClass("hide"); //No I18N
+}
+}
+
+
+/* to set the parentAppName*/
+window.JumpTo.setParentApp=function(productName)
+{
+	parentAppName=productName;
+}
+JumpTo.appendParam = function(url, paramName, paramValue)
+{
+	var emberUrl = url.split('#');
+	if(emberUrl.length >= 2) // For ember url we have to add params before '#' , it will not consoder params after '#'
+	{
+		var arr = emberUrl[0].split('?'); //If enber url has parameters in it
+		if(arr.length == 1) {
+			return emberUrl[0] + '?' + paramName + '=' + paramValue + '#' + emberUrl[1];
+		}
+		else if(arr.length == 2 && arr[1].indexOf(paramName)==-1) {
+			return emberUrl[0] + '&' + paramName + '=' + paramValue + '#' + emberUrl[1];
+		}
+	}
+	else
+	{
+		var arr = url.split('?');
+		if(arr.length == 1) {
+			return url + '?' + paramName + '=' + paramValue;
+		}
+		else if(arr.length == 2  && arr[1].indexOf(paramName)==-1) {
+			return url + '&' + paramName + '=' + paramValue;
+		}
+	}
+}
+
+JumpTo.toggleJumpToContainer=function(open){
+	if(open){
+		adsjQuery('#adsfJumpTo').addClass('open');	//NO I18N
+	} else {
+		adsjQuery('#adsfJumpTo').removeClass('open');	//NO I18N
+	}
+}
+
+JumpTo.showJumpToProducts=function(response){
+    var productData = JSON.parse(response.responseText);
+    if(productData != null && productData != undefined) {
+		var productListDiv = adsjQuery("#adsfJumpTo ul[role='menu']");      //NO I18N
+		productListDiv.children().remove();
+        for (var i = 0; i < productData.length; i++) {
+            var product = productData[i];
+            if( !product.IS_ENABLED || !product.IS_INTEGRATED && !product.IS_PRIMARY_PRODUCT) {
+            	continue;
+            }
+            var listTag = document.createElement('li');
+            listTag.id = product.PRODUCT_NAME;
+            var anchorTag = document.createElement('a');
+            anchorTag.target = product.TARGET;
+            anchorTag.setAttribute('onclick','JumpTo.toggleJumpToContainer();AppsPane.loadApp(this,true)');
+            anchorTag.setAttribute('product_name',product.PRODUCT_NAME);
+            anchorTag.setAttribute('product_url',product.URL);
+            anchorTag.setAttribute('is_integrated',product.IS_INTEGRATED==undefined?false:product.IS_INTEGRATED);
+            anchorTag.setAttribute('load_url',false);
+            var productIconTag = document.createElement("i");
+            productIconTag.className = 'fw-icon  fw-sprite-app-pane fw-icn-'+product.TAG_NAME.toLowerCase();
+            var statusIconTag = document.createElement('i');
+			var spanTag = document.createElement('span');
+			spanTag.innerHTML = product.DISPLAY_NAME;
+            anchorTag.appendChild(productIconTag);
+            anchorTag.appendChild(statusIconTag);
+            anchorTag.appendChild(spanTag);
+            listTag.appendChild(anchorTag);
+            productListDiv.append(listTag);
+        }
+    }
+    AjaxAPI.sendRequest({URL:'/RestAPI/WC/JumpToAction?mTCall=getIntegratedProductsStatus',PARAMETERS:"IS_JUMPTO=true&IS_INSIDE_APPSPANE="+window.JumpTo.isInsideAppsPane(),ONSUCCESSFUNC:showJumpToProductStatus});    //NO I18N
+}
+
+var showJumpToProductStatus=function(response){
+    var productList = JSON.parse(response.responseText);
+    for(var i=0; i<productList.length; i++){
+        var product = productList[i];
+        if(product.SERVER_STATUS == undefined || !product.IS_ENABLED || !product.IS_INTEGRATED && !product.IS_PRIMARY_PRODUCT) {
+        	continue;
+        }
+        adsjQuery("#adsfJumpTo a[product_name='"+product.PRODUCT_NAME+"']").find('i')[1].className = 'fw-icon fw-sprite-app-pane  fw-icn-'+product.SERVER_STATUS+' jumpto-server-status';
+    }
+}
+
+window.JumpTo.onLoad = function(th){
+
+	setTimeout(function(){
+		var productName = th.getAttribute("PRODUCT_NAME");
+		var isAccessible=false;
+		if(AppsPane.willAcknowledgeReceive.indexOf(productName)==-1 && AppsPane.isAcknowledgeReceived.indexOf(productName)==-1) {
+			try{
+				isAccessible=adsjQuery("#APPS_FRAMES div[PRODUCT_NAME='"+productName+"'] iframe")[0].contentWindow.document!=undefined; //No I18N
+			}catch(e){
+				isAccessible=false;
+			}
+		}
+		if(AppsPane.willAcknowledgeReceive.indexOf(productName) == -1 ){
+			if (productName != window.AppsPane.defaultAppName){ //For default product if the acknowledgement is not received no need to trigger next loading once we receive acknowledgement after product loads it can be triggered
+				if(isAccessible){
+					AppsPane.hideLoader(productName);
+				}
+				AppsPane.loadAppsInBackground(productName,true);
+			}
+			if(productName == window.AppsPane.getCurrentApp() && AppsPane.isAcknowledgeReceived.indexOf(productName) == -1){
+				adsjQuery(".product-logo").addClass("hide");	//NO I18N
+				JumpTo.adjustLogoWithTopBarNotification(productName);
+			}
+		}
+	},10000);
+
+}
+
+window.JumpTo.requestToggleJumpTo = function(th){
+	var frameObj;
+	var param;
+	if(adsjQuery('#APP_ICONS').hasClass('app-pane-minimized')){
+		param = [{hideJumpTo:false}];
+	}else{
+		param = [{hideJumpTo:true}];
+	}
+	if(AppsPane.getParentApp() == AppsPane.defaultAppName){
+		param[0].hideChildLogo = true;  // For Backward compatibility, if the parent is in old version but child is in new version and also centralized logo feature is only for parent product
+		sessionStorage.setItem("hideChildLogo",true);   //NO I18N
+	} else {
+		param[0].hideChildLogo = false;
+		sessionStorage.setItem("hideChildLogo",false);  //NO I18N
+	}
+	param[0].isCustomLogo = window.AppsPane.isCustomLogo;
+	if(th != undefined && th.contentWindow){
+		param[0].PRODUCT_NAME = th.getAttribute('PRODUCT_NAME');
+		window.WindowHandler.sendRequest(th.contentWindow,'toggleJumpTo',JSON.stringify(param));    //NO I18N
+	} else {
+        adsjQuery("#APPS_FRAMES div[name='product-div']").each(function(){    //No I18N
+            var productName = adsjQuery(this).attr('PRODUCT_NAME'); //NO I18N
+            param[0].PRODUCT_NAME = productName;
+            frameObj=adsjQuery(this).children("iframe")[0].contentWindow;//No I18N
+            window.WindowHandler.sendRequest(frameObj,'toggleJumpTo',JSON.stringify(param)); //No i18n
+            JumpTo.adjustLogoWithTopBarNotification(productName);
+        });
+	}
+}
+
+window.JumpTo.toggleJumpTo=function(params){
+    var frameObj = document.getElementById('appsFrame');
+	if(window.hideChildLogo == undefined || sessionStorage.getItem("hideChildLogo") == undefined){
+		window.hideChildLogo = params.hideChildLogo;
+		sessionStorage.setItem("hideChildLogo",window.hideChildLogo);   //To hide product logo(in product specific for jsp pages) only in new version of defaultApp //NO I18N
+	}
+	window.isCustomLogo = params.isCustomLogo;
+    if (sessionStorage.getItem("isCustomLogo") == undefined) {
+        sessionStorage.setItem("isCustomLogo", window.isCustomLogo);//NO I18N
+	}
+	if(window.isLoadFrame && frameObj){
+		window.hideJumpTo = params.hideJumpTo;	//To pass inside LoadFrame onLoad call
+		window.WindowHandler.sendRequest(frameObj.contentWindow,'toggleJumpTo',JSON.stringify([params])); //No i18n
+	}else{
+		JumpTo.adjustNavArea(params);
+	}
+	if(!frameObj){
+		window.focus();
+	}
+	else{
+		frameObj.contentWindow.focus();
+	}
+
+}
+window.JumpTo.setAppspaneNavParams=function(params){
+appspaneNavParams=params;
+}
+window.JumpTo.getAppspaneNavParams=function(){
+return appspaneNavParams;
+}
+window.JumpTo.adjustNavArea = function(params){
+	var navDimension = {};
+	if(params.hideJumpTo != undefined){
+		window.hideJumpTo = params.hideJumpTo;//To check whether to show/hide jump to initially
+	}
+
+      var topPaneBottomLeftHide=adsjQuery('.top-pane-bottom').attr("data-margin-left-hide");//NO I18N
+      var topPaneBottomLeftShow=adsjQuery('.top-pane-bottom').attr("data-margin-left-show");//NO I18N
+      var navAreaMarginLeft=adsjQuery('.top-pane-bottom').attr("nav-area-margin-left");//NO I18N
+       topPaneBottomLeftShow=topPaneBottomLeftShow!=undefined?topPaneBottomLeftShow:10;
+       topPaneBottomLeftHide=topPaneBottomLeftHide!=undefined?topPaneBottomLeftHide:0;
+       navAreaMarginLeft=navAreaMarginLeft!=undefined?navAreaMarginLeft:-15;
+	if(!params.hideJumpTo){
+         adsjQuery("#adsfJumpTo").removeClass('hide');//NO I18N
+		 adsjQuery("#adsfJumpTo").find(".jump-to-menu").css('left', 21);//NO I18N
+         adsjQuery("#adsfJumpTo").find(".jumpto-dd-menu").css('left', 10);//NO I18N
+         var productName=window.productFullName;
+         var param=[window.JumpTo.getAppspaneNavParams()];
+         adsjQuery('.top-pane-bottom').css('margin-left',topPaneBottomLeftShow+'px'); //NO I18N
+         window.WindowHandler.sendRequest(window.top,"setAppspaneHeight",JSON.stringify(param));//NO I18N
+    }
+    else{
+        adsjQuery("#adsfJumpTo").addClass('hide');//NO I18N
+		adsjQuery("#adsfJumpTo").removeClass('open');//NO I18N
+		adsjQuery("#adsfJumpTo").find(".jump-to-menu").css('left', 21);//NO I18N
+         adsjQuery("#adsfJumpTo").find(".jumpto-dd-menu").css('left', 10);//NO I18N
+         adsjQuery('.top-pane-bottom').css('margin-left',topPaneBottomLeftHide+'px'); //NO I18N
+        }
+         if(adsjQuery('#top-menu').length){
+            navDimension = adsjQuery('#top-menu')[0].getBoundingClientRect();
+            if (navDimension.top !=0 && navDimension.top > 38){
+              	adsjQuery('.nav-area').css('margin-left',navAreaMarginLeft+'px');	//NO I18N
+            }
+         }
+
+	if (!window.hideChildLogo){ // // For Backward compatibility, if the parent is in old version but child is in new version
+	   var leftHide=adsjQuery('#ProductLogo').attr("data-left-hide");//NO I18N
+    	var leftShow=adsjQuery('#ProductLogo').attr("data-left-show");//NO I18N
+    	var paddingleftHide=adsjQuery('#ProductLogo').attr("data-padding-left-hide");//NO I18N
+    	var paddingleftShow=adsjQuery('#ProductLogo').attr("data-padding-left-show");//NO I18N
+    	 var animateLeftShow=adsjQuery('#ProductLogo').attr("data-animate-logo-show");//NO I18N
+         var animateLeftHide=adsjQuery('#ProductLogo').attr("data-animate-logo-hide");//NO I18N
+
+    	leftHide=leftHide!=undefined?leftHide:17;
+    	leftShow=leftShow!=undefined?leftShow:30;
+
+		if(!params.hideJumpTo){
+		if(paddingleftShow!=undefined){
+        			adsjQuery('#ProductLogo').css("padding-left",paddingleftShow+"px"); //NO I18N
+        			}
+
+			adsjQuery('#ProductLogo').css('left',leftShow+'px'); //NO I18N
+			 if(animateLeftShow!=undefined){
+                            adsjQuery("#ProductLogo").animate({"left":animateLeftShow+"px"},200);//NO I18N
+                        }
+       	}
+       	else{
+       	if(paddingleftHide!=undefined){
+                    			adsjQuery('#ProductLogo').css("padding-left",paddingleftHide+"px"); //NO I18N
+                    			}
+       	    if(navDimension.top > 38){
+       	        adsjQuery('#ProductLogo').css('left','0px');    //NO I18N
+       	    } else {
+				adsjQuery('#ProductLogo').css('left',leftHide+'px'); //NO I18N
+			}
+			 if(animateLeftHide!=undefined){
+                            adsjQuery("#ProductLogo").animate({"left":animateLeftHide+"px"},200);//NO I18N
+			}
+		}
+	}
+	if (!adsjQuery('.nav-area').length && params.reqFromLoadFrame && window.hideChildLogo && !window.isForceHideParentLogo) {
+	    // In some products when switching btw jsp tabs will take time to load so contents won't be loaded when iframe onLoad is triggered.
+		setTimeout(function(){
+			JumpTo.adjustNavArea(params);
+		},50);
+		return;
+	}
+	if (adsjQuery('.nav-area').length && window.hideChildLogo && !window.isForceHideParentLogo){
+		if (adsjQuery('.product-logo img').length){
+		    adsjQuery('.product-logo img').addClass('hide');    //NO I18N
+		} else {
+			adsjQuery('.product-logo').addClass('hide');	//NO I18N
+			var productName=window.productFullName;
+			JumpTo.adjustLogoWithTopBarNotification(productName);
+		}
+		if(params != undefined) {
+			if(adsjQuery('#top-menu').length){
+				if(navDimension.top != 0){
+					var alignValues = {};
+					if(!window.isCustomLogo){alignValues={navJumpTo:'160px',navNoJumpTo:'90px',menuSelJumpTo:'-77px',menuSelNoJumpTo:'-125px',rClass:'fw-apl-right',lClass:'fw-apl-left'}}
+					else{alignValues={navJumpTo:'284px',navNoJumpTo:'214px',menuSelJumpTo:'47px',menuSelNoJumpTo:'-1px',rClass:'fw-aplc-right',lClass:'fw-aplc-left'}}  //NO I18N
+					if(navDimension.top < 38){ // If element is hidden incase of background loading dimensions will be 0. Since new top pane design has increased height no need to adjust on products having new design
+						if(!params.hideJumpTo){
+							adsjQuery('.nav-area').css('margin-left',alignValues.navJumpTo).addClass(alignValues.rClass).removeClass(alignValues.lClass);    //NO I18N
+						}
+						else{
+							//var calculatedVaue = parseInt(adsjQuery('.nav-area').css('margin-left').split("px")[0]) - navDimension.left ;
+							adsjQuery('.nav-area').css('margin-left',alignValues.navNoJumpTo).addClass(alignValues.lClass).removeClass(alignValues.rClass);    //NO I18N
+						}
+					} else {
+						if(!params.hideJumpTo){
+							adsjQuery('.top-menu-select').css('margin-left',alignValues.menuSelJumpTo);	//NO I18N
+						} else {
+							adsjQuery('.top-menu-select').css('margin-left',alignValues.menuSelNoJumpTo);	//NO I18N
+						}
+					}
+				}
+			}
+		}
+	}
+	params.hideParentLogo = false;
+	if(!adsjQuery('.product-logo').length){
+		params.hideParentLogo = true;
+	} else if (window.isForceHideParentLogo != undefined){
+		params.hideParentLogo = window.isForceHideParentLogo;
+	}
+	if(params != undefined && params.hasOwnProperty("PRODUCT_NAME")){
+		if(self.document.body!=null && (self.document.body.innerHTML.indexOf('j_security_check') > 0 || self.document.body.innerHTML.indexOf('action=\"two_factor_auth')>0)){
+			params.isFullContentLoaded = true;
+			params.hideParentLogo = true;
+			params.isLoginPage = true;
+		} else if(!params.hasOwnProperty("isFullContentLoaded") && !window.isFullContentLoaded){	//NO I18N
+			params.isFullContentLoaded = false;
+		} else {
+			params.isFullContentLoaded = true;
+		}
+    JumpTo.requestShowParentLogo(params);
+	}
+}
+/* To support backward compatibility based on receiving acknowledgement it can be identified that product is updated and app-pane logo and jumpto icon will be displayed */
+window.JumpTo.requestShowParentLogo = function(params){
+	window.WindowHandler.sendRequest(top,"showParentLogo",JSON.stringify([{PRODUCT_NAME:params.PRODUCT_NAME,isFullContentLoaded:params.isFullContentLoaded,hideParentLogo:params.hideParentLogo,isLoginPage:params.isLoginPage,isPreloader: params.isPreloader}]));    //NO I18N
+}
+window.JumpTo.isSameSite = function(host1,host2){
+	if(host1===host2){
+		return true;
+	}else{
+		try {
+			var topLevelDomainRegex = new RegExp("(?:[A-Za-z0-9](?:[A-Za-z0-9-]+[A-Za-z0-9])?\\.)[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]$");
+			var toplevelhost1 = topLevelDomainRegex.exec(host1)[0];
+			var toplevelhost2 = topLevelDomainRegex.exec(host2)[0];
+			return(toplevelhost1 === toplevelhost2);
+		} catch (error) {
+			return(false);
+		}
+	}
+}
+window.JumpTo.showParentLogo = function(params){
+	var productName = params.PRODUCT_NAME;
+	if(productName == window.AppsPane.getCurrentApp() ){
+		if(!params.hideParentLogo){
+			adsjQuery('.product-logo').removeClass('hide');    //NO I18N
+			JumpTo.adjustLogoWithTopBarNotification(productName);
+		} else {
+			adsjQuery('.product-logo').addClass('hide'); //NO I18N
+			JumpTo.adjustLogoWithTopBarNotification(productName);
+		}
+	}
+	if(params.isFullContentLoaded && window.AppsPane.isAcknowledgeReceived.indexOf(productName) == -1) {
+		window.AppsPane.isAcknowledgeReceived.push(productName);
+	}else if(!params.isFullContentLoaded && window.AppsPane.willAcknowledgeReceive.indexOf(productName) == -1) {
+		window.AppsPane.willAcknowledgeReceive.push(productName);
+	}
+	AppsPane.loadAppsInBackground(productName);
+    var productUrl = new URL(adsjQuery("div[fw_module='APPS_PANE_APP_DIV'][product_name='"+productName+"'] li").attr("product_url"));//NO I18N
+    //For single exe isSameSite will be false if appsapane product protocol is moved to https bcs of protocol mismatch, so if product is not activated then activation page will be shown
+    var isActivated = adsjQuery("div[fw_module='APPS_PANE_APP_DIV'][product_name='"+productName+"'] li").attr("is_activated") === "true";//NO I18N
+	var issamesite = window.JumpTo.isSameSite(productUrl.hostname, window.location.hostname) && (window.location.protocol==productUrl.protocol);
+	if(isActivated && !issamesite){
+		AppsPane.hideLoader(productName,showErrorPage=true);
+	}else if (params.isFullContentLoaded || params.isLoginPage){
+		AppsPane.hideLoader(productName);
+		AppsPane.componentLoaded(productName,params.isPreloader);
+    }
+}
+window.JumpTo.observeAndNotifyUrlChange = function(productName) {
+	window.CURRENT_PRODUCT_NAME=productName;
+	sessionStorage.setItem(window.CURRENT_PRODUCT_NAME+" PRODUCT URL",document.location.href.toString()); //No I18N
+	window.JumpTo.notifyUrlChange();
+	window.addEventListener("popstate",window.JumpTo.notifyUrlChange);
+	window.addEventListener("hashchange",window.JumpTo.notifyUrlChange);
+};
+window.JumpTo.notifyUrlChange = function(){
+		var newUrl = document.location.href.toString();
+		var oldUrl = sessionStorage.getItem(window.CURRENT_PRODUCT_NAME+" PRODUCT URL"); //No I18N
+		WindowHandler.sendRequest(top,"updateProductCurrentUrl",JSON.stringify([{OLD_URL: oldUrl,NEW_URL: newUrl,PRODUCT_NAME: window.CURRENT_PRODUCT_NAME}])); //No I18N
+	}
+
+window.JumpTo.contentLoaded = function(prodName,isForceHideParentLogo,isPreloader){
+	if(self!=top){
+		window.JumpTo.observeAndNotifyUrlChange(prodName);
+	}
+	if ( window.adsjQuery != undefined && window != top){
+		if(!isPreloader){
+			window.isFullContentLoaded = true; //Set because if contentLoaded is called before onmessage toggleJumpTo
+		}
+		if(isForceHideParentLogo){
+			window.isForceHideParentLogo = true;
+			window.hideChildLogo = false;
+		}
+		JumpTo.adjustNavArea({hideJumpTo:window.hideJumpTo,isFullContentLoaded:true,PRODUCT_NAME:prodName,isPreloader:isPreloader});
+		// ADAP Top Pane issue fix - need remove after adap top pane update
+		window.WindowHandler.sendRequest(top,"setAppsPaneProductListClass");//No I18N
+	}
+}
+window.JumpTo.contentLoadingStarted = function (prodName){
+	window.JumpTo.contentLoaded(prodName,false,true);
+}
+window.JumpTo.redirectTo = function(url,productName){
+
+	if(adsSecurityToken != null)
+	{
+		url=JumpTo.appendParam(url, 'APPSPANE_PRODUCT_NAME', currentProductName); // No I18n
+        if(reverseProxyTag != null && reverseProxyTag != 'null')
+        {
+            url=JumpTo.appendParam(url, 'REVERSE_PROXY_TAG_NAME', reverseProxyTag); // No I18n
+        }
+        if(reverseProxyTagsSet != null && reverseProxyTagsSet != 'null')
+        {
+            var reverseProxyTagArray = reverseProxyTagsSet.replace("]", "").replace("[", "").split(", ");
+            if(reverseProxyTagArray.indexOf(productName+"_"+currentProductName+"_"+reverseProxyTag) == -1)
+            {
+                url=JumpTo.appendParam(url, 'REVERSE_PROXY_RESET_TAG', 'true'); // No I18n
+            }
+        }
+        url=JumpTo.appendParam(url, 'ADS_SECURITY_TOKEN', adsSecurityToken); // No I18n
+	}
+
+	if(self!=top)
+	{
+		var params=[];
+		params[0]=url;
+		params[1]=productName;
+		window.WindowHandler.sendRequest(parent,"JumpToRedirectTo",JSON.stringify(params));//No I18N
+	}
+	else{
+		if(productName!=undefined && productName!=AppsPane.getCurrentApp())
+		{
+			var currentProtocol = location.protocol;
+			var productProtocol = url.split('//')[0];
+			var isSameProtocol = currentProtocol.toLowerCase() === productProtocol.toLowerCase();
+		    if(window.AppsPane.isIntegrated(productName) && isSameProtocol)
+			{
+			    window.AppsPane.setCurrentPane(productName);
+		    	var copyFrame = adsjQuery("#APPS_FRAMES").find(">:first-child").clone(); //No I18N
+				copyFrame.attr("PRODUCT_NAME", productName); //No I18N
+				copyFrame.find("iframe").attr("name",""); //No I18N
+				copyFrame.find("iframe").attr("src", url); //No I18N
+				copyFrame.find("iframe").attr("PRODUCT_NAME", productName); //No I18N
+				copyFrame.find("#skeleton-loaderV1").css("display","block"); //NO I18N
+				copyFrame.css("z-index",0);
+				copyFrame.find("iframe").css("height",top.innerHeight);
+
+				adsjQuery("#APPS_FRAMES").append(copyFrame); //No I18N
+				window.JumpTo.requestToggleJumpTo(adsjQuery("#APPS_FRAMES div[PRODUCT_NAME='"+productName+"'] iframe")[0]); //NO I18N
+				if(window.AppsPane.willAcknowledgeReceive.indexOf(productName) == -1 ){
+					adsjQuery('.product-logo').addClass('hide'); //NO I18N
+					JumpTo.adjustLogoWithTopBarNotification(productName);
+				}
+				adsjQuery(".appCurrentState").each(function() //No I18N
+				{
+					var className = "appCurrentState" + ((adsjQuery(this).attr("PRODUCT_NAME") == productName) ? " active" : ""); //No I18N
+					adsjQuery(this).attr("class", className); //No I18N
+				});
+
+				adsjQuery("#APPS_FRAMES div[name='product-div']").each(function() //No I18N
+				{
+					adsjQuery(this).css("z-index", (adsjQuery(this).attr("PRODUCT_NAME") == productName) ? 1000 : 0); //No I18N
+					window.WindowHandler.sendRequest(parent,"windowResize",'[]'); // No I18n
+					if(adsjQuery(this).attr("PRODUCT_NAME") == productName)
+					{
+						adsjQuery(this).find("iframe").attr("src", url); //No I18N
+					}
+				});
+
+			}
+			else
+			{
+				url = ZSEC.URLValidator.sanitize(url);
+				window.open(url);
+			}
+		}
+		else
+		{
+			productName = AppsPane.getCurrentApp();
+			adsjQuery("#APPS_FRAMES").find("div[PRODUCT_NAME='"+productName+"'] iframe").attr("src", url); //No I18N
+		}
+	}
+}
+window.JumpTo.adjustLogoWithTopBarNotification = function(productName, className, logoCssValues) {
+	if(self!=top)
+    {
+        var params=[];
+        params[0] = productName;
+        params[1] = className;
+        params[2] = logoCssValues;
+        window.WindowHandler.sendRequest(parent,"JumpToAdjustLogoWithTopBarNotification",JSON.stringify(params));//No I18N
+    } else {
+        if(topBarStatus[productName] == undefined){
+            topBarStatus[productName] = {};
+        }
+         var re = new RegExp("\\s", "g");
+        if (className != undefined) {
+            topBarStatus[productName].className = className;
+            topBarStatus[productName].logoCssValues=logoCssValues != undefined?logoCssValues:"";
+        }else if(adsjQuery("iframe[name='APPS_FRAME_" + productName + "']").contents().find('#fw-push-notification').length >0){//No I18N
+           topBarStatus[productName].className = adsjQuery("iframe[name='APPS_FRAME_" + productName + "']").contents().find('#fw-push-notification').attr('class'); //No I18N
+        } else if(topBarStatus[productName].logoCssValues == undefined) {
+           topBarStatus[productName].logoCssValues = "";
+        }
+        var appCurrentState = adsjQuery(".appCurrentState."+(productName.replace(re,"-"))).attr('class'); //No I18N
+        if(appCurrentState!=undefined && appCurrentState.indexOf('active')!=-1)
+        {
+            if(adsjQuery('.app-pane-top .product-logo').is(":visible"))
+            {
+                    if (topBarStatus[productName].className == 'fw fw-top-bar-active') { //No I18N
+                    adsjQuery('.app-pane-top .product-logo').css('top','25px'); //No I18N
+                    } else if (topBarStatus[productName].className == 'fw fw-top-bar-minimized') { //No I18N
+                    adsjQuery('.app-pane-top .product-logo').css('top','3px'); //No I18N
+                }else if(topBarStatus[productName].logoCssValues != ""){
+                    Object.keys(topBarStatus[productName].logoCssValues).forEach(function(key){
+                        adsjQuery('.app-pane-top .product-logo').css(key,topBarStatus[productName].logoCssValues[key])
+                    });
+                }
+                else
+                {
+                    adsjQuery('.app-pane-top .product-logo').css('top','0px'); //No I18N
+                }
+            }
+            else
+            {
+                adsjQuery('.app-pane-top .product-logo').css('top','0px'); //No I18N
+            }
+        }
+    }
+}
+window.JumpTo.extractUrlFromHash = function(hashValue){
+	var hashRegex = new RegExp("#*\\/*(?<PRODUCT_TAG_NAME>[a-zA-Z0-9]+)_app(?<hash>\\/[^#]+)?");
+	var regexResult = hashRegex.exec(hashValue);
+	return((regexResult!=null && regexResult.hasOwnProperty("groups"))?regexResult.groups:null); //No I18N
+}
+window.JumpTo.isLoginPage = function(){
+	return(self.document.body!=null && (self.document.body.innerHTML.indexOf('j_security_check') > 0 || self.document.body.innerHTML.indexOf('action=\"two_factor_auth')>0));
+}
+window.JumpTo.fetchAndStoreRedirectionParams = function (){
+	var hashValue = window.location.hash;
+	if(self==top && (window.isAppsPaneLoaded || window.JumpTo.isLoginPage()) && !window.isRedirectionCompleted && hashValue!=undefined && hashValue!=""){
+		var appsPaneRedirectionParams = window.JumpTo.extractUrlFromHash(hashValue);
+		if(appsPaneRedirectionParams!=null){
+			sessionStorage.setItem("APPSPANE_REDIRECTION_PARAMS",JSON.stringify(appsPaneRedirectionParams)); //No I18N
+			if(history!=undefined){
+				history.replaceState("", document.title, window.location.href.split('#')[0]);
+			}else{
+				window.location.hash=""; //No I18N
+			}
+			window.isRedirectionCompleted=true;
+		}
+	}
+}
+//To catch the redirection params in login page of the Products where JumpTo.js is loaded already
+window.addEventListener("load",window.JumpTo.fetchAndStoreRedirectionParams);

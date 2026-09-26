@@ -1,0 +1,333 @@
+//$Id$
+
+/*
+	Functions for pop up layer starts here
+*/
+
+var ie4=document.all
+var ns6=document.getElementById&&!document.all
+function ylib_Browser() {
+ d=document;
+ this.agt=navigator.userAgent.toLowerCase();
+ this.major = parseInt(navigator.appVersion);
+ this.dom=(d.getElementById)?1:0; // true for ie6, ns6
+ this.ns=(d.layers);
+ this.ns4up=(this.ns && this.major >=4);
+ this.ns6=(this.dom&&navigator.appName=="Netscape");
+ this.op=(window.opera? 1:0);
+ this.ie=(d.all);
+ this.ie4=(d.all&&!this.dom)?1:0;
+ this.ie4up=(this.ie && this.major >= 4);
+ this.ie5=(d.all&&this.dom);
+ this.win=((this.agt.indexOf("win")!=-1) || (this.agt.indexOf("16bit")!=-1));
+ this.mac=(this.agt.indexOf("mac")!=-1);
+}
+
+var oBw = new ylib_Browser();
+
+/* begin new */
+function ylib_setX(o,x) {
+	if(oBw.ns) { 
+		o.left=x;
+	} else if(typeof o.style.pixelLeft != 'undefined') {
+		o.style.pixelLeft=x;
+	} else {
+		thisPos = parseInt(x);			// preventing NS UNcaught Exception Error in strict.dtd mode: converting value to integer in case passed as string
+		thisPos += "px";
+		o.style.left = thisPos;
+	}
+}
+function ylib_setY(o,y) {
+	if(oBw.ns) {
+		o.top=y;
+	} else if(typeof o.style.pixelTop != 'undefined') {
+		o.style.pixelTop=y;
+	} else {
+		thisPos = parseInt(y);			// preventing NS UNcaught Exception Error in strict.dtd mode: converting value to integer in case passed as string
+		thisPos += "px";
+		o.style.top = thisPos;
+	}
+}
+
+function ylib_getPageX(o) 
+{ 
+	var x=0; 
+	if(oBw.ns) 
+	{
+		x=o.pageX; 
+	}
+	else 
+	{ 
+		while(o)
+		{
+			x+=o.offsetLeft; 
+			o=o.offsetParent; 
+		} 
+	} 
+	return x; 
+}
+
+function ylib_getPageY(o) { var y=0; if(oBw.ns) y=o.pageY; else { while(o) { y+=o.offsetTop; o=o.offsetParent; } } return y; }
+/* end new */
+
+function ylib_moveTo(o,x,y) { ylib_setX(o,x);ylib_setY(o,y); }
+
+var dd;
+function autoHide()
+{
+	if(dd)
+	{
+		yreg_popLayer(dd);
+	}
+}
+
+function yreg_popLayer(div,href,offx,offy,bid) 
+{
+	dialogObj = d.getElementById(div);
+	if(dialogObj)
+	{
+		var txt = 'td'+div;
+		var f = d.getElementById(txt);
+		if (dialogObj.style.display == 'none') 
+		{
+			dd = div;	
+			hidedialog(dialogObj);	
+			// if current popup is hidden, make sure all others are hidden.
+			yreg_setLayerLocation(div,href,offx,offy);		
+			dialogObj.style.display = 'block'; //show layer	
+			if(f!=null) f.style.display = 'block'; //show layer	
+			//showHideCombos(dialogObj, ylib_getPageX(dialogObj), ylib_getPageY(dialogObj), 'hidden');
+
+		} 
+		else 
+		{
+			dd = null;	
+			dialogObj.style.display = 'none'; //show layer	
+			if(f!=null) f.style.display = 'none'; //show layer	
+			showHideCombos(dialogObj, ylib_getPageX(dialogObj), ylib_getPageY(dialogObj), 'visible');
+		}
+	}
+}
+function hidedialog(dialogObj)
+{
+	if (typeof prevDialogObj !="undefined")
+	{
+		if (ie4||ns6)
+		{
+			showHideCombos(prevDialogObj, ylib_getPageX(prevDialogObj), ylib_getPageY(prevDialogObj), 'visible');
+			prevDialogObj.style.display ='none';
+		}
+	}
+	prevDialogObj = d.getElementById(dialogObj.id);
+}
+function yreg_setLayerLocation(div,href,offx,offy) {
+	var e = d.getElementById(div);
+	//get position of link
+	var x=ylib_getPageX(href);
+	var y=ylib_getPageY(href);
+	// check and set there is offset
+	x= offx ? x + offx : x;
+	y= offy ? y + offy : y;
+	//move layer
+	ylib_moveTo(e, x, y);
+}
+function showHideCombos(obj, x, y, sty)
+{
+	//alert("TMK X : " + dropmenuobj.x + " Y : " + dropmenuobj.y + " LEFT : " + dropmenuobj.style.left + " TOP : " + dropmenuobj.style.top + " WIDTH : " + dropmenuobj.widthobj.width + " HEIGHT : " + dropmenuobj.offsetHeight);
+	if(!obj)  return;
+	var menuLeftTopX = x;
+	var menuLeftTopY = y;
+	var menuLeftBottomX = x;
+	var menuLeftBottomY = y + obj.offsetHeight;
+
+	var menuRightTopX = x + obj.offsetWidth;
+	var menuRightTopY = y;
+	var menuRightBottomX = menuRightTopX;
+	var menuRightBottomY = y + obj.offsetHeight;
+
+	var selectObjs = document.getElementsByTagName('select');
+	for(var i=0; i<selectObjs.length;i++)	
+	{
+		if(sty == 'hidden')
+		{
+			var comLeftTopX = ylib_getPageX(selectObjs[i]);
+			var comLeftTopY = ylib_getPageY(selectObjs[i]); 
+			var comLeftBottomX = comLeftTopX;
+			var comLeftBottomY = comLeftTopY + selectObjs[i].offsetHeight;
+
+			var comRightTopX = comLeftTopX + selectObjs[i].offsetWidth;
+			var comRightTopY = comLeftTopY;
+			var comRightBottomX = comLeftTopX + selectObjs[i].offsetWidth;
+			var comRightBottomY = comLeftBottomY ;
+
+
+			//alert(" COMP : (" + comLeftTopX + ", " + comLeftTopY + "), (" + comRightBottomX + ", " + comRightBottomY + ") --------- MENU : (" + menuLeftTopX + ", " + menuLeftTopY + "), (" + menuRightBottomX + ", " + menuRightBottomY + ") ");
+
+			if(
+			   (comLeftTopX>menuLeftTopX && comLeftTopX<menuRightBottomX && comLeftTopY>menuLeftTopY && comLeftTopY<menuRightBottomY) ||
+			   (comRightBottomX>menuLeftTopX && comRightBottomX<menuRightBottomX && comRightBottomY>menuLeftTopY && comRightBottomY<menuRightBottomY) ||
+			   (comRightTopX<menuRightTopX && comRightTopX>menuLeftBottomX && comRightTopY>menuRightTopY && comRightTopY<menuLeftBottomY) ||
+			   (comLeftBottomX>menuLeftBottomX && comLeftBottomX<menuRightTopX && comLeftBottomY>menuRightTopY && comLeftBottomY<menuLeftBottomY) ||
+
+			   (menuLeftTopX>comLeftTopX && menuLeftTopX<comRightBottomX && menuLeftTopY>comLeftTopY && menuLeftTopY<comRightBottomY) ||
+			   (menuRightBottomX>comLeftTopX && menuRightBottomX<comRightBottomX && menuRightBottomY>comLeftTopY && menuRightBottomY<comRightBottomY) || 
+			   (menuRightTopX>comRightTopX && menuRightTopX<comLeftBottomX && menuRightTopY>comRightTopY && menuRightTopY<comLeftBottomY) ||
+			   (menuLeftBottomX>comLeftTopX && menuLeftBottomX<comRightBottomX && menuLeftBottomY>comRightTopY && menuLeftBottomY<comLeftBottomY) ||
+
+
+			   (comLeftTopX>menuLeftTopX && comRightBottomX<menuRightBottomX&& comLeftTopY<comRightBottomY&& comRightBottomY>menuRightBottomY) ||
+			   (menuLeftTopX>comLeftTopX && menuRightBottomX<comRightBottomX && menuLeftTopY<comLeftTopY && menuRightBottomY>comRightBottomY)
+			  )	
+			
+			{
+				selectObjs[i].style.visibility = 'hidden';
+			}
+			else
+			{
+				selectObjs[i].style.visibility = 'visible';
+			}
+		}
+		else
+		{
+			selectObjs[i].style.visibility = sty;
+		}
+	}
+}
+function hideErrorSta()
+{
+	if(document.getElementById('statusTable'))
+	{document.getElementById('statusTable').style.display = 'none';}
+
+	if(document.getElementById('errorMessage'))
+	{document.getElementById('errorMessage').style.display = 'none';}
+}
+
+
+function openSampleCsv(pathCSV)
+{
+	var url ="ImportAnswers.do?methodToCall=saveSampleCSV";//No I18N
+	var params = "IMPORT_COLUMNS="+document.getElementById("IMPORT_COLUMNS").value;//No I18N
+
+	AjaxAPI.sendRequest({URL:url, PARAMETERS:params, ONSUCCESSFUNC:openCSV, CSV_PATH:pathCSV});
+
+	//window.open(pathCSV);
+}
+
+function openCSV(response, reqOptions)
+{
+	var path = reqOptions["CSV_PATH"];
+	window.open(path);
+}
+
+
+function popLayer(x)
+{
+	if(document.getElementById(x).style.display=='none')
+	{
+		document.getElementById(x).style.display='block';
+	}
+	else
+	{
+		document.getElementById(x).style.display='none';
+	}
+}
+<!--Freeze and UnFreeze-->
+function freezeAndOpen(id, left, top)
+{
+	window.scrollTo(0,0);
+	var obj = window.location.href;
+	freezeUnfreezeLayer(false);
+	// to check whether the URL contains script in order to avoid XSS and to check whether it is an activexobject or not
+	if(!(/[^A-Za-z0-9.?&//=:#-/_]/).test(obj) && window.ActiveXObject)
+	{
+		yreg_popLayer(id, obj, left, top);
+	}
+	else
+	{
+		yreg_popLayer(id, this, left, top);
+	}
+	document.body.style.overflow = 'hidden';	
+	//if(document.getElementById('freezeSearch')){document.getElementById('freezeSearch').style.height = document.documentElement.scrollHeight;}
+}
+function freezeLayer(freezeId, width, height, top, left, zIndex) {
+	if(!document.getElementById(freezeId)){
+		var oFreezeLayer = document.createElement("DIV");
+		oFreezeLayer.id = freezeId;
+		oFreezeLayer.className = "freezeLayer";
+		oFreezeLayer.style.width = width;
+		oFreezeLayer.style.height = height;
+		oFreezeLayer.style.top = top;
+		oFreezeLayer.style.left = left;
+		oFreezeLayer.style.zIndex = zIndex;
+		
+		var closeFreeze = document.createElement("DIV");
+		closeFreeze.style.cssFloat="right";//No I18N
+		closeFreeze.style.color="black";//No I18N
+		closeFreeze.style.cursor="pointer";//No I18N
+		closeFreeze.style.width="1px";//No I18N
+		closeFreeze.onclick=function(){removeFreezeLayer(freezeId)};
+		closeFreeze.innerHTML="x";//No I18N
+
+		oFreezeLayer.appendChild(closeFreeze);
+		
+		document.body.appendChild(oFreezeLayer);
+	}
+	document.getElementById("freezeSearch").style.display="block";
+}
+function removeFreezeLayer(freezeId){
+	if(document.getElementById(freezeId))
+	{
+		document.getElementById(freezeId).style.display="none";
+	}
+}
+function freezeUnfreezeLayer(disp)
+{
+	var divElement = document.getElementById('pages');
+	var xpos =  ylib_getPageX(divElement);
+	var ypos =  ylib_getPageY(divElement);
+	var h = window.screen.height+200;
+	if(typeof $ == "undefined")
+	{
+		var scriptTag = document.createElement("SCRIPT");
+		scriptTag.type = "text/javascript";
+		scriptTag.language = "javascript";
+		scriptTag.src="/webclient/vendor/js/jquery.js?build=6519";
+		
+		if (typeof document.getElementsByTagName("HEAD")[0] == "undefined") 
+		{
+			document.createElement("HEAD").appendChild(scriptTag)
+		} 
+		else 
+		{
+			document.getElementsByTagName("HEAD")[0].appendChild(scriptTag);
+		}
+		scriptTag.onload=function(){
+			h = $(document).height()+200;
+		};	
+	} 
+	else
+	{
+		h = $(document).height()+200;
+	}	
+	if(disp){
+		showHideCombos(divElement, xpos, ypos, "visible");//No I18N
+		removeFreezeLayer("freezeSearch");//No I18N
+	} else {
+		showHideCombos(divElement, xpos, ypos, "hidden");//No I18N
+		freezeLayer("freezeSearch", "100%", h, ypos, xpos, "99");//No I18N  
+	}
+}
+function unfreezeAndClose(id)
+{	
+	yreg_popLayer(id);
+	freezeUnfreezeLayer(true);
+	document.body.style.overflow = 'auto';	
+}
+function closeAndUnFreeze(id)
+{
+	unfreezeAndClose(id);
+	document.body.style.overflow = 'auto';	
+}
+<!--Ending-->
+
+

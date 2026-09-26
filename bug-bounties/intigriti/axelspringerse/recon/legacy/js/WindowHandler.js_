@@ -1,0 +1,157 @@
+/*
+ * $Id$
+ */
+
+
+var originHandler = (function() {
+
+  // Instance stores a reference to the Singleton
+  var instance;
+
+  function init() {
+
+    // Singleton
+    var allowedOrigin = null;
+
+    return {
+
+      // Public methods and variables
+      setAllowedOrigin: function(allowedOriginValue) {
+
+        if (self != top && allowedOrigin == null) {
+          allowedOrigin = allowedOriginValue;
+        } else if (self == top && (window.AppsPane != undefined  && window.AppsPane.integratedProducts != undefined) && allowedOrigin == null) {
+          allowedOrigin = allowedOriginValue;
+        }
+      },
+
+      getAllowedOrigin: function() {
+        return allowedOrigin;
+      },
+      resetAllowedOrigin: function (allowedOriginValue) {
+          allowedOrigin=allowedOriginValue;
+      }
+    };
+
+  };
+
+  return {
+
+    // Get the Singleton instance if one exists
+    // or create one if it doesn't
+    getInstance: function() {
+
+      if (!instance) {
+        instance = init();
+      }
+      return instance;
+    }
+  };
+})();
+
+window.WindowHandler = function(){
+}
+
+window.WindowHandler.originHandler=originHandler.getInstance();
+
+// Function for Registering receiving request from Child frames
+window.WindowHandler.registerWindowEvent=function() 
+{
+   
+    if (typeof window.addEventListener !== 'undefined') 
+	{
+      window.addEventListener('message', window.WindowHandler.executeRequest, false);
+    } 
+	else
+	{
+     // Support for ie8
+      window.attachEvent('onmessage', window.WindowHandler.executeRequest);
+    }
+}
+
+// Function which is triggered on Receiving Request
+window.WindowHandler.executeRequest=function(event)
+{
+  try
+  {
+      
+      // Parent Frame Check
+      if (self == top && event.origin != window.origin)
+      {
+	  var allowedOrigin = window.WindowHandler.originHandler.getAllowedOrigin();
+	  if (allowedOrigin == null || allowedOrigin.indexOf(event.origin) == -1)
+	  {	
+		return;
+	   }
+      }
+
+      // Child Frame Check
+      if (self != top && event.origin != window.origin)
+      {
+	  var allowedOrigin = window.WindowHandler.originHandler.getAllowedOrigin();
+	  if (allowedOrigin != null && allowedOrigin.indexOf(event.origin) == -1) 
+	  {
+	      return;
+	  }
+      }
+      
+    var data=adsjQuery.parseJSON(event.data);
+    var requestName=data.requestName;
+    var params=data.params;
+    if(window.RequestConstants[requestName] != undefined)
+    {
+        window.RequestConstants[requestName].apply(this,adsjQuery.parseJSON(params));
+    }
+  }
+  catch(err)
+  {
+    if(requestName!=undefined)  //windows Messages are sent by emberAPP this will skip logging it.
+      console.log("Request : "+ requestName + " Cannot be completed");
+  }
+
+}
+
+// Function which is used to send Request to another Window
+window.WindowHandler.sendRequest=function(windowObj,requestName,params)
+{
+ var eventData={};
+ eventData.requestName=requestName;
+ eventData.params=params;
+ if(!window.windowTargets){
+    windowObj.postMessage(JSON.stringify(eventData),"*");
+ }else{
+      var targets = window.windowTargets.split(',');
+      for(i=0;i<targets.length;i++)
+      {
+         windowObj.postMessage(JSON.stringify(eventData),targets[i]);
+      }
+ }
+}
+
+/* Function to Clear Cookie*/
+window.WindowHandler.clearCookie=function(cookieNames)
+{
+  var cookieNamesArray=adsjQuery.parseJSON(cookieNames);
+  for(i=0;i<cookieNamesArray.length;i++)
+  {
+    document.cookie = cookieNamesArray[i] + '=;' + 'expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+  }
+}  
+
+// Allowed Requests
+//ignorei18n_start
+window.RequestConstants ={
+		"JumpToToggleApp":window.JumpTo.toggleApp,  
+		"CustomSSOVerification":window.CustomSSO.checkSignedInAndSetCookie, 
+		"JumpToLoadURL":window.JumpTo.loadURL,
+		"clearCookie":window.WindowHandler.clearCookie,
+		"toggleJumpTo":window.JumpTo.toggleJumpTo,
+		"setAllowedOrigin":window.WindowHandler.originHandler.setAllowedOrigin,
+        "requestToggleJumpTo":window.JumpTo.requestToggleJumpTo,
+        "showParentLogo":window.JumpTo.showParentLogo,
+        "JumpToRedirectTo":window.JumpTo.redirectTo,
+		"JumpToAdjustLogoWithTopBarNotification":window.JumpTo.adjustLogoWithTopBarNotification
+}
+//ignorei18n_end
+
+window.WindowHandler.registerWindowEvent();

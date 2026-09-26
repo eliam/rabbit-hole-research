@@ -1,0 +1,63 @@
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+emarketer.com                    https 000                     
+newsos.com                       https 302  APISIX/3.17.0      401 Authorization Required
+politico.eu                      https 301  cloudflare         301 Moved Permanently
+adtechnology.axelspringer.com    https 200  Apache/2.4.58 (Ubuntu) AS Adtechnology
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+asadcdn.com                      https 000                     
+bild.de                          https 301  AkamaiGHost        
+welt.de                          https 301                     301 Moved Permanently
+epaper.welt.de                   https 200  nginx              Menu
+cancellation.prod.ps.welt.de     https 200  AmazonS3           
+digital.welt.de                  https 200                     WELT im Abo lesen – digital oder gedruckt
+signin.auth.welt.de              https 200  AmazonS3           
+m.bild.de                        https 200  Apache             User Icon
+hey.bild.de                      https 200  AmazonS3               Hey_ Die künstliche Intelligenz von BILD  
+go.welt.de                       https 200  AmazonS3               WELTgo! Ihr Assistent mit KI  
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+auth.bild.de                     https 000                     
+sportbild.de                     https 301                     
+meinkonto.bild.de                https 200  AmazonS3           
+bild.tv                          https 302                     
+computerbild.de                  https 301                     
+dealer.prod.ps.axelspringer.de   https 503  awselb/2.0         503 Service Temporarily Unavailable
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+germany.politico.eu              https 000                     
+bild.design                      https 301  cloudflare         301 Moved Permanently
+autobild.de                      https 301                     
+bz-berlin.de                     https 301                     
+spring-media.de                  https 301                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+springtools.de                   https 000                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+editorial.one                    https 000                     
+as-nmt.de                        https 302                     
+ein-herz-fuer-kinder.de          https 301                     
+fitbook.de                       https 301                     
+myhomebook.de                    https 301                     
+petbook-magazine.com             https 301                     
+petbook.de                       https 301                     
+stylebook.de                     https 302  AkamaiGHost        
+techbook.de                      https 301                     
+travelbook.de                    https 301                     
+wissen-sie-mehr.de               https 301                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+technik.autobild.de              https 000                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+technik.beta.autobild.de         https 000                     
+--- HTTP fallback for hosts with no HTTPS 200/30x ---
+emarketer.com                    http  301  nginx              301 Moved Permanently
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+asadcdn.com                      http  000                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+auth.bild.de                     http  000                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+germany.politico.eu              http  000                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+springtools.de                   http  000                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+editorial.one                    http  000                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+technik.autobild.de              http  000                     
+./probe-http.sh: line 20: /tmp/body.75238: No such file or directory
+technik.beta.autobild.de         http  000                     

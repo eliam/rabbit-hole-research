@@ -1,0 +1,4 @@
+prod.pss.welt.de
+pss-deli.prod.pss.welt.de
+pss-deli.uat.pss.welt.de
+uat.pss.welt.de

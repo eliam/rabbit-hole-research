@@ -1,0 +1,44 @@
+/*
+ * $Id$
+ */
+function createLangBox(isFromAccounts)
+{
+	var embedBootstrapJS = "<script language=\"JavaScript\" type=\"text/javascript\" src=\""+contextPath+"/webclient/vendor/js/bootstrap.js?build=6519\"></script>";
+    $('body').append(embedBootstrapJS);//NO I18N
+	var url = '../LanguageList.cc';//NO I18N
+	if (isFromAccounts === undefined)
+	{
+		url='LanguageList.cc'; //NO I18N
+	}
+		AjaxAPI.sendRequest({URL:url, ONSUCCESSFUNC:addLangLocale});
+}
+
+function addLangLocale(response, reqOptions)
+{
+	var req = response.transport;
+	var result = req.responseText;
+	adsjQuery('body').append(result);//NO I18N
+}
+function changeLanguage()
+{
+	var paramLocale=document.getElementById('localeId');
+	var params = 'paramLocale='+encodeURIComponent(paramLocale.options[paramLocale.selectedIndex].value);//NO I18N
+	var path=window.location.pathname;
+	if(path.lastIndexOf('/j_security_check')!=-1 || path.lastIndexOf('/authorization.do')!=-1)
+	{
+		var lastIndex=(path.lastIndexOf('/j_security_check') != -1) ? path.lastIndexOf('/j_security_check') : path.lastIndexOf('/authorization.do'); //NO I18N
+		path=path.substring(0,lastIndex)+'/showLogin.cc'; //NO I18N
+	}
+	CreateAndSubmitForm(path, window.name, params);//NO I18N
+}
+function changeDemoLanguage(locale)
+{
+    var params = 'paramLocale='+locale;//NO I18N
+    var path=window.location.pathname;
+    if(path.lastIndexOf('/j_security_check')!=-1 || path.lastIndexOf('/authorization.do')!=-1)
+    {
+        var lastIndex=(path.lastIndexOf('/j_security_check') != -1) ? path.lastIndexOf('/j_security_check') : path.lastIndexOf('/authorization.do'); //NO I18N
+        path=path.substring(0,lastIndex)+'/authorization.do';//NO I18N
+    }
+    CreateAndSubmitForm(path, window.name, params);
+}

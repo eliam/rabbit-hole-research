@@ -1,0 +1,32 @@
+admin.checkout.prod.ps.bild.de	502	https://admin.checkout.prod.ps.bild.de/	ERROR: The request could not be satisfied
+admin.checkout.prod.ps.welt.de	502	https://admin.checkout.prod.ps.welt.de/	ERROR: The request could not be satisfied
+admin.checkout-uat.ps.bild.de	000	https://admin.checkout-uat.ps.bild.de/	
+admin.checkout-uat.ps.welt.de	000	https://admin.checkout-uat.ps.welt.de/	
+api.ps.bild.de	000	https://api.ps.bild.de/	
+api.ps.welt.de	000	https://api.ps.welt.de/	
+api-test.ps.bild.de	000	https://api-test.ps.bild.de/	
+api-test.ps.welt.de	000	https://api-test.ps.welt.de/	
+api-uat.ps.bild.de	000	https://api-uat.ps.bild.de/	
+api-uat.ps.welt.de	000	https://api-uat.ps.welt.de/	
+asdfafdadf.ps.welt.de	000	https://asdfafdadf.ps.welt.de/	
+beta.ps.bild.de	000	https://beta.ps.bild.de/	
+beta.ps.welt.de	000	https://beta.ps.welt.de/	
+checkout-v2.prod.ps.bild.de	200	https://checkout-v2.prod.ps.bild.de/	Checkout
+checkout-v2.prod.ps.welt.de	200	https://checkout-v2.prod.ps.welt.de/	Checkout
+consumer-api.prod.ps.bild.de	000	https://consumer-api.prod.ps.bild.de/	
+consumer-api.prod.ps.welt.de	000	https://consumer-api.prod.ps.welt.de/	
+consumer-next-web.uat.ps.bild.de	200	https://consumer-next-web.uat.ps.bild.de/	
+consumer-web-api.prod.ps.bild.de	000	https://consumer-web-api.prod.ps.bild.de/	
+consumer-web-api.prod.ps.welt.de	000	https://consumer-web-api.prod.ps.welt.de/	
+docs-whoami-lapi.prod.ps.bild.de	000	https://docs-whoami-lapi.prod.ps.bild.de/	
+ory-poc-api.ps.bild.de	409	https://ory-poc-api.ps.bild.de/	
+prod.ps.bild.de	000	https://prod.ps.bild.de/	
+prod.ps.welt.de	000	https://prod.ps.welt.de/	
+production.ps.bild.de	000	https://production.ps.bild.de/	
+production.ps.welt.de	000	https://production.ps.welt.de/	
+services.ps.bild.de	000	https://services.ps.bild.de/	
+services.ps.welt.de	000	https://services.ps.welt.de/	
+services-test.ps.bild.de	000	https://services-test.ps.bild.de/	
+services-test.ps.welt.de	000	https://services-test.ps.welt.de/	
+uat.ps.bild.de	000	https://uat.ps.bild.de/	
+uat.ps.welt.de	000	https://uat.ps.welt.de/	

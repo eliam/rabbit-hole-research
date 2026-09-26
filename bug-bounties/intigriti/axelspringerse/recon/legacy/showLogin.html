@@ -1,0 +1,720 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<link REL="SHORTCUT ICON" HREF='&#x2f;images&#x2f;logos&#x2f;upload__3253441d_162aa914ba9__8000_00000001.tmp'>
+<title>004 GmbH - Account Self Service</title>
+<script language="JavaScript" src="/js/form-util.js?build=6519"></script>
+<script language="JavaScript" src="/js/CommonUtil.js?build=6519"></script>
+<script>
+
+var jQueryLoaded = jQueryLoaded || false;
+if(!jQueryLoaded)
+{
+	var script = document.createElement( 'script' );
+	script.type = 'text/javascript';
+	script.src = "/webclient/vendor/js/jquery.js?build=6519";
+	if((window.name != "advancedPC_Frames") && (window.name != "advancedIDV_Frames")) //handled to avoid jquery-ui conflict, need to remove this check in future release
+	{
+		document.getElementsByTagName('head')[0].appendChild( script );
+	}
+
+	jQueryLoaded = true;
+
+
+	var fileNamePattern = '^[a-zA-Z0-9.\\-_ ]{0,255}$';
+	
+	addEvent(window, 'load', setFileConstraints, false); //NO I18N
+
+	function addEvent(element, eventString, functionReference, useCapture){
+		if (element.addEventListener) {
+		  element.addEventListener(eventString, functionReference, useCapture);
+		}
+		else if (element.attachEvent) {
+		  element.attachEvent('on'+eventString , functionReference );
+		}
+	}
+
+	function setFileConstraints()
+	{
+	try{
+		if(fileNamePattern != ''){
+			var tip = 'Filename should follow the regex pattern {0}'.replace('{0}', fileNamePattern);
+			var errorMsg = 'Invalid characters found in the file name. It should follow the regex pattern {0}'.replace('{0}', fileNamePattern);
+			var elements = document.getElementsByTagName('input');
+			for(i in elements){
+				var element = elements[i];
+				var elementType = element.type;
+				if(elementType == 'file' && element.getAttribute('patternText') == null){
+					element.setAttribute('patternText', fileNamePattern);
+					if(typeof setADSTooltip == 'function'){
+					setADSTooltip(element, tip);
+					}
+					else{
+						element.title = tip;
+					}
+
+					addEvent(element, 'change', function(event){ //NO I18N
+						var files = this.files;
+						for (var i = 0; i < files.length; i++) {
+							if(!(new RegExp(fileNamePattern)).test(files[i].name))
+							{
+								if(typeof preventDefaultAction == 'function'){
+									preventDefaultAction(event);
+								}
+								this.value = '';
+								if(typeof parent.alertMsg == 'function'){
+									parent.alertMsg(errorMsg);
+								}
+								else if(typeof alertMsg == 'function'){
+									alertMsg(errorMsg);
+								}
+								return false;
+							}
+						}
+					}, true);
+				}
+			}
+		}	
+		}
+		catch(err){}		
+	}
+}
+
+</script>
+
+
+
+<script language="JavaScript" src="/webclient/vendor/js/jquery.js?build=6519" type="text/javascript"></script>
+<script language="JavaScript" src="/js/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+var adsjQuery = jQuery.noConflict();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ADS Imports -->
+
+
+<!-- IDMF Imports -->
+
+
+
+
+<!-- SSP Imports -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- Old Packages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+
+ 
+
+
+
+
+
+
+
+<head>
+	
+
+<style>
+ .fntFamily{font-family: verdana;}
+ .fntSize{font-size:12px;}
+ .common-textcolor{color:#000000 !important;}
+ .common-bgcolor{background:#000000 !important;}
+ .common-bordercolor{border-color:#000000 !important;}
+ .adsfntFamily{font-family: verdana !important;}
+ .adsfntSize{font-size:12px !important;}
+ .adsfontSize10{font-size:12px !important;}
+ .adsfontSize11{font-size:12px !important;}
+</style>
+
+
+</head>
+
+</html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<script language="JavaScript" src="/js/form-util.js?build=6519" type="text/javascript"></script>
+	<script language="JavaScript" src="/adsf/js/common/JumpTo.js" type="text/javascript"></script>
+	<script language="JavaScript" src="/adsf/js/common/security-core.js" type="text/javascript"></script>
+	<script language="JavaScript" src="/adsf/js/common/security-url-validator.min.js" type="text/javascript"></script>
+	<script language="JavaScript" src="/adsf/js/common/sso/CustomSSO.js" type="text/javascript"></script>
+	<script language="JavaScript" src="/adsf/js/common/WindowHandler.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var insideAppsPane = true; //Settings insideAppsPane=true for ignoring loadframe issue in AD360
+	</script>
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $('.login-dropdown').on('show.bs.select',function(){ //No I18N
+                $('ul.dropdown-menu.inner').mCustomScrollbar({ //No I18N
+                	advanced:{
+                		autoScrollOnFocus:false
+                	}
+                })
+                $(".mCSB_dragger_bar,.mCSB_2_dragger_vertical,.mCSB_draggerContainer").on("click", function(e) { //No I18N
+                    return false;
+                });
+            })
+        });
+    </script>
+
+	<script>
+		var csrfCookieFromRequest = '';
+		var csrfParam = 'adscsrf\x3D71acd2a4\x2Dce23\x2D432b\x2D89a6\x2D5123bb8966f0';
+		var contextPath = "";
+		var login_status = '';
+
+		function showErrorOnLoad()
+		{
+			if($('#fTLoginAlert',parent.document).length==0)
+			{
+				var statusDiv='<div class="mini-status-alert status-alert status-alert-danger status-has-parent status-alert-xmd alert-dismissible ssp-display-none" role="alert" id="fTLoginAlert"><button type="button" class="close" onclick="closeDomainAlertDiv()"><span aria-hidden="true">&times;</span></button><div class="ssp-text-color-default ssp-align-center text-md"><i class="ssp-inline-icon icn-cross ssp-mt-m2"></i><span id="fTLoginAlertText"></span></div></div>'; //No I18N
+				$(parent.document.body).append(statusDiv);
+			}
+			if(login_status !=null && login_status!='')
+			{
+				adsjQuery("#fTLoginAlertText",parent.document).html(login_status);	//No I18N
+				adsjQuery("#fTLoginAlert",parent.document).delay(500).slideDown('slow') //No I18N
+			}
+		}
+
+		function closeDomainAlertDiv()
+		{
+			adsjQuery("div.status-alert").slideUp("slow"); // No I18N
+		}
+
+		function redirectTo(url)
+		{		
+			var useCustomizedHTML = 'true';
+			if(useCustomizedHTML == 'true')
+			{
+				window.parent.location.replace(url);
+			}
+			else
+			{
+				window.location.replace(url);
+			}	
+    	}	
+	</script>
+	<div style="display:none" id="csrfDiv">
+		<input type="hidden" id="adscsrfFromCookie" name="adscsrfFromCookie" value="71acd2a4-ce23-432b-89a6-5123bb8966f0"/>
+	</div>
+	
+
+ 
+ <link href="/styles/styles.css" rel="stylesheet" type="text/css">
+ <link rel="stylesheet" href="/webclient/assets/login.css">
+ 	
+	<style>
+		.employeeSearchContainer #employeeSearch.open {
+			background-color: #fff!important;
+		}
+		body .ssp-chart-link:hover {
+			background: #fff !important;
+		}
+	</style>
+ 
+ <link href="styles/customer-styles.css" rel="stylesheet" type="text/css">
+
+ <style>
+         .fntFamily{font-family: verdana;}
+         .fntSize{font-size:12px;}
+         .common-textcolor{color:#000000 !important;}
+         .common-bgcolor{background:#000000 !important;}
+         .common-bordercolor{border-color:#000000 !important;}
+ </style>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script language=JavaScript src="/js/popLayer.js?build=6519" type="text/javascript"></script>
+<script language=JavaScript src="/js/Esearch.js?build=6519" type="text/javascript"></script>
+<script language=JavaScript src="/js/common/LanguageList.js?build=6519" type="text/javascript"></script>
+<script language=JavaScript src="/js/validation.js?build=6519" type="text/javascript"></script>
+<script language=JavaScript src="/js/ValidateLogon.js?build=6519" type="text/javascript"></script>
+<script language=JavaScript src="/js/layout/Utils.js?build=6519" type="text/javascript"></script>
+<script language=JavaScript src="/js/CustomLogonScript.js?build=6519" type="text/javascript"></script>
+<script language=JavaScript src="/js/AjaxAPI.js?build=6519" type="text/javascript"></script>
+
+<script language=JavaScript src="/js/CommonUtil.js?build=6519" type="text/javascript"></script>
+<script>
+	function docid(id){return document.getElementById(id);}
+	adsjQuery(document).ready(function() {
+        function onInputChange(inputRef)
+        {
+            var state = adsjQuery(inputRef).length>0 && $(inputRef).val().length>0;
+            var passwordIcon = adsjQuery(inputRef).siblings('span.add-on.form-icn-password'); //NO I18N
+            passwordIcon.toggleClass('hide', state); //NO I18N
+        }
+        function restoreIconOnLoginPage(inputRef)
+        {
+        	var passwordIcon = adsjQuery(inputRef).siblings('span.add-on.form-icn-password'); //NO I18N
+        	var eyeIcon = adsjQuery(inputRef).siblings('span.add-on.form-icn-eye'); //NO I18N
+        	passwordIcon.removeClass('hide'); //NO I18N
+        	eyeIcon.addClass('hide'); //NO I18N
+        }
+        initPasswordVisibility(".form-input-with-icon .linput", "span.add-on.form-icn-eye", 'open', null, onInputChange, restoreIconOnLoginPage); //NO I18N
+    });
+</script>
+
+		<script language=JavaScript src="/js/common/LanguageList.js?build=6519" type="text/javascript"></script>
+
+
+</head>
+
+<div id="SSOStatus" style="position:fixed;z-index:500; left:45%; top:40%; display:none;">
+	<table cellspacing="0" cellpadding="5" border="0" class="sucessMsg" align="center" style="background:  rgb(242,242,242);border-color:#FFF; padding:5px 10px;">
+		<tr>
+			<td><img src="webclient/images/loader-sm.gif" > Loading...</td>
+		</tr>
+	</table>
+</div>
+
+<div id="IframeLoadingStatus" style="position:fixed;z-index:500; left:45%; top:40%; display:none;">
+	<table cellspacing="0" cellpadding="5" border="0" class="sucessMsg" align="center" style="background:  rgb(242,242,242);border-color:#FFF; padding:5px 10px;">
+		<tr>
+			<td><img src="webclient/images/loader-sm.gif" > Loading... </td>
+		</tr>
+	</table>
+</div>
+
+<style>
+.transparentbg
+{
+	background:none transparent;
+	overflow:hidden;
+}
+.loginBgImageClass
+{
+	background:url('images\2f ssp\2d login\2d page\2e png') no-repeat fixed;
+	background-size: cover;
+}
+</style>
+<body onload="createLangBox();createSearch('AnonymousAccess');" onclick="hideOnBlur(event, 'DOWN_ARROW', 'SEARCH_CRI')" class="transparentbg ssp_theme_darkgray ">
+
+
+
+
+	
+
+<script language="JavaScript" src="/js/popLayer.js" type="text/javascript"></script>
+<script>
+function alertBoxOk(callBackFunc, params){if(callBackFunc != "") { 
+	if(self!=top)
+	{
+		self.eval(callBackFunc)(params);
+    }
+    else{
+        parent.eval(callBackFunc)(params);
+	} 
+	}}
+function confirmBoxOk(callBackFunc, params){if(eval(callBackFunc)(params)!=false){closeAndUnFreeze('confirmBox');document.body.style.overflow = 'auto';if(eval(window.event)){window.event.returnValue=false;}}}
+function confirmBoxCancel(cancelFunc,cancelParams) 
+{
+	closeAndUnFreeze('confirmBox'); //No I18N
+	document.body.style.overflow = 'auto'; //No I18N
+	if(cancelFunc !="undefined" && cancelFunc!="") //Since already set to confirmBoxCancelFun <input> element, string check done, instead typeof.
+	{	
+		eval(cancelFunc)(cancelParams);
+	}
+	if(eval(window.event)){window.event.returnValue=false;}
+}
+function docid(id){return document.getElementById(id);}
+function alertMsg(msg, leftPos, topPos, scrollTop, fn)
+{
+	if(scrollTop == "" || (typeof scrollTop == "undefined")){window.scrollTo(0,0);}
+	if (window.ActiveXObject){var cW = document.body.clientWidth;var cH = document.body.clientHeight;}
+	else{var cW = window.innerWidth;var cH = window.innerHeight;}
+	var mouseLeft = new Number((cW/2) - 100);var mouseTop = new Number((cH/2) - 130);
+
+	if(typeof leftPos != "undefined" && leftPos != null){mouseLeft = leftPos;}
+	if(typeof topPos != "undefined" && topPos != null){mouseTop  = topPos;}
+
+	freezeAndOpen('alertBox', mouseLeft, mouseTop);//No I18N
+	var searchElem = document.getElementById('SEARCH_STRING');
+	if(eval(searchElem)) { searchElem.setAttribute('tabIndex', '-1'); }
+
+	docid('alertBox').style.left=mouseLeft+"px";
+	docid('alertBox').style.top=mouseTop+"px";
+	docid('alertBox').style.display="block";
+
+	docid('alert_InsertMsg').innerHTML = msg;
+	docid('freezeSearch').setAttribute('style','display:block; width:'+cW+100+'px; height:'+cH+100+'px;');
+	document.body.style.overflow = 'hidden';
+
+	if(typeof fn != "undefined" && fn != null){docid('alertBoxFun').value = fn;}
+	
+	setTimeout(function() { if(eval(docid('alertBoxFocus'))){try{docid('alertBoxFocus').focus();}catch(err){}}}, 20);
+	showHideCombBoxes('hidden');//No I18N 
+	return false;
+}
+function confirmMsg(msg, fun, par,cancelFunc,cancelParam)
+{
+	window.scrollTo(0,0);
+	if (window.ActiveXObject){var cW = document.body.clientWidth;var cH = document.body.clientHeight;}
+	else{var cW = window.innerWidth;var cH = window.innerHeight;}
+	var mouseLeft = new Number((cW/2) - 100);var mouseTop = new Number((cH/2) - 130);
+
+	freezeAndOpen('confirmBox', mouseLeft, mouseTop);//No I18N
+	docid('confirmBox').style.left=mouseLeft+"px";
+	docid('confirmBox').style.top=mouseTop+"px";
+	docid('confirmBox').style.display="block";
+	
+	docid('confirm_InsertMsg').innerHTML = msg;
+	docid('confirmBoxFun').value = fun;
+	docid('confirmBoxParams').value = par;
+	docid('confirmBoxCancelFun').value = cancelFunc;
+	docid('confirmBoxCancelParams').value = cancelParam;
+	docid('freezeSearch').setAttribute('style','width:'+cW+100+'px; height:'+cH+100+'px;');
+	document.body.style.overflow = 'hidden';
+	docid('freezeSearch').style.display="block";
+	setTimeout(function() { if(eval(docid('confirmBoxFocus'))){try{docid('confirmBoxFocus').focus();}catch(err){}}}, 20);
+	showHideCombBoxes('hidden');//No I18N	
+	return false;
+}
+function showHideCombBoxes(st){
+var selectObjs = document.getElementsByTagName('select');
+for(var i=0; i<selectObjs.length;i++){if(eval(selectObjs[i])){selectObjs[i].style.visibility=st;}}}
+</script>
+
+
+<div class="alertDiv" id="confirmBox" style="position:absolute;z-index:5000; left:90px; top:85px; display:none;padding:2px;">
+	<input type="hidden" id="confirmBoxFun">
+	<input type="hidden" id="confirmBoxParams">
+	<input type="hidden" id="confirmBoxCancelFun">
+	<input type="hidden" id="confirmBoxCancelParams">
+	<div class="common-bgcolor padding5">
+		<div class="flLeft normalBoldFont whitefont fntFamily fontSize11" id="CONFIRM_BOX_HEADER">Confirm Message</div>
+		<div class="flRight divCloseBtn" onclick="closeAndUnFreeze('confirmBox')"></div>
+		<div class="clearAll"></div>
+	</div>
+	<div class="padding10">
+		<div class="flLeft confirmboxIcon" id="CONFIRM_BOX_ICON"></div>
+		<div style="padding-top:5px" id="confirm_InsertMsg" class="fntFamily fntSize marginLeft40"></div>
+		<div class="clearAll"></div>
+	</div>	
+	<div class="marginLeft100" style="margin-bottom:5px">
+		<div class="flLeft alertBtn curPoint" onclick="confirmBoxOk(document.getElementById('confirmBoxFun').value, document.getElementById('confirmBoxParams').value)">
+			<div class="flLeft left"></div>
+			<div class="flLeft center"><a href="javascript:void(0)" id="confirmBoxFocus" class="normalFont fntSize fntFamily" onkeydown="if(event.keyCode==13){confirmBoxOk(docid('confirmBoxFun').value, docid('confirmBoxParams').value);}" >OK</a></div>
+			<div class="flLeft right"></div>
+		</div>
+
+		<div class="flLeft">&nbsp;</div>
+
+		<div class="flLeft alertBtn curPoint" onclick="confirmBoxCancel(document.getElementById('confirmBoxCancelFun').value, document.getElementById('confirmBoxCancelParams').value)">
+			<div class="flLeft left"></div>
+			<div class="flLeft center fntSize fntFamily">Cancel</div>
+			<div class="flLeft right"></div>
+		</div>
+	</div>
+	<div class="clearAll"></div>
+</div>
+
+
+<div class="alertDiv" id="alertBox" style="position:absolute;z-index:5000; left:90px; top:85px; display:none;padding:2px;">
+	<input type="hidden" id="alertBoxFun">
+	<input type="hidden" id="alertBoxParams">
+	<div class="common-bgcolor padding5">
+		<div class="flLeft normalBoldFont whitefont fntFamily fontSize11">Alert Message</div>
+		<div class="flRight divCloseBtn" onclick="closeAndUnFreeze('alertBox'); alertBoxOk(docid('alertBoxFun').value, docid('alertBoxParams').value);"></div>
+		<div class="clearAll"></div>
+	</div>
+	<div class="padding10">
+		<div class="flLeft alertboxIcon"></div>
+		<div id="alert_InsertMsg" class="fntFamily fntSize marginLeft40"></div>
+		<div class="clearAll"></div>
+	</div>	
+	<div style="margin-left:125px;margin-bottom:5px;float:left">
+		<div class="alertBtn curPoint" onclick="closeAndUnFreeze('alertBox'); alertBoxOk(docid('alertBoxFun').value, docid('alertBoxParams').value);">
+			<div class="flLeft left"></div>
+			<div class="flLeft center"><a href="javascript:void(0)" id="alertBoxFocus" class="normalFont fntSize fntFamily"  >OK</a></div>
+			<div class="flLeft right"></div>
+		</div>
+	</div>
+	<div class="clearAll"></div>
+</div>
+
+<div id="SMALL_STATUS_BOX" style="position:absolute;z-index:5000; left:540px; top:260px; width:400px; display:none;">
+	<table cellspacing="0" cellpadding="0" border="0" width="80%" class="FailureMsg fntSize fntFamily">
+	<tr>
+		<td align="center" id="SSB_TXT"></td>
+		<td align="right" valign="top"><div class="divCloseBtn" onclick="hCEle('SMALL_STATUS_BOX','none')" ></div></td>
+	</tr>
+	</table>	
+</div>
+
+<body id="ssp-app-id" ><style>#langLocale .ssp-login-promo-footer .language-container .bootstrap-select.btn-group .dropdown-toggle ,  #employeeSearch , #orChartLink{background-color: #FFF !important;color: #000 !important;border: 1px solid #ccc !important;}</style><script>function resizeIframe(obj){obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';}</script>
+<div id="layoutFields" class="layoutFieldsStyle">
+
+
+
+
+
+
+
+
+
+			<div id="LogoDiv" name="LogoDiv" objtype="image" style="position: absolute; left: 50px; top: 3px; cursor: default;" class="ui-draggable dashedLineMOut">
+						<div class="logo_inner">
+							<img id="LogoDiv_Image" style="max-height:50px;max-width:200px;" src="images/logos/004logo_200_50.png" width="200" height="50">
+						</div>	
+					<div id="LogoDiv_Opt" name="LogoDiv_Opt"></div>
+			</div>
+	
+			<div name="oChart" objtype="oChart" style="left: 660px; top: 1px; cursor: pointer; position: absolute; width: 150px;" id="oChart" class="ui-draggable"></div>
+
+
+			<div id="Esearch" objtype="search" style="position: absolute; left: 660px; top: 20px; width: 260px; cursor: pointer;" class="ui-draggable dashedLineMOut"></div>
+
+				
+	
+			
+
+			
+
+			
+
+			
+
+
+			
+
+
+			<div id="LoginFrame" name="LoginFrame" objtype="LoginFrame" style="position: absolute; width: 325px; height: 205px; float: left; left: 52px; top: 75px; cursor: pointer;visibility:visible;;" class="whitetable ui-draggable dashedLineMOut"><div id="LoginFrame_txt" style="display: none;clear:both;" align="center"></div><iframe id="domainLogin" customframesize="SMALL" onload="resizeIframe(this);" name="domainLogin" height="285" width="100%" marginheight="0" marginwidth="0" frameborder="0"  src="/authorization.do" style="position:absolute; z-index:0;" application="yes" scrolling="yes"></iframe></div>
+
+			
+							&nbsp;
+			<div id="Reset" name="Reset" objtype="textArea" style="position: absolute; float: left; margin-top: 18px; margin-left: 10px; left: 478px; top: 87px; cursor: pointer; display: block;" class="dashedLineMOut">
+							<form method="POST" id="resetForm" name="resetForm" action="accounts/authVerify?operation=reset" autocomplete="off">
+							<table border="0" cellpadding="0" cellspacing="0">
+							<tbody><tr>
+							<td>	
+								<span id="Reset_SPAN" class="editor_body">
+
+
+
+
+
+
+
+
+
+
+								<div style="" id="hrefReset" class="clickherelogintxt" href="javascript:void(0)" target="_top" onclick="javascript:document.resetForm.submit()">
+								<font face="Verdana,Arial,Helvetica,sans-serif" style="text-decoration: none; white-space: nowrap;" size="2" color="#000001">Kennwort zurücksetzen</font></div><div style="" id="hrefReset" class="clickherelogintxt" href="javascript:void(0)" target="_top" onclick="javascript:document.resetForm.submit()"><span style="white-space: nowrap; font-family: Verdana, Arial, Helvetica, sans-serif;"><font style="" size="2" color="#000001">Reset Password</font></span></div>
+								
+
+
+
+
+
+
+
+
+</span>
+							</td>
+							<td valign="top">
+							<div id="Reset_Opt" name="Reset_Opt" style="float: left; width: 45px; padding-left:5px;"></div>
+							</td>
+							</tr>
+							</tbody></table>	
+							<input type="hidden" id="adscsrf" name="adscsrf" value="e50fd459-3441-49dc-ac76-cd0d3fef2cfc"></form>
+			</div>
+
+			
+							&nbsp;
+			<div id="Unlock" name="Unlock" objtype="textArea" style="position: absolute; float: left; margin-top: 18px; margin-left: 10px; left: 477px; top: 148px; cursor: pointer; display: block;" class="dashedLineMOut">
+							<form method="POST" id="unLockForm" name="unLockForm" action="accounts/authVerify?operation=unlock" autocomplete="off">
+							<table border="0" cellpadding="0" cellspacing="0">
+							<tbody><tr>
+							<td>	
+								<span id="Unlock_SPAN" class="editor_body">
+
+
+
+
+
+
+
+
+
+
+
+								<div style="" id="hrefUnlock" class="clickherelogintxt" href="javascript:void(0)" target="_top" onclick="javascript:document.unLockForm.submit()">
+								<font face="Verdana,Arial,Helvetica,sans-serif" style="text-decoration: none; white-space: nowrap;" size="2" color="#000001">Benutzerkonto entsperren</font></div><div style="" id="hrefUnlock" class="clickherelogintxt" href="javascript:void(0)" target="_top" onclick="javascript:document.unLockForm.submit()"><font face="Verdana,Arial,Helvetica,sans-serif" style="text-decoration: none; white-space: nowrap;" size="2" color="#000001">Unlock Account</font><br></div>
+							
+
+
+
+
+
+
+
+
+
+</span>
+							</td>
+							<td valign="top">
+							<div id="Unlock_Opt" style="float: left; width: 45px; padding-left:5px;"></div>
+							</td>
+							</tr>
+							</tbody></table>	
+							<input type="hidden" id="adscsrf" name="adscsrf" value="e50fd459-3441-49dc-ac76-cd0d3fef2cfc"></form>
+			</div>
+	
+
+<div id="FieldId_2" style="float: left; left: 280px; top: 8px; cursor: default; position: absolute; display: block;" objtype="textArea" class="ui-draggable dashedLineMOut">
+			<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr>
+				<td>
+				<div>
+					<span id="FieldId_2_SPAN" class="editor_body">
+<b><font size="4">004 GmbH</font></b><div><font size="3">Account Self Service</font></div>
+</span>
+				</div>
+				</td>
+				<td valign="top">
+				<div style="width:45px; padding-left:5px;" id="FieldId_2_Opt"></div>
+				</td>
+			</tr>
+			</tbody></table>
+			</div><div style="left: 396px; top: 43px; cursor: default; width: 20px; height: 185px; z-index: 0; padding-bottom: 10px; padding-left: 10px; position: absolute;" id="vLine_1" objtype="vLine" name="vLine_1" class="ui-draggable ui-resizable dashedLineMOut">
+				<div id="vLine_1_Opt" style="height: 17px;" name="vLine_Opt" align="right"></div>
+				<div class="vLineLogon" valign="top">&nbsp;</div>
+				
+			<div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div  style="z-index: 90;"></div><div  style="z-index: 90;"></div><div  style="z-index: 90; display: none;"></div></div><div style="left: 32px; top: 43px; cursor: default; height: 35px; width: 656px; z-index: 0; position: absolute;" id="hLine_1" objtype="hLine" name="hLine_1" class="ui-draggable ui-resizable dashedLineMOut">
+				<div id="hLine_1_Opt" style="height: 17px;" name="hLine_Opt" align="right"></div>
+				<div class="hLineLogon"></div>
+				
+			<div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div><div  style="z-index: 90;"></div><div  style="z-index: 90;"></div><div  style="z-index: 90; display: none;"></div></div>
+
+<div style="float: left; left: 432px; top: 104px; cursor: default; position: absolute;" id="upload__3253441d_162aa914ba9__8000_00000010_tmp" objtype="image" name="upload__3253441d_162aa914ba9__8000_00000010_tmp" class="ui-draggable dashedLineMOut">
+			<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr>
+				<td>
+				<div id="upload__3253441d_162aa914ba9__8000_00000010_tmp_Value">
+				<div class="ui-wrapper" style="overflow: hidden; position: relative; top: 0px; left: 0px; margin: 0px;"><div class="ui-wrapper" style="overflow: hidden; position: static; top: auto; left: auto; margin: 0px;"><div class="ui-wrapper" style="overflow: hidden; position: static; top: auto; left: auto; margin: 0px;"><div class="ui-wrapper" style="overflow: hidden; position: static; top: auto; left: auto; margin: 0px;"><div class="ui-wrapper" style="overflow: hidden; position: static; top: auto; left: auto; margin: 0px; height: 36px;"><img id="upload__3253441d_162aa914ba9__8000_00000010_tmp_Img" objtype="imageValue" src="images/upload__3253441d_162aa914ba9__8000_00000010.png" class="ui-resizable" style="width: 39px; height: 36px; margin: 0px; resize: none; position: static; zoom: 1; display: block;"><div  style="z-index: 90;"></div><div  style="z-index: 90;"></div><div  style="z-index: 90; display: none;"></div></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div></div></div>
+				</td>
+				<td valign="top">
+				<div id="upload__3253441d_162aa914ba9__8000_00000010_tmp_Opt" valign="top" align="right"></div>
+				</td>
+			</tr>
+			</tbody></table>
+			</div><div style="float: left; left: 430px; top: 163px; cursor: default; position: absolute;" id="upload__3253441d_162aa914ba9__8000_00000011_tmp" objtype="image" name="upload__3253441d_162aa914ba9__8000_00000011_tmp" class="ui-draggable dashedLineMOut">
+			<table border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr>
+				<td>
+				<div id="upload__3253441d_162aa914ba9__8000_00000011_tmp_Value">
+				<div class="ui-wrapper" style="overflow: hidden; position: relative; top: 0px; left: 0px; margin: 0px;"><div class="ui-wrapper" style="overflow: hidden; position: static; top: auto; left: auto; margin: 0px;"><div class="ui-wrapper" style="overflow: hidden; position: static; top: auto; left: auto; margin: 0px;"><div class="ui-wrapper" style="overflow: hidden; position: static; top: auto; left: auto; margin: 0px;"><div class="ui-wrapper" style="overflow: hidden; position: static; top: auto; left: auto; margin: 0px; height: 40px;"><img id="upload__3253441d_162aa914ba9__8000_00000011_tmp_Img" objtype="imageValue" src="images/upload__3253441d_162aa914ba9__8000_00000011.png" class="ui-resizable" style="width: 44px; height: 40px; margin: 0px; resize: none; position: static; zoom: 1; display: block;"><div  style="z-index: 90;"></div><div  style="z-index: 90;"></div><div  style="z-index: 90; display: none;"></div></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div></div><div style="z-index: 90;"></div><div style="z-index: 90;"></div><div style="z-index: 90; display: none;"></div></div></div>
+				</td>
+				<td valign="top">
+				<div id="upload__3253441d_162aa914ba9__8000_00000011_tmp_Opt" valign="top" align="right"></div>
+				</td>
+			</tr>
+			</tbody></table>
+			</div>
+
+
+
+
+</div>
+</body>
+					<script>
+						$('#IframeLoadingStatus').show(); //No I18N
+					</script>
+					
