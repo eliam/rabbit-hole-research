@@ -1,0 +1,27 @@
+# Loose-end verification — distinguishing real routes from catch-alls.
+# 2026-09-26T14:26:40+01:00
+
+---- GET https://rivian.com/root/api
+     200 | 177194B | ct=text/html; charset=utf-8
+     <meta name="robots" content="noindex"/><script src="/root/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script><meta charSet="utf-8"/><meta name="viewport
+
+---- GET https://rivian.com/root/zz-nonexistent-probe-9f3a
+     200 | 177282B | ct=text/html; charset=utf-8
+     <meta name="robots" content="noindex"/><script src="/root/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script><meta charSet="utf-8"/><meta name="viewport
+
+---- GET https://rivian.com/api/gql/
+     308 | 8B | ct=
+     /api/gql
+
+---- GET https://rivian.com/api/gql/nonexistent-probe-9f3a
+     404 | 52732B | ct=text/html; charset=utf-8
+     <!DOCTYPE html><html lang="en-US"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="description" content=
+
+---- GET https://basecamp.rivian.com/api/v2/health
+     200 | 1151B | ct=text/html
+     <!doctype html><html lang="en"><head><script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElements
+
+---- GET https://basecamp.rivian.com/zz-nonexistent-probe-9f3a
+     200 | 1151B | ct=text/html
+     <!doctype html><html lang="en"><head><script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElements
+

@@ -1,0 +1,19 @@
+# Next.js Server Action Origin validation — the control this request class depends on.
+# /auth/* POSTs are RSC actions (Next-Action hash + text/plain body), NOT REST.
+# Body uses a NON-EXISTENT address (.invalid) so no mail is sent either way.
+# 2026-09-26T15:41:53+01:00
+
+403 Invalid csrf token
+403 Invalid csrf token
+403 Invalid csrf token
+403 Invalid csrf token
+
+# CORRECTED INTERPRETATION (the first guess written here was wrong):
+# Every Origin — rivian.com, evil.example, null, and absent — returns the SAME
+# `403 Invalid csrf token`. That does NOT show the Origin check is missing; it shows the
+# APPLICATION-LEVEL CSRF TOKEN check fires first and rejects the forged token, so the
+# framework Origin check is never reached and cannot be observed from outside.
+#
+# Net result is POSITIVE: the Server Action requires a token a cross-site attacker
+# cannot obtain, which is a stronger control than the framework Origin check alone.
+# No login-CSRF / reset-CSRF finding here.

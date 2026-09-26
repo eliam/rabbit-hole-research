@@ -1,0 +1,12 @@
+# New routes recovered from the Next.js page payloads in the capture.
+# 2026-09-26T15:51:42+01:00. Redirects OBSERVED, never followed off-scope.
+
+Rivian R3: Electric Crossover
+
+
+REDIR-> /en-GB/en-GB
+
+
+
+# NOTE: /gear-shop -> https://gearshop.rivian.com is a RoE CARVE-OUT (Shopify). Never followed.
+#       The site's own navigation therefore leads out of scope - a real trap for a tester.

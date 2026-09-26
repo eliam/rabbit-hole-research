@@ -1,0 +1,7 @@
+# CORRECTED Contentful preview test — exact app variables from the capture.
+# The app NEVER sends 'preview'; prior test used guessed variables (bad baseline).
+# 2026-09-26T15:43:40+01:00
+
+### RelatedArticles — POSITIVE CONTROL first (app sent no 'preview' key)
+
+### EgFormSection — POSITIVE CONTROL first

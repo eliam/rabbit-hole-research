@@ -1,0 +1,7 @@
+# Consumer operations vs the OTHER gateways the app knows (schema routing test).
+# UNAUTHENTICATED, empty vars / no real IDs. 2026-09-26T16:06:03+01:00
+
+########## https://rivian.com/api/gql/gateway/graphql
+{"errors":[{"extensions":{"code":"GRAPHQL_VALIDATION_FAILED"},"locations":[{"line":1,"column":49}],"message":"Error in GraphQL validation"},{"extensions":{"code":"GRAPHQL_VALIDATION_FAILED"},"locations":[{"line":1,"column":49}],"message":"Error in GraphQL vali{"errors":[{"extensions":{"code":"UNAUTHENTICATED"},"message":"User is unauthenticated"}]} {"errors":[{"extensions":{"code":"UNAUTHENTICATED"},"message":"User is unauthenticated"}]} {"errors":[{"extensions":{"code":"UNAUTHENTICATED"},"message":"User is unauthenticated"}]} {"errors":[{"extensions":{"code":"UNAUTHENTICATED"},"message":"User is unauthenticated"}]} 
+########## https://rivian.com/api/vs/gql-gateway
+{"errors":[{"message":"fragment: CurrentUserFields undefined","path":["query","currentUser"]}]}{"errors":[{"message":"Cannot query field \"currentUser\" on type \"Query\".","extensions":{"code":"GRAPHQL_VALIDATION_FAILED"}}]}{"errors":[{"message":"Cannot query field \"userPinExists\" on type \"Query\".","extensions":{"code":"GRAPHQL_VALIDATION_FAILED"}}]}{"errors":[{"message":"Unknown type \"ProvisionedUser\".","path":["query","getVehicle","invitedUsers","ProvisionedUser"]}]}{"errors":[{"message":"Unknown type \"MaintenanceDistanceLimit\".","path":["query","currentUser","vehicles","vehicle","maintenanceSchedule","sections","serviceLifetime","MaintenanceDistanceLimit"]}]}

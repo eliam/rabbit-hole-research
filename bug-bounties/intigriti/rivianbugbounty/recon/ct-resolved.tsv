@@ -1,0 +1,111 @@
+api.dev.rivian.com	13.226.144.52,13.226.144.13,13.226.144.114,13.226.144.77	
+api.prod.rivian.com	NXDOMAIN	
+api.qa.rivian.com	NXDOMAIN	
+api.rivian.com	52.85.47.79,52.85.47.19,52.85.47.58,52.85.47.90	
+api.stage.rivian.com	18.165.201.13,18.165.201.129,18.165.201.99,18.165.201.30	
+basecamp.rivian.com	54.230.201.109,54.230.201.99,54.230.201.46,54.230.201.54	
+ccc.api.dev.rivian.com	50.17.164.221	
+cdn.rivian.com	NXDOMAIN	
+cid.rivian.com	44.229.137.88	
+click.e.rivian.com	13.111.71.11	click.virt.s11.exacttarget.com.
+cloud.rivian.com	NXDOMAIN	
+controller.ue1.prod.rivian.com	52.86.233.163,54.197.147.198,13.219.120.249	
+controller.uw2.prod.rivian.com	44.241.46.133,34.214.35.163,44.224.28.62	
+dashboard.rivian.com	108.156.46.31,108.156.46.80,108.156.46.118,108.156.46.13	d2vnmr69i2b1wi.cloudfront.net.
+dev.cmp.rivian.com	NXDOMAIN	
+dev.connectivity.rivian.com	NXDOMAIN	
+dev.ct.rivian.com	NXDOMAIN	
+dev.dm.rivian.com	NXDOMAIN	
+dev.rivian.com	NXDOMAIN	
+dev.service.rivian.com	NXDOMAIN	
+discourse.rivian.com	NXDOMAIN	rivian.hosted-by-discourse.com.
+downloads.rivian.com	18.154.84.54,18.154.84.95,18.154.84.100,18.154.84.14	dsbdwfyh3jpbu.cloudfront.net.
+ec1.origin.dev.rivian.com	NXDOMAIN	
+ec1.origin.prod.rivian.com	NXDOMAIN	
+ec1.origin.qa.rivian.com	NXDOMAIN	
+ec1.origin.stage.rivian.com	NXDOMAIN	
+email.comms.rivian.com	34.102.239.211	mailgun.org.
+em.rivian.com	137.22.234.205	
+e.rivian.com	13.111.67.8	
+events.rivian.com	151.101.130.133,151.101.194.133,151.101.2.133,151.101.66.133	
+ew1.origin.prod.rivian.com	NXDOMAIN	
+ew1.origin.stage.rivian.com	NXDOMAIN	
+gcp-iap.rivian.com	NXDOMAIN	
+gearshop.rivian.com	23.227.38.74	shops.myshopify.com.
+gearshop.stage.rivian.com	23.227.38.74	shops.myshopify.com.
+gogoogle.rivian.com	18.165.242.7,18.165.242.105,18.165.242.34,18.165.242.120	
+googleguide.rivian.com	13.224.95.33,13.224.95.54,13.224.95.81,13.224.95.88	
+go.rivian.com	151.101.2.133,151.101.194.133,151.101.130.133,151.101.66.133	
+granite.p.rivian.com	3.131.203.90	
+gtm.dev.rivian.com	NXDOMAIN	
+gtm.prod.rivian.com	NXDOMAIN	
+gtm.qa.rivian.com	NXDOMAIN	
+gtm.rivian.com	NXDOMAIN	
+gtm.stage.rivian.com	NXDOMAIN	
+guestlogin.rivian.com	NXDOMAIN	
+hec.rivian.com	NXDOMAIN	
+image.e.rivian.com	92.123.128.175,92.123.128.150	akamai-san102.exacttarget.com.edgekey.net.
+images.rivian.com	18.154.84.95,18.154.84.100,18.154.84.14,18.154.84.54	dsbdwfyh3jpbu.cloudfront.net.
+internal.rivian.com	NXDOMAIN	
+investors.rivian.com	18.227.241.190,18.224.222.232,52.14.211.170	
+landing.rivian.com	172.64.149.72,104.18.38.184	030e2fcc-2038-482f-b5b7-72a08fabf33f.us07.ldpgs.com.
+limestone.p.rivian.com	3.128.122.228	
+link.rivian.com	18.244.140.76,18.244.140.16,18.244.140.115,18.244.140.111	
+offlease.rivian.com	75.2.37.149,99.83.140.18	
+origin.dev.rivian.com	NXDOMAIN	
+origin.prod.rivian.com	NXDOMAIN	
+origin.qa.rivian.com	NXDOMAIN	
+origin.stage.rivian.com	NXDOMAIN	
+preorders.rivian.com	216.137.53.68,216.137.53.93,216.137.53.18,216.137.53.78	
+preorders-staging-abq9.rivian.com	NXDOMAIN	
+prism.rivian.com	99.86.12.26,99.86.12.65,99.86.12.88,99.86.12.92	
+procurement.basecamp.rivian.com	NXDOMAIN	
+prod.rivian.com	NXDOMAIN	
+qa.cmp.rivian.com	NXDOMAIN	
+qa.connectivity.rivian.com	NXDOMAIN	
+qa.dm.rivian.com	NXDOMAIN	
+qa.rivian.com	NXDOMAIN	
+rubicon.dev.rivian.com	NXDOMAIN	
+rubicon.prod.rivian.com	NXDOMAIN	
+rubicon.rivian.com	NXDOMAIN	
+rubicon.stage.rivian.com	NXDOMAIN	
+rusil-test.rivian.com	142.250.129.121	ghs.googlehosted.com.
+shop.rivian.com	NXDOMAIN	
+smetrics.rivian.com	66.235.152.163,66.235.152.111,66.235.152.212	0j3snbzwpr.data.adobedc.net.
+stage.dm.rivian.com	NXDOMAIN	
+stage.rivian.com	13.33.153.125,13.33.153.26,13.33.153.12,13.33.153.101	
+stage.service.rivian.com	NXDOMAIN	
+staging-wpdg925-stories.rivian.com	NXDOMAIN	
+supplierslogin.rivian.com	18.218.121.60,3.150.187.32,3.18.76.17	
+things.api.rivian.com	18.211.175.205	things.gtm.prod.rivian.com.
+things.dev.rivian.com	44.193.184.119	axjfw2uv2wsmh-ats.iot.us-east-1.amazonaws.com.
+things.gtm.qa.rivian.com	NXDOMAIN	
+things.qa.rivian.com	NXDOMAIN	
+things.rivian.com	NXDOMAIN	
+things.stage.rivian.com	98.95.90.231	things.gtm.stage.rivian.com.
+tour.rivian.com	216.137.53.78,216.137.53.18,216.137.53.68,216.137.53.93	d3o5qf0huw3bg3.cloudfront.net.
+ue1.api.dev.rivian.com	NXDOMAIN	
+ue1.api.prod.rivian.com	NXDOMAIN	
+ue1.api.stage.rivian.com	NXDOMAIN	
+ue1.origin.dev.rivian.com	NXDOMAIN	
+ue1.origin.prod.rivian.com	NXDOMAIN	
+ue1.origin.stage.rivian.com	NXDOMAIN	
+ue1.stage.origin.rivian.com	NXDOMAIN	
+useast.guestlogin.rivian.com	100.64.101.1	
+uswest.guestlogin.rivian.com	100.64.102.1	
+uw2.api.prod.rivian.com	NXDOMAIN	
+uw2.api.qa.rivian.com	NXDOMAIN	
+uw2.api.stage.rivian.com	NXDOMAIN	
+uw2.origin.prod.rivian.com	NXDOMAIN	
+uw2.origin.qa.rivian.com	NXDOMAIN	
+uw2.origin.stage.rivian.com	NXDOMAIN	
+uw2.stage.origin.rivian.com	NXDOMAIN	
+videos.rivian.com	18.154.84.95,18.154.84.14,18.154.84.54,18.154.84.100	dsbdwfyh3jpbu.cloudfront.net.
+voem.stage.ccc.rivian.com	NXDOMAIN	
+www.careers.rivian.com	3.226.73.193,35.153.85.206,34.233.4.33	www.careers.rivian.com.career.page.
+www.guestlogin.rivian.com	NXDOMAIN	
+www.link.rivian.com	NXDOMAIN	
+www.rivian.com	216.137.53.18,216.137.53.93,216.137.53.78,216.137.53.68	
+www.supplierslogin.rivian.com	NXDOMAIN	
+www.useast.guestlogin.rivian.com	NXDOMAIN	
+www.uswest.guestlogin.rivian.com	NXDOMAIN	

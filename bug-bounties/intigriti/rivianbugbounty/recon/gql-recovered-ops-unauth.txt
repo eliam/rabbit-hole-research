@@ -1,0 +1,14 @@
+# Recovered GraphQL operations (from the authenticated capture) replayed WITHOUT any
+# session, to test whether authorization is enforced. Read-only. Single query each.
+# 2026-09-26T15:29:25+01:00
+
+### /api/gql/orders/graphql  — GetUserDetails (PII-bearing user object)
+    unauth query GetUserDetails                    [{"errors":[{"message":"Request a new CSRF token","locations":[{"line":1,"column":24}],"path":["user"],"extensions":{"code":"CSRF_TOKEN_EXPIRED"}}],"data":null}
+    HTTP 200 160B: ]
+    body: {"errors":[{"message":"Request a new CSRF token","locations":[{"line":1,"column":24}],"path":["user"],"extensions":{"code":"CSRF_TOKEN_EXPIRED"}}],"data":null} 
+
+### /api/gql/orders/graphql  — CreateCsrfToken (mutation)
+    HTTP body: {"data":{"createCsrfToken":{"csrfToken":"frcxsrtWjKUp1Zg74S9WaKp9yNKzhDPZ2XW0RUeoIe9dWkjOJyTkFBVPwY5Y8eX8WTH1RnoUrcKoDffwTfIaVrrXGzOTUO39E9qEoSTlf2CA0j5JKKC9hTtCu5gst01NgQKwLQ","__typename":"App"}}} 
+
+### /api/gql/content/graphql  — support-chat config query
+    HTTP body: {"data":{"getChatCategories":[{"category_id":"CATOOA","description":"Chat Category - General","display_name":"General","group_name":"customer","name":"General","queue_id":"7ab5fdfb-5112-4455-933f-86d85598008d:en-US"},{"category_id":"CATOOB","description":"Chat Category - Charging","display_name":"Charging","group_name":"customer","name":"Charging","queue_id":"e2b0b68b-0d10-4e36-84b2-cf87aab645a6:e

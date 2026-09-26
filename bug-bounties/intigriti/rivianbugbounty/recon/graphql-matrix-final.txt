@@ -1,0 +1,31 @@
+# Final GraphQL matrix — fills the remaining gaps so all 7 endpoints are comparable.
+# 2026-09-26T15:39:38+01:00. One operation per request, read-only.
+
+########## business/graphql
+########## business/graphql
+  introspection          head: cannot open '/tmp/m.out' for reading: No such file or directory
+
+  _service{sdl}          400 {"errors":[{"message":"Cannot query field \"_service\" on type \"Query\".","extensions":{"code":"GRAPHQL_VALIDATION_FAIL
+  APQ                    200 {"errors":[{"message":"PersistedQueryNotFound","extensions":{"code":"PERSISTED_QUERY_NOT_FOUND"}}]}
+  GET query              200 {"data":{"__typename":"Query"}}
+  GET mutation           405 {"errors":[{"message":"Mutations can only be sent over HTTP POST"}]}
+
+
+########## api.rivian.com/graphql
+########## api.rivian.com/graphql
+  introspection          {"errors":[{"message":"Mutations can only be sent over HTTP POST"}]}
+  _service{sdl}          400 {"errors":[{"message":"Cannot query field \"_service\" on type \"Query\".","extensions":{"code":"GRAPHQL_VALIDATION_FAIL
+  APQ                    200 {"errors":[{"message":"PersistedQueryNotFound","extensions":{"code":"PERSISTED_QUERY_NOT_FOUND"}}]}
+  GET query              200 {"data":{"__typename":"Query"}}
+  GET mutation           405 {"errors":[{"message":"Mutations can only be sent over HTTP POST"}]}
+
+
+########## api/vs/gql-gateway
+########## api/vs/gql-gateway
+  introspection          {"errors":[{"message":"Mutations can only be sent over HTTP POST"}]}
+  _service{sdl}          400 {"errors":[{"message":"Cannot query field \"_service\" on type \"Query\".","extensions":{"code":"GRAPHQL_VALIDATION_FAIL
+  APQ                    200 {"errors":[{"message":"PersistedQueryNotFound","extensions":{"code":"PERSISTED_QUERY_NOT_FOUND"}}]}
+  GET query              200 {"data":{"__typename":"Query"}}
+  GET mutation           405 {"errors":[{"message":"Mutations can only be sent over HTTP POST"}]}
+
+

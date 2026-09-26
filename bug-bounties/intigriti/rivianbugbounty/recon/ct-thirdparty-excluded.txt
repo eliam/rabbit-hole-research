@@ -1,0 +1,13 @@
+# Third-party SaaS hosts surfaced by CT/DNS — RoE 'third party infrastructure' = OUT OF SCOPE.
+# 2026-09-26T14:31:42+01:00
+# Classification is PROVEN by the CNAME chain, not guessed:
+#   host<TAB>resolves-to<TAB>CNAME
+#   click.e.rivian.com	13.111.71.11	click.virt.s11.exacttarget.com.
+#   email.comms.rivian.com	34.102.239.211	mailgun.org.
+#   gearshop.rivian.com	23.227.38.74	shops.myshopify.com.
+#   gearshop.stage.rivian.com	23.227.38.74	shops.myshopify.com.
+#   image.e.rivian.com	92.123.128.175,92.123.128.150	akamai-san102.exacttarget.com.edgekey.net.
+#   landing.rivian.com	172.64.149.72,104.18.38.184	030e2fcc-2038-482f-b5b7-72a08fabf33f.us07.ldpgs.com.
+#   rusil-test.rivian.com	142.250.129.121	ghs.googlehosted.com.
+#   smetrics.rivian.com	66.235.152.163,66.235.152.111,66.235.152.212	0j3snbzwpr.data.adobedc.net.
+#   www.careers.rivian.com	3.226.73.193,35.153.85.206,34.233.4.33	www.careers.rivian.com.career.page.

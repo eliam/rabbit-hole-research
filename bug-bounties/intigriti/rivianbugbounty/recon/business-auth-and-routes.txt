@@ -1,0 +1,91 @@
+# business.rivian.com auth surface (RoE: 'primary testing for this domain is the
+# authentication/authorization of the publicly available endpoints') + remaining
+# rivian.com API routes. RoE-compliant: required header, 1 req/s, read-only GETs.
+# 2026-09-26T14:25:45+01:00
+
+---- GET https://business.rivian.com/auth/
+     200 | 400B | ct=text/html
+       content-type: text/html
+       x-riv-env: prod_ue1
+       set-cookie: route=1790429147.449.3783.658861|4b7f811646d008cf7975f4180fc8cebf; Expires=Mon, 28-Sep-26 13:25:46 GMT; Max-Age=172800; Path=/; Secure; HttpOnly
+       x-cache: Miss from cloudfront
+       x-amz-cf-pop: LHR86-P3
+       x-amz-cf-id: 0BwCk_mBc_3dRS01J-R0lkXVLeK_Ml8L9iwws2m2EHX6EUhvLgdwlw==
+     body: <!DOCTYPE html> <html lang="en">   <head>     <meta charset="UTF-8" />     <meta name="viewport" content="width=device-width, initial-scale=1.0" />     <title>Login</title>     <script type="module" crossorigin src="/auth/assets/index-DpzK5Jvt.js"></script>     <link rel="stylesheet" crossorigin hre
+
+---- GET https://business.rivian.com/auth/?rd=https://business.rivian.com/
+     200 | 400B | ct=text/html
+       content-type: text/html
+       x-riv-env: prod_ue1
+       set-cookie: route=1790429147.71.3783.871549|4b7f811646d008cf7975f4180fc8cebf; Expires=Mon, 28-Sep-26 13:25:46 GMT; Max-Age=172800; Path=/; Secure; HttpOnly
+       x-cache: Miss from cloudfront
+       x-amz-cf-pop: LHR86-P3
+       x-amz-cf-id: j8nMGK7vCi-V9hfZ_lEUdMdqBqpPG0St9cNABk3mdNH5SjBBDSxtyg==
+     body: <!DOCTYPE html> <html lang="en">   <head>     <meta charset="UTF-8" />     <meta name="viewport" content="width=device-width, initial-scale=1.0" />     <title>Login</title>     <script type="module" crossorigin src="/auth/assets/index-DpzK5Jvt.js"></script>     <link rel="stylesheet" crossorigin hre
+
+---- GET https://business.rivian.com/auth/?rd=https://example.com/
+     200 | 400B | ct=text/html
+       content-type: text/html
+       x-riv-env: prod_ue1
+       set-cookie: route=1790429148.932.492.712150|4b7f811646d008cf7975f4180fc8cebf; Expires=Mon, 28-Sep-26 13:25:47 GMT; Max-Age=172800; Path=/; Secure; HttpOnly
+       x-cache: Miss from cloudfront
+       x-amz-cf-pop: LHR86-P3
+       x-amz-cf-id: pvsyM0A2GHKznJI6CvBxXelwMNdON_gsE5wPqmIFumAIwoOD-TEtCQ==
+     body: <!DOCTYPE html> <html lang="en">   <head>     <meta charset="UTF-8" />     <meta name="viewport" content="width=device-width, initial-scale=1.0" />     <title>Login</title>     <script type="module" crossorigin src="/auth/assets/index-DpzK5Jvt.js"></script>     <link rel="stylesheet" crossorigin hre
+
+---- GET https://rivian.com/auth/api
+     404 | 5390B | ct=text/html; charset=utf-8
+       content-type: text/html; charset=utf-8
+       x-content-type-options: nosniff
+       set-cookie: riv-selected-locale=en-US; Path=/; SameSite=lax
+       x-riv-embedded: false
+       x-middleware-rewrite: /en-US/auth/api
+       x-nextjs-cache: HIT
+       x-nextjs-prerender: 1
+       x-nextjs-prerender: 1
+       x-nextjs-stale-time: 300
+       x-riv-env: prod_ue1
+       x-frame-options: SAMEORIGIN
+       x-xss-protection: 1; mode=block
+       x-cache: Error from cloudfront
+       x-amz-cf-pop: LHR5-P7
+       x-amz-cf-id: GGmcz0uLoOOAlTKzpEaI3vcABtQsGbEk31E_XUHWVZtOLed2QKBBcg==
+     body: <!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="script" fetchPriority="low" href="/auth/_next/static/chunks/webpack-5aeed2098966cadb.js"/><script src="/auth/_next/static/chunks/a4375adb-f80fa029c3f28ab2.js
+
+---- GET https://rivian.com/quad/api
+     404 | 7541B | ct=text/html; charset=utf-8
+       content-type: text/html; charset=utf-8
+       x-content-type-options: nosniff
+       x-frame-options: SAMEORIGIN
+       x-nextjs-cache: HIT
+       x-nextjs-prerender: 1
+       x-nextjs-prerender: 1
+       x-nextjs-stale-time: 300
+       x-powered-by: Next.js
+       x-riv-env: prod_ue1
+       x-xss-protection: 1; mode=block
+       x-cache: Error from cloudfront
+       x-amz-cf-pop: LHR5-P7
+       x-amz-cf-id: YpqHOWSF17vqHd4CrmJrQNJzSLJi5ZDp5Mc5KQ-0JC8wybGBnTWSgg==
+     body: <script src="/quad/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" as="script" fetchPriority="low" href="/quad/_next/static/chunks/1_wwbmji2adyr.js"/><script src="/quad/_next/st
+
+---- GET https://rivian.com/root/api
+     200 | 177194B | ct=text/html; charset=utf-8
+       server: CloudFront
+       content-type: text/html; charset=utf-8
+       x-xss-protection: 1; mode=block
+       x-content-type-options: nosniff
+       x-frame-options: SAMEORIGIN
+       x-middleware-rewrite: /en-US/root/api
+       x-nextjs-stale-time: 300
+       x-nextjs-prerender: 1
+       x-nextjs-postponed: 1
+       x-powered-by: Next.js
+       x-riv-env: prod_ue1
+       set-cookie: riv-selected-locale=en-US; Path=/; SameSite=lax
+       set-cookie: riv-ld-context-v3=eyJrZXkiOiJkMDg5NjA1NC0yYjNhLTQ3NjUtYWUxZC1mYTRjNDk5YzBmOTYiLCJraW5kIjoidXNlciIsImRldmljZVR5cGUiOiJkZXNrdG9wIiwiZGV2aWNlT1MiOiJ1bmtub3duIiwibG9jYXRpb24iOnsiY291bnRyeSI6IkdCIiwic3RhdGUiOiJXTFMifX0=; Secure; Path=/; Max-Age=31536000; SameSite=strict
+       x-cache: Miss from cloudfront
+       x-amz-cf-pop: LHR5-P7
+       x-amz-cf-id: teVI2JLoD5BthHfpo6J2i3J2nFtsMnutCWeoL0xXFqHpw8wMbxjHVw==
+     body: <meta name="robots" content="noindex"/><script src="/root/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/root/_next/static/chunks/17r71sfx_abqu.css" data-precedence="
+

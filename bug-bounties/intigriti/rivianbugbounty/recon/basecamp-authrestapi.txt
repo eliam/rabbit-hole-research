@@ -1,0 +1,27 @@
+# commauth.basecamp.rivian.com/prod — auth REST routes recovered from the login bundle.
+# Routes are CLIENT-DERIVED from recon/login-basecamp-bundle.js, not wordlisted.
+# ONLY the operator's own throwaway address is used — never a third party's.
+# 2026-09-26T15:32:12+01:00
+
+############ POST /prod/resetmfaemail
+   body sent: {"email":"eliam@intigriti.me"}
+   -> HTTP 404 14B ct=application/json
+      date: Sat, 26 Sep 2026 14:32:18 GMT
+      response: User not found
+
+############ POST /prod/resendrstpwdemail
+   body sent: {"email":"eliam@intigriti.me"}
+   -> HTTP 200 0B ct=application/json
+      date: Sat, 26 Sep 2026 14:32:20 GMT
+      response: 
+
+############ POST /prod/resetmfaverify
+   body sent: {"token":"not-a-real-token-probe-only"}
+   -> HTTP 400 13B ct=application/json
+      date: Sat, 26 Sep 2026 14:32:26 GMT
+      response: Invalid token
+
+# NOTE: resetmfaemail/resendrstpwdemail send mail to the address given. Only the
+#       operator's own address was used. resetmfaverify was called with a
+#       deliberately invalid token, which can identify no account and is therefore
+#       non-destructive. No valid token was ever exercised (that would be brute force).

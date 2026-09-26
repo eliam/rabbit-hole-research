@@ -1,0 +1,35 @@
+# TLS certificate OSINT — LISTED in-scope hosts only (passive)
+# 2026-09-26T14:24:06+01:00
+# SANs are recorded as LEADS. They are NOT probed unless they are themselves
+# in the RoE asset list (or fall under the RoE's *.rivian.com wildcard entry,
+# which is held back pending clarification of the phantom IP-range gate).
+
+==================================================================
+== rivian.com
+==================================================================
+subject=CN=rivian.com
+issuer=C=US, O=Amazon, CN=Amazon RSA 2048 M04
+notBefore=Jul 12 00:00:00 2026 GMT
+notAfter=Jan 25 23:59:59 2027 GMT
+X509v3 Subject Alternative Name: 
+    DNS:rivian.com, DNS:*.rivian.com, DNS:*.dc.goriv.co
+
+==================================================================
+== business.rivian.com
+==================================================================
+subject=CN=prod.rivian.com
+issuer=C=US, O=Amazon, CN=Amazon RSA 2048 M04
+notBefore=Nov 25 00:00:00 2025 GMT
+notAfter=Dec 23 23:59:59 2026 GMT
+X509v3 Subject Alternative Name: 
+    DNS:prod.rivian.com, DNS:rivian.com, DNS:*.prod.dc.goriv.co, DNS:*.rivian.com, DNS:*.dc.goriv.co, DNS:dc.goriv.co, DNS:*.ue1.origin.prod.goriv.co, DNS:prod.ue1.dc.goriv.co, DNS:*.goriv.co, DNS:*.ue1.origin.prod.rivian.com, DNS:*.prod.goriv.co, DNS:*.ue1.dc.goriv.co, DNS:*.prod.ue1.dc.goriv.co
+
+==================================================================
+== basecamp.rivian.com
+==================================================================
+subject=CN=basecamp.rivian.com
+issuer=C=US, O=Amazon, CN=Amazon RSA 2048 M01
+notBefore=Nov 14 00:00:00 2025 GMT
+notAfter=Dec 13 23:59:59 2026 GMT
+X509v3 Subject Alternative Name: 
+    DNS:basecamp.rivian.com

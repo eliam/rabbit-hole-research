@@ -1,0 +1,81 @@
+# Passive DNS — LISTED in-scope hosts only
+# 2026-09-26T14:23:49+01:00
+# Hosts: rivian.com, business.rivian.com, basecamp.rivian.com
+# Carve-out hosts deliberately NOT resolved: assets, careers, demovehicles,
+#   feedback, internalshop, media, stories, view.e, cloud.e
+
+rivian.com                   A          18.154.84.95
+    18.154.84.100
+    18.154.84.14
+    18.154.84.54
+rivian.com                   AAAA   <none>
+rivian.com                   CNAME  <none>
+rivian.com                   MX         1 smtp.google.com.
+rivian.com                   TXT        "_z0wcrsksc4g3ey7ma73otx7zz2wv8v2"
+    "smartsheet-site-validation=63FFfNcNdZt3KOu6A3PFal2lZ5SHYdZp"
+    "google-site-verification=mBBygjypJz_mCtYAUsXM-fmuidb0lmr_ca7dt2JXHtE"
+    "3i1npesq9hqoq48bhklpnlkogq"
+    "atlassian-domain-verification=X3FdlpwOyA6/NENGVmTAwRiTwav1sasIX2Z1eiq8/lo/ncvdpbtA1ZbzQPkr4CMa"
+    "h1-domain-verification=UUhCio7nfm2NaYq3nQRhXNuY5SQQU8Yq2CmzPaFAE79VfaxG"
+    "atlassian-domain-verification=pa0mqCBOV0raECEyH/PAy2IaSlUmX0zq84wjjfx48QOfhg/t9r1Hzbfn8sZ3Bz0M"
+    "qq81fq4famp4eathsspb6ee18"
+    "google-site-verification=zKZ7WfBRCwanwFqQvSM0hvxHhxxv-wStGU-_61olswA"
+    "yahoo-verification-key=YV2NuzWvaDoteXstDJiOkBzHXcCZWL+GSr4o/4ZBtgY="
+    "google-site-verification=hZtOSI76uEw2Y8CWb3a46YvBY_E7FKlMhDqfGICkkLU"
+    "MS=ms71873047"
+    "cursor-domain-verification-n7k4aj=9D7efRUd44FFJ6kqvEObMfJxN"
+    "openai-domain-verification=dv-0877fO9iU0K9evSQs5lQxcG8"
+    "docusign=7ed79ca7-f292-4f21-bf4c-acb00640910b"
+    "v=spf1 include:_spf.google.com include:spf.protection.outlook.com include:shops.shopify.com include:servers.mcsv.net include:amazonses.com include:spf2.rivian.com a:c.spf.service-now.com -all"
+    "traction-guest=c96b22f0-a31f-4606-9bb8-b81ce07e841a"
+    "apple-domain-verification=xfkVPKVmmID4BTRj"
+    "atlassian-domain-verification=FwmD6Qw7VSdYoMJ+Ar3o6uZsIv1Bx+TI68SXmWlooItlnkDhQcNv6MClkhHXgbjg"
+    "anthropic-domain-verification-17yyj1=ZttOJr22hS54ZYQK3UhtWH4Q1"
+    "mongodb-site-verification=YkaOuaXJtD86yBByOEgfag2XSN0acL6M"
+    "g240t24f56sjquket4hg9rbbq3"
+    "google-site-verification=-p7AWPFGZJbjCeRT5KepyrSfNzZg7qdEDMqrFpv-6RQ"
+    "twilio-domain-verification=986d42ac0fcc2e3074f14bf07f29d382"
+    "amazonses:pAvIM4KFMb3PVNmIEGF4mBenrIs1O3BYlZH+bWc7LI8="
+    "onetrust-domain-verification=2e032fb834db451182e9ebfaae7c09f6"
+    "google-site-verification=aWxg8EMMvhW1vYX-Aw2dDwpW47fND_wCv3KuZgKi8Cw"
+    "google-site-verification=cWdugrWsQm70pnSyIYKpcVIsa_Y4QUKcQYLVSdeMtV0"
+    "google-site-verification=OQOixmx_VosSpkq-hqHLCQW903s_lWb14bqaBTmgXCE"
+    "smartsheet-site-validation=yxj-130P9wyXs-SBV_9Z75aQUkQAaX1b"
+    "fastly-domain-delegation-7j9fez7kaxz9cnjt7b9x-00397920-2025-05-05"
+    "google-site-verification=L0ux3YgiB_7XdWr2aqNK6sHwQXN1I6zv2oswE2CCYw4"
+    "Dynatrace-site-verification=40027b27-2255-4575-9969-d9d86cfd017a__61tpnk6bt6n3dmohag876je96c"
+    "adobe-idp-site-verification=381f0106b42293d4d8223bab3d695ef768e95efed25777f8c1052696e84afefc"
+    "cisco-ci-domain-verification=548454e414f1d9257621207575b440f3537c87bc56dbf7544bb80f2eb9045b7d"
+    "google-site-verification=kCll6LrGMLURYde2FfQIKPvrmJ5gvqXLrHQXlJzj5u8"
+    "stripe-verification=ad2b4003089d30226167d8b643673f1835d15f5c37a2e426e1597acb3d173ed7"
+    "atlassian-domain-verification=OEgGrHiH30kwwaIPRrzfOPKTvw1sJ0x/HGUt6bG8H/JaWpgQmFZ1Fn2XPqP8rSHE"
+    "google-site-verification=ythfYVMBAfW6jpq3ydlf6Eh7V65giIMDgq5nInuQtIU"
+    "atlassian-domain-verification=Yj5MeUSO99HZpvppeIepXuKpKKrwe8KVuDKIvYVtt3O/Fe/yfqRYhoAdAUre2cDS"
+rivian.com                   NS         ns-280.awsdns-35.com.
+    ns-1610.awsdns-09.co.uk.
+    ns-1408.awsdns-48.org.
+    ns-985.awsdns-59.net.
+
+business.rivian.com          A          52.85.47.63
+    52.85.47.15
+    52.85.47.107
+    52.85.47.73
+business.rivian.com          AAAA   <none>
+business.rivian.com          CNAME  <none>
+business.rivian.com          MX     <none>
+business.rivian.com          TXT    <none>
+business.rivian.com          NS     <none>
+
+basecamp.rivian.com          A          54.230.201.54
+    54.230.201.99
+    54.230.201.109
+    54.230.201.46
+basecamp.rivian.com          AAAA   <none>
+basecamp.rivian.com          CNAME  <none>
+basecamp.rivian.com          MX     <none>
+basecamp.rivian.com          TXT    <none>
+basecamp.rivian.com          NS         ns-1783.awsdns-30.co.uk.
+    ns-1159.awsdns-16.org.
+    ns-435.awsdns-54.com.
+    ns-744.awsdns-29.net.
+

@@ -1,0 +1,591 @@
+# APK-derived paths (operator decompiled com.rivian.android.consumer — IN SCOPE).
+# Client-derived list, NOT a wordlist => no brute force. All hosts = rivian.com (in scope).
+# 2026-09-26T15:01:57+01:00
+# No redirects followed; Location captured raw.
+
+PATH                                                 CODE  BYTES     CT       LOCATION / TITLE
+                                                     HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+EN4Z70C8IZpeiXEHPzjRT0iUD0mxSczNP3zMApPpGxyD4Vst5czwCw==
+
+0 
+
+26
+
+
+Path=/ /en-GB/
+/api/gql/content/graphql/                            HTTP/2
+content-type:
+content-length:
+date:
+x-content-type-options:
+x-powered-by:
+x-datadog-trace-id:
+x-datadog-parent-id:
+x-datadog-sampling-priority:
+x-datadog-tags:
+traceparent:
+tracestate:
+etag:
+strict-transport-security:
+x-riv-env:
+x-xss-protection:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+400 400
+application/json;
+429
+Sat,
+nosniff
+Express
+14163615838289228635
+4129815202354842001
+1
+_dd.p.tid=2fad039e732a34a1
+00-2fad039e732a34a1c48f45901853735b-39500d0bbc5e4991-01
+dd=t.tid:2fad039e732a34a1;s:1;p:39500d0bbc5e4991
+W/"1ad-4JFTFu5b48rGGeL7paxNaaCUjgo"
+max-age=63072000;
+prod_ue1
+1;
+Error
+1.1
+LHR5-P7
+i584vT5RRLxUGlbX_jZLxPXHTBFvfNmJMbJn-bR-hhNBFN_66m28lQ==
+
+429 
+charset=utf-8
+
+26
+
+
+
+
+
+
+
+
+
+includeSubDomains -
+/mobile/CustomerService                              HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/CustomerService
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+Lm_af_Lb2RaMd0Vami-eFiMUTQXLL9MdR1BGOJNEUCH4LcPQ3Ol-Xw==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/CustomerService
+/mobile/VehicleService/appointmentStatus?step=2      HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/VehicleService/appointmentStatus?step=2
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+_LLZOahMwctHGY8aNTyKX2OokDJWI2_b7HXYZfK1P18QdBLrP8zA5g==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/VehicleService/appointmentStatus?step=2
+/mobile/VehicleService/appointments                  HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/VehicleService/appointments
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+sq30yWFvQCgynI9XGWJnQMqdD2ZHt2mjRf4F8mdybvc58SnzErJiHQ==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/VehicleService/appointments
+/mobile/VehicleService/asyncMessages                 HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/VehicleService/asyncMessages
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+MicLKkeDapzHCM98sK9yUvkViCLUhYiK2aZn0o-LE91E-kyxk0OGSw==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/VehicleService/asyncMessages
+/mobile/docs/guides/tire-change                      HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/docs/guides/tire-change
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+UYP9R4hf6SQ0XG5NohKqlKr2JxawvZhHj-sjeXWkrJlauHqFU7DRUg==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/docs/guides/tire-change
+/mobile/keyfob2-activation                           HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/keyfob2-activation
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+oRSTtdTYacedUMRPn7CybmYshC9VnDZ5WMiGQFoco2oRekCtlkx8XQ==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/keyfob2-activation
+/mobile/rivian-assistant/google/enroll               HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/rivian-assistant/google/enroll
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+qXOnYpf8aOesCgEFuEb2GrFc8heG0_2k9E8owv_yGhNYNsjlTbr7Lw==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/rivian-assistant/google/enroll
+/mobile/security-and-access                          HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/security-and-access
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+iYvv2H6Tl0IvAqO_bSTMqhrelDMeoKZsjgcPRXhZZ4ch1uXIPMOuuA==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/security-and-access
+/mobile/signin                                       HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/signin
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+uPjQeO9f8C0iW96lA88FIKXO_mPLW1pTPKnT20kylnWyAvrQvHLpKA==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/signin
+/mobile/static/whatsnew/722e16fd1249acf9/WhatsNew_2.5.0_en-US.mp4 HTTP/2
+content-type:
+content-length:
+date:
+last-modified:
+etag:
+x-amz-server-side-encryption:
+cache-control:
+x-amz-version-id:
+accept-ranges:
+server:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+200 200
+video/mp4
+7185597
+Sat,
+Wed,
+"768bc73e27ff0bb1f7a847d5b94c145a"
+AES256
+max-age=60
+null
+bytes
+AmazonS3
+Miss
+1.1
+LHR5-P7
+W2k4ig6N8qzBn0YqiL-ZIiSldz0wm-AJ2ap1BUevIiUZqK7upssa-g==
+
+7185597 
+
+
+26
+29
+
+
+
+
+
+
+from
+9399b889481d52fdce69080691aeb298.cloudfront.net
+
+
+
+video/mp4 -
+/mobile/upgradeToDigitalKey                          HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/upgradeToDigitalKey
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+-ebwdOsMQP5qs59J-q1AQwOblCBHcVxpnqFAuagm879x7cayie6QFg==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/upgradeToDigitalKey
+/mobile/upgrades                                     HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/upgrades
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+lLVQ_ws6waQua7wfgHqjb4IzSYoYrETNdt46IhOZJqAKBhK_5vsdWA==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/upgrades
+/mobile/vehicle-security                             HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/vehicle-security
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+rZO6RR1QlX6azmBQClTG5s8qHAIgpmplGYWmVxzZpx5q2KUpVYJ8Nw==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/vehicle-security
+/mobile/vehicle-totp                                 HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/mobile/vehicle-totp
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+5spIMLMdse8IXBraiMoLFk7_835kq2uPRs8OLOSJakDyPM_vI2pjwQ==
+
+0 
+
+26
+
+
+Path=/ /en-GB/mobile/vehicle-totp
+/support                                             HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/support
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+BMnT96qg47aTL4VFDgNiOzWY7fSgz6hWQelopB8oW8BKk27ur92IGQ==
+
+0 
+
+26
+
+
+Path=/ /en-GB/support
+/support/digital-key-migration                       HTTP/2
+server:
+date:
+content-length:
+location:
+set-cookie:
+set-cookie:
+x-cache:
+via:
+x-amz-cf-pop:
+x-amz-cf-id:
+
+307 307
+CloudFront
+Sat,
+0
+/en-GB/support/digital-key-migration
+riv-detected-locale=en-GB;
+riv-geo-locale=en-GB;
+FunctionGeneratedResponse
+1.1
+LHR5-P7
+2zz8oxlTXwWu6ubI028eheqipOs_BYSqF-nvOYjVlXkC4uW347gJRg==
+
+0 
+
+26
+
+
+Path=/ /en-GB/support/digital-key-migration

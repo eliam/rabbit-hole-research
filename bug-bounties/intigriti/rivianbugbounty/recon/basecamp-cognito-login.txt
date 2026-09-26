@@ -1,0 +1,4 @@
+### GET /oauth2/authorize  (client_id=9plgmlt04deagrmevuict1u7l)
+  -> HTTP 200  final=https://login.microsoftonline.com/f798cb4f-b8b7-45f7-ad25-1ff5f130070a/oauth2/v2.0/authori  bytes=57191
+  title: Sign in to your account
+  !! no _csrf in the form — cannot proceed

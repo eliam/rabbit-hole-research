@@ -1,0 +1,124 @@
+# HTTP fingerprinting — in-scope assets only
+# 2026-09-26T14:24:17+01:00
+# Tools: recon/probe-http.sh (adds X-Intigriti-Username, 1 req/s cap, GET/HEAD/OPTIONS only)
+
+================================================================
+== 1. https://rivian.com/  (Tier 2, apex) — redirect chain, NOT followed
+================================================================
+HTTP/2 307 
+server: CloudFront
+date: Sat, 26 Sep 2026 13:24:18 GMT
+content-length: 0
+location: /en-GB/
+set-cookie: riv-detected-locale=en-GB; Path=/; Max-Age=3600; SameSite=None; Secure
+set-cookie: riv-geo-locale=en-GB; Path=/; Max-Age=3600; SameSite=None; Secure
+x-cache: FunctionGeneratedResponse from cloudfront
+via: 1.1 b8721a6df735ea35384fcd19b9439d04.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR5-P7
+x-amz-cf-id: awyXbEag0SKT3GXTb0SAyR_6RtlNyOHYhPCnX2P8VX4dJRQdsAbZIQ==
+
+
+================================================================
+== 2. https://business.rivian.com/api  (Tier 1)
+================================================================
+HTTP/2 400 
+content-type: application/json; charset=utf-8
+content-length: 45
+date: Sat, 26 Sep 2026 13:24:19 GMT
+x-content-type-options: nosniff
+cache-control: no-store, no-cache, must-revalidate
+vary: Accept-Encoding
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-riv-env: prod_ue1
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+x-cache: Error from cloudfront
+via: 1.1 ad1147b3bdbf1f5ab2d213d380e6f8da.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR86-P3
+x-amz-cf-id: 1rsaYjECDJzkvjtmX31cmUtWCSY705GnuYb_L-pfnoYjnrQA_PFoTQ==
+
+
+================================================================
+== 3. https://basecamp.rivian.com/  (Tier 2)
+================================================================
+HTTP/2 200 
+content-type: text/html
+content-length: 1151
+server: AmazonS3
+access-control-allow-origin: *
+access-control-allow-methods: GET
+access-control-max-age: 3000
+last-modified: Thu, 10 Sep 2026 13:19:37 GMT
+x-amz-server-side-encryption: AES256
+accept-ranges: bytes
+date: Sat, 26 Sep 2026 04:34:35 GMT
+etag: "756f9804db14ff502c712bb6b8a1aff9"
+x-cache: Hit from cloudfront
+via: 1.1 8d3968160c734868b9d2606c6ff3951a.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR82-P3
+x-amz-cf-id: LRm7Q6v63pXB0E3ZRoOJYpR3lr827MMmIq3sITRUm0U3ukO1Dpjffg==
+age: 31784
+
+
+================================================================
+== 4. the three Tier-1 GraphQL URLs — GET (no query body)
+================================================================
+
+---- GET https://rivian.com/api/gql/content/graphql
+HTTP/2 400 
+content-type: application/json; charset=utf-8
+content-length: 429
+date: Sat, 26 Sep 2026 13:24:20 GMT
+x-content-type-options: nosniff
+x-powered-by: Express
+x-datadog-trace-id: 3419496320192324266
+x-datadog-parent-id: 6241651098555075167
+x-datadog-sampling-priority: 1
+x-datadog-tags: _dd.p.tid=ac422ed084c4be89
+traceparent: 00-ac422ed084c4be892f747dc933d1a2aa-569ecc9abd4d4a5f-01
+tracestate: dd=t.tid:ac422ed084c4be89;s:1;p:569ecc9abd4d4a5f
+etag: W/"1ad-4JFTFu5b48rGGeL7paxNaaCUjgo"
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-riv-env: prod_ue1
+x-xss-protection: 1; mode=block
+x-cache: Error from cloudfront
+via: 1.1 f6464b7d5450140d724b02dc30ebfa32.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR5-P7
+x-amz-cf-id: MGeXlnNc2KvVMeXKklHHvpjm6E9Pw6eentrAds5IPVB7HHye4ZBVuw==
+
+
+---- GET https://rivian.com/api/gql/gateway/graphql
+HTTP/2 400 
+content-type: text/plain; charset=utf-8
+content-length: 18
+date: Sat, 26 Sep 2026 13:24:21 GMT
+x-riv-env: prod_ue1
+vary: Origin
+access-control-allow-credentials: true
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-xss-protection: 1; mode=block
+referrer-policy: no-referrer
+x-cache: Error from cloudfront
+via: 1.1 7c0d7bdd893a9beec35b3b279c41bc56.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR5-P7
+x-amz-cf-id: aliBJBgdGIfgaL1y_EzwYABVcezr3BAq65kmOimUmZ6nNPDWEEP1kA==
+
+
+---- GET https://rivian.com/api/gql/orders/graphql
+HTTP/2 400 
+content-type: application/json; charset=utf-8
+content-length: 406
+date: Sat, 26 Sep 2026 13:24:23 GMT
+x-content-type-options: nosniff
+x-powered-by: Express
+etag: W/"196-HUCJKwlQurC5GNaaJnH0d+HOnRw"
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-riv-env: prod_ue1
+x-xss-protection: 1; mode=block
+x-cache: Error from cloudfront
+via: 1.1 ce4138b0ceefec60212b0abdbe1f6396.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR5-P7
+x-amz-cf-id: UGFeOtKBiFc8uRMXqSb-3XFYpx-oHIMTycgY1LZu6Xfq63JG1fbprA==
+

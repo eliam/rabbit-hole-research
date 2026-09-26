@@ -1,0 +1,40 @@
+# API namespace sweep — paths disclosed by rivian.com/robots.txt and the
+# basecamp.rivian.com SPA bundle. All targets are explicitly in-scope hosts.
+# 2026-09-26T14:25:25+01:00
+
+---- GET https://rivian.com/auth/api/
+     308 | 9B | ct= | redir=https://rivian.com/auth/api
+     body: /auth/api
+
+---- GET https://rivian.com/account/api/
+     307 | 0B | ct= | redir=https://rivian.com/en-GB/account/api/
+     body: 
+
+---- GET https://rivian.com/demo-drive/api/
+     307 | 0B | ct= | redir=https://rivian.com/en-GB/demo-drive/api/
+     body: 
+
+---- GET https://rivian.com/experience/api/
+     307 | 0B | ct= | redir=https://rivian.com/en-GB/experience/api/
+     body: 
+
+---- GET https://rivian.com/quad/api/
+     308 | 9B | ct= | redir=https://rivian.com/quad/api
+     body: /quad/api
+
+---- GET https://rivian.com/root/api/
+     308 | 9B | ct= | redir=https://rivian.com/root/api
+     body: /root/api
+
+---- GET https://rivian.com/api/
+     307 | 0B | ct= | redir=https://rivian.com/en-GB/api/
+     body: 
+
+---- GET https://business.rivian.com/
+     302 | 138B | ct=text/html | redir=https://business.rivian.com/auth/?rd=https://business.rivian.com/
+     body: <html> <head><title>302 Found</title></head> <body> <center><h1>302 Found</h1></center> <hr><center>nginx</center> </body> </html> 
+
+---- GET https://basecamp.rivian.com/api/v2/
+     200 | 1151B | ct=text/html | redir=
+     body: <!doctype html><html lang="en"><head><script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.a
+

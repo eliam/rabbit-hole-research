@@ -1,0 +1,60 @@
+{
+  "_source": "rivianbugbounty.RoE lines 544-601 (asset table) and 654-666 (prose OOS list)",
+  "_captured": "2026-09-26",
+  "_note": "RoE is the only scope truth. AGENTS.md/README disagreed with the RoE on 8 hosts; the RoE wins.",
+  "program": {
+    "name": "Rivian Bug Bounty",
+    "platform": "Intigriti",
+    "visibility": "Public / Open",
+    "industry": "Manufacturing - Consumer",
+    "tiers": {"Tier 1": "150-5000 USD", "Tier 2": "100-3500 USD"}
+  },
+  "required_request_header": {"X-Intigriti-Username": "eliam"},
+  "published_rate_limit": null,
+  "in_scope": [
+    {"asset": "https://business.rivian.com/api", "type": "URL", "tier": "Tier 1", "host": "business.rivian.com", "path": "/api"},
+    {"asset": "https://rivian.com/api/gql/content/graphql", "type": "URL", "tier": "Tier 1", "host": "rivian.com", "path": "/api/gql/content/graphql"},
+    {"asset": "https://rivian.com/api/gql/gateway/graphql", "type": "URL", "tier": "Tier 1", "host": "rivian.com", "path": "/api/gql/gateway/graphql"},
+    {"asset": "https://rivian.com/api/gql/orders/graphql", "type": "URL", "tier": "Tier 1", "host": "rivian.com", "path": "/api/gql/orders/graphql"},
+    {"asset": "*.rivian.com", "type": "Wildcard", "tier": "Tier 2", "host": "*.rivian.com", "path": null, "caveat": "RoE attaches NO IP-range constraint. AGENTS.md asserts one that does not exist in the RoE -> held back pending clarification."},
+    {"asset": "1570215232", "type": "iOS", "tier": "Tier 2", "host": null, "path": null, "note": "Apple App Store track id, iOS app"},
+    {"asset": "basecamp.rivian.com", "type": "URL", "tier": "Tier 2", "host": "basecamp.rivian.com", "path": "/", "note": "RoE: partner portal, no credentials issued; scope of testing is authentication bypass"},
+    {"asset": "com.rivian.android.consumer", "type": "Android", "tier": "Tier 2", "host": null, "path": null, "note": "Play Store package name"},
+    {"asset": "rivian.com", "type": "URL", "tier": "Tier 2", "host": "rivian.com", "path": "/"}
+  ],
+  "out_of_scope_explicit": [
+    {"asset": "assets.rivian.com", "reason": "asset table column = 'Out of scope' (line 579)"},
+    {"asset": "careers.rivian.com", "reason": "asset table 'Out of scope' (line 580-581); also prose list line 659"},
+    {"asset": "demovehicles.rivian.com", "reason": "asset table 'Out of scope' (line 583-584); prose line 662"},
+    {"asset": "feedback.rivian.com", "reason": "asset table 'Out of scope' (line 586-587); prose line 665"},
+    {"asset": "internalshop.rivian.com", "reason": "asset table 'Out of scope' (line 589-590); prose line 666"},
+    {"asset": "media.rivian.com", "reason": "asset table 'Out of scope' (line 592-593); prose line 660"},
+    {"asset": "stories.rivian.com", "reason": "asset table 'Out of scope' (line 595-596); prose line 661"},
+    {"asset": "view.e.rivian.com", "reason": "asset table 'Out of scope' (line 598-599); prose line 664"},
+    {"asset": "cloud.e.rivian.com", "reason": "prose OOS list line 663 (third-party infrastructure)"}
+  ],
+  "out_of_scope_rules": [
+    "Third party infrastructure and redirects are out of scope and not eligible for bounty.",
+    "Temporary Out-of-Scope (root cause analysis in progress): Cache Poisoning DoS",
+    "DoS/DDoS attacks or brute force attacks (e.g. GQL alias overloading, GQL query depth)",
+    "Bypassing rate-limits or the non-existence of rate-limits (also NOT a valid finding)",
+    "Subdomain takeover, banner grabbing/version disclosure, missing security headers",
+    "Verbose messages/files/directory listings without disclosing sensitive information",
+    "CORS misconfiguration on non-sensitive endpoints, username enumeration, missing cookie flags",
+    "Reflected-XSS without demonstrable impact, self-XSS, CSRF with no/low impact, clickjacking without impact",
+    "API key disclosure without proven business impact; disclosed/misconfigured API keys (Maps, DD Monitoring, etc.)",
+    "Blind SSRF without proven business impact (pingbacks insufficient); HTTP request smuggling without proven impact",
+    "Host header injection without proven business impact; CSV injection; email spoofing/SPF/DMARC/DKIM",
+    "Reports that state software is out of date/vulnerable without a proof-of-concept",
+    "Vulnerabilities only in software that no longer receives security updates",
+    "Theoretical issues with no realistic exploit scenario",
+    "Mobile: no cert pinning, jailbreak/root detection, obfuscation, pasteboard/clipboard leakage, path disclosure in binary, etc.",
+    "Zero-days in in-scope assets within 14 days of a public patch may be reported but are usually not bounty-eligible"
+  ],
+  "no_ip_range_published": true,
+  "agreement_evidence": {
+    "safe_harbor": true,
+    "must_use": "@intigriti.me address when self-registering (FAQ lines 759-760)",
+    "registration_flow": "rivian.com/connect/tell-us-more -> rivian.com/auth/forgot -> Confirm Email -> set password -> OTP"
+  }
+}

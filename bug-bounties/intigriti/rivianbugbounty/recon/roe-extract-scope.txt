@@ -1,0 +1,186 @@
+# Raw RoE extract — Rules of engagement + Assets (verbatim, sed -n '483,601p')
+# Source: ../rivianbugbounty.RoE  (never edited)
+# Captured: 2026-09-26T14:23:38+01:00
+
+   Rules of engagement
+   @intigriti.me
+   Required
+   User agent
+   Not applicable
+   Automated tooling
+   Not applicable
+   Request header
+   X-Intigriti-Username: <Your Username>
+
+    By participating in this program, you agree to:
+
+     * Respect the Community Code of Conduct
+     * Respect the Intigriti Terms and Conditions
+     * Respect the terms at Rivian Cybersecurity Vulnerabilities
+     * You may not participate in this program if you are ordinarily resident
+       in, or located in, any country or region subject to comprehensive
+       sanctions, or if you are an individual or entity identified on any
+       applicable sanctions list (including those administered by OFAC, the
+       EU, the UN, or the UK's OFSI).
+     * Respect the scope of the program
+     * You are not currently, nor have you been an employee/under contract of
+       Rivian, or any of its subsidiaries, within 6 months prior to
+       submitting a report.
+     * You are neither a family nor household member of any individual who
+       currently or within the past 6 months meets or met the criteria listed
+       in the bullet point directly above
+     * Not discuss or disclose vulnerability information without prior
+       written consent (including, but not limited to, PoC's on YouTube and
+       Vimeo)
+     * Rivian participates in Safe Harbor
+
+    Safe Harbor
+
+   Rivian will not initiate legal action under the Computer Fraud and Abuse
+   Act (“CFAA”), Digital Millennium Copyright Act (“DMCA”), or similar law
+   against you nor request law enforcement to investigate you for activities
+   conducted in a manner consistent with the Program Rules, the Rivian Terms,
+   and the Intigriti Community Code of Conduct and Researcher Terms and
+   Conditions.
+
+   Validation times
+
+   We will validate all submissions within the below timelines, once your
+   submission has been verified by Intigriti.
+   Submissions validated outside of this may be awarded a $25 bonus.
+
+   Vulnerability Severity Time to validate 
+   Exceptional            2 Working days   
+   Critical               2 Working days   
+   High                   5 Working days   
+   Medium                 15 Working days  
+   Low                    15 Working days  
+
+   This remains at the discretion of Rivian to award.
+
+   Check our fix
+   We offer up to $50 bonus to verify a resolved issue for us (when
+   requested).
+   This remains at the discretion of Rivian to award.
+
+   Assets
+   tier
+   All
+   type
+   All
+   _____________________
+   https://business.rivian.com/api
+   URL
+   Tier 1
+   https://rivian.com/api/gql/content/graphql
+   URL
+   Tier 1
+   https://rivian.com/api/gql/gateway/graphql
+   URL
+   Tier 1
+   https://rivian.com/api/gql/orders/graphql
+   URL
+   Tier 1
+   *.rivian.com
+   Wildcard
+   Tier 2
+   1570215232
+   iOS
+   Tier 2
+   basecamp.rivian.com
+   URL
+   Tier 2
+   com.rivian.android.consumer
+   Android
+   Tier 2
+   rivian.com
+   URL
+   Tier 2
+   assets.rivian.com
+   URL
+   Out of scope
+   careers.rivian.com
+   URL
+   Out of scope
+   demovehicles.rivian.com
+   URL
+   Out of scope
+   feedback.rivian.com
+   URL
+   Out of scope
+   internalshop.rivian.com
+   URL
+   Out of scope
+   media.rivian.com
+   URL
+   Out of scope
+   stories.rivian.com
+   URL
+   Out of scope
+   view.e.rivian.com
+   URL
+   Out of scope
+   In scope
+
+# Raw RoE extract — Out of scope prose (verbatim, sed -n '654,713p')
+
+   Out of scope
+
+    Third party infrastructure and redirects are out of scope and not eligible
+    for bounty. Eg:
+
+     * careers.rivian.com
+     * media.rivian.com
+     * stories.rivian.com
+     * demovehicles.rivian.com
+     * cloud.e.rivian.com
+     * view.e.rivian.com
+     * feedback.rivian.com
+     * internalshop.rivian.com
+
+    Temporary Out-of-Scope - Vulnerabilities temporarily excluded while root
+    cause analysis is in progress:
+
+     * Cache Poisoning DoS
+
+    Application
+
+     * API key disclosure without proven business impact
+     * Wordpress usernames disclosure
+     * Captcha Bypass
+     * Pre-Auth Account takeover/OAuth squatting
+     * Reflected-XSS without demonstrable impact
+     * Self-XSS that can't be used to exploit other users
+     * Verbose messages/files/directory listings without disclosing any
+       sensitive information
+     * CORS misconfiguration on non-sensitive endpoints
+     * Missing cookie flags
+     * Username enumeration
+     * Missing security headers
+     * Cross-site Request Forgery with no or low impact
+     * Presence of autocomplete attribute on web forms
+     * Reverse tabnabbing
+     * Bypassing rate-limits or the non-existence of rate-limits.
+     * Best practices violations (password complexity, expiration, re-use,
+       etc.)
+     * Clickjacking without proven impact/unrealistic user interaction
+     * CSV Injection
+     * Sessions not being invalidated (logout, enabling 2FA, etc.)
+     * Tokens leaked to third parties
+     * Anything related to email spoofing, SPF, DMARC or DKIM
+     * Content injection without being able to modify the HTML
+     * Email bombing
+     * HTTP Request smuggling without any proven impact
+     * Homograph attacks
+     * XMLRPC enabled
+     * Banner grabbing/Version disclosure
+     * Not stripping metadata of files
+     * Same-site scripting
+     * Subdomain takeover
+     * Arbitrary file upload without proof of the existence of the uploaded
+       file
+     * Blind SSRF without proven business impact (pingbacks aren't
+       sufficient)
+     * Disclosed/misconfigured API keys (Maps, DD Monitoring, etc.)
+     * Host header injection without proven business impact
+

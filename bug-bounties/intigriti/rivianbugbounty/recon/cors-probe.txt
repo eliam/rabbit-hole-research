@@ -1,0 +1,30 @@
+# CORS behaviour probe — Tier-1 in-scope GraphQL endpoints.
+# RoE marks 'CORS misconfiguration on non-sensitive endpoints' out of scope, so the
+# only question that matters is whether an ORIGIN IS REFLECTED on an endpoint that
+# carries authenticated data. Read-only GETs with a forged Origin header.
+# 2026-09-26T14:25:57+01:00
+
+rivian.com/api/gql/gateway/graphql               Origin=https://evil.example             [HTTP 204] | <no ACAO> | access-control-allow-credentials: true
+rivian.com/api/gql/gateway/graphql               Origin=https://rivian.com.evil.example  [HTTP 204] | <no ACAO> | access-control-allow-credentials: true
+rivian.com/api/gql/gateway/graphql               Origin=null                             [HTTP 204] | <no ACAO> | access-control-allow-credentials: true
+
+rivian.com/api/gql/content/graphql               Origin=https://evil.example             [HTTP 400] | <no ACAO> | <no ACAC>
+rivian.com/api/gql/content/graphql               Origin=https://rivian.com.evil.example  [HTTP 400] | <no ACAO> | <no ACAC>
+rivian.com/api/gql/content/graphql               Origin=null                             [HTTP 400] | <no ACAO> | <no ACAC>
+
+rivian.com/api/gql/orders/graphql                Origin=https://evil.example             [HTTP 400] | <no ACAO> | <no ACAC>
+rivian.com/api/gql/orders/graphql                Origin=https://rivian.com.evil.example  [HTTP 400] | <no ACAO> | <no ACAC>
+rivian.com/api/gql/orders/graphql                Origin=null                             [HTTP 000] | <no ACAO> | <no ACAC>
+
+business.rivian.com/api                          Origin=https://evil.example             [HTTP 403] | <no ACAO> | <no ACAC>
+business.rivian.com/api                          Origin=https://rivian.com.evil.example  [HTTP 403] | <no ACAO> | <no ACAC>
+business.rivian.com/api                          Origin=null                             [HTTP 403] | <no ACAO> | <no ACAC>
+
+
+# ---- Positive control: a LEGITIMATE origin must elicit ACAO, otherwise the
+#      negative result above would be meaningless (i.e. ACAO would never appear).
+rivian.com/api/gql/gateway/graphql       Origin=https://rivian.com       [HTTP 204] | access-control-allow-origin: https://rivian.com | access-control-allow-credentials: true
+rivian.com/api/gql/gateway/graphql       Origin=https://www.rivian.com   [HTTP 204] |  | access-control-allow-credentials: true
+rivian.com/api/gql/orders/graphql        Origin=https://rivian.com       [HTTP 204] | access-control-allow-origin: https://rivian.com | access-control-allow-credentials: true
+rivian.com/api/gql/orders/graphql        Origin=https://www.rivian.com   [HTTP 400] |  | 
+HTTP/2 400 

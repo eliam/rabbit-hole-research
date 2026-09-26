@@ -1,0 +1,15 @@
+# High-value consumer operations — UNAUTHENTICATED. Operator's OWN rivianId only.
+# 2026-09-26T16:28:06+01:00
+
+### A. getPastInvoices -> queryByRivianId (home address / GPS / eSignLink)
+{"errors":[{"extensions":{"code":"GRAPHQL_VALIDATION_FAILED"},"locations":[{"line":1,"column":39}],"message":"Error in GraphQL validation"},{"extensions":{"code":"GRAPHQL_VALIDATION_FAILED"},"locations":[{"line":1,"column":39}],"message":"Error in GraphQL validation"}]} 
+### B. vehicleOrders (no args; pageInfo size 10000)
+{"errors":[{"extensions":{"code":"UNAUTHENTICATED"},"message":"User is unauthenticated"}]} 
+### C. mediaUploadUrl — anonymous presigned S3 upload URL?
+{"errors":[{"extensions":{"code":"UNAUTHENTICATED"},"message":"User is unauthenticated"}]} 
+### D. LogUploadURL with a CALLER-CONTROLLED domain (non-routable)
+{"errors":[{"extensions":{"code":"UNAUTHENTICATED"},"message":"User is unauthenticated"}]} 
+### A(fixed). getPastInvoices with the EXACT APK document (queryByRivianId)
+{"errors":[{"extensions":{"code":"GRAPHQL_VALIDATION_FAILED"},"locations":[{"line":1,"column":39}],"message":"Error in GraphQL validation"},{"extensions":{"code":"GRAPHQL_VALIDATION_FAILED"},"locations":[{"line":1,"column":39}],"message":"Error in GraphQL validation"}]} 
+### and on the OTHER candidate gateways for completeness
+{"errors":[{"message":"Cannot query field \"queryByRivianId\" on type \"Query\".","extensions":{"code":"GRAPHQL_VALIDATION_FAILED"}}]}{"errors":[{"message":"Not authenticated","extensions":{"code":"UNAUTHENTICATED"}}]}

@@ -1,0 +1,37 @@
+# CT wildcard HTTP fingerprint — 2026-09-26T14:31:50+01:00
+# Method: HEAD on https://<host>/, then GET (ranged) only where HEAD is rejected.
+# Self-imposed 1 req/s (recon/probe-http.sh). Required header on every request.
+host	http	ct	server	via	location	note
+api.dev.rivian.com	403	text/html	CloudFront	1.1	-	GET(ranged)
+api.rivian.com	404	text/html	1.1	-	-	HEAD
+api.stage.rivian.com	404	text/html	1.1	-	-	HEAD
+basecamp.rivian.com	200	text/html	AmazonS3	1.1	-	HEAD
+ccc.api.dev.rivian.com	000	-	-	-	-	GET(ranged)
+cid.rivian.com	000	-	-	-	-	GET(ranged)
+controller.ue1.prod.rivian.com	000	-	-	-	-	GET(ranged)
+controller.uw2.prod.rivian.com	000	-	-	-	-	GET(ranged)
+dashboard.rivian.com	000	-	-	-	-	GET(ranged)
+downloads.rivian.com	307	CloudFront	1.1	/en-GB/	-	HEAD
+em.rivian.com	000	-	-	-	-	GET(ranged)
+events.rivian.com	403	text/html;charset=utf-8	DataDome	1.1	-	GET(ranged)
+gogoogle.rivian.com	200	text/html	AmazonS3	1.1	-	HEAD
+googleguide.rivian.com	200	text/html	AmazonS3	1.1	-	HEAD
+go.rivian.com	404	text/html;	1.1	-	-	HEAD
+granite.p.rivian.com	000	-	-	-	-	GET(ranged)
+images.rivian.com	307	CloudFront	1.1	/en-GB/	-	HEAD
+investors.rivian.com	301	text/html	awselb/2.0	https://rivian.com:443/investors	-	HEAD
+limestone.p.rivian.com	000	-	-	-	-	GET(ranged)
+link.rivian.com	404	text/html	msys-et	1.1	-	HEAD
+offlease.rivian.com	302	text/html	/landing	-	-	GET(ranged)
+preorders.rivian.com	302	text/html	1.1	https://rivian.com/configurator	-	HEAD
+prism.rivian.com	403	text/html	CloudFront	1.1	-	GET(ranged)
+stage.rivian.com	403	text/html	CloudFront	1.1	-	GET(ranged)
+supplierslogin.rivian.com	301	text/html	awselb/2.0	https://basecamp.rivian.com:443/	-	HEAD
+things.api.rivian.com	404	application/json	-	-	-	HEAD
+things.dev.rivian.com	000	-	-	-	-	GET(ranged)
+things.stage.rivian.com	404	application/json	-	-	-	HEAD
+tour.rivian.com	302	text/html	1.1	https://rivian.com/careers	-	HEAD
+useast.guestlogin.rivian.com	000	-	-	-	-	GET(ranged)
+uswest.guestlogin.rivian.com	000	-	-	-	-	GET(ranged)
+videos.rivian.com	307	CloudFront	1.1	/en-GB/	-	HEAD
+www.rivian.com	308	text/html	1.1	https://rivian.com:443	-	HEAD

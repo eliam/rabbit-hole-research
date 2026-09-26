@@ -1,0 +1,94 @@
+# Business portal publicly-available auth endpoints — RoE Tier-1 primary scope
+# ("primary testing for this domain is the authentication/authorization of the
+#  publicly available endpoints"). Read-only GETs.
+# 2026-09-26T14:52:31+01:00
+
+############ GET https://business.rivian.com/token
+HTTP/2 302 
+content-type: text/html
+content-length: 138
+location: https://business.rivian.com/auth/?rd=https://business.rivian.com/token
+date: Sat, 26 Sep 2026 13:52:32 GMT
+set-cookie: session=deleted; Max-Age=0; Domain=.goriv.co
+set-cookie: session_prod=deleted; Max-Age=0; Domain=.goriv.co
+x-riv-env: prod_ue1
+x-cache: Miss from cloudfront
+via: 1.1 b7a88f97a577567247fb0f32bed7f1c6.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR86-P3
+x-amz-cf-id: rgkUjcizu7IgtBmLSWEctWKQvtXCNEHB-e15e6pphPUspTQgquNA_Q==
+
+[HTTP 302 | 138B | ct=text/html]
+     body: <html> <head><title>302 Found</title></head> <body> <center><h1>302 Found</h1></center> <hr><center>nginx</center> </body> </html> 
+
+############ GET https://business.rivian.com/logout
+HTTP/2 302 
+content-type: text/html
+content-length: 138
+location: https://business.rivian.com/auth/?rd=https://business.rivian.com/logout
+date: Sat, 26 Sep 2026 13:52:32 GMT
+set-cookie: session=deleted; Max-Age=0; Domain=.goriv.co
+set-cookie: session_prod=deleted; Max-Age=0; Domain=.goriv.co
+x-riv-env: prod_ue1
+x-cache: Miss from cloudfront
+via: 1.1 fd50884b2bfe902418b0eda3149a88d0.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR86-P3
+x-amz-cf-id: JyM46etOq71f38wTJJTe3qtNPJW_xgnhc4-3PV-X0QybsoGV67s3KA==
+
+[HTTP 302 | 138B | ct=text/html]
+     body: <html> <head><title>302 Found</title></head> <body> <center><h1>302 Found</h1></center> <hr><center>nginx</center> </body> </html> 
+
+############ GET https://business.rivian.com/graphql
+HTTP/2 400 
+content-type: application/json; charset=utf-8
+content-length: 45
+date: Sat, 26 Sep 2026 13:52:34 GMT
+x-riv-env: prod_ue1
+cache-control: no-store, no-cache, must-revalidate
+vary: Accept-Encoding
+strict-transport-security: max-age=31536000; includeSubDomains
+x-cache: Error from cloudfront
+via: 1.1 fa71410d69fd679c04a6efb1d964d0ba.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR86-P3
+x-amz-cf-id: am03kI6ZQxv_2vYdPcaf5QuJEhoZRVQ46MuOwsMdK0gQ3FpbpO0DIg==
+
+[HTTP 400 | 45B | ct=application/json; charset=utf-8]
+     body: {"errors":[{"message":"empty request body"}]}
+
+############ GET https://business.rivian.com/api/v2/
+HTTP/2 404 
+content-type: text/plain; charset=utf-8
+content-length: 19
+date: Sat, 26 Sep 2026 13:52:35 GMT
+x-xss-protection: 1; mode=block
+x-content-type-options: nosniff
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-riv-env: prod_ue1
+x-frame-options: SAMEORIGIN
+x-cache: Error from cloudfront
+via: 1.1 6a24b0b0f61768774ff665d5db6543ea.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR86-P3
+x-amz-cf-id: TlZIqpZJCknzSuLp3ZzOlblhZei1wr0W2Ee-Ed1AWu89WMroUi8NWw==
+
+[HTTP 404 | 19B | ct=text/plain; charset=utf-8]
+     body: 404 page not found 
+
+############ GET https://business.rivian.com/auth
+HTTP/2 200 
+content-type: text/html
+content-length: 400
+date: Sat, 26 Sep 2026 13:52:36 GMT
+x-riv-env: prod_ue1
+vary: Accept-Encoding
+set-cookie: route=1790430757.482.331.436287|4b7f811646d008cf7975f4180fc8cebf; Expires=Mon, 28-Sep-26 13:52:36 GMT; Max-Age=172800; Path=/; Secure; HttpOnly
+last-modified: Tue, 22 Sep 2026 00:13:20 GMT
+etag: "6ab1c820-190"
+accept-ranges: bytes
+strict-transport-security: max-age=31536000; includeSubDomains
+x-cache: Miss from cloudfront
+via: 1.1 99366cb4e8c2a2665d8e2d26f004a254.cloudfront.net (CloudFront)
+x-amz-cf-pop: LHR86-P3
+x-amz-cf-id: AbwYLJJ-ZtsYxvDn-ho1wHqm10i0_vZ3ca68LFxdMHluQtYEJp3Htw==
+
+[HTTP 200 | 400B | ct=text/html]
+     body: <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Login</title> <script type="module" crossorigin src="/aut
+

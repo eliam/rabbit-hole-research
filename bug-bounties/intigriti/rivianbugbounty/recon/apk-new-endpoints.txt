@@ -1,0 +1,37 @@
+# New in-scope endpoints recovered from the APK DEX — 2026-09-26T15:10:40+01:00
+# Extraction: unzip -p base.apk classes*.dex | strings -n 8 | grep -oE 'https?://...'
+# 145 distinct URLs in the DEX. In-scope discoveries below.
+
+## NEW in-scope GraphQL endpoints (never found by path probing)
+  https://api.rivian.com/graphql            -> Cosmo Router, live
+  https://rivian.com/api/vs/gql-gateway     -> Cosmo Router, live ('vs' = vehicle service?)
+  wss://api.rivian.com/gql-consumer-subscriptions/graphql  -> GraphQL-over-WS subscriptions
+
+## Auth-adjacent frontend routes
+  https://rivian.com/account/handoff  --308--> /en-GB/auth/handoff  (200, /auth app)
+    sets: _csrfSecret, _csrfToken (double-submit CSRF), riv-selected-locale,
+          riv-ld-context-v3 (base64 JSON: LaunchDarkly-style flag context)
+
+## OUT OF SCOPE - new domain, DO NOT TOUCH
+  https://api.rivianservices.com/tiling/mobile_style.json  (+3 variants)
+    'rivianservices.com' is NOT rivian.com nor *.rivian.com -> outside the RoE.
+    Same class of trap as goriv.co.
+
+## Referenced by the app but RoE carve-outs (do not test)
+  https://media.rivian.com/video/upload/...   (media.rivian.com = OOS carve-out)
+  https://gearshop.rivian.com                 (third-party Shopify = OOS)
+
+## Third-party / vendor endpoints seen (out of scope, context only)
+  API:  api.stripe.com, hooks.stripe.com, m.stripe.com, q.stripe.com,
+        errors.stripe.com, merchant-ui-api.stripe.com, b.stripecdn.com
+  Data: assets.ctfassets.net/2md5qhoeajym   (Contentful space)
+  Push: firebaseinstallations / firebaseremoteconfig / firebase-settings.crashlytics
+  Attestation: Play Integrity API; no evidence the app ENFORCES the verdict
+  IoT:  data.iot.<region>.amazonaws.com  (app talks MQTT-over-WSS directly to AWS IoT)
+        -> the Rivian endpoint that ISSUES those credentials is the thing to test
+
+## WebRTC / live streaming (see README finding 21)
+  android/cloud/webrtc/: GearGuardLiveStreamingService, KinesisVideoPeerConnection,
+    SignalingServiceWebSocketClient, RtcWebSocketClient, WebRtcManager,
+    MediaDownloadManager, StorageManager, DownloadSessionHandler
+  => AWS Kinesis Video Streams + WebRTC + Tyrus WS signalling

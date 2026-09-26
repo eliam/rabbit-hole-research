@@ -1,0 +1,18 @@
+# #################### SUPERSEDED — DO NOT USE ####################
+# This first attempt used GUESSED variables (categorySlug 'vehicle-registration',
+# entryId '<slug>'), so its baseline returned empty/null. A broken baseline cannot
+# support a conclusion about the preview flag.
+# The app actually uses categorySlug 'registration-and-fees' and entryId
+# '1WFBjmjn2IHLT07sXQ9USO' (a Contentful entry ID) and NEVER sends 'preview'.
+# See contentful-preview-retest.txt for the valid, positively-controlled test.
+# ##################################################################
+
+# Contentful '' flag probe — operations recovered from the authenticated capture.
+# Hypothesis: if preview=true is honoured unauthenticated, UNPUBLISHED CMS content is readable.
+# 2026-09-26T15:41:22+01:00. Read-only queries, one per request.
+
+### RelatedArticles — preview FALSE vs TRUE (same category)
+
+### EgFormSection — preview FALSE vs TRUE
+
+### the richer getUserDetails variant (phone + address) — UNAUTHENTICATED

@@ -1,0 +1,48 @@
+# /mobile/static/ — public unauthenticated asset namespace (S3 origin).
+# NOT a wordlist: only the directory prefixes implied by the APK's own asset URL,
+# plus the APK's literal path. No filename guessing.
+# 2026-09-26T15:02:54+01:00
+
+############ GET /mobile/static/
+     HTTP 200|0|application/x-directory; charset=UTF-8
+       content-type: application/x-directory; charset=UTF-8
+       content-length: 0
+       last-modified: Fri, 07 May 2021 16:23:50 GMT
+       server: AmazonS3
+       etag: "d41d8cd98f00b204e9800998ecf8427e"
+       x-cache: Hit from cloudfront
+       via: 1.1 0e43ccfdd40f9aa31e3be7956328b5ea.cloudfront.net (CloudFront)
+     body: 
+
+############ GET /mobile/static/whatsnew/
+     HTTP 403|111|application/xml
+       content-type: application/xml
+       server: AmazonS3
+       x-cache: Error from cloudfront
+       via: 1.1 01c1372965efe3974af81a7941e07b0c.cloudfront.net (CloudFront)
+     body: <?xml version="1.0" encoding="UTF-8"?> <Error><Code>AccessDenied</Code><Message>Access Denied</Message></Error>
+
+############ GET /mobile/static/whatsnew/722e16fd1249acf9/
+     HTTP 403|111|application/xml
+       content-type: application/xml
+       server: AmazonS3
+       x-cache: Error from cloudfront
+       via: 1.1 e457bcb869da0eddc75f07b0f42f8e3e.cloudfront.net (CloudFront)
+     body: <?xml version="1.0" encoding="UTF-8"?> <Error><Code>AccessDenied</Code><Message>Access Denied</Message></Error>
+
+############ GET /mobile/static/whatsnew/722e16fd1249acf9
+     HTTP 403|111|application/xml
+       content-type: application/xml
+       server: AmazonS3
+       x-cache: Error from cloudfront
+       via: 1.1 fea4ab2f80aebed322128ff318fb41a4.cloudfront.net (CloudFront)
+     body: <?xml version="1.0" encoding="UTF-8"?> <Error><Code>AccessDenied</Code><Message>Access Denied</Message></Error>
+
+############ GET /en-GB/download
+     HTTP 307|6|
+       server: CloudFront
+       location: /en-GB
+       via: 1.1 bea62851e0f3994500f933bd51837f52.cloudfront.net (CloudFront)
+       x-cache: Miss from cloudfront
+     body: /en-GB
+

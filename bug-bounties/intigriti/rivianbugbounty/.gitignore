@@ -1,0 +1,21 @@
+# APK / app-analysis artifacts — DO NOT COMMIT.
+#
+# `android/` holds ~529 MB of APK splits plus `rivian-secrets.txt`, a raw
+# secrets-scanner dump. Even though that dump turned out to be false positives
+# (see recon/apk-secrets-triage.txt), raw scanner output must never be committed:
+# scanner output is unverified by definition, and a real credential would land in
+# git history permanently.
+#
+# Precedent: ../axelspringerse/creds/.gitignore
+android/
+
+# Catch any stray key material / scanner output anywhere under this engagement.
+*.keystore
+*.jks
+*.p12
+*.pfx
+*-secrets.txt
+*-secrets.json
+
+# Authenticated-testing session material (see creds/.gitignore).
+creds/

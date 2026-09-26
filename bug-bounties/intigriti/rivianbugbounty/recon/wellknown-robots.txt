@@ -1,0 +1,65 @@
+# robots.txt / sitemap / well-known sweep — in-scope hosts only
+# 2026-09-26T14:25:02+01:00
+
+---- https://rivian.com/robots.txt  ->  200 375B text/plain; charset=UTF-8
+      user-agent: *
+      allow: /
+      disallow: /404
+      disallow: /api/
+      disallow: /experience/r1t
+      disallow: /experience/r1s
+      disallow: /trip-visualizer
+      disallow: /auth/api/
+      disallow: /account/api/
+      disallow: /demo-drive/api/
+      disallow: /experience/api/
+      disallow: /quad/api/
+      disallow: /root/api/
+      sitemap: https://rivian.com/sitemap.xml
+      sitemap: https://rivian.com/root/sitemap.xml
+      host: rivian.com
+---- https://rivian.com/sitemap.xml  ->  200 1120976B text/xml
+      <?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://rivian.com/</loc><changefreq>daily</changefreq><priority>1</priority><xhtml:link rel="alternate" hreflang="x-default" href="https://rivian.com/" /><xhtml:link rel="alternate" hreflang="en-US" href="https://rivian.com/" /><xhtml:link rel="alt
+---- https://rivian.com/.well-known/security.txt  ->  307 4B 
+      /404
+---- https://rivian.com/security.txt  ->  404 52732B text/html; charset=utf-8
+      <!DOCTYPE html><html lang="en-US"><head><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="description" content="Rivian is an electric vehicle manufacturer on a mission to keep the world adventurous forever."/><meta name="keywords" content="Rivian, Rivian R1T, electric pickup truck, electric SUV, Rivian R1S, R1S, R1T, automotive, electric vehicle, mo
+---- https://rivian.com/.well-known/change-password  ->  307 4B 
+      /404
+---- https://basecamp.rivian.com/robots.txt  ->  200 67B text/plain
+      # https://www.robotstxt.org/robotstxt.html
+      User-agent: *
+      Disallow:
+
+---- https://basecamp.rivian.com/manifest.json  ->  200 484B application/json
+      {
+        "short_name": "Basecamp",
+        "name": "Basecamp - Rivian",
+        "icons": [
+          {
+            "src": "Rivian.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+          },
+          {
+            "src": "logo192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+          },
+          {
+            "src": "logo512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+          }
+        ],
+        "start_url": "/",
+        "di
+---- https://business.rivian.com/robots.txt  ->  302 138B text/html
+      <html>
+      <head><title>302 Found</title></head>
+      <body>
+      <center><h1>302 Found</h1></center>
+      <hr><center>nginx</center>
+      </body>
+      </html>
+

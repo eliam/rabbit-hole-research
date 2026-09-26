@@ -1,0 +1,15 @@
+# Unauthenticated WebSocket probe — wss://api.rivian.com/gql-consumer-subscriptions/graphql
+# Source: APK DEX string. api.rivian.com is in scope via the RoE *.rivian.com wildcard.
+# Method: ONE connection per subprotocol, connection_init with EMPTY payload (no auth),
+#         then a single benign read-only `subscription { __typename }`. No load, no loops.
+# Required header sent on the handshake.
+
+===== subprotocol='graphql-transport-ws' =====
+  handshake OK -> subprotocol negotiated: 'graphql-transport-ws'
+  FAILED: ConnectionClosedError: received 4400 (private use) Bad request; then sent 4400 (private use) Bad request
+
+===== subprotocol='graphql-ws' =====
+  FAILED: InvalidStatus: server rejected WebSocket connection: HTTP 426
+
+===== subprotocol=None =====
+  FAILED: InvalidStatus: server rejected WebSocket connection: HTTP 426

@@ -1,0 +1,30 @@
+# login.basecamp.rivian.com — NEW host found in the auth capture (in scope: *.rivian.com).
+# RoE scope for basecamp is explicitly 'authentication bypass'. Read-only.
+# Off-domain redirect targets are OBSERVED in Location, NEVER followed.
+# 2026-09-26T15:30:08+01:00
+
+############ GET login.basecamp.rivian.com/
+  HTTP 200 518B ct=text/html
+    content-type: text/html
+    server: AmazonS3
+    title: <title>Basecamp Sign In
+
+############ GET login.basecamp.rivian.com/?returnUrl=https%3A%2F%2Fexample.com%2F
+  HTTP 200 518B ct=text/html
+    content-type: text/html
+    server: AmazonS3
+    title: <title>Basecamp Sign In
+
+############ GET login.basecamp.rivian.com/?returnUrl=%2F%2Fexample.com
+  HTTP 200 518B ct=text/html
+    content-type: text/html
+    server: AmazonS3
+    title: <title>Basecamp Sign In
+
+############ GET login.basecamp.rivian.com/?returnUrl=https%3A%2F%2Fbasecamp.rivian.com%2F
+  HTTP 200 518B ct=text/html
+    content-type: text/html
+    server: AmazonS3
+    title: <title>Basecamp Sign In
+
+  bundle: 200 428334B ct=text/javascript

@@ -1,0 +1,20 @@
+# APK paths — followed into the /en-GB/ locale prefix (rivian.com, in scope).
+# 2026-09-26T15:02:27+01:00  — Location captured, NOT followed.
+
+PATH                                                       CODE  BYTES      CONTENT-TYPE           LOCATION / <title>
+/en-GB/mobile/signin                                       307   15                                /en-GB/download
+/en-GB/mobile/CustomerService                              307   15                                /en-GB/download
+/en-GB/mobile/VehicleService/appointments                  307   15                                /en-GB/download
+/en-GB/mobile/VehicleService/appointmentStatus?step=2      307   22                                /en-GB/download?step=2
+/en-GB/mobile/VehicleService/asyncMessages                 307   15                                /en-GB/download
+/en-GB/mobile/vehicle-totp                                 307   15                                /en-GB/download
+/en-GB/mobile/vehicle-security                             307   15                                /en-GB/download
+/en-GB/mobile/security-and-access                          307   15                                /en-GB/download
+/en-GB/mobile/upgradeToDigitalKey                          307   15                                /en-GB/download
+/en-GB/mobile/keyfob2-activation                           307   15                                /en-GB/download
+/en-GB/mobile/upgrades                                     307   15                                /en-GB/download
+/en-GB/mobile/rivian-assistant/google/enroll               307   15                                /en-GB/download
+/en-GB/mobile/docs/guides/tire-change                      307   44                                /en-GB/support/article/r1-tire-service-guide
+/en-GB/support/digital-key-migration                       307   6                                 /en-GB
+/mobile/static/                                            200   0          application/x-directory 
+/api/gql/content/graphql                                   400   429        application/json       

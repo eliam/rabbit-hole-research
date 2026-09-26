@@ -1,0 +1,1 @@
+{"errors":[{"message":"GraphQL introspection is disabled by Cosmo Router, but the query contained __schema or __type. To enable introspection, set introspection_enabled: true in the Router configuration"}]}

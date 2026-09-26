@@ -1,0 +1,35 @@
+# contactAttrCapture — unauth CRM-write probe (operator-authorised).
+# PAYLOAD IS DELIBERATELY NON-ROUTABLE: .invalid TLD (cannot resolve) + 555-0100
+# (reserved fictional number). No third party can be contacted by this submission.
+# 2026-09-26T15:47:28+01:00
+
+### POST /api/gql/content/graphql — UNAUTHENTICATED, no cookies, no csrf-token
+  HTTP 200 222B ct=application/json; charset=utf-8
+  {"errors":[{"message":"ERROR_UNABLE_TO_CREATE_IDMS_USER","path":["contactAttrCapture"],"extensions":{"serviceName":"rivianID","code":"DOWNSTREAM_SERVICE_ERROR"},"name":"GraphQL Error"}],"data":{"contactAttrCapture":null}} 
+
+### repeat identical submission (idempotency / isNewContact flip?)
+  HTTP 200 222B
+  {"errors":[{"message":"ERROR_UNABLE_TO_CREATE_IDMS_USER","path":["contactAttrCapture"],"extensions":{"serviceName":"rivianID","code":"DOWNSTREAM_SERVICE_ERROR"},"name":"GraphQL Error"}],"data":{"contactAttrCapture":null}} 
+
+### Faithful replication: mint a CSRF token (unauth, allowed) then use it as the app does
+--- step 1: mint token via orders.createCsrfToken (UNAUTHENTICATED)
+  token minted: len=134 (value not recorded)
+
+--- step 2: contactAttrCapture, format-valid but NON-ROUTABLE address (example.com is IANA-reserved)
+--- step 3: same, WITHOUT token, for contrast
+
+# Interpretation notes:
+#  - .invalid may fail downstream FORMAT validation; example.com is format-valid but reserved.
+#  - If a format-valid, non-routable address SUCCEEDS unauthenticated, the endpoint is an
+#    anonymous CRM/IDMS write primitive with marketing + SMS consent flags attached.
+
+### Discriminating test: does it CREATE a record? fresh unique non-routable address
+
+# If the FIRST call reports isNewContact:true for a never-seen address, the endpoint
+# CREATES a record anonymously. A second call for the same address should flip to false.
+
+### Full-body characterisation (same address twice, then a fresh token)
+  (fresh token minted, len=134)
+
+# What matters: the ONLY difference between the first two calls is the CSRF token,
+# and the token is mintable by any unauthenticated caller (orders.createCsrfToken).

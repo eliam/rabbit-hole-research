@@ -1,0 +1,29 @@
+# GET-based execution vs Apollo CSRF-prevention — differential test.
+# Question: does 'apollo-require-preflight' actually cover GET, or only simple POST?
+# A GET that executes = cross-site reachable (simple request, no CORS preflight).
+# 2026-09-26T14:56:10+01:00
+
+############## gateway
+---- GET  ?query={__typename}
+     [HTTP 200 | 32B ] {"data":{"__typename":"Query"}} 
+---- GET  ?extensions={<APQ>}
+     [HTTP 200 | 100B ] {"errors":[{"extensions":{"code":"PERSISTED_QUERY_NOT_FOUND"},"message":"PersistedQueryNotFound"}]} 
+---- POST { me { id } }   (field-existence oracle)
+     [HTTP 400 | 91B ] {"errors":[{"extensions":{"code":"UNAUTHENTICATED"},"message":"User is unauthenticated"}]} 
+
+############## content
+---- GET  ?query={__typename}
+     [HTTP 400 | 429B ] {"errors":[{"message":"This operation has been blocked as a potential Cross-Site Request Forgery (CSRF). Please either specify a 'content-type' header (with a type that is not one of application/x-www
+---- GET  ?extensions={<APQ>}
+     [HTTP 400 | 429B ] {"errors":[{"message":"This operation has been blocked as a potential Cross-Site Request Forgery (CSRF). Please either specify a 'content-type' header (with a type that is not one of application/x-www
+---- POST { me { id } }   (field-existence oracle)
+     [HTTP 200 | 200B ] {"errors":[{"message":"User must be authenticated","path":["me"],"extensions":{"code":"UNAUTHORIZED","reason":"UNAUTHENTICATED","serviceName":"scheduler"},"name":"GraphQL Error"}],"data":{"me":null}} 
+
+############## orders
+---- GET  ?query={__typename}
+     [HTTP 400 | 406B ] {"errors":[{"message":"This operation has been blocked as a potential Cross-Site Request Forgery (CSRF). Please either specify a 'content-type' header (with a type that is not one of application/x-www
+---- GET  ?extensions={<APQ>}
+     [HTTP 400 | 406B ] {"errors":[{"message":"This operation has been blocked as a potential Cross-Site Request Forgery (CSRF). Please either specify a 'content-type' header (with a type that is not one of application/x-www
+---- POST { me { id } }   (field-existence oracle)
+     [HTTP 400 | 158B ] {"errors":[{"message":"Cannot query field \"me\" on type \"Query\".","locations":[{"line":1,"column":3}],"extensions":{"code":"GRAPHQL_VALIDATION_FAILED"}}]} 
+

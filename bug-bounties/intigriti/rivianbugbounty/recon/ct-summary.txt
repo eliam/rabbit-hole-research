@@ -1,0 +1,42 @@
+# *.rivian.com wildcard enumeration — summary and boundary rules
+# 2026-09-26T14:35:00+01:00
+#
+# AUTHORITY: user decision, 2026-09-26 — the RoE lists *.rivian.com as an in-scope
+# Tier-2 wildcard with NO IP-range constraint, so the wildcard is enumerated.
+#
+# BOUNDARY RULES APPLIED (all conservative):
+#  1. Only hostnames matching \.rivian\.com$ . goriv.co never resolved, never touched.
+#  2. The 8 RoE asset-table carve-outs + cloud.e.rivian.com removed.
+#  3. Hosts whose CNAME proves a third-party SaaS platform removed
+#     (RoE: 'Third party infrastructure and redirects are out of scope').
+#  4. Hosts that are the www-/staging- counterpart of a named carve-out removed.
+#  5. No path wordlisting / directory brute force anywhere.
+
+## Counts
+   CT records (crt.sh, 1 query)                : 1864
+   unique hostnames (wildcards stripped)       : 121
+   of which *.rivian.com                        : 120
+   removed as RoE carve-out                     : 8  (+cloud.e = 9)
+   removed as www-/staging- carve-out kin      : 1  (www.careers.rivian.com)
+   removed as proven third-party SaaS          : 10 (+link.rivian.com = 11)
+   in-scope candidates probed                   : 33
+   live (DNS + HTTP answered)                   : 22
+   DNS-only, no listener (timeout/refused)      : 11
+
+## 11 hosts that resolve but do NOT answer on 443 (internal-only, leaked to public DNS)
+#    controller.ue1.prod.rivian.com / controller.uw2.prod.rivian.com  (public EC2 IPs)
+#    cid.rivian.com (44.229.137.88)  granite.p.rivian.com  limestone.p.rivian.com
+#    ccc.api.dev.rivian.com  dashboard.rivian.com  em.rivian.com  things.dev.rivian.com
+#    useast.guestlogin.rivian.com / uswest.guestlogin.rivian.com -> 100.64.x (RFC6598 CGNAT)
+
+## Third-party SaaS — PROVEN by CNAME banner, therefore OUT OF SCOPE
+click.e.rivian.com	13.111.71.11	click.virt.s11.exacttarget.com.
+email.comms.rivian.com	34.102.239.211	mailgun.org.
+gearshop.rivian.com	23.227.38.74	shops.myshopify.com.
+gearshop.stage.rivian.com	23.227.38.74	shops.myshopify.com.
+image.e.rivian.com	92.123.128.175,92.123.128.150	akamai-san102.exacttarget.com.edgekey.net.
+landing.rivian.com	172.64.149.72,104.18.38.184	030e2fcc-2038-482f-b5b7-72a08fabf33f.us07.ldpgs.com.
+rusil-test.rivian.com	142.250.129.121	ghs.googlehosted.com.
+smetrics.rivian.com	66.235.152.163,66.235.152.111,66.235.152.212	0j3snbzwpr.data.adobedc.net.
+www.careers.rivian.com	3.226.73.193,35.153.85.206,34.233.4.33	www.careers.rivian.com.career.page.
+#    link.rivian.com  -> HTTP server banner 'msys-et' = Message Systems / SparkPost (email infra)

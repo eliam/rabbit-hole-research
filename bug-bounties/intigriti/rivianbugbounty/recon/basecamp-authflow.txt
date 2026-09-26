@@ -1,0 +1,9 @@
+# Basecamp auth flow — login.basecamp.rivian.com / commauth.basecamp.rivian.com (IN SCOPE).
+# 2026-09-26T15:31:36+01:00. Read-only OIDC discovery + authorize probe. No credential submitted yet.
+
+### OIDC discovery on the in-scope custom auth domain
+HTTP 403 42B ct=application/json
+    content-type: application/json
+    message: Missing Authentication Token
+### GET /oauth2/authorize (is this client_id valid?)
+HTTP 403 42B ct=application/json
