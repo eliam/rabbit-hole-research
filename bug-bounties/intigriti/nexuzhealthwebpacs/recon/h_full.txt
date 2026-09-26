@@ -1,0 +1,18 @@
+HTTP/2 302 
+date: Sat, 26 Sep 2026 12:11:31 GMT
+content-type: text/html; charset=UTF-8
+location: https://idp-contact.nexuzhealth.be/simplesaml/module.php/uzContact/uzContact.php?AuthState=_3ac8b3eb59688caeeb62a10a6b2cb17af1db304320%3Ahttps%3A%2F%2Fidp-contact.nexuzhealth.be%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fmedia.nexuzhealth.be%252Fpatient%26RelayState%3Dhttps%253A%252F%252Fmedia.nexuzhealth.be%252Fpatient%252F%26cookieTime%3D1790424691
+server: cloudflare
+set-cookie: SimpleSAMLSessionID=3e36ddfb3c5c8a485874eecbf081330a; path=/; HttpOnly
+set-cookie: f0a6f1e1695e123b3b91b18d68b8a9f2=3ec562a63b67c2107376e8e090d7215e; path=/; HttpOnly
+pragma: no-cache
+cache-control: no-cache, must-revalidate
+strict-transport-security: max-age=15552000
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com;       style-src 'self' 'unsafe-inline';       img-src 'self';       font-src 'self';       frame-src 'self';       frame-ancestors 'self' *.uz.kuleuven.ac.be *.nexuzhealth.be *.vznkul.be;       connect-src 'self';       default-src 'none'
+cf-cache-status: DYNAMIC
+cf-ray: a4122bf32eecf477-LHR
+alt-svc: h3=":443"; ma=86400
+

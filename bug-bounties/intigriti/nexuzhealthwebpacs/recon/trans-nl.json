@@ -1,0 +1,179 @@
+{
+	"title": "Nexuzhealth",
+	"login": "aanmelden",
+	"rememberme": "onthoud mij (30 dagen)",
+	"cookies": "We gebruiken enkel noodzakelijke cookies om deze website goed te doen functioneren. Er wordt geen gebruik gemaakt van andere cookies zoals functionele of analysecookies.",
+	"policy": "https://nexuzhealth.com/nl/cookieverklaring",
+	"my": {
+		"url": "https://nexuzhealth.com/nl/patient",
+		"welcome": "Welkom! Log in bij Mynexuzhealth om verder te gaan."
+	},
+	"pro": {
+		"url": "https://nexuzhealth.com/nl/zorgverstrekker",
+		"welcome": "Welkom! Log in bij Nexuzhealth Consult om verder te gaan."
+	},
+	"eid": {
+		"title": "Aanmelden met mijn elektronische identiteitskaart",
+		"logo": "img/logo-eid.png",
+		"info": "Plaats uw identiteitskaart in uw kaartlezer en volg de instructies op het scherm",
+		"links": [
+			{
+				"anchor": "Meer uitleg over de elektronische identiteitskaart",
+				"url": "https://eid.belgium.be/nl"
+			}
+		]
+	},
+	"ehealth": {
+		"title": "Aanmelden met mijn eHealth profiel",
+		"logo": "img/logo-ehealth.png",
+		"info": "Aanmelden met uw elektronische identiteitskaart of uw burgertoken",
+		"links": [
+						{
+				"anchor": "Het eHealth platform",
+				"url": "http://www.ehealth.fgov.be"
+			},
+			{
+				"anchor": "Meer uitleg over de elektronische identiteitskaart",
+				"url": "https://eid.belgium.be/nl"
+			}
+		]
+	},
+	"csam": {
+		"title": "Aanmelden via CSAM",
+		"logo": "img/logo-csam.png",
+		"info": "Aanmelden met uw elektronische identiteitskaart, een unieke code gegenereerd door een mobiele applicatie of itsme",
+		"links": [
+			{
+				"anchor": "Meer uitleg over CSAM",
+				"url": "https://www.csam.be/nl/index.html"
+			},
+			{
+				"anchor": "Meer uitleg over de elektronische identiteitskaart",
+				"url": "https://eid.belgium.be/nl"
+			},
+			{
+				"anchor": "Meer uitleg over itsme",
+				"url": "https://www.itsme.be/nl"
+			}
+		]
+	},	
+	"adfs": {
+		"title": "Aanmelden met active directory",
+		"logo": "img/logo-adfs.png",
+		"info": "Aanmelden met active directory federation services",
+		"links": []
+	},
+	"auth0": {
+		"title": "Aanmelden met Auth0",
+		"logo": "img/logo-auth0.png",
+		"info": "Aanmelden met auth zero",
+		"links": []
+	},
+	"hector": {
+		"title": "Aanmelden met hector health connector",
+		"logo": "img/logo-hector.png",
+		"info": "Indien u reeds gebruik maakt van uw eHealthBox via hector, bent u tevens hier geauthenticeerd",
+		"links": [
+			{
+				"anchor": "Meer uitleg over hector health connector",
+				"url": "http://www.healthconnect.be"
+			},
+			{
+				"anchor": "Door nieuwe browser ontwikkelingen is deze optie mogelijks onbeschikbaar. HealthConnect (ontwikkelaar van de Hector applicatie) is dit aan bekijken. Van zodra we over meer informatie beschikken (timing oplossing, nieuwe mogelijkheden) kan u dit hier terugvinden.",
+				"url": "https://nexuzhealth.com/nl"
+			}
+		]
+	},
+	"code": {
+		"title": "Aanmelden met mijn Nexuzhealth-codekaart",
+		"logo": "img/logo-code.png",
+		"n": "EAD-nummer",
+		"nn": "rijksregisternummer",
+		"nnExample": "52081552068 of 625167502 of mario86",
+		"uid": "gebruikersnaam",
+		"or": "of",
+		"pwd": "wachtwoord",
+		"code": "code",
+		"codeExample": "vul de gevraagde code in terug te vinden op uw codekaart.",
+		"submit": "aanmelden",
+		"info": "Meld u aan met uw codekaart.",
+		"somethingFishy": "Er ging iets fout tijdens de authenticatie!",
+		"geenToegang" : "Wachtwoord of code verkeerd!",
+		"default" : "Er ging iets fout tijdens de authenticatie!",
+		"tokenLoginIsGeblokkeerd" : "Codekaart geblokkeerd!",
+		"unavailable": "Mynexuzhealth is tijdelijk onbeschikbaar, probeer het later opnieuw.",
+		"unknownuser": "Rijksregisternummer, EAD-nummer, of gebruikersnaam verkeerd!",
+		"my": [
+			{
+				"anchor": "Hoe aanmelden?",
+				"url": "https://nexuzhealth.com/nl/kennisartikel/website"
+			}
+		],
+		"pro": [
+			{
+				"anchor": "Hoe aanmelden?",
+				"url": "https://nexuzhealth.com/nl/kennisartikel/aanmelden-consult/"
+			}
+		],
+		"links": [
+			{
+				"anchor": "Blokkeer uw codekaart",
+				"url": "https://forms.nexuzhealth.be/questionnaires/mynexuzhealth-blokkeer-codekaart?lang=nl&target=patient"
+			},
+			{
+				"anchor": "Wachtwoord vergeten?",
+				"url": "https://forms.nexuzhealth.be/questionnaires/mynexuzhealth-wachtwoord-vergeten?lang=nl&target=patient"
+			}
+		],
+		"hide": "true"
+	},
+	"contact": {
+		"title": "Aanmelden met code en geboortedatum",
+		"logo": "img/logo-contact.png",
+		"code": "code",
+		"required": "verplicht",
+		"birthdate": "geboortedatum",
+		"invalid": "verkeerd geformatteerd",
+		"day": "dd",
+		"month": "mm",
+		"year": "jjjj",
+		"submit": "aanmelden",
+		"info": "Beperkte toegang tot beelden via een eenvoudige code met de bijhorende geboortedatum van de pati&euml;nt.",
+		"default" : "Er ging iets fout tijdens de authenticatie!",
+		"links": []
+	},
+	"quest": {
+		"title": "Aanmelden met code en geboortedatum",
+		"logo": "img/logo-quest.png",
+		"code": "code",
+		"required": "verplicht",
+		"birthdate": "geboortedatum",
+		"invalid": "verkeerd geformatteerd",
+		"day": "dd",
+		"month": "mm",
+		"year": "jjjj",
+		"submit": "aanmelden",
+		"info": "Vragenlijsten invullen via een eenvoudige code met bijhorende geboortedatum.",
+		"default" : "Er ging iets fout tijdens het aanmelden!",
+		"codeIsVervallen": "Deze code is niet meer geldig! Gelieve contact op te nemen met het ziekenhuis voor meer informatie.",
+		"codeIsAfgewerkt": "Alle vragenlijsten voor deze code werden succesvol ingediend",
+		"links": []
+	},
+	"video": {
+		"title": "Video consultatie met code en geboortedatum",
+		"logo": "img/logo-video.png",
+		"code": "code",
+		"required": "verplicht",
+		"birthdate": "geboortedatum",
+		"invalid": "verkeerd geformatteerd",
+		"day": "dd",
+		"month": "mm",
+		"year": "jjjj",
+		"submit": "aanmelden",
+		"info": "Een video consultatie opstarten via een eenvoudige code met bijhorende geboortedatum.",
+		"default" : "Er ging iets fout tijdens het opstarten!",
+		"tooEarly": "Nog even geduld!",
+		"tooLate": "Videoconsult reeds voorbij!",
+		"links": []
+	}
+}

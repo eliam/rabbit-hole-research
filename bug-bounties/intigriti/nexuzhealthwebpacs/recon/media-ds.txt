@@ -1,0 +1,5 @@
+200 17048 text/html; charset=UTF-8  /shibboleth-embedded-ds-1.0.2/
+302 449 text/html; charset=iso-8859-1  /shibboleth-embedded-ds-1.0.2/nexuz_contact.jpg
+200 17048 text/html; charset=UTF-8  /shibboleth-embedded-ds-1.0.2/index.html
+302 449 text/html; charset=iso-8859-1  /shibboleth-embedded-ds-1.0.2/DiscoFeed
+302 449 text/html; charset=iso-8859-1  /shibboleth-embedded-ds-1.0.2/idpselect.html

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/metadata.php">
+  <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <md:Extensions>
+      <mdui:UIInfo xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui">
+        <mdui:DisplayName xml:lang="en">Examination and birthdate</mdui:DisplayName>
+        <mdui:DisplayName xml:lang="nl">Onderzoek en geboortedatum</mdui:DisplayName>
+        <mdui:Description xml:lang="en">Access to specific examination based on ID and birthdate</mdui:Description>
+        <mdui:Description xml:lang="nl">Toegang tot een bepaald contact op basis van ID en geboortedatum</mdui:Description>
+        <mdui:Logo width="100" height="100" xml:lang="en">https://media.nexuzhealth.be/shibboleth-embedded-ds-1.0.2/nexuz_contact.jpg</mdui:Logo>
+        <mdui:Logo width="100" height="100" xml:lang="nl">https://media.nexuzhealth.be/shibboleth-embedded-ds-1.0.2/nexuz_contact.jpg</mdui:Logo>
+      </mdui:UIInfo>
+    </md:Extensions>
+    <md:KeyDescriptor use="signing">
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>MIID7TCCAtWgAwIBAgIJAJGnSh0amuKIMA0GCSqGSIb3DQEBCwUAMIGMMQswCQYDVQQGEwJCRTETMBEGA1UECAwKVmxhYW5kZXJlbjEPMA0GA1UEBwwGTGV1dmVuMRIwEAYDVQQKDAlVWiBMZXV2ZW4xCzAJBgNVBAsMAklUMREwDwYDVQQDDAhpZHAtcHJvZDEjMCEGCSqGSIb3DQEJARYUbmV0YWRtaW5AdXpsZXV2ZW4uZWIwHhcNMTcwOTI2MTAzNTQ2WhcNMjcwOTI2MTAzNTQ2WjCBjDELMAkGA1UEBhMCQkUxEzARBgNVBAgMClZsYWFuZGVyZW4xDzANBgNVBAcMBkxldXZlbjESMBAGA1UECgwJVVogTGV1dmVuMQswCQYDVQQLDAJJVDERMA8GA1UEAwwIaWRwLXByb2QxIzAhBgkqhkiG9w0BCQEWFG5ldGFkbWluQHV6bGV1dmVuLmViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3Kk+5N70d820T5X2vvdAtkIkJv8HtoWycRBb+5bfiVkj33YU6i0n1cX3eSY7C7WTrJt0WqU4bMpH0DGhk9LaN9Gl2C5OiLJaj8PiAt0XfFt4+G4bSr4DfAXvoAphQAlZ5NxtMRWXeIiacJT68D8ycOU6cSaNdiEaN6QZMUW3aLigxj09M5uTBWyNz+JynSPOY5EjOczSSGXd8wTXV7vPDgDvrODJ07+SGInM5CukAysVgIeLOB8/vTuHkGdZGFUETiLSG0j85/z7ESi/+6LvvSJ0Bt86t/ii9j6djL+48mg+W8lJZqc9hQL+NLLEWy+tpPJwRAu0qejHmgJXDRk5NQIDAQABo1AwTjAdBgNVHQ4EFgQUazwgLLfteDMwgrcZLwKXGg+USukwHwYDVR0jBBgwFoAUazwgLLfteDMwgrcZLwKXGg+USukwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQCm5qrdK43rfICf3n28MgI4kBbZH+EgeKeAoDI5A8RaOkZqm/d6ofd6dAT+2NNFdJ4GVD8lYB4ZdYjgHYy7uijrMC0oMnxxNnbuF0Yo8C+B1L63uNVAeSEVS0WoHCRRXoqSShi5TGx1G9wv6qMXDqVbuc9T1Tg8limkhPqla8KwMSJ1FHxsiTYRSSPfJFUmMSmvBBC7/9umhaVOZhdh7o5hlzkZjEGF8ubPwsUiAxc/HL1w5fwUO6TnPw4odkvSH8kFclLed4DWEOT9E56C3zhjk6ocxKnmq65GDQvBUBnAlToieH1AWYMQcdFm5EFjLiBvg9xaJuHQyYJcffjqJ9g==</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </md:KeyDescriptor>
+    <md:KeyDescriptor use="encryption">
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>MIID7TCCAtWgAwIBAgIJAJGnSh0amuKIMA0GCSqGSIb3DQEBCwUAMIGMMQswCQYDVQQGEwJCRTETMBEGA1UECAwKVmxhYW5kZXJlbjEPMA0GA1UEBwwGTGV1dmVuMRIwEAYDVQQKDAlVWiBMZXV2ZW4xCzAJBgNVBAsMAklUMREwDwYDVQQDDAhpZHAtcHJvZDEjMCEGCSqGSIb3DQEJARYUbmV0YWRtaW5AdXpsZXV2ZW4uZWIwHhcNMTcwOTI2MTAzNTQ2WhcNMjcwOTI2MTAzNTQ2WjCBjDELMAkGA1UEBhMCQkUxEzARBgNVBAgMClZsYWFuZGVyZW4xDzANBgNVBAcMBkxldXZlbjESMBAGA1UECgwJVVogTGV1dmVuMQswCQYDVQQLDAJJVDERMA8GA1UEAwwIaWRwLXByb2QxIzAhBgkqhkiG9w0BCQEWFG5ldGFkbWluQHV6bGV1dmVuLmViMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3Kk+5N70d820T5X2vvdAtkIkJv8HtoWycRBb+5bfiVkj33YU6i0n1cX3eSY7C7WTrJt0WqU4bMpH0DGhk9LaN9Gl2C5OiLJaj8PiAt0XfFt4+G4bSr4DfAXvoAphQAlZ5NxtMRWXeIiacJT68D8ycOU6cSaNdiEaN6QZMUW3aLigxj09M5uTBWyNz+JynSPOY5EjOczSSGXd8wTXV7vPDgDvrODJ07+SGInM5CukAysVgIeLOB8/vTuHkGdZGFUETiLSG0j85/z7ESi/+6LvvSJ0Bt86t/ii9j6djL+48mg+W8lJZqc9hQL+NLLEWy+tpPJwRAu0qejHmgJXDRk5NQIDAQABo1AwTjAdBgNVHQ4EFgQUazwgLLfteDMwgrcZLwKXGg+USukwHwYDVR0jBBgwFoAUazwgLLfteDMwgrcZLwKXGg+USukwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQCm5qrdK43rfICf3n28MgI4kBbZH+EgeKeAoDI5A8RaOkZqm/d6ofd6dAT+2NNFdJ4GVD8lYB4ZdYjgHYy7uijrMC0oMnxxNnbuF0Yo8C+B1L63uNVAeSEVS0WoHCRRXoqSShi5TGx1G9wv6qMXDqVbuc9T1Tg8limkhPqla8KwMSJ1FHxsiTYRSSPfJFUmMSmvBBC7/9umhaVOZhdh7o5hlzkZjEGF8ubPwsUiAxc/HL1w5fwUO6TnPw4odkvSH8kFclLed4DWEOT9E56C3zhjk6ocxKnmq65GDQvBUBnAlToieH1AWYMQcdFm5EFjLiBvg9xaJuHQyYJcffjqJ9g==</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </md:KeyDescriptor>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/SingleLogoutService.php"/>
+    <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
+    <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/SSOService.php"/>
+  </md:IDPSSODescriptor>
+  <md:ContactPerson contactType="technical">
+    <md:GivenName>UZ Leuven IT</md:GivenName>
+    <md:EmailAddress>netadmin@uzleuven.be</md:EmailAddress>
+  </md:ContactPerson>
+</md:EntityDescriptor>

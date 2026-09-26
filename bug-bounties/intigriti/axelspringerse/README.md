@@ -363,3 +363,8 @@ curl -sk https://dev1.epaper.welt.de/showLogin.cc | grep -oE 'build=[0-9]+'
 - **Negative results documented with the same rigour as positives** — including *how* each control was ruled
   out, so the work is reproducible and not merely asserted.
 - **No exploitation of the ADSSP CVEs.** Version correlation only; no auth attempts, no MFA bypass.
+```
+(\_/)
+(o.o)
+(> <) rabbit-hole-research
+```

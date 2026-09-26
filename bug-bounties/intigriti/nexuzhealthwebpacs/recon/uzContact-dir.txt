@@ -1,0 +1,10 @@
+200 17048 text/html;charset=UTF-8  uzContact/
+502 16 text/plain; charset=UTF-8  uzContact/js/
+502 16 text/plain; charset=UTF-8  uzContact/js/uzContact.js
+502 16 text/plain; charset=UTF-8  uzContact/js/nexuzhealth.js
+502 16 text/plain; charset=UTF-8  uzContact/css/
+502 16 text/plain; charset=UTF-8  uzContact/img/
+502 16 text/plain; charset=UTF-8  uzContact/locales/
+200 5957 text/plain;charset=UTF-8  uzContact/locales/en/translation.json
+200 6160 text/plain;charset=UTF-8  uzContact/locales/nl/translation.json
+200 1150 image/vnd.microsoft.icon  uzContact/favicon.ico

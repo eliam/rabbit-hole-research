@@ -1,0 +1,19 @@
+===== nexuzhealth.be =====
+[A] 104.18.27.241
+104.18.26.241
+[MX] 20 mx2.uzleuven.be.
+10 mx1.uzleuven.be.
+[TXT] "domain-verification:5adbb13d7796ef966b50e6857d911f829ad0153a"
+"v=spf1 include:uzleuven.be ~all"
+"google-site-verification=1Cy7cGTOGVUGfBZbPl8_T45PSVNcu3-yj41EgKOl82I"
+"HARICA-ubkjymWkhFyJbXXOIPr"
+"MS=ms53824331"
+[NS] rachel.ns.cloudflare.com.
+lakas.ns.cloudflare.com.
+[SOA] lakas.ns.cloudflare.com. dns.cloudflare.com. 2415067719 10000 2400 604800 1800
+===== idp-contact.nexuzhealth.be =====
+[A] 104.18.26.241
+104.18.27.241
+===== media.nexuzhealth.be =====
+[A] 104.18.26.241
+104.18.27.241

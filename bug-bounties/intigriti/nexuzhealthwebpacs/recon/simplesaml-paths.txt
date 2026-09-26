@@ -1,0 +1,9 @@
+302 829 text/html; charset=UTF-8  /simplesaml/
+502 16 text/plain; charset=UTF-8  /simplesaml/module.php/saml/idp/metadata
+200 5043 application/xml  /simplesaml/saml2/idp/metadata.php
+302 1678 text/html; charset=UTF-8  /simplesaml/module.php/core/frontpage_welcome.php
+200 4829 text/html; charset=UTF-8  /simplesaml/module.php/core/authenticate.php
+502 16 text/plain; charset=UTF-8  /simplesaml/module.php/admin/
+502 16 text/plain; charset=UTF-8  /simplesaml/module.php/core/loginuserpass.php
+502 16 text/plain; charset=UTF-8  /simplesaml/module.php/uzContact/uzContact.php
+502 16 text/plain; charset=UTF-8  /simplesaml/module.php/saml/idp/singleLogout

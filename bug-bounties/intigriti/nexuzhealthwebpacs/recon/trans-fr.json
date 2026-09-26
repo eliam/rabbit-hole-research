@@ -1,0 +1,179 @@
+{
+	"title": "Nexuzhealth",
+	"login": "se connecter",
+	"rememberme": "se souvenir de moi (30 jours)",
+	"cookies": "Nous utilisons uniquement les cookies n&eacute;cessaires au bon fonctionnement de ce site web. Aucun autre cookie tel que des cookies fonctionnels ou analytiques n'est utilis&eacute;.",
+	"policy": "https://nexuzhealth.com/fr/declaration-relative-aux-cookies",
+	"my": {
+		"url": "https://nexuzhealth.com/fr/patient",
+		"welcome": "Bienvenue ! Connectez-vous &agrave; Mynexuzhealth pour continuer."
+	},
+	"pro": {
+		"url": "https://nexuzhealth.com/fr/prestataire-de-soins",
+		"welcome": "Bienvenue ! Connectez-vous &agrave; Nexuzhealth Consult pour continuer."
+	},
+	"eid": {
+		"title": "Se connecter avec ma carte d'identit&eacute; &eacute;lectronique",
+		"logo": "img/logo-eid.png",
+		"info": "Placez votre carte d'identit&eacute dans votre lecteur de carte et suivez les instructions &aacute; l'&eacutecran",
+		"links": [
+			{
+				"anchor": "Plus d'informations sur la carte d'identit&eacute; &eacute;lectronique",
+				"url": "https://eid.belgium.be/fr"
+			}
+		]
+	},
+	"ehealth": {
+		"title": "Se connecter avec mon profil eHealth",
+		"logo": "img/logo-ehealth.png",
+		"info": "Connectez-vous avec votre carte d'identit&eacute; &egrave;lectronique ou votre token citoyen",
+		"links": [
+			{
+				"anchor": "La plate-forme eHealth",
+				"url": "http://www.ehealth.fgov.be"
+			},
+			{
+				"anchor": "Plus d'informations sur la carte d'identit&eacute; &eacute;lectronique",
+				"url": "https://eid.belgium.be/fr"
+			}
+		]
+	},
+	"csam": {
+		"title": "Se connecter avec CSAM",
+		"logo": "img/logo-csam.png",
+		"info": "Connectez-vous avec votre carte d'identit&eacute; &eacute;lectronique, un code unique g&eacute;n&eacute;r&eacute; par une application mobile ou itsme",
+		"links": [
+			{
+				"anchor": "Plus d'informations sur CSAM",
+				"url": "https://www.csam.be/fr/index.html"
+			},
+			{
+				"anchor": "Plus d'informations sur la carte d'identit&eacute; &eacute;lectronique",
+				"url": "https://eid.belgium.be/fr"
+			},
+			{
+				"anchor": "Plus d'informations sur itsme",
+				"url": "https://www.itsme.be/fr"
+			}
+		]
+	},
+	"adfs": {
+		"title": "Se connecter avec active directory",
+		"logo": "img/logo-adfs.png",
+		"info": "Connectez-vous avec active directory federation services",
+		"links": []
+	},
+	"auth0": {
+		"title": "Se connecter avec Auth0",
+		"logo": "img/logo-auth0.png",
+		"info": "Connectez-vous avec auth zero",
+		"links": []
+	},
+	"hector": {
+		"title": "Se connecter avec hector health connector",
+		"logo": "img/logo-hector.png",
+		"info": "Si vous utilisez d&eacute;j&agrave; votre eHealthBox travers hector, vous &ecirc;tes &eacute;galement authentifi&eacute; ici.",
+		"links": [
+			{
+				"anchor": "Plus d'informations sur hector health connector",
+				"url": "http://www.healthconnect.be"
+			},
+			{
+				"anchor": "Grâce à les nouveaux développements du navigateur, cette option est potentiellement indisponible. Health Connect (le développeur de l'application Hector) est en train de trouver une solution. Dès que nous aurons plus d'informations (solution, de nouvelles fonctionnalités), vous pouvez le trouver ici.",
+				"url": "https://nexuzhealth.com/fr"
+			}
+		]
+	},
+	"code": {
+		"title": "Se connecter avec ma carte-code Nexuzhealth",
+		"logo": "img/logo-code.png",
+		"n": "num&eacute;ro EAD ",
+		"nn": "num&eacute;ro de registre national",
+		"nnExample": "52081552068 ou 625167502 ou mario86",
+		"uid": "nom d'utilisateur",
+		"or": "ou",
+		"pwd": "mot de passe",
+		"code": "code",
+		"codeExample": "Entrez le code demandé qui se trouve sur votre carte de code.",
+		"submit": "se connecter",
+		"info": "Connectez-vous avec votre carte-code Nexuzhealth.",
+		"somethingFishy": "Quelque chose a mal tourn&eacute; lors de l'authentification!",	
+		"geenToegang" : "Mot de passe ou code incorrect!",
+		"default" : "Quelque chose a mal tourn&eacute; lors de l'authentification!",
+		"tokenLoginIsGeblokkeerd" : "Votre carte-code a &eacute;t&eacute; bloqu&eacute;!",
+		"unavailable": "Mynexuzhealth est temporairement indisponible, veuillez r&eacute;essayer plus tard.",
+		"unknownuser": "Num&eacute;ro de registre national, num&eacute;ro EAD, ou nom d'utilisateur incorrect!",
+		"my": [
+			{
+				"anchor": "Comment š'inscrire?",
+				"url": "https://nexuzhealth.com/nl/kennisartikel/website"
+			}
+		],
+		"pro": [
+			{
+				"anchor": "Comment š'inscrire?",
+				"url": "https://nexuzhealth.com/nl/kennisartikel/aanmelden-consult/"
+			}
+		],
+		"links": [
+			{
+				"anchor": "Bloquez votre carte-code Nexuzhealth",
+				"url": "https://forms.nexuzhealth.be/questionnaires/mynexuzhealth-blokkeer-codekaart?lang=fr&target=patient"
+			},
+			{
+				"anchor": "Mot de passe oubli&eacute;?",
+				"url": "https://forms.nexuzhealth.be/questionnaires/mynexuzhealth-wachtwoord-vergeten?lang=fr&target=patient"
+			}
+		],
+		"hide": "true"
+	},
+	"contact": {
+		"title": "Se connecter avec code et date de naissance",
+		"logo": "img/logo-contact.png",
+		"code": "code",
+		"required": "obligatoire",
+		"birthdate": "date de naissance",
+		"invalid": "mal formatée",
+		"day": "jj",
+		"month": "mm",
+		"year": "aaaa",
+		"submit": "se connecter",
+		"info": "Acc&egrave;s limit&eacute; aux images par un code simple et la date de naissance du patient.",
+		"default" : "Quelque chose a mal tourn&eacute; lors de l'authentification!",
+		"links": []
+	},
+	"quest": {
+		"title": "Se connecter avec code et date de naissance",
+		"logo": "img/logo-quest.png",
+		"code": "code",
+		"required": "obligatoire",
+		"birthdate": "date de naissance",
+		"invalid": "mal formatée",
+		"day": "jj",
+		"month": "mm",
+		"year": "aaaa",
+		"submit": "se connecter",
+		"info": "Remplir des questionnaires par un code simple avec date de naissance.",
+		"default" : "Une erreur s'est produite lors de la connexion!",
+		"codeIsVervallen": "Ce code n'est plus valable ! Veuillez contacter l'h&ocirc;pital pour plus d'informations.",
+		"codeIsAfgewerkt": "Tous les questionnaires pour ce code ont été soumis avec succ&egrave;s",
+		"links": []
+	},
+	"video": {
+		"title": "Consultation vid&eacute;o avec code et date de naissance",
+		"logo": "img/logo-video.png",
+		"code": "code",
+		"required": "obligatoire",
+		"birthdate": "date de naissance",
+		"invalid": "mal formatée",
+		"day": "jj",
+		"month": "mm",
+		"year": "aaaa",
+		"submit": "se connecter",
+		"info": "Participer &agrave; une consultation vid&eacute;o par un code simple avec date de naissance.",
+		"default" : "Quelque chose a mal tourn&eacute; lors de la participation!",
+		"tooEarly": "Soyez patient!",
+		"tooLate": "Videoconsult d&eacutej&agrave; termin&eacute!",
+		"links": []
+	}
+}

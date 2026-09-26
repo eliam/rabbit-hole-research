@@ -713,3 +713,8 @@ testing source IP (§3, §6).
   hidden, JSON:API off, `/user/*` misrouted to an S3 origin. No exploitable defect.
 - 2026-09-25 — remaining `*-awingu` hosts confirmed to be per-app launchers for the same 5.7.1
   deployment; launch endpoints require auth (302 → `/login?next=…`).
+```
+(\_/)
+(o.o)
+(> <) rabbit-hole-research
+```

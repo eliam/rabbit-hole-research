@@ -1,0 +1,97 @@
+=============== https://idp-contact.nexuzhealth.be/
+HTTP/2 403 
+date: Sat, 26 Sep 2026 11:46:40 GMT
+content-type: text/html
+server: cloudflare
+strict-transport-security: max-age=15552000
+vary: Accept-Encoding
+set-cookie: f0a6f1e1695e123b3b91b18d68b8a9f2=3ec562a63b67c2107376e8e090d7215e; path=/; HttpOnly
+cf-cache-status: DYNAMIC
+cf-ray: a4120789ab38bea4-LHR
+alt-svc: h3=":443"; ma=86400
+
+
+=============== https://media.nexuzhealth.be/
+HTTP/2 301 
+date: Sat, 26 Sep 2026 11:46:41 GMT
+content-type: text/html
+location: https://media.nexuzhealth.be/patient
+server: cloudflare
+strict-transport-security: max-age=15552000
+cf-cache-status: DYNAMIC
+cf-ray: a41207909ee4b257-LHR
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 302 
+date: Sat, 26 Sep 2026 11:46:41 GMT
+content-type: text/html; charset=iso-8859-1
+location: https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/SSOService.php?SAMLRequest=jVJdT8IwFP0rS9%2B3bgsZ0DCSCTGSoCwOffDFdNvFNena2tsp%2BuvdACP6QHxpmvb0fN3OkLfSsKxzjbqH1w7QeftWKmSHi5R0VjHNUSBTvAVkrmJFdrtmcRAyY7XTlZbEyxDBOqHVQivsWrAF2DdRwcP9OiWNcwYZpS3UggcK9t1nA1y6JiiBGu4EKEeLRpSlltCfImo6aMQ03xRb4i17U0Lxgf6HTNTGr7RyvHJ%2FKVG0RsLgnw5LPGBpUWxOngLTGOJda1vBIXZKIuKtlil5DnfTZDSu63E5SZJpCDzahZNdNJnsYij7bQ9D7GCl0HHlUhKHceKHUz9OtlHERgkbRU%2FEy0%2BtXAlVC%2FVyucLyCEJ2s93m%2FjHvI1g8ZO0BZD4bMrCDsD0bzWVa%2Fj0PMv9P%2BzN6JnJUNOyuZ10tcy1F9eFlUur3hQXuYOiLzo9Pfv%2Bc%2BRc%3D&RelayState=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient&SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&Signature=FKRhG7hAfYjCMr%2BCQqKn%2BsgPT6i0QGWPul09dqGlBvPGR2Gs7F5V0hMvXUPQNUtiDIBZyUZac4tHY2MIN1umuyvzVETDT30PszNdAHxnzh1opPCryxCjJBuF%2B2DY%2FGO03TqlnYDbCWGm3VW3BSGVIikgOfxJJu4yIk%2ByD89YGEHz8tq%2BH7FTCJbjHLXOA6nMt5GkEzVHT%2FBBht%2FpoAdDReIDhMqAiXTmO0luSvpDf82iGeK9nT1Z2R06H31CgHCbtdZksN7cFC0oTvzma%2BhrkvnpAgqQshUq27HNO%2F%2BPtKQCI1OYUojuqIoJKWFhhxn4ZXiakH7%2Bv52QFENhOengZA%3D%3D
+server: cloudflare
+referrer-policy: no-referrer
+x-content-type-options: nosniff
+content-security-policy-report-only: default-src 'self'; script-src 'self' data: 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com; style-src 'self' data: 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.nexuzhealth.be https://www.google-analytics.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; report-uri https://testuzleuven.report-uri.io/r/default/csp/reportonly;
+expect-ct: max-age 0; report-uri https://scotthelme.report-uri.io/r/default/ct/reportOnly
+set-cookie: _opensaml_req_https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient=_0f9647dd7b86690ea1f08f188f2ebf08; path=/; SameSite=None; Secure; secure; HttpOnly; SameSite=None
+set-cookie: 494faf7d690e18a5988d4a8723e902d8=8b98914d4c884bf4cc2649dc94df94a1; path=/; SameSite=None; Secure; HttpOnly
+expires: Wed, 01 Jan 1997 12:00:00 GMT
+cache-control: private,no-store,no-cache,max-age=0
+strict-transport-security: max-age=15552000
+cf-cache-status: DYNAMIC
+cf-ray: a4120790ffe4b257-LHR
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 302 
+date: Sat, 26 Sep 2026 11:46:41 GMT
+content-type: text/html; charset=UTF-8
+location: https://idp-contact.nexuzhealth.be/simplesaml/module.php/uzContact/uzContact.php?AuthState=_3874b2999f13957ee781d7a89d9721aac13c4873c2%3Ahttps%3A%2F%2Fidp-contact.nexuzhealth.be%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fmedia.nexuzhealth.be%252Fpatient%26RelayState%3Dhttps%253A%252F%252Fmedia.nexuzhealth.be%252Fpatient%26cookieTime%3D1790423201
+server: cloudflare
+set-cookie: SimpleSAMLSessionID=d892c3ae45196a66fc434b02200ca26b; path=/; HttpOnly
+set-cookie: f0a6f1e1695e123b3b91b18d68b8a9f2=edefd9a39392172508b500c0fb130535; path=/; HttpOnly
+pragma: no-cache
+cache-control: no-cache, must-revalidate
+strict-transport-security: max-age=15552000
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+
+=============== https://media.nexuzhealth.be/patient/
+HTTP/2 302 
+date: Sat, 26 Sep 2026 11:46:42 GMT
+content-type: text/html; charset=iso-8859-1
+location: https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/SSOService.php?SAMLRequest=jVJbT8IwFP4rS9%2BhrNwbRoIQIwkKYeiDL6YrR9eka2tPp%2Bivd2MY0QfiSx%2Fa73y30wmKQjs%2BK0NutvBaAoboUGiD%2FPiQkNIbbgUq5EYUgDxIns5uV5y1O9x5G6y0mkQzRPBBWTO3BssCfAr%2BTUm4364SkofgkFNawF6JtoFD%2BZmD0CFvZ0CdCApMoGmussxqqG4RLa01GN2s0x2JFpUpZURN%2F0Om9q4lrQlChr%2BUqAqnofZP64PVWJqm65Ontssdia6tl3CMnZCYRMtFQp5G0B%2F2B0wM4%2FHoWXY7vUywLIuFHLFRdzyUFQyxhKXBIExICOuwQaszbrHBLo55b8B77JFEm1MrV8rslXm5XGHWgJDf7HabVpP3ATwes1YAMp3UGfhR2J%2Bt5jKt%2BN4Hmf6n%2FQk9E2kUHb%2BrWJeLjdVKfkQzre373IMIUPdFp83I758z%2FQI%3D&RelayState=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient%2F&SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&Signature=lrnZwQRBdpv5ByPe90CJx9so5jZ9d3JHAn12ZaWoWrtEptnlih%2FBz03Ci0NRF7tc9f1KlJSroHVWHGCKNwVhFgnDW0saHFxv7QJBu7e5XixNeo2l%2BYQ2QSdosNodRtWJguPyZnOQ0nA1FMWEZE5WwH4nwYU%2FORZlQqjjF%2BHrdwKghNueVfg3smgh8Sv924x89I4kh1E9hpMZhqxNOs14XZtEG0RmQHCIqTq%2FcVDz1YvaYPy9DRaDAD6kPOk6sHPaZ5jhWk1G4VYAEy48jMUak%2F%2FHZQQ%2BbauoCvpNYfG0yaCWP237Pte%2FMhQ4xnKklcpXZNbON8BINpxSLakuKBefiA%3D%3D
+server: cloudflare
+referrer-policy: no-referrer
+x-content-type-options: nosniff
+content-security-policy-report-only: default-src 'self'; script-src 'self' data: 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com; style-src 'self' data: 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.nexuzhealth.be https://www.google-analytics.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; report-uri https://testuzleuven.report-uri.io/r/default/csp/reportonly;
+expect-ct: max-age 0; report-uri https://scotthelme.report-uri.io/r/default/ct/reportOnly
+set-cookie: _opensaml_req_https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient%2F=_8e57562a7198fc304ba2bb1ac828397c; path=/; SameSite=None; Secure; secure; HttpOnly; SameSite=None
+set-cookie: 494faf7d690e18a5988d4a8723e902d8=013497a8e476917773fe54c00056251c; path=/; SameSite=None; Secure; HttpOnly
+expires: Wed, 01 Jan 1997 12:00:00 GMT
+cache-control: private,no-store,no-cache,max-age=0
+strict-transport-security: max-age=15552000
+cf-cache-status: DYNAMIC
+cf-ray: a4120798ed18d7c3-LHR
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 302 
+date: Sat, 26 Sep 2026 11:46:42 GMT
+content-type: text/html; charset=UTF-8
+location: https://idp-contact.nexuzhealth.be/simplesaml/module.php/uzContact/uzContact.php?AuthState=_9622889eaa6bc2f95ab34d5109fca258de3183268f%3Ahttps%3A%2F%2Fidp-contact.nexuzhealth.be%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fmedia.nexuzhealth.be%252Fpatient%26RelayState%3Dhttps%253A%252F%252Fmedia.nexuzhealth.be%252Fpatient%252F%26cookieTime%3D1790423202
+server: cloudflare
+set-cookie: SimpleSAMLSessionID=7aae4850f193a99f681f96e84043faf7; path=/; HttpOnly
+set-cookie: f0a6f1e1695e123b3b91b18d68b8a9f2=3ec562a63b67c2107376e8e090d7215e; path=/; HttpOnly
+pragma: no-cache
+cache-control: no-cache, must-revalidate
+strict-transport-security: max-age=15552000
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+content-security-policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com;       style-src 'self' 'unsafe-inline';       img-src 'self';       font-src 'self';       frame-src 'self';       frame-ancestors 'self' *.uz.kuleuven.ac.be *.nexuzhealth.be *.vznkul.be;       connect-src 'self';       default-src 'none'
+cf-cache-status: DYNAMIC
+cf-ray: a41207997fbeef3b-LHR
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 302 
+date: Sat, 26 Sep 2026 11:46:42 GMT
+content-type: text/html; charset=UTF-8
+location: https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/SSOService.php?spentityid=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient&RelayState=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient%2F&cookieTime=1790423202
+

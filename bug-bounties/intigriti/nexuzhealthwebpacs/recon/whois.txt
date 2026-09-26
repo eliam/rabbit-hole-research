@@ -1,0 +1,18 @@
+Domain:	nexuzhealth.be
+Status:	NOT AVAILABLE
+Registered:	Sat Dec 18 2010
+Registrant:
+	Not shown, please visit www.dnsbelgium.be for webbased whois.
+Registrar Technical Contacts:
+	Organisation:	Combell
+	Language:	nl
+	Phone:	+32.92187978
+Registrar:
+	Name:	Combell nv
+	Website:	https://www.combell.com
+Nameservers:
+	lakas.ns.cloudflare.com
+	rachel.ns.cloudflare.com
+Keys:
+Flags:
+Please visit www.dnsbelgium.be for more info.

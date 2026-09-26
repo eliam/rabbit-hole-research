@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nexuzhealth</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/nexuzhealth.css">
+	<link href="/simplesaml/module.php/uzContact/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="https://nexuzhealth.com">
+        <img id="logo" src="img/nexuzhealth.png"/>
+    </a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="switcher('nl')"><span id="nl" class="badge badge-pill badge-default">NL</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="switcher('fr')"><span id="fr" class="badge badge-pill badge-default">FR</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="switcher('en')"><span id="en" class="badge badge-pill badge-default">EN</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container" id="container"></div>
+<footer class="footer">
+    <div id="footer" class="container text-center"></div>
+</footer>
+<script id="template" type="text/x-handlebars-template">
+	<div class="card card-single">
+		<img class="card-img-top card-login" src="img/login.png" alt="{{{resources.title}}}">
+		<div class="card-block">
+			<div class="card-title">{{{resources.title}}}</div>
+			{{#if resources.info}}
+				<p class="card-text">{{{resources.info}}}</p>
+			{{/if}}
+						<form method="post" action="?" onsubmit="return redirectOrBuildPassword()">
+				<div class="form-group">
+					<label for="username">
+						{{{resources.code}}}
+						<span class="error" id="required"><i class="fa fa-hand-o-left" aria-hidden="true"></i> {{{resources.required}}}</span>
+					</label>
+					<input id="username" class="form-control" name="username" autocorrect="off" autocapitalize="none" value="{{code}}" type="text"/>
+				</div>
+				<div class="form-group">
+					<label for="password">
+						{{{resources.birthdate}}} 
+						<span class="error" id="invalid"><i class="fa fa-hand-o-left" aria-hidden="true"></i> {{{resources.invalid}}}</span>
+					</label>
+					{{#if mobile}}
+						<div class="container" id="birthdate">
+							<div class="row">
+								<div class="col col-3">
+									<input id="day" class="form-control" placeholder="{{resources.day}}" name="day" type="number" pattern="[0-9]*" inputmode="numeric"/>
+								</div>
+								<div class="col col-3">
+									<input id="month" class="form-control" placeholder="{{resources.month}}" name="month" type="number" pattern="[0-9]*" inputmode="numeric"/>
+								</div>
+								<div class="col col-6">
+									<input id="year" class="form-control" placeholder="{{resources.year}}" name="year" type="number" pattern="[0-9]*" inputmode="numeric"/>
+								</div>
+							</div>
+						</div>					
+					{{else}}
+						<div class="input-group date" id="datepicker">
+							<span class="input-group-addon">
+								<span class="fa fa-calendar"></span>
+							</span>
+							<input type="text" class="form-control" id="birthdate" autocorrect="off" autocapitalize="none" name="birthdate" placeholder="{{resources.day}}/{{resources.month}}/{{resources.year}}"/>
+						</div>
+					{{/if}}
+				</div>
+				<div class="text-center">
+                    <!-- no more checkbox for physicians login (functionality identical for physicians and patients)
+					<input type="checkbox" id="healthcare">{{{resources.healthcare}}}<br/>
+					-->
+                    <input type="submit" class="btn btn-primary" value="{{resources.submit}}" class="button"/>
+				</div>
+				<ul class="list-group list-group-flush" id="links">
+					{{#each resources.links}}
+						<li class="list-group-item"><a href="{{url}}">{{{anchor}}}</a></li>
+					{{/each}}
+				</ul>
+				<input id="password" name="password" type="hidden"/>
+				<input name="AuthState" value="_52735d746124825d3ad3276bed3fad52378c931c64:https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/SSOService.php?spentityid=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient&amp;RelayState=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient%2F&amp;cookieTime=1790423325" type="hidden">
+			</form>
+		</div>
+	</div>
+</script>
+<script>
+	if (document.all && !window.atob) { //IE9 or older
+		window.location = "https://nexuzhealth.com";
+    }
+</script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.urlparam.js"></script>
+<script type="text/javascript" src="js/jquery-timing.min.js"></script>
+<script type="text/javascript" src="js/tether.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="js/handlebars.js"></script>
+<script type="text/javascript" src="js/i18next.min.js"></script>
+<script type="text/javascript" src="js/ofi.min.js"></script>
+<script type="text/javascript" src="js/isMobile.min.js"></script>
+<script type="text/javascript" src="js/validator.min.js"></script>
+<script>
+    function switcher(lang) {
+        $("#nl,#fr,#en").removeClass("badge-primary");
+        $("#"+lang).addClass("badge-primary");
+        /*$.cookie("nexuzLang", lang, {
+			expires: new Date(8640000000000000),
+			path: "/",
+			domain: "."+location.hostname.split('.').slice(-2).join('.'),
+			secure: true
+		});*/
+		i18n.setLng(lang, function(err, t) {
+            $(document).attr("title", t("title"));
+			$("#footer").html("<a href='"+t("policy")+"'>"+t("cookies")+"</a>");
+            var resources = i18n.t("contact", { returnObjectTrees: true });
+			var source = $("#template").html();
+			var template = Handlebars.compile(source);
+			var code = $.urlParam("code", $.urlParam("RelayState", $('<textarea>').html("_52735d746124825d3ad3276bed3fad52378c931c64:https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/SSOService.php?spentityid=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient&amp;RelayState=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient%2F&amp;cookieTime=1790423325").text()));
+			var html = template({ resources: resources, code: code, mobile: isMobile.phone || isMobile.tablet });
+			$("#container").html(html);
+			$('#datepicker').datetimepicker({
+                viewMode: "years",
+                format: "DD/MM/YYYY",
+				locale: lang
+            });
+        });
+    }
+	function redirectOrBuildPassword() {
+        /* no more "healthcare" checkbox for physicians login (functionality identical for physicians and patients)
+		if ($("#healthcare").is(":checked") && $("#username").val()) {
+			var relay = $.urlParam("RelayState", $('<textarea>').html("_52735d746124825d3ad3276bed3fad52378c931c64:https://idp-contact.nexuzhealth.be/simplesaml/saml2/idp/SSOService.php?spentityid=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient&amp;RelayState=https%3A%2F%2Fmedia.nexuzhealth.be%2Fpatient%2F&amp;cookieTime=1790423325").text());
+			if(isAllowedUrl(relay)){
+				window.location = relay.replace(/\/patient.*$/,"/dicom/")+$("#username").val();
+			}
+			return false;
+		}
+		*/
+		var code = $("#username").val();
+		if (!code) {
+			$("#required").fadeIn().wait(3000).fadeOut();
+			return false;
+		}
+		var birthdate = $("#birthdate").val();
+		if (!birthdate) {
+			var day = $("#day").val();
+			var month = $("#month").val();
+			var year = $("#year").val();
+			birthdate = day+"/"+month+"/"+year;
+		}
+		if (moment(birthdate, "DD/MM/YYYY", true).isValid()) {
+			$("#password").val(birthdate);
+			return true;
+		}
+		$("#invalid").fadeIn().wait(3000).fadeOut();
+		return false;
+	}
+    function isAllowedUrl(url) {
+        try {
+            // parse url and normalize to ASCII/punycode
+            const u = new URL(url, window.location.origin)
+            const host = u.hostname.toLowerCase();
+            if(u.protocol !== 'https:') return false;
+            // allowed host check
+            const allowed = ['mynexuz.be', 'uzleuven.be', 'uz.kuleuven.ac.be',
+                'nexuzhealth.net', 'nexuzhealth.be', 'nexuzhealth.com',
+                'mynexuzhealth.be', 'mynexuzpro.be','mynexuzhealthpro.be'];
+            return allowed.some(d => host === d
+                || host.endsWith('.'+d));
+        }
+        catch {
+            return false;
+        }
+    }
+    $(document).ready(function() {
+        Handlebars.registerHelper('t', function(key) {
+            return i18n.t(key);
+        });
+        i18n.init({
+            useCookie: false,
+            lngWhitelist: ["nl", "fr", "en"],
+            fallbackLng: "en"
+        }, function(err, t) {
+			//var lang = $.urlParam("nexuzLang", $.urlParam("RelayState", $('<textarea>').html("//").text()));
+			switcher(navigator.language || navigator.userLanguage);
+        });
+		objectFitImages();
+    });
+</script>
+</body>
+</html>
